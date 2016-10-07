@@ -1,0 +1,22 @@
+<template name="pic">
+  <li class="{{#if checked}}checked{{/if}}">
+    <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
+    <div style="background:{{picBackgroundColor}}">
+      <span class="image">
+        <img src="{{url}}" width="{{picDimensions.width}}" height="{{picDimensions.height}}" alt="" />
+      </span>
+    </div>
+    <!-- {{#each tags}}
+    {{/ tags}} -->
+    <span class="text">from db: {{tags}}</span>
+    <span class="text">from db: {{dimensions.width}}</span>
+    <span class="text">from db: {{dimensions.height}}</span>
+    <!-- <span class="text">{{createdAt}}</span> -->
+    <div class="text">{{picName}}</div>
+    <div class="text">{{jobName}}</div>
+    <div class="text">{{jobName2}}</div>
+    <div class="text">{{picBackgroundColor}}</div>
+    <div class="text">from S3: {{picDimensions.width}}&times;{{picDimensions.height}}</div>
+    <button class="delete">×</button>
+  </li>
+</template>

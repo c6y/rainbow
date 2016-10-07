@@ -1,0 +1,19 @@
+<body>
+  <div class="container">
+    <header>
+      <h1>EBOYDB ({{incompleteCount}})</h1>
+
+      <form class="new-pic">
+        <!-- <input type="text" name="text" placeholder="Type to add task" /> -->
+        <input type="text" name="url" placeholder="Add S3 URL" />
+        <button type="submit">Add Image</button>
+      </form>
+    </header>
+
+    <ul>
+      {{#each pix}}
+        {{> pic}}
+      {{/each}}
+    </ul>
+  </div>
+</body>

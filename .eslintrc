@@ -1,0 +1,9 @@
+{
+  "extends": "eslint-config-google",
+  "rules": {
+    "object-curly-spacing": [2, "always"]
+  },
+  "globals": {
+    "Image": false,
+  }
+}

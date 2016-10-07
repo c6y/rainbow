@@ -42,7 +42,11 @@ Template.body.events({
       EboyPix.insert({
         url: imgURL,
         createdAt: new Date(),
-        dimensions: { width: this.width, height: this.height }
+        dimensions: { width: this.width, height: this.height },
+        backgroundColor: '#272822',
+        tags: ['sprite', 'eboy'],
+        copyright: '©eBoy',
+        license: 'CC BY-NC-ND 4.0'
       });
       // Clear form
       target.url.value = '';

@@ -1,5 +1,5 @@
 import { Template } from 'meteor/templating';
-import { EboyPix } from '../api/eboypix.js';
+// import { EboyPix } from '../api/eboypix.js';
 import './pic.html';
 
 Template.pic.helpers({
@@ -14,8 +14,8 @@ Template.pic.helpers({
     img.src = url;
     // console.log('img.type: ' + img.type);
     return {
-      width: img.width * 0.5,
-      height: img.height * 0.5
+      width: img.width,
+      height: img.height
     };
   },
   picBackgroundColor() {
@@ -35,33 +35,5 @@ Template.pic.helpers({
       const jobNameEnd = results[results.length - 1];
       return url.substring(jobNameStart, jobNameEnd - 1);
     }
-  },
-  jobName2() {
-    // Checks if URL contains a jobs directory
-    // if true extracts the last directory (which should be the jobname)
-    const url = this.url;
-    if (url.includes('/jobs/')) {
-      // Reverse URL so we can use split on the end of the string
-      const reversedURL = url.split('').reverse().join('');
-      // remove characters before last directory
-      const jobsStart = String(reversedURL.split('/', 2));
-      // reverse string back to normal
-      const reverseBack = jobsStart.split('').reverse().join('');
-      // remove characters after jobname
-      const jobName = reverseBack.split(',', 1);
-      return jobName;
-    }
-  }
-});
-
-Template.pic.events({
-  'click .toggle-checked'() {
-    // Set the checked property to the opposite of its current value
-    EboyPix.update(this._id, {
-      $set: { checked: !this.checked }
-    });
-  },
-  'click .delete'() {
-    EboyPix.remove(this._id);
   }
 });

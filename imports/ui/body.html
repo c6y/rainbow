@@ -1,12 +1,16 @@
 <body>
   <div class="container">
     <header>
-      <h1>EBOYDB ({{incompleteCount}})</h1>
+      <h1>EBOYDB-2 ({{incompleteCount}})</h1>
 
       <form class="new-pic">
-        <!-- <input type="text" name="text" placeholder="Type to add task" /> -->
-        <input type="text" name="url" placeholder="Add S3 URL" />
-        <button type="submit">Add Image</button>
+        <input type="url" name="url" placeholder="Add a Image URL" />
+        <button type="submit">Submit URL</button>
+      </form>
+
+      <form class="new-pic-batch" id="batchuploadURLs">
+        <textarea name="batchchurls" rows="4" cols="50" form="batchuploadURLs" placeholder="Add multiple Image URLs"></textarea>
+        <button type="submit">Submit URLs</button>
       </form>
     </header>
 

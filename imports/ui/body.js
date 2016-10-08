@@ -51,5 +51,31 @@ Template.body.events({
       // Clear form
       target.url.value = '';
     };
+  },
+  'submit .new-pic-batch'(event) {
+    event.preventDefault();
+    // Assign form input to constant
+    const target = event.target;
+    const imgBatchURLs = target.batchchurls.value;
+    // Remove line breaks
+    const imgBatchURLsClean = imgBatchURLs.replace(/[\r\n]/g, '');
+
+    // Create an array and populate with urls
+    let urls = [];
+    urls = imgBatchURLsClean.split(",");
+
+    // Only keep elements that start with 'http'
+    urls = urls.filter(function(element) {
+      return element.startsWith('http');
+    });
+
+    console.log('urls.length: ' + urls.length);
+
+    let n = 0;
+    while (n < urls.length) {
+      let stringurl = String(urls[n]);
+      console.log('urls[' + n + ']: ' + stringurl);
+      n++;
+    }
   }
 });

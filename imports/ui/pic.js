@@ -1,5 +1,5 @@
 import { Template } from 'meteor/templating';
-// import { EboyPix } from '../api/eboypix.js';
+import { EboyPix } from '../api/eboypix.js';
 import './pic.html';
 
 Template.pic.helpers({
@@ -35,5 +35,17 @@ Template.pic.helpers({
       const jobNameEnd = results[results.length - 1];
       return url.substring(jobNameStart, jobNameEnd - 1);
     }
+  }
+});
+
+Template.pic.events({
+  'click .toggle-checked'() {
+    // Set the checked property to the opposite of its current value
+    EboyPix.update(this._id, {
+      $set: { checked: !this.checked }
+    });
+  },
+  'click .delete'() {
+    EboyPix.remove(this._id);
   }
 });

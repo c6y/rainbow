@@ -1,27 +1,26 @@
 <template name="pic">
   <li>
+    <button class="delete">X</button>
     <div style="background:{{backgroundColor}}">
       <div class="image">
-        <img src="{{url}}" width="{{picDimensions.width}}" height="{{picDimensions.height}}" alt="" />
+        <img src="{{url}}" width="{{width}}" height="{{height}}" alt="" />
         <!-- {{#with picURL}}
           <img src="{{this}}" width="{{picDimensions.width}}" height="{{picDimensions.height}}">
         {{/with}} -->
       </div>
     </div>
+
+    <div class="text"><span class="property">name:</span> {{name}}</div>
     {{#if tags}}
       <div  class="text">
-        tags db:
-        {{#each tags}}
-          {{this}}
+        <span class="property">tags:</span> {{#each tags}}
+          <span class="tag">{{this}}</span>
         {{/each}}
       </div>
     {{/if}}
-    <div class="text">db: {{dimensions.width}}&times;{{dimensions.height}}</div>
-    <div class="text">db: {{backgroundColor}}</div>
-    <div class="text">db: {{createdAt}}</div>
-    <div class="text">{{picName}}</div>
-    <div class="text">{{jobName}}</div>
-    <div class="text">dimensions live: {{picDimensions.width}}&times;{{picDimensions.height}}</div>
-    <button class="delete">×</button>
+    <div class="text"><span class="property">dimensions:</span> {{dimensions.width}} &times; {{dimensions.height}}</div>
+    <div class="text"><span class="property">backgroundColor:</span> {{backgroundColor}}</div>
+    <div class="text"><span class="property">createdAt:</span> {{createdAt}}</div>
+    <div class="text"><span class="property">project:</span> {{project}}</div>
   </li>
 </template>

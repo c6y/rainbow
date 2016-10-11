@@ -1,5 +1,5 @@
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-import { EboyPix } from '../api/eboypix/eboypix.js';
 import './pic.html';
 
 Template.pic.helpers({
@@ -7,16 +7,6 @@ Template.pic.helpers({
   picName() {
     const url = this.url;
     return url.substring(url.lastIndexOf("/") + 1, url.length);
-  },
-  picDimensions() {
-    const url = this.url;
-    const img = new Image();
-    img.src = url;
-    // console.log('img.type: ' + img.type);
-    return {
-      width: img.width,
-      height: img.height
-    };
   },
   jobName() {
     const url = this.url;
@@ -37,6 +27,6 @@ Template.pic.helpers({
 
 Template.pic.events({
   'click .delete'() {
-    EboyPix.remove(this._id);
+    Meteor.call('eboypix.delete', this._id);
   }
 });

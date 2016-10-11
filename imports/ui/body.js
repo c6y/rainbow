@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { EboyPix } from '../api/eboypix/eboypix.js';
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
@@ -26,21 +27,18 @@ Template.body.events({
     const target = event.target;
     const imgURL = target.url.value;
 
+    // Create image object and calculate dimensions
     let img = new Image();
     img.src = imgURL;
+    const width = img.width;
+    const height = img.height;
+
+    // Create new document if image is loaded
     img.onload = function() {
-      EboyPix.insert({
-        url: imgURL,
-        createdAt: new Date(),
-        dimensions: { width: this.width, height: this.height },
-        backgroundColor: '#272822',
-        tags: ['sprite', 'eboy'],
-        copyright: '©eBoy',
-        license: 'CC BY-NC-ND 4.0'
-      });
-      // Clear form
-      target.url.value = '';
+      Meteor.call('eboypix.insert', imgURL, width, height);
     };
+    // Clear form
+    target.url.value = '';
   },
   'submit .new-pic-batch'(event) {
     event.preventDefault();
@@ -48,7 +46,8 @@ Template.body.events({
     const target = event.target;
     const imgBatchURLs = target.batchchurls.value;
     // Remove line breaks
-    const imgBatchURLsClean = imgBatchURLs.replace(/[\r\n]/g, '');
+    const imgBatchURLsClean = imgBatchURLs.replace(/[\r\n]/g, ',');
+    console.log('imgBatchURLsClean: ' + imgBatchURLsClean);
 
     // Create an array and populate with urls
     let urls = [];
@@ -61,11 +60,20 @@ Template.body.events({
 
     console.log('urls.length: ' + urls.length);
 
-    let n = 0;
-    while (n < urls.length) {
-      let stringurl = String(urls[n]);
-      console.log('urls[' + n + ']: ' + stringurl);
-      n++;
-    }
+    (function nextImage(urls) {
+      if (urls.length) {
+        let img = new Image();
+        img.onload = function() {
+          Meteor.call('eboypix.insert', img.src, img.width, img.height);
+          // setTimeout(function() {
+          nextImage(urls);
+          // }, 2000);
+        };
+        img.src = urls.shift();
+      }
+    })(urls.slice());
+  },
+  'click .deleteAll'() {
+    Meteor.call('eboypix.deleteAll');
   }
 });

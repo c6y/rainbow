@@ -1,6 +1,6 @@
+import { EboyPix } from '../api/eboypix/eboypix.js';
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
-import { EboyPix } from '../api/eboypix.js';
 import './pic.js';
 import './body.html';
 
@@ -10,19 +10,9 @@ Template.body.onCreated(function bodyOnCreated() {
 
 Template.body.helpers({
   pix() {
-    const instance = Template.instance();
-    if (instance.state.get('hideCompleted')) {
-      // If hide completed is checked, filter tasks
-      return EboyPix.find({
-        checked: { $ne: true }
-      }, {
-        sort: { createdAt: -1 }
-      });
-    }
-    // Show newest task at the top
     return EboyPix.find({}, { sort: { createdAt: -1 } });
   },
-  incompleteCount() {
+  pixCounter() {
     return EboyPix.find({ checked: { $ne: true } }).count();
   }
 });

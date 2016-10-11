@@ -1,1 +1,1 @@
-import '../imports/api/eboypix.js';
+import '../imports/api/eboypix/eboypix.js';

@@ -1,6 +1,6 @@
 /* CSS declarations go here */
 body {
-  font-family: Roboto;
+  font-family: Menlo, monospace;
   background-color: #636a73;
 
   position: absolute;
@@ -12,7 +12,7 @@ body {
   padding: 0;
   margin: 0;
 
-  font-size: 14px;
+  font-size: 9pt;
 }
 
 .container {
@@ -46,14 +46,12 @@ form {
   position: relative;
 }
 
-.new-task input {
-  box-sizing: border-box;
-  padding: 10px 0;
-  background: transparent;
-  border: none;
+textarea {
+  background-color: #eee;
+  display: block;
   width: 100%;
-  padding-right: 80px;
-  font-size: 1em;
+  /*padding: 0px;*/
+  /*border: 1px;*/
 }
 
 .new-task input:focus{

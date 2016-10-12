@@ -19,27 +19,6 @@ Template.body.helpers({
 });
 
 Template.body.events({
-  'submit .new-pic'(event) {
-    // Prevent default browser form submit
-    event.preventDefault();
-
-    // Get value from form target
-    const target = event.target;
-    const imgURL = target.url.value;
-
-    // Create image object and calculate dimensions
-    let img = new Image();
-    img.src = imgURL;
-    const width = img.width;
-    const height = img.height;
-
-    // Create new document if image is loaded
-    img.onload = function() {
-      Meteor.call('eboypix.insert', imgURL, width, height);
-    };
-    // Clear form
-    target.url.value = '';
-  },
   'submit .new-pic-batch'(event) {
     event.preventDefault();
     // Assign form input to constant

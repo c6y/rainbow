@@ -1,7 +1,8 @@
 <template name="pic">
   <li>
     <button class="delete">X</button>
-    <div style="background:{{backgroundColor}}">
+    <!-- <div style="background: #{{backgroundColor}}"> -->
+    <div style="background: hsl({{backgroundColor.h}},{{backgroundColor.s}}%,{{backgroundColor.l}}%)">
       <div class="image">
         <img src="{{url}}" width="{{width}}" height="{{height}}" alt="" />
         <!-- {{#with picURL}}
@@ -19,8 +20,11 @@
       </div>
     {{/if}}
     <div class="text"><span class="property">dimensions:</span> {{dimensions.width}} &times; {{dimensions.height}}</div>
-    <div class="text"><span class="property">backgroundColor:</span> {{backgroundColor}}</div>
+    <div class="text"><span class="property">backgroundColor.h:</span> hsl({{backgroundColor.h}}, {{backgroundColor.s}}%, {{backgroundColor.l}}%)</div>
     <div class="text"><span class="property">createdAt:</span> {{createdAt}}</div>
     <div class="text"><span class="property">project:</span> {{project}}</div>
+    {{#if fullframe}}
+      <div class="text"><span class="property">fullframe:</span> {{fullframe}}</div>
+    {{/if}}
   </li>
 </template>

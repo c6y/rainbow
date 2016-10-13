@@ -2,7 +2,7 @@
   <div class="docbox">
     <li>
       <button class="delete">X</button>
-      <figure style="background: hsl({{backgroundColor.h}},{{backgroundColor.s}}%,{{backgroundColor.l}}%)">
+      <figure style="background: hsl({{colorHSL}})">
         <img src="{{url}}" width="{{width}}" height="{{height}}" alt="" />
       </figure>
       <div class="docMeta">
@@ -16,7 +16,8 @@
           </li>
         {{/if}}
         <li><span class="property">dimensions:</span> {{dimensions.width}} &times; {{dimensions.height}}</li>
-        <li><span class="property">backgroundColor:</span> hsl({{backgroundColor.h}}, {{backgroundColor.s}}%, {{backgroundColor.l}}%)</li>
+        <li><span class="property">backgroundColor:</span> {{backgroundColor}}</li>
+        <li><span class="property">colorHSL(calc):</span> {{colorHSL}}</li>
         <li><span class="property">createdAt:</span> {{createdAt}}</li>
         <li><span class="property">project:</span> {{project}}</li>
         <li><span class="property">license:</span> {{license}}</li>

@@ -25,14 +25,17 @@ Schemas.Pix = new SimpleSchema({
   //   type: Number,
   //   regEx: /^([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/
   // },
-  'backgroundColor.h': {
-    type: Number
-  },
-  'backgroundColor.s': {
-    type: Number
-  },
-  'backgroundColor.l': {
-    type: Number
+  // 'backgroundColor.h': {
+  //   type: Number
+  // },
+  // 'backgroundColor.s': {
+  //   type: Number
+  // },
+  // 'backgroundColor.l': {
+  //   type: Number
+  // },
+  'backgroundColor': {
+    type: String
   },
   'copyright': {
     type: String

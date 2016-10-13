@@ -6,7 +6,7 @@ import { EboyPix } from '../api/eboypix/eboypix.js';
 import { Colors } from '../api/colors/colors.js';
 
 import './body.html';
-import './pic.html'; // changed from js. to .html — still working?
+import './pic.js'; // changed from js. to .html — still working?
 import './color.html';
 
 Template.body.onCreated(function bodyOnCreated() {
@@ -21,10 +21,23 @@ Template.body.helpers({
     return EboyPix.find({}).count();
   },
   colors() {
-    return Colors.find({}, { sort: { createdAt: -1 } });
+    return Colors.find({}, { sort: { hue: -1 } });
   },
   colorCounter() {
     return Colors.find({}).count();
+  },
+  colorsNamesList() {
+    let colorNamesArray = [];
+    // const colorlist = Colors.find({}, { name: 1, createdAt: 1, _id: 0 }, { sort: { name: 1 } })
+    const colorlist = Colors.find(
+      {},
+      { sort: { name: 1 } },
+      { name: 1, _id: 0 }
+    );
+    colorlist.forEach(function(u) {
+      colorNamesArray.push(u.name);
+    });
+    return colorNamesArray;
   }
 });
 

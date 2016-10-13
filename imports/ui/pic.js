@@ -1,6 +1,10 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-// import './pic.html';
+import { Colors } from '../api/colors/colors.js';
+
+// import { EboyPix } from '../api/eboypix/eboypix.js';
+import './pic.html';
+// import { Colors } from '../api/colors/colors.js';
 
 Template.pic.helpers({
   // Truncate the URL and return file name only
@@ -22,6 +26,18 @@ Template.pic.helpers({
       const jobNameEnd = results[results.length - 1];
       return url.substring(jobNameStart, jobNameEnd - 1);
     }
+  },
+  colorHSL() {
+    const color = Colors.findOne(
+      { name: this.backgroundColor }
+    );
+    return String(
+      color.hue + ', ' +
+      color.saturation + '%, ' +
+      color.luminosity + '%'
+    );
+    // const colorname = this.backgroundColor;
+    // return colorname;
   }
 });
 

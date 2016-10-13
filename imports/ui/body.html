@@ -1,23 +1,34 @@
 <body>
   <div class="container">
     <header>
-      <h1>rainbow ({{pixCounter}}) <button class="deleteAll">Delete All</button></h1>
-
-      <!-- <form class="new-pic">
-        <input type="url" name="url" placeholder="Add a Image URL" />
-        <button type="submit">Submit URL</button>
-      </form> -->
-
+      <h1>
+        rainbow ({{pixCounter}}, {{colorCounter}})
+        <button class="deleteAllDocs">Delete Docs</button>
+        <button class="deleteAllColors">Delete Colors</button>
+      </h1>
       <form class="new-pic-batch" id="batchuploadURLs">
         <textarea name="batchchurls" form="batchuploadURLs" placeholder="Add multiple Image URLs"></textarea>
         <button type="submit">Submit URLs</button>
       </form>
+      <form class="new-color">
+        <input type="text" name="name" placeholder="name" />
+        <input type="text" name="hue" placeholder="hue" />
+        <input type="text" name="saturation" placeholder="sat" />
+        <input type="text" name="luminosity" placeholder="lum" />
+        <button type="submit">Add Color</button>
+      </form>
     </header>
-
+    {{#each colors}}
     <ul>
-      {{#each pix}}
-        {{> pic}}
-      {{/each}}
+      <div style="background: hsl({{hue}}, {{saturation}}%, {{luminosity}}%)">
+        {{name}}
+      </div>
     </ul>
+    {{/each}}
+    {{#each pix}}
+      <ul>
+        {{> pic}}
+      </ul>
+    {{/each}}
   </div>
 </body>

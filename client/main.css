@@ -24,7 +24,7 @@ body {
 
 header {
   background: #d2edf4;
-  padding: 20px 15px 15px 15px;
+  padding: 2em 1em 1em 1em;
   position: relative;
 }
 
@@ -35,23 +35,21 @@ header {
 h1 {
   font-size: 1.5em;
   margin: 0;
-  margin-bottom: 10px;
   display: inline-block;
-  margin-right: 1em;
 }
 
 form {
-  margin-top: 10px;
-  margin-bottom: -10px;
+  margin-top: 1em;
+  margin-bottom: 0;
   position: relative;
+  /*background-color: red;*/
 }
 
 textarea {
   background-color: #eee;
-  display: block;
   width: 100%;
-  /*padding: 0px;*/
-  /*border: 1px;*/
+  box-sizing: border-box;
+  padding: 0.5em;
 }
 
 .new-task input:focus{
@@ -73,58 +71,33 @@ ul {
   position: absolute;
 }
 
-.deleteAll {
+.deleteAllDocs {
   display: inline;
   background: #f97070;
   font-size: 1em;
   border: none;
 }
 
-li {
+.deleteAllColors {
+  display: inline;
+  background: #f97070;
+  font-size: 1em;
+  border: none;
+}
+
+.docbox {
   position: relative;
-  list-style: none;
   padding: 15px;
   border-bottom: #eee solid 1px;
 }
 
-li .text {
-  margin-left: 10px;
+.docbox li {
+  list-style: none;
 }
 
-li.checked {
-  color: #888;
-}
-
-li.checked .text {
-  text-decoration: line-through;
-}
-
-li.private {
-  background: #eee;
-  border-color: #ddd;
-}
-
-header .hide-completed {
-  float: right;
-}
-
-.toggle-private {
-  margin-left: 5px;
-}
-
-@media (max-width: 600px) {
-  li {
-    padding: 12px 15px;
-  }
-
-  .search {
-    width: 150px;
-    clear: both;
-  }
-
-  .new-task input {
-    padding-bottom: 5px;
-  }
+figure {
+    padding: 1em;
+    margin: 0;
 }
 
 img {
@@ -135,14 +108,19 @@ img {
   image-rendering: pixelated;
 }
 
+.docMeta {
+  background-color: #f0f3f0;
+  padding: 1em;
+}
+
+.property {
+  color: #d39322;
+}
+
 .tag:after {
   content: ',';
 }
 
 .tag:last-of-type:after {
   content: ''
-}
-
-.property {
-  color: #d39322;
 }

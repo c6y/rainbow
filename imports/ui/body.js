@@ -1,9 +1,13 @@
 import { Meteor } from 'meteor/meteor';
-import { EboyPix } from '../api/eboypix/eboypix.js';
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
-import './pic.js';
+
+import { EboyPix } from '../api/eboypix/eboypix.js';
+import { Colors } from '../api/colors/colors.js';
+
 import './body.html';
+import './pic.html'; // changed from js. to .html — still working?
+import './color.html';
 
 Template.body.onCreated(function bodyOnCreated() {
   this.state = new ReactiveDict();
@@ -14,7 +18,13 @@ Template.body.helpers({
     return EboyPix.find({}, { sort: { createdAt: -1 } });
   },
   pixCounter() {
-    return EboyPix.find({ checked: { $ne: true } }).count();
+    return EboyPix.find({}).count();
+  },
+  colors() {
+    return Colors.find({}, { sort: { createdAt: -1 } });
+  },
+  colorCounter() {
+    return Colors.find({}).count();
   }
 });
 
@@ -52,7 +62,24 @@ Template.body.events({
       }
     })(urls.slice());
   },
-  'click .deleteAll'() {
+  'click .deleteAllDocs'() {
     Meteor.call('eboypix.deleteAll');
+  },
+  'click .deleteAllColors'() {
+    Meteor.call('colors.deleteAll');
+  },
+  'submit .new-color'(event) {
+    event.preventDefault();
+    const target = event.target;
+    const name = target.name.value;
+    const hue = target.hue.value;
+    const lum = target.luminosity.value;
+    const sat = target.saturation.value;
+    Meteor.call('colors.insert', name, hue, sat, lum, 1);
+    // Clear form
+    target.name.value = '';
+    target.hue.value = '';
+    target.luminosity.value = '';
+    target.saturation.value = '';
   }
 });

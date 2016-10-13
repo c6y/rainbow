@@ -1,30 +1,30 @@
 <template name="pic">
-  <li>
-    <button class="delete">X</button>
-    <!-- <div style="background: #{{backgroundColor}}"> -->
-    <div style="background: hsl({{backgroundColor.h}},{{backgroundColor.s}}%,{{backgroundColor.l}}%)">
-      <div class="image">
+  <div class="docbox">
+    <li>
+      <button class="delete">X</button>
+      <figure style="background: hsl({{backgroundColor.h}},{{backgroundColor.s}}%,{{backgroundColor.l}}%)">
         <img src="{{url}}" width="{{width}}" height="{{height}}" alt="" />
-        <!-- {{#with picURL}}
-          <img src="{{this}}" width="{{picDimensions.width}}" height="{{picDimensions.height}}">
-        {{/with}} -->
+      </figure>
+      <div class="docMeta">
+        <li><span class="property">_id:</span> {{_id}}</li>
+        <li><span class="property">name:</span> {{name}}</li>
+        {{#if tags}}
+          <li >
+            <span class="property">tags:</span> {{#each tags}}
+              <span class="tag">{{this}}</span>
+            {{/each}}
+          </li>
+        {{/if}}
+        <li><span class="property">dimensions:</span> {{dimensions.width}} &times; {{dimensions.height}}</li>
+        <li><span class="property">backgroundColor:</span> hsl({{backgroundColor.h}}, {{backgroundColor.s}}%, {{backgroundColor.l}}%)</li>
+        <li><span class="property">createdAt:</span> {{createdAt}}</li>
+        <li><span class="property">project:</span> {{project}}</li>
+        <li><span class="property">license:</span> {{license}}</li>
+        <li><span class="property">copyright:</span> {{copyright}}</li>
+        {{#if fullframe}}
+          <li><span class="property">fullframe:</span> {{fullframe}}</li>
+        {{/if}}
       </div>
-    </div>
-
-    <div class="text"><span class="property">name:</span> {{name}}</div>
-    {{#if tags}}
-      <div  class="text">
-        <span class="property">tags:</span> {{#each tags}}
-          <span class="tag">{{this}}</span>
-        {{/each}}
-      </div>
-    {{/if}}
-    <div class="text"><span class="property">dimensions:</span> {{dimensions.width}} &times; {{dimensions.height}}</div>
-    <div class="text"><span class="property">backgroundColor.h:</span> hsl({{backgroundColor.h}}, {{backgroundColor.s}}%, {{backgroundColor.l}}%)</div>
-    <div class="text"><span class="property">createdAt:</span> {{createdAt}}</div>
-    <div class="text"><span class="property">project:</span> {{project}}</div>
-    {{#if fullframe}}
-      <div class="text"><span class="property">fullframe:</span> {{fullframe}}</div>
-    {{/if}}
-  </li>
+    </li>
+  </div>
 </template>

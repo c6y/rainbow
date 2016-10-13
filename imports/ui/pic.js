@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-import './pic.html';
+// import './pic.html';
 
 Template.pic.helpers({
   // Truncate the URL and return file name only

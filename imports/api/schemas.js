@@ -21,19 +21,6 @@ Schemas.Pix = new SimpleSchema({
   'tags': {
     type: [String]
   },
-  // 'backgroundColor': {
-  //   type: Number,
-  //   regEx: /^([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/
-  // },
-  // 'backgroundColor.h': {
-  //   type: Number
-  // },
-  // 'backgroundColor.s': {
-  //   type: Number
-  // },
-  // 'backgroundColor.l': {
-  //   type: Number
-  // },
   'backgroundColor': {
     type: String
   },
@@ -77,7 +64,11 @@ Schemas.HSLAColors = new SimpleSchema({
   alpha: {
     type: Number,
     decimal: true,
+    defaultValue: 1,
     min: 0,
     max: 1
+  },
+  tags: {
+    type: [String]
   }
 });

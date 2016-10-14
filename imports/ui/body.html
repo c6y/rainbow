@@ -12,12 +12,14 @@
       </form>
       <form class="new-color">
         <input type="text" name="name" placeholder="name" />
-        <input type="text" name="hue" placeholder="hue" />
-        <input type="text" name="saturation" placeholder="sat" />
-        <input type="text" name="luminosity" placeholder="lum" />
+        <input type="text" name="hue" placeholder="hue" maxlength="3" size="3"/>
+        <input type="text" name="saturation" placeholder="sat" maxlength="3" size="3"/>
+        <input type="text" name="luminosity" placeholder="lum" maxlength="3" size="3"/>
+        <input type="text" name="tag" placeholder="tag" />
         <button type="submit">Add Color</button>
       </form>
     </header>
+    <!-- ={{testTagsToArray}}= -->
     {{#each colors}}
       <ul>
         {{> color}}

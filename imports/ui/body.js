@@ -62,8 +62,6 @@ Template.body.events({
       return element.startsWith('http');
     });
 
-    console.log('urls.length: ' + urls.length);
-
     (function nextImage(urls) {
       if (urls.length) {
         let img = new Image();
@@ -90,7 +88,8 @@ Template.body.events({
     const hue = target.hue.value;
     const lum = target.luminosity.value;
     const sat = target.saturation.value;
-    Meteor.call('colors.insert', name, hue, sat, lum, 1);
+    const tag = target.tag.value;
+    Meteor.call('colors.insert', name, hue, sat, lum, 1, tag);
     // Clear form
     target.name.value = '';
     target.hue.value = '';

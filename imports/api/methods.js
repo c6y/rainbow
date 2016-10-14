@@ -99,5 +99,8 @@ Meteor.methods({
   },
   'colors.deleteAll'() {
     Colors.remove({});
+  },
+  'color.delete'(id) {
+    Colors.remove(id);
   }
 });

@@ -6,7 +6,9 @@ import { EboyPix } from '../api/eboypix/eboypix.js';
 import { Colors } from '../api/colors/colors.js';
 
 import './body.html';
-import './pic.js'; // changed from js. to .html — still working?
+import './pic.js';
+import './pic.html';
+import './color.js';
 import './color.html';
 
 Template.body.onCreated(function bodyOnCreated() {

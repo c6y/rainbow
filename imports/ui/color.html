@@ -1,3 +1,5 @@
 <template name="color">
-  {{colorName}}
+  <div class="colorSwatch" style="background: hsl({{hue}}, {{saturation}}%, {{luminosity}}%)">
+    <span class="colorName"><span class="removeColor">(×)</span>{{colorName}}</span>
+  </div>
 </template>

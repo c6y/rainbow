@@ -1,6 +1,5 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-// import { ReactiveDict } from 'meteor/reactive-dict';
 
 import { EboyPix } from '../api/eboypix/eboypix.js';
 import { Colors } from '../api/colors/colors.js';
@@ -10,10 +9,8 @@ import './components/pic.js';
 import './components/pic.html';
 import './components/color.js';
 import './components/color.html';
-
-// Template.body.onCreated(function bodyOnCreated() {
-//   this.state = new ReactiveDict();
-// });
+import './components/colorInput.html';
+import './components/colorInput.js';
 
 Template.body.helpers({
   pix() {
@@ -27,19 +24,6 @@ Template.body.helpers({
   },
   colorCounter() {
     return Colors.find({}).count();
-  },
-  colorsNamesList() {
-    let colorNamesArray = [];
-    // const colorlist = Colors.find({}, { name: 1, createdAt: 1, _id: 0 }, { sort: { name: 1 } })
-    const colorlist = Colors.find(
-      {},
-      { sort: { name: 1 } },
-      { name: 1, _id: 0 }
-    );
-    colorlist.forEach(function(u) {
-      colorNamesArray.push(u.name);
-    });
-    return colorNamesArray;
   }
 });
 
@@ -80,20 +64,5 @@ Template.body.events({
   },
   'click .deleteAllColors'() {
     Meteor.call('colors.deleteAll');
-  },
-  'submit .new-color'(event) {
-    event.preventDefault();
-    const target = event.target;
-    const name = target.name.value;
-    const hue = target.hue.value;
-    const lum = target.luminosity.value;
-    const sat = target.saturation.value;
-    const tag = target.tag.value;
-    Meteor.call('colors.insert', name, hue, sat, lum, 1, tag);
-    // Clear form
-    target.name.value = '';
-    target.hue.value = '';
-    target.luminosity.value = '';
-    target.saturation.value = '';
   }
 });

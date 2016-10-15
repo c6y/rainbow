@@ -13,3 +13,5 @@ import './components/pic.html';
 import './components/pic.js';
 import './components/pixPool.html';
 import './components/pixPool.js';
+import './components/deleteAll.html';
+import './components/deleteAll.js';

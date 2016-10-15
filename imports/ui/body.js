@@ -6,8 +6,8 @@ import { EboyPix } from '../api/eboypix/eboypix.js';
 import { Colors } from '../api/colors/colors.js';
 
 import './body.html';
-import './pic.js';
-import './pic.html';
+import './components/pic.js';
+import './components/pic.html';
 import './color.js';
 import './color.html';
 

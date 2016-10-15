@@ -1,10 +1,9 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-import { Colors } from '../api/colors/colors.js';
-import './pic.html';
 
-// import { EboyPix } from '../api/eboypix/eboypix.js';
-// import { Colors } from '../api/colors/colors.js';
+import { Colors } from '../../api/colors/colors.js';
+
+import './pic.html';
 
 Template.pic.helpers({
   // Truncate the URL and return file name only

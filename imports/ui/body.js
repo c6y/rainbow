@@ -13,19 +13,15 @@ import './components/colorInput.html';
 import './components/colorInput.js';
 import './components/pixInput.html';
 import './components/pixInput.js';
+import './components/poolHeader.html';
+import './components/poolHeader.js';
 
 Template.body.helpers({
   pix() {
     return EboyPix.find({}, { sort: { createdAt: -1 } });
   },
-  pixCounter() {
-    return EboyPix.find({}).count();
-  },
   colors() {
     return Colors.find({}, { sort: { hue: -1 } });
-  },
-  colorCounter() {
-    return Colors.find({}).count();
   }
 });
 

@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 
 import { EboyPix } from '../../api/eboypix/eboypix.js';
@@ -9,5 +10,14 @@ Template.poolHeader.helpers({
   },
   colorCounter() {
     return Colors.find({}).count();
+  }
+});
+
+Template.poolHeader.events({
+  'click .deleteAllDocs'() {
+    Meteor.call('eboypix.deleteAll');
+  },
+  'click .deleteAllColors'() {
+    Meteor.call('colors.deleteAll');
   }
 });

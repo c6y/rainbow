@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-import { ReactiveDict } from 'meteor/reactive-dict';
+// import { ReactiveDict } from 'meteor/reactive-dict';
 
 import { EboyPix } from '../api/eboypix/eboypix.js';
 import { Colors } from '../api/colors/colors.js';
@@ -8,12 +8,12 @@ import { Colors } from '../api/colors/colors.js';
 import './body.html';
 import './components/pic.js';
 import './components/pic.html';
-import './color.js';
-import './color.html';
+import './components/color.js';
+import './components/color.html';
 
-Template.body.onCreated(function bodyOnCreated() {
-  this.state = new ReactiveDict();
-});
+// Template.body.onCreated(function bodyOnCreated() {
+//   this.state = new ReactiveDict();
+// });
 
 Template.body.helpers({
   pix() {

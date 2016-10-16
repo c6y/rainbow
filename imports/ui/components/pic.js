@@ -54,7 +54,7 @@ Template.pic.helpers({
 });
 
 Template.pic.events({
-  'click .delete'() {
+  'click .deletePic'() {
     Meteor.call('eboypix.delete', this._id);
   }
 });

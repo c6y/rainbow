@@ -1,3 +1,4 @@
+@import './stylesheets/base.less';
 @import './components/poolHeader.less';
 @import './components/deleteAll.less';
 @import './components/pixInput.less';
@@ -5,21 +6,8 @@
 @import './components/colorsPool.less';
 @import './components/pixPool.less';
 
-body {
-  font-family: Menlo, monospace;
-  background-color: #636a73;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 0;
-  margin: 0;
-  font-size: 9pt;
-}
-
 header {
-  background-color: #d2edf4;
+  background-color: @color-2;
   padding: 2em 1em 1em 1em;
   position: relative;
 }
@@ -28,5 +16,5 @@ header {
   max-width: 600px;
   margin: 0 auto;
   min-height: 100%;
-  background: white;
+  background: @color-0;
 }

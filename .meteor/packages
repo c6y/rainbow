@@ -22,3 +22,5 @@ autopublish@1.0.7             # Publish all data to the clients (for prototyping
 reactive-dict@1.1.8
 aldeed:collection2
 less
+kadira:blaze-layout
+kadira:flow-router

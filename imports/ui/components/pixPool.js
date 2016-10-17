@@ -2,7 +2,8 @@ import { Template } from 'meteor/templating';
 
 import { EboyPix } from '../../api/eboypix/eboypix.js';
 
-// import './pixPool.html';
+import '../components/pic.html';
+import '../components/pic.js';
 
 Template.pixPool.helpers({
   pix() {

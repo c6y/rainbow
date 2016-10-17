@@ -1,10 +1,5 @@
-import { Template } from 'meteor/templating';
-// import { FlowRouter } from 'meteor/kadira:flow-router';
-
 import './pixPoolPage.html';
-
-Template.pixPoolPage.helpers({
-  test() {
-    console.log('this is the pixPoolPage');
-  }
-});
+import '../components/poolHeader.html';
+import '../components/poolHeader.js';
+import '../components/pixPool.html';
+import '../components/pixPool.js';

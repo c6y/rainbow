@@ -1,2 +1,2 @@
-import '../imports/api/eboypix/eboypix.js';
-import '../imports/api/colors/colors.js';
+import '/imports/startup/server';
+import '/imports/startup/both';

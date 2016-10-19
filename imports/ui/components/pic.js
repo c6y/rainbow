@@ -5,6 +5,9 @@ import { Colors } from '../../api/colors/colors.js';
 
 import './pic.html';
 
+Meteor.subscribe('pix.public');
+Meteor.subscribe('colors.public');
+
 Template.pic.helpers({
   // Truncate the URL and return file name only
   picName() {
@@ -30,7 +33,13 @@ Template.pic.helpers({
       };
     }
     // If color does not exist return diagonal stripes warning pattern
-    const emptyColor = 'repeating-linear-gradient(135deg, transparent, transparent 0.5em, #ccc 0.5em, #ccc 1em);'
+    const emptyColor = 'repeating-linear-gradient(' +
+      '135deg,' +
+      'transparent,' +
+      'transparent 0.5em,' +
+      '#ccc 0.5em,' +
+      '#ccc 1em' +
+      ')';
     return {
       info: 'Warning! Assign a color!',
       value: emptyColor

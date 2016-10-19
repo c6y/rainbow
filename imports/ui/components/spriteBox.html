@@ -1,7 +1,32 @@
 <template name="spriteBox">
-  spriteBox Template
-  <div class="">
-      spriteUrl: <img src="{{spriteUrl}}" />
-      url: <img src="{{url}}" />
-  </div>
+  {{#if Template.subscriptionsReady}}
+    {{#with spriteDoc}}
+    <div class="docbox">
+      <figure class="spriteBoxFull" style="background-color:{{colorHSL.value}}">
+        <img src="{{url}}" />
+      </figure>
+      <div class="docMeta" id="spriteBoxInfo">
+        <ul>
+          <li><span class="property">id: </span>{{_id}}</li>
+          <li><span class="property">name: </span>{{name}}</li>
+          <li><span class="property">createdAt: </span>{{createdAt}}</li>
+          <li><span class="property">dimensions w/h</span>: {{dimensions.width}}<span class="unit">px</span>/{{dimensions.height}}<span class="unit">px</span></li>
+          <li><span class="property">tags</span>:
+            {{#each tags}}
+              <span class="tag"><a class="searchForTag">{{this}}</a></span>
+            {{/each}}
+          </li>
+          <li><span class="property">backgroundColor: </span>{{backgroundColor}}</li>
+          <li><span class="property">colorHSL(calc): </span>{{colorHSL.info}}</li>
+          <li><span class="property">copyright: </span>{{copyright}}</li>
+          <li><span class="property">license: </span>{{license}}</li>
+          <li><span class="property">project: </span>{{project}}</li>
+          {{#if fullframe}}
+            <li><span class="property">fullframe: </span>{{fullframe}}</li>
+          {{/if}}
+        </ul>
+      </div>
+    </div>
+    {{/with}}
+  {{/if}}
 </template>

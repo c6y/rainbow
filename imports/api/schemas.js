@@ -4,7 +4,8 @@ export const Schemas = {};
 
 Schemas.Pix = new SimpleSchema({
   'url': {
-    type: SimpleSchema.RegEx.Url
+    type: SimpleSchema.RegEx.Url,
+    unique: true
   },
   'name': {
     type: String

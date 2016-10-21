@@ -1,3 +1,7 @@
+import { Template } from 'meteor/templating';
+import { FlowRouter } from 'meteor/kadira:flow-router';
+import { DocHead } from 'meteor/kadira:dochead';
+
 import './beta1Page.html';
 
 // Components used inside the template
@@ -17,3 +21,12 @@ import '../components/pixPool.html';
 import '../components/pixPool.js';
 import '../components/deleteAll.html';
 import '../components/deleteAll.js';
+
+// Template helpers
+Template.beta1Page.onCreated(function() {
+// Set document title
+  this.autorun(function() {
+    const title = FlowRouter.getRouteName();
+    DocHead.setTitle(title);
+  });
+});

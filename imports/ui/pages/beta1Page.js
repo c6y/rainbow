@@ -22,11 +22,14 @@ import '../components/pixPool.js';
 import '../components/deleteAll.html';
 import '../components/deleteAll.js';
 
-// Template helpers
+// Template onCreated
 Template.beta1Page.onCreated(function() {
-// Set document title
-  this.autorun(function() {
+  const self = this;
+  self.autorun(function() {
     const title = FlowRouter.getRouteName();
+
     DocHead.setTitle(title);
+    self.subscribe('pix.public');
+    self.subscribe('colors.public');
   });
 });

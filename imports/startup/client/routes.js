@@ -10,10 +10,9 @@ import '../../ui/pages/colorsPoolPage.js';
 import '../../ui/pages/spriteBoxPage.js';
 import '../../ui/pages/beta1Page.js';
 
-FlowRouter.route('/pool', {
+FlowRouter.route('/pool/:page', {
   name: 'pool',
   action() {
-    // DocHead.setTitle('pool');
     console.log('pool route is being rendered');
     BlazeLayout.render('applayout', {
       main: 'pixPoolPage'

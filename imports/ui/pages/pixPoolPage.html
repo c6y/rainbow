@@ -2,7 +2,10 @@
   <div class="container">
     <header>
       {{> poolHeader}}
+      {{> paging}}
     </header>
-    {{> pixPool}}
+    {{#if Template.subscriptionsReady}}
+      {{> pixPool}}
+    {{/if}}
   </div>
 </template>

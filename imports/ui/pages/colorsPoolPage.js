@@ -10,11 +10,13 @@ import '../components/poolHeader.js';
 import '../components/colorsPool.html';
 import '../components/colorsPool.js';
 
-// Template helpers
+// Template onCreated
 Template.colorsPoolPage.onCreated(function() {
-  // Set document title
-  this.autorun(function() {
+  const self = this;
+  self.autorun(function() {
     const title = FlowRouter.getRouteName();
+
     DocHead.setTitle(title);
+    self.subscribe('colors.public');
   });
 });

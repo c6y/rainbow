@@ -8,11 +8,17 @@ import './spriteBoxPage.html';
 import '../components/spriteBox.html';
 import '../components/spriteBox.js';
 
-// Template helpers
+// Template onCreated
 Template.spriteBoxPage.onCreated(function() {
-  // Set document title
-  this.autorun(function() {
+  const self = this;
+  self.autorun(function() {
     const title = FlowRouter.getRouteName();
+    const thisId = FlowRouter.getParam('_id');
+
     DocHead.setTitle(title);
+
+    console.log('thisId: ' + thisId);
+    self.subscribe('pix.single.public', thisId);
+    self.subscribe('colors.public');
   });
 });

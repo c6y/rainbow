@@ -13,14 +13,6 @@ import './pic.html';
 import './metadata.js';
 import './metadata.html';
 
-Template.spriteBox.onCreated(function() {
-  const self = this;
-  self.autorun(function() {
-    const thisId = FlowRouter.getParam('_id');
-    self.subscribe('EboyPix', thisId);
-  });
-});
-
 // Template helpers
 Template.spriteBox.helpers({
   spriteDoc() {

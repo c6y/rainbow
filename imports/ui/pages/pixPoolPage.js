@@ -7,14 +7,20 @@ import './pixPoolPage.html';
 // Components used inside the template
 import '../components/poolHeader.html';
 import '../components/poolHeader.js';
+import '../components/paging.html';
+import '../components/paging.js';
 import '../components/pixPool.html';
 import '../components/pixPool.js';
 
-// Template helpers
+// Template onCreated
 Template.pixPoolPage.onCreated(function() {
-// Set document title
-  this.autorun(function() {
+  const self = this;
+  self.autorun(function() {
     const title = FlowRouter.getRouteName();
-    DocHead.setTitle(title);
+    const thisPage = FlowRouter.getParam('page');
+
+    DocHead.setTitle(title + '/' + thisPage);
+    self.subscribe('pix.paged.public', thisPage);
+    self.subscribe('colors.public');
   });
 });

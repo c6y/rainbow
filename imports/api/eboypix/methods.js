@@ -1,16 +1,14 @@
 import { Meteor } from 'meteor/meteor';
 import { Random } from 'meteor/random';
 
-import { EboyPix } from './eboypix/eboypix.js';
-import { Colors } from './colors/colors.js';
+import { EboyPix } from './eboypix.js';
+import { Colors } from '../colors/colors.js';
 
 import {
   getPicName,
   getProjectName,
-  getFileType,
-  tagsToArray,
-  cleanString
-} from './functions.js';
+  getFileType
+} from '../functions.js';
 
 Meteor.methods({
   'eboypix.insert'(url, imageWidth, imageHeight) {
@@ -57,24 +55,5 @@ Meteor.methods({
   },
   'eboypix.deleteAll'() {
     EboyPix.remove({});
-  },
-  'colors.insert'(n, h, s, l, a, t) {
-    const tagsArray = tagsToArray(t);
-    const colorName = cleanString(n);
-    Colors.insert({
-      name: colorName,
-      createdAt: new Date(),
-      hue: h,
-      saturation: s,
-      luminosity: l,
-      alpha: a,
-      tags: tagsArray
-    });
-  },
-  'colors.deleteAll'() {
-    Colors.remove({});
-  },
-  'color.delete'(id) {
-    Colors.remove(id);
   }
 });

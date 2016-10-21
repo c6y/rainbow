@@ -1,0 +1,10 @@
+<template name="spriteBox">
+  {{#if Template.subscriptionsReady}}
+    {{#with spriteDoc}}
+    <div class="docbox">
+      {{> pic}}
+      {{> metadata}}
+    </div>
+    {{/with}}
+  {{/if}}
+</template>

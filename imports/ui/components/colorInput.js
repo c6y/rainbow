@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 
+// Template helpers
 Template.colorInput.events({
   'submit .new-color'(event) {
     event.preventDefault();

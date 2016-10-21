@@ -3,10 +3,9 @@ import { Template } from 'meteor/templating';
 
 import { Colors } from '../../api/colors/colors.js';
 
-import './pic.html';
+import './metadata.html';
 
-// Template helpers
-Template.pic.helpers({
+Template.metadata.helpers({
   colorHSL() {
     // Get the color by name
     const color = Colors.findOne(

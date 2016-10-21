@@ -1,12 +1,34 @@
-// import { Meteor } from 'meteor/meteor';
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
+import { EboyPix } from '../../api/eboypix/eboypix.js';
 import { Colors } from '../../api/colors/colors.js';
 
+import './spriteBox.html';
+
+// Components used
+import './pic.js';
 import './pic.html';
+import './metadata.js';
+import './metadata.html';
+
+Template.spriteBox.onCreated(function() {
+  const self = this;
+  self.autorun(function() {
+    const thisId = FlowRouter.getParam('_id');
+    self.subscribe('EboyPix', thisId);
+  });
+});
 
 // Template helpers
-Template.pic.helpers({
+Template.spriteBox.helpers({
+  spriteDoc() {
+    // Get single document by id
+    const thisId = FlowRouter.getParam('_id');
+    const pixDoc = EboyPix.findOne(thisId);
+    return pixDoc;
+  },
   colorHSL() {
     // Get the color by name
     const color = Colors.findOne(

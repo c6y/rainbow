@@ -1,44 +1,12 @@
-.docbox {
-  position: relative;
+.picBox figure {
   padding: 1em;
-  border-bottom: @color-2 solid 1px;
+  margin: 0;
 }
 
-.docbox li {
-  list-style: none;
-}
-
-.docbox figure {
-    padding: 1em;
-    margin: 0;
-}
-
-.docbox .deletePic {
-  background: @color-delete;
-  position: absolute;
-}
-
-.docbox img {
+.picBox img {
   image-rendering: -moz-crisp-edges;
   image-rendering: -o-crisp-edges;
   image-rendering: -webkit-optimize-contrast;
   -ms-interpolation-mode: nearest-neighbor;
   image-rendering: pixelated;
-}
-
-.docMeta {
-  background-color: @color-2;
-  padding: 1em;
-}
-
-.property {
-  color: @color-6;
-}
-
-.tag:after {
-  content: ',';
-}
-
-.tag:last-of-type:after {
-  content: '';
 }

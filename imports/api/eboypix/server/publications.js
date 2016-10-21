@@ -7,7 +7,7 @@ Meteor.publish('pix.public', function pixPublic() {
   return EboyPix.find(selector);
 });
 
-Meteor.publish('pic.public.', function picPublic(id) {
+Meteor.publish('pix.single.public.', function picPublic(id) {
   const selector = { id }; // find single pic
   return EboyPix.findOne(selector);
 });

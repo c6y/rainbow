@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Random } from 'meteor/random';
 
-import { EboyPix } from '../eboypix/eboypix.js';
+import { EboyPix } from './eboypix.js';
 import { Colors } from '../colors/colors.js';
 
 import {

@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 
-import { Colors } from '../colors/colors.js';
+import { Colors } from './colors.js';
 
 import {
   tagsToArray,

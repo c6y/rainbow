@@ -1,9 +1,7 @@
 <template name="doc">
   <div class="docbox">
       <button class="deletePic">x</button>
-      <figure style="background: {{colorHSL.value}}">
-        <img src="{{url}}" width="{{width}}" height="{{height}}" alt="" />
-      </figure>
+      {{> pic}}
       {{> metadata}}
   </div>
 </template>

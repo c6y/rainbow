@@ -5,15 +5,11 @@ import { Colors } from '../../api/colors/colors.js';
 
 import './metadata.html';
 
+// Database subscriptions
 Meteor.subscribe('pix.public');
 Meteor.subscribe('colors.public');
 
-Template.pic.helpers({
-  // Truncate the URL and return file name only
-  picName() {
-    const url = this.url;
-    return url.substring(url.lastIndexOf("/") + 1, url.length);
-  },
+Template.metadata.helpers({
   colorHSL() {
     // Get the color by name
     const color = Colors.findOne(

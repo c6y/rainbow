@@ -2,11 +2,13 @@ import { Template } from 'meteor/templating';
 
 import { EboyPix } from '../../api/eboypix/eboypix.js';
 
-import '../components/pic.html';
-import '../components/pic.js';
+// Components used
+import './doc.html';
+import './doc.js';
 
+// Template helpers
 Template.pixPool.helpers({
-  pix() {
+  docs() {
     return EboyPix.find({}, { sort: { createdAt: -1 } });
   }
 });

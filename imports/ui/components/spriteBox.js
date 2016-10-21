@@ -7,6 +7,13 @@ import { Colors } from '../../api/colors/colors.js';
 
 import './spriteBox.html';
 
+// Components used
+import './pic.js';
+import './pic.html';
+import './metadata.js';
+import './metadata.html';
+
+// Database subscriptions
 Meteor.subscribe('pix.public');
 Meteor.subscribe('colors.public');
 
@@ -18,6 +25,7 @@ Template.spriteBox.onCreated(function() {
   });
 });
 
+// Template helpers
 Template.spriteBox.helpers({
   spriteDoc() {
     // Get single document by id

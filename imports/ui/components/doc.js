@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 
-import './pic.html';
+import './doc.html';
 import './metadata.js';
 import './metadata.html';
 

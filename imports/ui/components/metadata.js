@@ -1,13 +1,9 @@
-import { Meteor } from 'meteor/meteor';
+// import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 
 import { Colors } from '../../api/colors/colors.js';
 
 import './metadata.html';
-
-// Database subscriptions
-Meteor.subscribe('pix.public');
-Meteor.subscribe('colors.public');
 
 Template.metadata.helpers({
   colorHSL() {

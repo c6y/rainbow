@@ -13,10 +13,6 @@ import './pic.html';
 import './metadata.js';
 import './metadata.html';
 
-// Database subscriptions
-Meteor.subscribe('pix.public');
-Meteor.subscribe('colors.public');
-
 Template.spriteBox.onCreated(function() {
   const self = this;
   self.autorun(function() {

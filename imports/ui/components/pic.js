@@ -1,13 +1,9 @@
-import { Meteor } from 'meteor/meteor';
+// import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 
 import { Colors } from '../../api/colors/colors.js';
 
 import './pic.html';
-
-// Database subscriptions
-Meteor.subscribe('pix.public');
-Meteor.subscribe('colors.public');
 
 // Template helpers
 Template.pic.helpers({

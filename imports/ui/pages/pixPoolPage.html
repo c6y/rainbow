@@ -4,8 +4,10 @@
       {{> poolHeader}}
       {{> paging}}
     </header>
-    {{#if Template.subscriptionsReady}}
-      {{> pixPool}}
-    {{/if}}
+    <div id="poolBody">
+      {{#if Template.subscriptionsReady}}
+        {{> pixPool}}
+      {{/if}}
+    </div>
   </div>
 </template>

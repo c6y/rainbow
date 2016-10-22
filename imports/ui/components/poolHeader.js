@@ -1,12 +1,12 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
+import { Counts } from 'meteor/tmeasday:publish-counts';
 
-import { EboyPix } from '../../api/eboypix/eboypix.js';
 import { Colors } from '../../api/colors/colors.js';
 
 Template.poolHeader.helpers({
   pixCounter() {
-    return EboyPix.find({}).count();
+    return Counts.get('pixCount');
   },
   colorCounter() {
     return Colors.find({}).count();

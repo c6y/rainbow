@@ -1,16 +1,17 @@
 <template name="paging">
-  <nav>
+  <nav class="unselectable">
     <ul class="pagingBox">
       <li class="{{previousPageClass}}">
-        <a id="prevPage" href="{{prevPage}}">
-          <span>previous</span>
+        <a class="prevPage" href="{{prevPage}}">
+          <span>PRV</span>
         </a>
       </li>
       <li class="{{nextPageClass}}">
-        <a id="nextPage" href="{{nextPage}}">
-          <span>next</span>
+        <a class="nextPage" href="{{nextPage}}">
+          <span>NXT</span>
         </a>
       </li>
+      <li>{{totalPageCount}}:{{thisPageNumber}}</li>
     </ul>
   </nav>
 </template>

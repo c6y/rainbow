@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import { Counts } from 'meteor/tmeasday:publish-counts';
 
 import { EboyPix } from '../eboypix.js';
 
@@ -9,13 +10,24 @@ Meteor.publish('pix.public', function pixPublic() {
 });
 
 // Publish paged documents
-Meteor.publish('pix.paged.public', function pixPublic(skipCount) {
+Meteor.publish('pix.paged.public', function pixPublic(page) {
+  // Sub-publish total count of docs in EboyPix collection
+  Counts.publish(
+    this,
+    'pixCount',
+    EboyPix.find(),
+    { noReady: true }
+  );
+
   const selector = {}; // find all pix
-  // convert to integer
-  const skipCountInt = parseInt(skipCount, 10);
+  const pixPage = Meteor.settings.public.pixPerPage;
+  // Convert page string to integer
+  let pageInt = parseInt(page, 10);
+  const skipCount = (pageInt - 1) * pixPage;
   const options = {
-    limit: 3,
-    skip: skipCountInt
+    limit: pixPage,
+    skip: skipCount,
+    sort: { createdAt: -1 }
   };
   return EboyPix.find(selector, options);
 });

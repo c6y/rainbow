@@ -27,6 +27,23 @@ Template.paging.helpers({
     const docsCount = Counts.get('pixCount');
     const docsPerPage = Meteor.settings.public.pixPerPage;
     return Math.ceil(docsCount / docsPerPage);
+  },
+  previousPageClass() {
+    const thisPageString = FlowRouter.getParam('page');
+    if (parseInt(thisPageString, 10) !== 1) {
+      return 'active';
+    }
+    return 'inactive';
+  },
+  nextPageClass() {
+    const thisPageString = FlowRouter.getParam('page');
+    const docsCount = Counts.get('pixCount');
+    const docsPerPage = Meteor.settings.public.pixPerPage;
+    const pageCount = Math.ceil(docsCount / docsPerPage);
+    if (parseInt(thisPageString, 10) !== pageCount) {
+      return 'active';
+    }
+    return 'inactive';
   }
 });
 

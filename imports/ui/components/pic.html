@@ -1,6 +1,6 @@
 <template name="pic">
-  <div class="picBox">
-    <figure style="background: {{colorHSL.value}}">
+  <div class="picBox" style="background: {{colorHSL.value}}">
+    <figure>
       {{#if isNotSpriteBoxRoute}}
         <a href="{{toSpriteBoxPath}}">
           <img src="{{url}}" width="{{width}}" height="{{height}}" alt="" />

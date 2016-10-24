@@ -40,9 +40,9 @@ Template.pic.helpers({
     const emptyColor = 'repeating-linear-gradient(' +
       '135deg,' +
       'transparent,' +
-      'transparent 0.5em,' +
-      '#ccc 0.5em,' +
-      '#ccc 1em' +
+      'transparent 0.5rem,' +
+      '#ccc 0.5rem,' +
+      '#ccc 1rem' +
       ')';
     return {
       info: 'Warning! Assign a color!',

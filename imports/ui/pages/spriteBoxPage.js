@@ -17,7 +17,6 @@ Template.spriteBoxPage.onCreated(function() {
 
     DocHead.setTitle(title);
 
-    console.log('thisId: ' + thisId);
     self.subscribe('pix.single.public', thisId);
     self.subscribe('colors.public');
   });

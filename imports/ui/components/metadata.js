@@ -1,11 +1,22 @@
 // import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import { Colors } from '../../api/colors/colors.js';
 
 import './metadata.html';
 
 Template.metadata.helpers({
+  toSpriteBoxPath() {
+    const thisId = this._id;
+    const params = { _id: thisId };
+    return FlowRouter.path('spriteBox', params);
+  },
+  isNotSpriteBoxRoute() {
+    const routeName = FlowRouter.getRouteName();
+    // Returns true if we're not on spriteBox
+    return routeName !== 'spriteBox';
+  },
   colorHSL() {
     // Get the color by name
     const color = Colors.findOne(

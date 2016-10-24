@@ -3,7 +3,8 @@
 body {
   font-family: @font-regular;
   color: @color-1;
-  background: @color-3;
+  // background: @color-3;
+  background-color: rgb(245, 245, 245);
   position: absolute;
   top: 0;
   bottom: 0;
@@ -20,46 +21,48 @@ body {
 .container {
   // width: 930px;
   margin: 0 auto;
+  background-color: white;
+  // background-color: #f9f8f4;
 
   // 1 column container
   @media only screen
   and (max-width: (2 * @cell + 3 * @cell-margin)) {
     width: @cell + 2 * @cell-margin;
-    background-color: cyan;
+    // background-color: cyan;
   }
   // 2 column container
   @media only screen
   and (min-width: (2 * @cell + 3 * @cell-margin))
   and (max-width: (3 * @cell + 4 * @cell-margin)) {
     width: 2 * @cell + 3 * @cell-margin;
-    background-color: red;
+    // background-color: #EF3038;
   }
   // 3 column container
   @media only screen
   and (min-width: (3 * @cell + 4 * @cell-margin))
   and (max-width: (4 * @cell + 5 * @cell-margin)) {
     width: 3 * @cell + 4 * @cell-margin;
-    background-color: green;
+    // background-color: #03C03C;
   }
   // 4 column container
   @media only screen
   and (min-width: (4 * @cell + 5 * @cell-margin))
   and (max-width: (5 * @cell + 6 * @cell-margin)) {
     width: 4 * @cell + 5 * @cell-margin;
-    background-color: purple;
+    // background-color: #2243B6;
   }
   // 5 column container
   @media only screen
   and (min-width: (5 * @cell + 6 * @cell-margin))
   and (max-width: (6 * @cell + 7 * @cell-margin)) {
     width: 5 * @cell + 6 * @cell-margin;
-    background-color: orange;
+    // background-color: orange;
   }
   // 6 column container
   @media only screen
   and (min-width: (6 * @cell + 7 * @cell-margin)) {
     width: 6 * @cell + 7 * @cell-margin;
-    background-color: blue;
+    // background-color: white;
   }
 
   min-height: 100%;

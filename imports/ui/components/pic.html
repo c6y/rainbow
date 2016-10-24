@@ -1,13 +1,11 @@
 <template name="pic">
-  <div class="picBox" style="background: {{colorHSL.value}}">
-    <figure>
-      {{#if isNotSpriteBoxRoute}}
-        <a href="{{toSpriteBoxPath}}">
-          <img src="{{url}}" width="{{width}}" height="{{height}}" alt="" />
-        </a>
-      {{else}}
+  <figure class="picBox" style="background: {{colorHSL.value}}">
+    {{#if isNotSpriteBoxRoute}}
+      <a href="{{toSpriteBoxPath}}">
         <img src="{{url}}" width="{{width}}" height="{{height}}" alt="" />
-      {{/if}}
-    </figure>
-  </div>
+      </a>
+    {{else}}
+      <img src="{{url}}" width="{{width}}" height="{{height}}" alt="" />
+    {{/if}}
+  </figure>
 </template>

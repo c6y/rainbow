@@ -5,5 +5,8 @@
   },
   "globals": {
     "Image": false,
+  },
+    "env": {
+      "browser": true,
   }
 }

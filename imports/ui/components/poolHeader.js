@@ -10,6 +10,10 @@ Template.poolHeader.helpers({
   },
   colorCounter() {
     return Colors.find({}).count();
+  },
+  rem() {
+    const rem = getRootElementFontSize();
+    return rem;
   }
 });
 
@@ -21,3 +25,19 @@ Template.poolHeader.events({
     Meteor.call('colors.deleteAll');
   }
 });
+
+/**
+ * Returns the rem of the root element.
+ * @return {number} the value of the root rem element.
+ */
+function getRootElementFontSize() {
+  // Returns a number
+  return parseFloat(
+    // of the computed font-size, so in px
+    window.getComputedStyle(
+      // for the root <html> element
+      document.documentElement
+    )
+    .fontSize
+  );
+}

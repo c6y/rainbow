@@ -1,9 +1,20 @@
 <template name="pixPoolPage">
   <div class="container">
-    <header>
-      {{> poolHeader}}
+    <div class="header-fixed">
       {{> paging}}
-    </header>
+    </div>
+    <div class="header">
+      <!-- <div class="invisible">
+        PLACEHOLDER
+      </div> -->
+      <div class="logo">
+        eboy
+      </div>
+      {{> poolHeader}}
+      <!-- <div class="">
+        follow @eBoyArts
+      </div> -->
+    </div>
     <div id="poolBody">
       {{#if Template.subscriptionsReady}}
         {{> pixPool}}

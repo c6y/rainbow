@@ -48,5 +48,27 @@ Template.pic.helpers({
       info: 'Warning! Assign a color!',
       value: emptyColor
     };
+  },
+  scaledDims() {
+    const width = this.dimensions.width;
+    const height = this.dimensions.height;
+    const boxDim = 256 + 16;
+    const maxDim = Math.max(width, height);
+    let divisor = boxDim / maxDim;
+    if (divisor <= 0.5) {
+      divisor = 0.5;
+    } else {
+      divisor = Math.max(Math.floor(divisor), 1);
+    }
+    // const divisor = Math.floor(boxDim / maxDim);
+    // Return divisor value if bigger than 1, else return 1
+    console.log('divisor: ' + divisor);
+    // Return scaled dimensions
+    const scaledWidth = width * divisor;
+    const scaledHeight = height * divisor;
+    return {
+      width: scaledWidth,
+      height: scaledHeight
+    };
   }
 });

@@ -2,10 +2,11 @@
   <figure class="picBox" style="background: {{colorHSL.value}}">
     {{#if isNotSpriteBoxRoute}}
       <a href="{{toSpriteBoxPath}}">
-        <img src="{{url}}" width="{{width}}" height="{{height}}" alt="" />
+        <img src="{{url}}" width="{{scaledDims.width}}" height="{{.scaledDims.height}}" alt="" />
       </a>
     {{else}}
-      <img src="{{url}}" width="{{width}}" height="{{height}}" alt="" />
+      <img src="{{url}}" width="{{scaledDims.width}}" height="{{scaledDims.height}}" alt="" />
     {{/if}}
+    {{picBoxSize}}
   </figure>
 </template>

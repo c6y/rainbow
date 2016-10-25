@@ -2,20 +2,38 @@
 @import '../components/paging.less';
 @import '../components/pixPool.less';
 
-header {
-  // background-color: #03C03C;
-  // background-color: #EF3038;
+.header-fixed {
   position: fixed;
   margin: @cell-margin;
-  // width: 100%;
-  // width: calc(~'930px - 2rem');
   z-index: 10;
   padding: @cell-margin;
   width: @cell - 2 * @cell-margin;
   height: 0.5 * @cell - 2 * @cell-margin;
-  // opacity: 0.8;
+  // background-color: magenta;
+  // background-color: @color-0;
+  // opacity: 0.5;
+  // text-align: right;
+  // .pageInfo {
+  //   background-color: @color-0;
+  // }
+}
+
+.header {
+  // margin: @cell-margin;
+  z-index: 9;
+  padding: 2 * @cell-margin;
+  // width: @cell - 2 * @cell-margin;
+  width: 0 auto;
+  height: 0.5 * @cell - 2 * @cell-margin;
+  // background-color: cyan;
+  text-align: right;
+  .invisible {
+    opacity: 0;
+  }
 }
 
 #poolBody {
-  padding-top: 0.5 * @cell + @cell-margin;
+  padding: 0;
+  // padding-top: 0.5 * @cell + @cell-margin;
+  // padding-top: 0.5 * @cell + @cell-margin;
 }

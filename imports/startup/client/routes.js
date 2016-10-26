@@ -8,6 +8,7 @@ import '../../ui/layouts/applayout.js';
 import '../../ui/pages/pixPoolPage.js';
 import '../../ui/pages/colorsPoolPage.js';
 import '../../ui/pages/spriteBoxPage.js';
+import '../../ui/pages/addDocPage.js';
 import '../../ui/pages/beta1Page.js';
 
 FlowRouter.route('/pool/:page', {
@@ -36,6 +37,16 @@ FlowRouter.route('/spritebox/:_id', {
     console.log('spritebox route is being rendered');
     BlazeLayout.render('applayout', {
       main: 'spriteBoxPage'
+    });
+  }
+});
+
+FlowRouter.route('/addDoc', {
+  name: 'addDoc',
+  action() {
+    console.log('addDoc route is being rendered');
+    BlazeLayout.render('applayout', {
+      main: 'addDocPage'
     });
   }
 });

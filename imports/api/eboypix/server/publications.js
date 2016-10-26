@@ -9,8 +9,18 @@ Meteor.publish('pix.public', function pixPublic() {
   return EboyPix.find(selector);
 });
 
+// Publish all documents later than given date
+Meteor.publish('pix.afterDate.public', function pixAfterDatePublic(date) {
+  const selector = {
+    createdAt: {
+      $gt: date
+    }
+  };
+  return EboyPix.find(selector);
+});
+
 // Publish paged documents
-Meteor.publish('pix.paged.public', function pixPublic(page) {
+Meteor.publish('pix.paged.public', function pixPagedPublic(page) {
   // Sub-publish total count of docs in EboyPix collection
   Counts.publish(
     this,

@@ -24,3 +24,9 @@ Template.pixPoolPage.onCreated(function() {
     self.subscribe('colors.public');
   });
 });
+
+Template.pixPoolPage.helpers({
+  toAddDocsPath() {
+    return FlowRouter.path('addDoc');
+  }
+});

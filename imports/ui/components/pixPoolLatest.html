@@ -1,0 +1,16 @@
+<template name="pixPoolLatest">
+  {{#if latestUploadTime}}
+    {{#if docsCount}}
+      <div class="pixPoolLatestBox">
+        <div class="uploadedInfo">
+          {{docsCount}} documents successfuly uploaded:
+        </div>
+          {{#each docs}}
+            <ul>
+              {{> doc}}
+            </ul>
+          {{/each}}
+      </div>
+    {{/if}}
+  {{/if}}
+</template>

@@ -1,9 +1,14 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
+import { Session } from 'meteor/session';
 
 Template.pixInput.events({
   'submit .new-pic-batch'(event) {
     event.preventDefault();
+
+    // Set Session to time when this batch was uploaded
+    Session.set('latestUploadAt', new Date());
+
     // Assign form input to constant
     const target = event.target;
     const imgBatchURLs = target.batchchurls.value;

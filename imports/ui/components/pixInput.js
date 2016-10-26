@@ -29,7 +29,16 @@ Template.pixInput.events({
       if (urls.length) {
         let img = new Image();
         img.onload = function() {
-          Meteor.call('eboypix.insert', img.src, img.width, img.height);
+          // Meteor.call('eboypix.insert', img.src, img.width, img.height);
+
+          Meteor.call('eboypix.insert', img.src, img.width, img.height, function(err, result) {
+            if (err) {
+              alert('insert failed: ' + img.src);
+            } else {
+              console.log('insert successfull: ' + img.src);
+            }
+          });
+
           // setTimeout(function() {
           nextImage(urls);
           // }, 2000);

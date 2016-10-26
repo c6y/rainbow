@@ -60,9 +60,6 @@ Template.pic.helpers({
     } else {
       divisor = Math.max(Math.floor(divisor), 1);
     }
-    // const divisor = Math.floor(boxDim / maxDim);
-    // Return divisor value if bigger than 1, else return 1
-    console.log('divisor: ' + divisor);
     // Return scaled dimensions
     const scaledWidth = width * divisor;
     const scaledHeight = height * divisor;

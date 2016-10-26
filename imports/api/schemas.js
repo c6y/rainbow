@@ -32,10 +32,12 @@ Schemas.Pix = new SimpleSchema({
     type: String
   },
   'project': {
-    type: String
+    type: String,
+    optional: true
   },
   'fullframe': {
-    type: Boolean
+    type: Boolean,
+    optional: true
   }
 });
 

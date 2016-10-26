@@ -22,7 +22,9 @@
       <li><span class="property">backgroundColor:</span> {{backgroundColor}}</li>
       <li><span class="property">colorHSL(calc):</span> {{colorHSL.info}}</li>
       <li><span class="property">createdAt:</span> {{createdAt}}</li>
-      <li><span class="property">project:</span> {{project}}</li>
+      {{#if project}}
+        <li><span class="property">project:</span> {{project}}</li>
+      {{/if}}
       <li><span class="property">license:</span> {{license}}</li>
       <li><span class="property">copyright:</span> {{copyright}}</li>
       {{#if fullframe}}

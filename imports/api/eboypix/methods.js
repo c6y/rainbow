@@ -13,7 +13,9 @@ import {
 Meteor.methods({
   'eboypix.insert'(url, imageWidth, imageHeight) {
     const picName = getPicName(url);
-    const projectName = getProjectName(url);
+    let projectName = getProjectName(url);
+    // projectName = projectName === undefined ? '' : projectName;
+    // console.log('typeof projectName: ' + typeof projectName);
     const fileType = getFileType(url);
     // default jpgs to fullframe
     let fullFrame = false;
@@ -49,6 +51,7 @@ Meteor.methods({
       project: projectName,
       fullframe: fullFrame
     });
+    console.log('successfully inserted: ' + picName);
   },
   'eboypix.delete'(pixId) {
     EboyPix.remove(pixId);

@@ -14,10 +14,10 @@ Template.pixPoolLatest.helpers({
   },
   docsCount() {
     const newDocsCount = EboyPix.find().count();
-    console.log('newDocsCount: ' + newDocsCount);
     return newDocsCount;
   },
   latestUploadTime() {
+    console.log('latestUploadAt: ' + Session.get('latestUploadAt'));
     return Session.get('latestUploadAt');
   }
 });

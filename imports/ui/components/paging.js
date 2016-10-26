@@ -26,7 +26,7 @@ Template.paging.helpers({
   totalPageCount() {
     const docsCount = Counts.get('pixCount');
     const docsPerPage = Meteor.settings.public.pixPerPage;
-    return Math.ceil(docsCount / docsPerPage);
+    return Math.max(Math.ceil(docsCount / docsPerPage), 1);
   },
   previousPageClass() {
     const thisPageString = FlowRouter.getParam('page');

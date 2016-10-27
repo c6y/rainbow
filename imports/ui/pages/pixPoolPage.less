@@ -1,6 +1,7 @@
 @import '../components/poolHeader.less';
 @import '../components/paging.less';
 @import '../components/pixPool.less';
+@import '../components/navLinks.less';
 
 .header-fixed {
   position: fixed;
@@ -22,23 +23,6 @@
   text-align: right;
   .invisible {
     opacity: 0;
-  }
-  .linkslist {
-    margin: 0;
-    padding: 0;
-    li {
-      list-style: none;
-      display: inline-block;
-      a {
-        text-decoration: none;
-      }
-    }
-    li:after {
-      content: ',';
-    }
-    li:last-of-type:after {
-      content: '';
-    }
   }
 }
 

@@ -12,6 +12,9 @@ import '../components/paging.js';
 import '../components/pixPool.html';
 import '../components/pixPool.js';
 
+import '../components/navLinks.html';
+import '../components/navLinks.js';
+
 // Template onCreated
 Template.pixPoolPage.onCreated(function() {
   const self = this;
@@ -23,13 +26,4 @@ Template.pixPoolPage.onCreated(function() {
     self.subscribe('pix.paged.public', thisPage);
     self.subscribe('colors.public');
   });
-});
-
-Template.pixPoolPage.helpers({
-  toAddDocsPath() {
-    return FlowRouter.path('addDoc');
-  },
-  toColorsPath() {
-    return FlowRouter.path('colors');
-  }
 });

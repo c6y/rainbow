@@ -1,6 +1,18 @@
 <template name="addDocPage">
   <div class="container">
     {{> pixInput}}
+    {{#if showInsertErrors}}
+      <div class="failedInsertsClass">
+        <div class="errorHeader">
+          {{insertErrorsCount}} Errors:
+        </div>
+        <ol>
+          {{#each showInsertErrors}}
+            <li>{{this}}</li>
+          {{/each}}
+        </ol>
+      </div>
+    {{/if}}
     {{> pixPoolLatest}}
   </div>
 </template>

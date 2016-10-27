@@ -14,7 +14,7 @@ Template.pixInput.events({
     const imgBatchURLs = target.batchchurls.value;
     // Remove line breaks
     const imgBatchURLsClean = imgBatchURLs.replace(/[\r\n]/g, ',');
-    console.log('imgBatchURLsClean: ' + imgBatchURLsClean);
+    // console.log('imgBatchURLsClean: ' + imgBatchURLsClean);
 
     // Create an array and populate with urls
     let urls = [];
@@ -25,20 +25,23 @@ Template.pixInput.events({
       return element.startsWith('http');
     });
 
+    // Initialize Session variable to hold insert errors
+    Session.set('insertErrors', []);
+
     (function nextImage(urls) {
       if (urls.length) {
         let img = new Image();
         img.onload = function() {
-          // Meteor.call('eboypix.insert', img.src, img.width, img.height);
-
           Meteor.call('eboypix.insert', img.src, img.width, img.height, function(err, result) {
             if (err) {
-              alert('insert failed: ' + img.src);
+              // Populate insertErrors Session array variable
+              const session = Session.get('insertErrors');
+              session.push(img.src);
+              Session.set('insertErrors', session);
             } else {
               console.log('insert successfull: ' + img.src);
             }
           });
-
           // setTimeout(function() {
           nextImage(urls);
           // }, 2000);
@@ -46,5 +49,6 @@ Template.pixInput.events({
         img.src = urls.shift();
       }
     })(urls.slice());
+    target.batchchurls.value = '';
   }
 });

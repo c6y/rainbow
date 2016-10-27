@@ -1,14 +1,26 @@
 #pixInput {
   padding: @cell-margin;
   margin: 0;
+  // text-align: center;
+  ::-webkit-input-placeholder {
+    color: @color-10;
+  }
   textarea {
-    font-size: 1rem;
-    background-color: @color-10;
+    font-size: 0.75rem;
+    font-family: @font-regular;
+    background-color: @color-0;
     color: @color-1;
     width: 100%;
     height: 12rem;
     box-sizing: border-box;
-    border: 0;
-    white-space: nowrap;
+    display: block;
+    overflow-wrap: break-word;
+    border: @cell-margin solid @color-10;
+    margin: 0;
+    padding: @cell-margin;
+  }
+  button {
+    margin-top: @cell-margin;
+    padding: @cell-margin;
   }
 }

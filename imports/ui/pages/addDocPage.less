@@ -1,3 +1,25 @@
 @import '../stylesheets/base.less';
 @import '../components/pixInput.less';
 @import '../components/pixPoolLatest.less';
+
+.failedInsertsClass {
+  background-color: @color-5;
+  margin: @cell-margin;
+  .errorHeader {
+    padding: @cell-margin;
+  }
+  ol {
+    color: @color-5;
+    font-size: 0.75rem;
+    background-color: @color-1;
+    margin: 0;
+    padding-left: 2em;
+    padding: @cell-margin;
+    li {
+      overflow-wrap: break-word;
+      margin: 0;
+      padding: 0;
+      list-style: none
+    }
+  }
+}

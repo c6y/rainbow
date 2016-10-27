@@ -9,13 +9,6 @@
   padding: @cell-margin;
   width: @cell - 2 * @cell-margin;
   height: 0.5 * @cell - 2 * @cell-margin;
-  // background-color: magenta;
-  // background-color: @color-0;
-  // opacity: 0.5;
-  // text-align: right;
-  // .pageInfo {
-  //   background-color: @color-0;
-  // }
 }
 
 .header {
@@ -30,10 +23,25 @@
   .invisible {
     opacity: 0;
   }
+  .linkslist {
+    margin: 0;
+    padding: 0;
+    li {
+      list-style: none;
+      display: inline-block;
+      a {
+        text-decoration: none;
+      }
+    }
+    li:after {
+      content: ',';
+    }
+    li:last-of-type:after {
+      content: '';
+    }
+  }
 }
 
 #poolBody {
   padding: 0;
-  // padding-top: 0.5 * @cell + @cell-margin;
-  // padding-top: 0.5 * @cell + @cell-margin;
 }

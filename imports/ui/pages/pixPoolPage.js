@@ -28,5 +28,8 @@ Template.pixPoolPage.onCreated(function() {
 Template.pixPoolPage.helpers({
   toAddDocsPath() {
     return FlowRouter.path('addDoc');
+  },
+  toColorsPath() {
+    return FlowRouter.path('colors');
   }
 });

@@ -5,7 +5,7 @@ import './color.html';
 
 // Template events
 Template.color.events({
-  'click .removeColor'() {
+  'click .deleteColor'() {
     Meteor.call('color.delete', this._id);
   }
 });

@@ -3,17 +3,16 @@
 
 .docbox {
   position: relative;
-  width: @cell;
-  height: @cell;
-  background-color: red;
-  overflow: hidden;
-  margin: 0.5 * @cell-margin;
-  // opacity: 0.9;
-  // text-align: center;
-  // box-shadow: rgba(0, 0, 0, 0.14) 0 2px 2px 0, rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.12) 0 1px 5px 0;
-}
-
-.docbox .deletePic {
-  background: @color-delete;
-  position: absolute;
+  .deletePic {
+    position: absolute;
+    background: @color-2;
+    color: @color-5;
+    padding: 0.5 * @cell-margin @cell-margin;
+    z-index: 10;
+    cursor: pointer;
+  }
+  .deletePic:hover {
+    color: @color-2;
+    background-color: @color-5;
+  }
 }

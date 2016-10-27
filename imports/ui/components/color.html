@@ -1,5 +1,8 @@
 <template name="color">
-  <div class="colorSwatch" style="background: hsl({{hue}}, {{saturation}}%, {{luminosity}}%)">
-    <span class="colorName"><span class="removeColor">(×)</span>{{name}} — {{tags}}</span>
-  </div>
+  <span class="colorSwatch" style="background: hsl({{hue}}, {{saturation}}%, {{luminosity}}%)">
+    <span class="colorInfos">
+      <span class="deleteColor">×</span><span class="colorName">{{name}}</span>
+      <span class="colorTags">{{tags}}</span>
+    </span>
+  </span>
 </template>

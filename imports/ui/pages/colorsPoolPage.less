@@ -1,2 +1,21 @@
 @import '../components/poolHeader.less';
 @import '../components/colorsPool.less';
+
+.header {
+  // margin: @cell-margin;
+  z-index: 9;
+  padding: 2 * @cell-margin;
+  // width: @cell - 2 * @cell-margin;
+  width: 0 auto;
+  height: 0.5 * @cell - 2 * @cell-margin;
+  // background-color: cyan;
+  text-align: right;
+  .invisible {
+    opacity: 0;
+  }
+}
+
+#poolBody {
+  padding: 0;
+  margin: 0;
+}

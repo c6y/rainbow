@@ -7,14 +7,14 @@ import './pixPoolPage.html';
 // Components used inside the template
 import '../components/countDocs.html';
 import '../components/countDocs.js';
-import '../components/paging.html';
-import '../components/paging.js';
+import '../components/navPaging.html';
+import '../components/navPaging.js';
 import '../components/pixPool.html';
 import '../components/pixPool.js';
 import '../components/navLinks.html';
 import '../components/navLinks.js';
-import '../components/navHere.js';
-import '../components/navHere.html';
+import '../components/navPageInfo.js';
+import '../components/navPageInfo.html';
 
 // Template onCreated
 Template.pixPoolPage.onCreated(function() {

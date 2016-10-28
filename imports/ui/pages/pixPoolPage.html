@@ -1,12 +1,12 @@
 <template name="pixPoolPage">
   <div class="container">
     <div class="header-fixed">
-      {{> paging}}
+      {{> navPaging}}
     </div>
     <div class="header">
-      {{> navHere}}
-      {{> countDocs}}
       {{> navLinks}}
+      {{> navPageInfo}}
+      {{> countDocs}}
     </div>
     <div id="poolBody">
       {{#if Template.subscriptionsReady}}

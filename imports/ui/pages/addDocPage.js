@@ -12,8 +12,8 @@ import '../components/pixPoolLatest.html';
 import '../components/pixPoolLatest.js';
 import '../components/navLinks.html';
 import '../components/navLinks.js';
-import '../components/navHere.html';
-import '../components/navHere.js';
+import '../components/navPageInfo.html';
+import '../components/navPageInfo.js';
 
 import '../components/countDocs.html';
 import '../components/countDocs.js';

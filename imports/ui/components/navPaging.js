@@ -3,7 +3,7 @@ import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Counts } from 'meteor/tmeasday:publish-counts';
 
-Template.paging.onCreated(function() {
+Template.navPaging.onCreated(function() {
   const self = this;
   self.autorun(function() {
     // subscribe to total document count
@@ -26,7 +26,7 @@ const hasMorePages = function() {
   return thisPage * docsPerPage < docsCount;
 };
 
-Template.paging.helpers({
+Template.navPaging.helpers({
   thisPageNumber() {
     const thisPageString = FlowRouter.getParam('page');
     return parseInt(thisPageString, 10);//
@@ -55,7 +55,7 @@ Template.paging.helpers({
   }
 });
 
-Template.paging.events({
+Template.navPaging.events({
   'click .nextPage'() {
     const thisPageString = FlowRouter.getParam('page');
     const thisPage = parseInt(thisPageString, 10);//

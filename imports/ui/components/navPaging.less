@@ -1,13 +1,9 @@
-.pagingBox {
+.navPagingBox {
   font-size: 2rem;
   padding: 0;
   margin: 0;
   color: @color-1;
-  // user-select: none;
-  .inactive {
-  }
   li {
-    box-shadow: rgba(0, 0, 0, 0.14) 0 2px 2px 0, rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.12) 0 1px 5px 0;
     display: inline;
     margin-right: 0.25em;
     a {
@@ -21,6 +17,7 @@
       background-color: @color-link-3;
       transition: background-color 0.2s linear;
       user-select: none;
+      box-shadow: @boxshadow-1;
     }
     a:hover {
       background-color: @color-link-2;
@@ -29,14 +26,18 @@
     a:active {
       background-color: @color-link-1;
       color: @color-link-2;
+      box-shadow: none;
     }
   }
   .inactive {
     a {
       color: @color-12;
       background-color: @color-link-3;
-      transition: background-color 1s linear;
+      opacity: 0.5;
+      box-shadow: none;
+      transition: background-color 0.2s linear, box-shadow 0.2s linear;
       user-select: none;
+
     }
   }
 }

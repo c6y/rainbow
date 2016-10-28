@@ -1,5 +1,7 @@
 <template name="countDocs">
-  <span class="stats">
-    {{#if pixCounter}}{{pixCounter}}{{/if}}
-  </span>
+  {{#if pixCounter}}
+    <span class="count">
+      {{pixCounter}}
+    </span>
+  {{/if}}
 </template>

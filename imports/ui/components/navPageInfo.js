@@ -3,16 +3,16 @@ import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Counts } from 'meteor/tmeasday:publish-counts';
 
-import './navHere.html';
+import './navPageInfo.html';
 
-Template.navHere.onCreated(function() {
+Template.navPageInfo.onCreated(function() {
   const self = this;
   self.autorun(function() {
     self.subscribe('pix.counts.public');
   });
 });
 
-Template.navHere.helpers({
+Template.navPageInfo.helpers({
   thisRouteName() {
     return FlowRouter.getRouteName();
   },

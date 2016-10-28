@@ -48,3 +48,13 @@ Meteor.publish('pix.single.public', function picPublic(id) {
   console.log('id: ' + id);
   return EboyPix.find(selector);
 });
+
+// publish Counts only collection
+Meteor.publish('pix.counts.public', function() {
+  Counts.publish(
+    this,
+    'totalDocsCount',
+    EboyPix.find(),
+    { noReady: true }
+  );
+});

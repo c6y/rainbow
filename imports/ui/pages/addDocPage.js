@@ -15,8 +15,8 @@ import '../components/navLinks.js';
 import '../components/navHere.html';
 import '../components/navHere.js';
 
-// import '../components/countDocs.html';
-// import '../components/countDocs.js';
+import '../components/countDocs.html';
+import '../components/countDocs.js';
 
 // Template onCreated
 Template.addDocPage.onCreated(function() {
@@ -29,6 +29,7 @@ Template.addDocPage.onCreated(function() {
       let lastUpload = Session.get('latestUploadAt');
       self.subscribe('pix.afterDate.public', lastUpload);
       self.subscribe('colors.public');
+      self.subscribe('pix.counts.public');
     }
   });
 });

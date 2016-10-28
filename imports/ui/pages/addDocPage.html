@@ -1,5 +1,10 @@
 <template name="addDocPage">
   <div class="container">
+    <div class="header">
+      {{> navHere}}
+      {{> poolHeader}}
+      {{> navLinks}}
+    </div>
     {{> pixInput}}
     {{#if showInsertErrors}}
       <div class="failedInsertsClass">

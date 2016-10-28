@@ -2,28 +2,24 @@
 @import '../components/paging.less';
 @import '../components/pixPool.less';
 @import '../components/navLinks.less';
+@import '../components/navHere.less';
 
 .header-fixed {
   position: fixed;
   margin: @cell-margin;
-  z-index: 10;
+  z-index: 100;
   padding: @cell-margin;
   width: @cell - 2 * @cell-margin;
   height: 0.5 * @cell - 2 * @cell-margin;
 }
 
 .header {
-  // margin: @cell-margin;
   z-index: 9;
   padding: 2 * @cell-margin;
-  // width: @cell - 2 * @cell-margin;
   width: 0 auto;
   height: 0.5 * @cell - 2 * @cell-margin;
-  // background-color: cyan;
+  background-color: @color-12;
   text-align: right;
-  .invisible {
-    opacity: 0;
-  }
 }
 
 #poolBody {

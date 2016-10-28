@@ -1,6 +1,25 @@
 <template name="navLinks">
   <ul class="linkslist">
-    <li><a href="{{toAddDocsPath}}">addDocs</a></li>
-    <li><a href="{{toColorsPath}}">colors</a></li>
+    <li>
+      {{#if toPoolPath}}
+        <a href="{{toPoolPath}}">pool</a>
+      {{else}}
+        pool
+      {{/if}}
+    </li>
+    <li>
+      {{#if toAddDocsPath}}
+        <a href="{{toAddDocsPath}}">addDoc</a>
+      {{else}}
+        addDoc
+      {{/if}}
+    </li>
+    <li>
+      {{#if toColorsPath}}
+        <a href="{{toColorsPath}}">colors</a>
+      {{else}}
+        colors
+      {{/if}}
+    </li>
   </ul>
 </template>

@@ -9,6 +9,8 @@ import '../components/poolHeader.html';
 import '../components/poolHeader.js';
 import '../components/colorsPool.html';
 import '../components/colorsPool.js';
+import '../components/navHere.html';
+import '../components/navHere.js';
 
 // Template onCreated
 Template.colorsPoolPage.onCreated(function() {

@@ -12,6 +12,10 @@ import '../components/pixInput.html';
 import '../components/pixInput.js';
 import '../components/pixPoolLatest.html';
 import '../components/pixPoolLatest.js';
+import '../components/navLinks.html';
+import '../components/navLinks.js';
+import '../components/navHere.html';
+import '../components/navHere.js';
 
 // Template onCreated
 Template.addDocPage.onCreated(function() {
@@ -27,12 +31,6 @@ Template.addDocPage.onCreated(function() {
     }
   });
 });
-
-// function getPicName(url) {
-//   const picNameEncoded = url.substring(url.lastIndexOf("/") + 1, url.length);
-//   const picNameDecoded = decodeURIComponent(picNameEncoded);
-//   return picNameDecoded;
-// }
 
 Template.addDocPage.helpers({
   showInsertErrors() {

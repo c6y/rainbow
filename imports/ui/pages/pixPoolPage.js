@@ -11,9 +11,10 @@ import '../components/paging.html';
 import '../components/paging.js';
 import '../components/pixPool.html';
 import '../components/pixPool.js';
-
 import '../components/navLinks.html';
 import '../components/navLinks.js';
+import '../components/navHere.js';
+import '../components/navHere.html';
 
 // Template onCreated
 Template.pixPoolPage.onCreated(function() {

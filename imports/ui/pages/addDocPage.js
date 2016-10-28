@@ -3,8 +3,6 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { DocHead } from 'meteor/kadira:dochead';
 import { Session } from 'meteor/session';
 
-// import { getPicName } from '../../api/functions.js';
-
 import './addDocPage.html';
 
 // Components used
@@ -16,6 +14,9 @@ import '../components/navLinks.html';
 import '../components/navLinks.js';
 import '../components/navHere.html';
 import '../components/navHere.js';
+
+// import '../components/countDocs.html';
+// import '../components/countDocs.js';
 
 // Template onCreated
 Template.addDocPage.onCreated(function() {

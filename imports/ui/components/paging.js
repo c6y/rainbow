@@ -23,11 +23,11 @@ Template.paging.helpers({
     const thisPageString = FlowRouter.getParam('page');
     return parseInt(thisPageString, 10);//
   },
-  totalPageCount() {
-    const docsCount = Counts.get('pixCount');
-    const docsPerPage = Meteor.settings.public.pixPerPage;
-    return Math.max(Math.ceil(docsCount / docsPerPage), 1);
-  },
+  // totalPageCount() {
+  //   const docsCount = Counts.get('pixCount');
+  //   const docsPerPage = Meteor.settings.public.pixPerPage;
+  //   return Math.max(Math.ceil(docsCount / docsPerPage), 1);
+  // },
   previousPageClass() {
     const thisPageString = FlowRouter.getParam('page');
     if (parseInt(thisPageString, 10) !== 1) {

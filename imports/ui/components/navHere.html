@@ -1,7 +1,5 @@
 <template name="navHere">
   <ul class="herelist">
-    <li>
-      {{thisRouteName}}
-    </li>
+    {{thisRouteName}} {{#if thisPage}}{{thisPage}}/{{totalPageCount}}{{/if}}
   </ul>
 </template>

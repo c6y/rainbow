@@ -5,8 +5,8 @@ import { DocHead } from 'meteor/kadira:dochead';
 import './pixPoolPage.html';
 
 // Components used inside the template
-import '../components/poolHeader.html';
-import '../components/poolHeader.js';
+import '../components/countDocs.html';
+import '../components/countDocs.js';
 import '../components/paging.html';
 import '../components/paging.js';
 import '../components/pixPool.html';

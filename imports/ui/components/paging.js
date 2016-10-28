@@ -3,6 +3,14 @@ import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Counts } from 'meteor/tmeasday:publish-counts';
 
+Template.paging.onCreated(function() {
+  const self = this;
+  self.autorun(function() {
+    // subscribe to total document count
+    self.subscribe('pix.counts.public');
+  });
+});
+
 /**
  * Returns the next page if it has documents
  * @param {string} page The current page.
@@ -13,7 +21,7 @@ import { Counts } from 'meteor/tmeasday:publish-counts';
 const hasMorePages = function() {
   const thisPageString = FlowRouter.getParam('page');
   const thisPage = parseInt(thisPageString, 10);
-  const docsCount = Counts.get('pixCount');
+  const docsCount = Counts.get('totalDocsCount');
   const docsPerPage = Meteor.settings.public.pixPerPage;
   return thisPage * docsPerPage < docsCount;
 };
@@ -37,7 +45,7 @@ Template.paging.helpers({
   },
   nextPageClass() {
     const thisPageString = FlowRouter.getParam('page');
-    const docsCount = Counts.get('pixCount');
+    const docsCount = Counts.get('totalDocsCount');
     const docsPerPage = Meteor.settings.public.pixPerPage;
     const pageCount = Math.ceil(docsCount / docsPerPage);
     if (parseInt(thisPageString, 10) !== pageCount) {

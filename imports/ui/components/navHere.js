@@ -5,6 +5,13 @@ import { Counts } from 'meteor/tmeasday:publish-counts';
 
 import './navHere.html';
 
+Template.navHere.onCreated(function() {
+  const self = this;
+  self.autorun(function() {
+    self.subscribe('pix.counts.public');
+  });
+});
+
 Template.navHere.helpers({
   thisRouteName() {
     return FlowRouter.getRouteName();
@@ -16,7 +23,7 @@ Template.navHere.helpers({
     }
   },
   totalPageCount() {
-    const docsCount = Counts.get('pixCount');
+    const docsCount = Counts.get('totalDocsCount');
     const docsPerPage = Meteor.settings.public.pixPerPage;
     return Math.max(Math.ceil(docsCount / docsPerPage), 1);
   }

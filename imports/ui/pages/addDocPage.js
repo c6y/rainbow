@@ -29,7 +29,6 @@ Template.addDocPage.onCreated(function() {
       let lastUpload = Session.get('latestUploadAt');
       self.subscribe('pix.afterDate.public', lastUpload);
       self.subscribe('colors.public');
-      self.subscribe('pix.counts.public');
     }
   });
 });

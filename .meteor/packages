@@ -20,9 +20,9 @@ shell-server@0.2.1            # Server-side component of the `meteor shell` comm
 
 reactive-dict@1.1.8
 aldeed:collection2
-less@2.7.6
 kadira:blaze-layout
 kadira:flow-router
 kadira:dochead
 tmeasday:publish-counts
 session@1.1.7
+less

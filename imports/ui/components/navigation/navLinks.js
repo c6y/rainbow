@@ -22,6 +22,12 @@ Template.navLinks.helpers({
       return FlowRouter.path('colors');
     }
   },
+  toListPath() {
+    const thisRouteName = FlowRouter.getRouteName();
+    if (thisRouteName !== 'list') {
+      return FlowRouter.path('list', { page: '1' });
+    }
+  },
   thisIsHere() {
     return FlowRouter.getRouteName();
   }

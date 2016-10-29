@@ -10,6 +10,7 @@ import '../../ui/pages/colorsPoolPage.js';
 import '../../ui/pages/spriteBoxPage.js';
 import '../../ui/pages/addDocPage.js';
 import '../../ui/pages/beta1Page.js';
+import '../../ui/pages/pixListPage.js';
 
 FlowRouter.route('/pool/:page', {
   name: 'pool',
@@ -17,6 +18,16 @@ FlowRouter.route('/pool/:page', {
     console.log('pool route is being rendered');
     BlazeLayout.render('applayout', {
       main: 'pixPoolPage'
+    });
+  }
+});
+
+FlowRouter.route('/list/:page', {
+  name: 'list',
+  action() {
+    console.log('list route is being rendered');
+    BlazeLayout.render('applayout', {
+      main: 'pixListPage'
     });
   }
 });

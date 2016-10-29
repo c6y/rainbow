@@ -1,0 +1,27 @@
+@import '../components/pixCount.less';
+@import '../components/navigation/navPaging.less';
+@import '../components/pixList.less';
+@import '../components/navigation/navLinks.less';
+@import '../components/navigation/navPageInfo.less';
+
+.header-fixed {
+  position: fixed;
+  margin: @cell-margin;
+  z-index: 100;
+  padding: @cell-margin;
+  width: @cell - 2 * @cell-margin;
+  height: 0.5 * @cell - 2 * @cell-margin;
+}
+
+.header {
+  z-index: 9;
+  padding: 2 * @cell-margin;
+  width: 0 auto;
+  height: 0.5 * @cell - 2 * @cell-margin;
+  background-color: @color-12;
+  text-align: right;
+}
+
+#poolBody {
+  padding: 0;
+}

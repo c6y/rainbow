@@ -1,0 +1,17 @@
+<template name="pixListPage">
+  <div class="container">
+    <div class="header-fixed">
+      {{> navPaging}}
+    </div>
+    <div class="header">
+      {{> navLinks}}
+      {{> navPageInfo}}
+      {{> pixCount}}
+    </div>
+    <div id="listBody">
+      {{#if Template.subscriptionsReady}}
+        {{> pixList}}
+      {{/if}}
+    </div>
+  </div>
+</template>

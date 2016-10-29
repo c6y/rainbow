@@ -3,7 +3,7 @@ import { Template } from 'meteor/templating';
 
 import { Colors } from '../../api/colors/colors.js';
 
-import './doc.html';
+import './pic.html';
 
 // Components used
 import './picSprite.js';
@@ -11,7 +11,7 @@ import './picSprite.html';
 import './picMeta.js';
 import './picMeta.html';
 
-Template.doc.helpers({
+Template.pic.helpers({
   colorHSL() {
     // Get the color by name
     const color = Colors.findOne(
@@ -46,7 +46,7 @@ Template.doc.helpers({
 });
 
 // Template events
-Template.doc.events({
+Template.pic.events({
   'click .deletePic'() {
     Meteor.call('eboypix.delete', this._id);
   }

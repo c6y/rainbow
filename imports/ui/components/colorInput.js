@@ -17,5 +17,6 @@ Template.colorInput.events({
     target.hue.value = '';
     target.luminosity.value = '';
     target.saturation.value = '';
+    target.tag.value = '';
   }
 });

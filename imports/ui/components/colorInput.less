@@ -1,5 +1,24 @@
 #colorInputBox form {
-  margin-top: 1em;
-  margin-bottom: 0;
-  position: relative;
+  margin: @cell-margin;
+  background-color: @color-10;
+  padding: 0;
+  display: flex;
+  padding: 0.5 * @cell-margin;
+  input {
+    border: 0.5 * @cell-margin solid @color-10;
+    font-size: 0.75rem;
+    font-family: @font-regular;
+    padding: 0.5 * @cell-margin;
+    -webkit-flex: 0.2;
+    margin: 0;
+  }
+  ::-webkit-input-placeholder {
+    color: @color-10;
+  }
+  button {
+    padding: @cell-margin;
+    display: inline-block;
+    bottom: 0;
+    -webkit-flex: 1;
+  }
 }

@@ -8,8 +8,8 @@ import { Colors } from '../../api/colors/colors.js';
 import './spriteBox.html';
 
 // Components used
-import './pic.js';
-import './pic.html';
+import './picSprite.js';
+import './picSprite.html';
 import './metadata.js';
 import './metadata.html';
 

@@ -4,10 +4,10 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import { Colors } from '../../api/colors/colors.js';
 
-import './pic.html';
+import './picSprite.html';
 
 // Template helpers
-Template.pic.helpers({
+Template.picSprite.helpers({
   toSpriteBoxPath() {
     const thisId = this._id;
     const params = { _id: thisId };

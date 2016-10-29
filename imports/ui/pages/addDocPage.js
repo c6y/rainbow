@@ -15,8 +15,8 @@ import '../components/navigation/navLinks.js';
 import '../components/navigation/navPageInfo.html';
 import '../components/navigation/navPageInfo.js';
 
-import '../components/countDocs.html';
-import '../components/countDocs.js';
+import '../components/pixCount.html';
+import '../components/pixCount.js';
 
 // Template onCreated
 Template.addDocPage.onCreated(function() {

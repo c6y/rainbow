@@ -1,16 +1,16 @@
 import { Template } from 'meteor/templating';
 import { Counts } from 'meteor/tmeasday:publish-counts';
 
-import './countDocs.html';
+import './pixCount.html';
 
-Template.countDocs.onCreated(function() {
+Template.pixCount.onCreated(function() {
   const self = this;
   self.autorun(function() {
     self.subscribe('pix.counts.public');
   });
 });
 
-Template.countDocs.helpers({
+Template.pixCount.helpers({
   pixCounter() {
     return Counts.get('totalDocsCount');
   }

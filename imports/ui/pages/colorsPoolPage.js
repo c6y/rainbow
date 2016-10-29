@@ -5,10 +5,10 @@ import { DocHead } from 'meteor/kadira:dochead';
 import './colorsPoolPage.html';
 
 // Components used inside the template
-import '../components/countColors.html';
-import '../components/countColors.js';
-import '../components/colorsPool.html';
-import '../components/colorsPool.js';
+import '../components/colors/countColors.html';
+import '../components/colors/countColors.js';
+import '../components/colors/colorsPool.html';
+import '../components/colors/colorsPool.js';
 
 // Template onCreated
 Template.colorsPoolPage.onCreated(function() {

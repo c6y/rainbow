@@ -10,10 +10,10 @@ import '../components/pixInput.html';
 import '../components/pixInput.js';
 import '../components/pixPoolLatest.html';
 import '../components/pixPoolLatest.js';
-import '../components/navLinks.html';
-import '../components/navLinks.js';
-import '../components/navPageInfo.html';
-import '../components/navPageInfo.js';
+import '../components/navigation/navLinks.html';
+import '../components/navigation/navLinks.js';
+import '../components/navigation/navPageInfo.html';
+import '../components/navigation/navPageInfo.js';
 
 import '../components/countDocs.html';
 import '../components/countDocs.js';

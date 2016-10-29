@@ -1,5 +1,5 @@
 <template name="picSprite">
-  <figure class="picBox" style="background: {{colorHSL.value}}">
+  <figure class="picSpriteBox" style="background: {{colorHSL.value}}">
     {{#if isNotSpriteBoxRoute}}
       <a href="{{toSpriteBoxPath}}">
         <img src="{{url}}" width="{{scaledDims.width}}" height="{{.scaledDims.height}}" alt="" />
@@ -7,6 +7,5 @@
     {{else}}
       <img src="{{url}}" width="{{scaledDims.width}}" height="{{scaledDims.height}}" alt="" />
     {{/if}}
-    {{picBoxSize}}
   </figure>
 </template>

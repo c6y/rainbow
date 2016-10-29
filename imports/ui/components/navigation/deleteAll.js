@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 
 Template.deleteAll.events({
-  'click .deleteAllDocs'() {
+  'click .deleteAllPix'() {
     Meteor.call('eboypix.deleteAll');
   },
   'click .deleteAllColors'() {

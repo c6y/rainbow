@@ -19,8 +19,8 @@ import '../components/picSprite.html';
 import '../components/picSprite.js';
 import '../components/pixPool.html';
 import '../components/pixPool.js';
-import '../components/deleteAll.html';
-import '../components/deleteAll.js';
+import '../components/navigation/deleteAll.html';
+import '../components/navigation/deleteAll.js';
 
 // Template onCreated
 Template.beta1Page.onCreated(function() {

@@ -8,8 +8,8 @@ import './doc.html';
 // Components used
 import './picSprite.js';
 import './picSprite.html';
-import './metadata.js';
-import './metadata.html';
+import './picMeta.js';
+import './picMeta.html';
 
 Template.doc.helpers({
   colorHSL() {

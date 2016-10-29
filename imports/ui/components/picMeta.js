@@ -4,9 +4,9 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import { Colors } from '../../api/colors/colors.js';
 
-import './metadata.html';
+import './picMeta.html';
 
-Template.metadata.helpers({
+Template.picMeta.helpers({
   toSpriteBoxPath() {
     const thisId = this._id;
     const params = { _id: thisId };

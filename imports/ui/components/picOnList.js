@@ -63,6 +63,7 @@ Template.picOnList.events({
   'click .deletePic'() {
     Meteor.call('eboypix.delete', this._id);
   },
+  // // // Edit license events
   'click .editLicense'(event, target) {
     // Store original license in ReactiveDict
     target.TargetValuesCache.set('license', this.license);
@@ -75,34 +76,33 @@ Template.picOnList.events({
     event.target.value = originalLicense;
   },
   'keyup .editLicense'(event, target) {
-    // Submit updated license if user presses return
-    if (event.keyCode === 13) { // return key
+    if (event.keyCode === 13) { // return key submits new license
       Meteor.call('eboypix.updateLicense', this._id, event.target.value);
       // Deselect input field
       event.target.blur();
-    }
-  },
-  'keyup .editCopyright'(event, target) {
-    // const esc = event.keyCode === 27; // escape key
-    // const sub = event.keyCode === 13; // return key
-    event.preventDefault();
-
-    if (event.keyCode === 13) {
-      event.preventDefault();
-      const copyrightDirty = event.target.innerHTML;
-      // console.log('copyrightDirty: ' + copyrightDirty);
-      const copyright = copyrightDirty.replace(/<br>/g, '');
-      console.log('copyright: ' + copyright);
-      Meteor.call('eboypix.updateCopyright', this._id, copyright);
+    } else if (event.keyCode === 27) { // escape restores license
       event.target.blur();
-      event.target.setAttribute('contenteditable', false);
     }
   },
+  // // // Edit copyright events
   'click .editCopyright'(event, target) {
-    event.target.setAttribute('contenteditable', true);
+    // Store original license in ReactiveDict
+    target.TargetValuesCache.set('copyright', this.copyright);
   },
   'blur .editCopyright'(event, target) {
-    event.target.innerHTML = this.copyright;
-    event.target.setAttribute('contenteditable', false);
+    // Restore copyright input to original value
+    // if user leaves input and does not press return
+    const originalLicense = target.TargetValuesCache.get('copyright');
+    this.copyright = originalLicense;
+    event.target.value = originalLicense;
+  },
+  'keyup .editCopyright'(event, target) {
+    if (event.keyCode === 13) { // return key submits new copyright
+      Meteor.call('eboypix.updateCopyright', this._id, event.target.value);
+      // Deselect input field
+      event.target.blur();
+    } else if (event.keyCode === 27) { // escape restores copyright
+      event.target.blur();
+    }
   }
 });

@@ -63,22 +63,23 @@ Template.picOnList.events({
   'click .deletePic'() {
     Meteor.call('eboypix.delete', this._id);
   },
-  'click .inputMeta'(event, target) {
+  'click .editLicense'(event, target) {
     // Store original license in ReactiveDict
     target.TargetValuesCache.set('license', this.license);
   },
-  'blur .inputMeta'(event, target) {
+  'blur .editLicense'(event, target) {
+    // Reset license input to original value
+    // if user leaves input and does not press return
     const originalLicense = target.TargetValuesCache.get('license');
     this.license = originalLicense;
     event.target.value = originalLicense;
   },
-  'keyup .inputMeta'(event, target) {
+  'keyup .editLicense'(event, target) {
+    // Submit updated license if user presses return
     if (event.keyCode === 13) {
-      target.TargetValuesCache.set('license', event.target.value);
-      event.target.blur();
-      console.log('event.target.value: ' + event.target.value);
-      // update license on eboypix
       Meteor.call('eboypix.updateLicense', this._id, event.target.value);
+      // Deselect input field
+      event.target.blur();
     }
   }
 });

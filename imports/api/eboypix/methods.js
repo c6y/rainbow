@@ -59,10 +59,16 @@ Meteor.methods({
   'eboypix.deleteAll'() {
     EboyPix.remove({});
   },
-  'eboypix.updateLicense'(taskId, license) {
+  'eboypix.updateLicense'(taskId, newLicense) {
     EboyPix.update(
       taskId,
-      { $set: { license: license } }
+      { $set: { license: newLicense } }
+    );
+  },
+  'eboypix.updateCopyright'(taskId, newCopyright) {
+    EboyPix.update(
+      taskId,
+      { $set: { copyright: newCopyright } }
     );
   }
 });

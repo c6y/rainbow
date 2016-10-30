@@ -23,7 +23,10 @@
           </li>
         {{/if}}
         <li><span class="property">backgroundColor: </span>{{this.backgroundColor}}</li>
-        <li contenteditable="true">Contenteditable Test</li>
+        <li>
+          <span class="property">copyright: </span>
+          <span class="editCopyright" contenteditable={{isEditable}}>{{this.copyright}}</span>
+        </li>
       </ul>
     </div>
   </span>

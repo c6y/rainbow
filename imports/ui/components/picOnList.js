@@ -68,7 +68,7 @@ Template.picOnList.events({
     target.TargetValuesCache.set('license', this.license);
   },
   'blur .editLicense'(event, target) {
-    // Reset license input to original value
+    // Restore license input to original value
     // if user leaves input and does not press return
     const originalLicense = target.TargetValuesCache.get('license');
     this.license = originalLicense;
@@ -76,10 +76,33 @@ Template.picOnList.events({
   },
   'keyup .editLicense'(event, target) {
     // Submit updated license if user presses return
-    if (event.keyCode === 13) {
+    if (event.keyCode === 13) { // return key
       Meteor.call('eboypix.updateLicense', this._id, event.target.value);
       // Deselect input field
       event.target.blur();
     }
+  },
+  'keyup .editCopyright'(event, target) {
+    // const esc = event.keyCode === 27; // escape key
+    // const sub = event.keyCode === 13; // return key
+    event.preventDefault();
+
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      const copyrightDirty = event.target.innerHTML;
+      // console.log('copyrightDirty: ' + copyrightDirty);
+      const copyright = copyrightDirty.replace(/<br>/g, '');
+      console.log('copyright: ' + copyright);
+      Meteor.call('eboypix.updateCopyright', this._id, copyright);
+      event.target.blur();
+      event.target.setAttribute('contenteditable', false);
+    }
+  },
+  'click .editCopyright'(event, target) {
+    event.target.setAttribute('contenteditable', true);
+  },
+  'blur .editCopyright'(event, target) {
+    event.target.innerHTML = this.copyright;
+    event.target.setAttribute('contenteditable', false);
   }
 });

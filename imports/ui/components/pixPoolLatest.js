@@ -4,12 +4,12 @@ import { Session } from 'meteor/session';
 import { EboyPix } from '../../api/eboypix/eboypix.js';
 
 // Components used
-import './doc.html';
-import './doc.js';
+import './pic.html';
+import './pic.js';
 
 // Template helpers
 Template.pixPoolLatest.helpers({
-  docs() {
+  pix() {
     return EboyPix.find({}, { sort: { createdAt: -1 } });
   },
   docsCount() {

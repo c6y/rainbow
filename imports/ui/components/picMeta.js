@@ -1,17 +1,22 @@
-import { Meteor } from 'meteor/meteor';
+// import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import { Colors } from '../../api/colors/colors.js';
 
-import './doc.html';
+import './picMeta.html';
 
-// Components used
-import './pic.js';
-import './pic.html';
-import './metadata.js';
-import './metadata.html';
-
-Template.doc.helpers({
+Template.picMeta.helpers({
+  toSpriteBoxPath() {
+    const thisId = this._id;
+    const params = { _id: thisId };
+    return FlowRouter.path('spriteBox', params);
+  },
+  isNotSpriteBoxRoute() {
+    const routeName = FlowRouter.getRouteName();
+    // Returns true if we're not on spriteBox
+    return routeName !== 'spriteBox';
+  },
   colorHSL() {
     // Get the color by name
     const color = Colors.findOne(
@@ -42,12 +47,5 @@ Template.doc.helpers({
       info: 'Warning! Assign a color!',
       value: emptyColor
     };
-  }
-});
-
-// Template events
-Template.doc.events({
-  'click .deletePic'() {
-    Meteor.call('eboypix.delete', this._id);
   }
 });

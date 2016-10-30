@@ -1,0 +1,33 @@
+<template name="picOnList">
+  <span class="picOnListbox">
+    <span class="deletePic">×</span>
+    <!-- <div class="picSpriteOnList" style="background: {{colorHSL.value}}"> -->
+      <div class="picSpriteOnList">
+      {{> picSprite}}
+    </div>
+    <div class="picMetaEdit">
+      <ul>
+        <li>
+          <span class="property">license: </span>
+          <input class="editLicense" type="text" name="licenseInput" value="{{this.license}}" size="36">
+        </li>
+        <li>
+          <span class="property">copyright: </span>
+          <input class="editCopyright" type="text" name="copyrightInput" value="{{this.copyright}}" size="36">
+        </li>
+        {{#if tags}}
+          <li >
+            <span class="property">tags:</span> {{#each tags}}
+              <span class="tag">{{this}}</span>
+            {{/each}}
+          </li>
+        {{/if}}
+        <li><span class="property">backgroundColor: </span>{{this.backgroundColor}}</li>
+        <!-- <li>
+          <span class="property">copyright: </span>
+          <span class="editCopyright" contenteditable={{isEditable}}>{{this.copyright}}</span>
+        </li> -->
+      </ul>
+    </div>
+  </span>
+</template>

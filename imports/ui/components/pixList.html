@@ -1,0 +1,9 @@
+<template name="pixList">
+  <div id="pixListBox">
+    {{#if Template.subscriptionsReady}}
+      {{#each pix}}
+        <div class="pixListItem">{{> picOnList}}</div>
+      {{/each}}
+    {{/if}}
+  </div>
+</template>

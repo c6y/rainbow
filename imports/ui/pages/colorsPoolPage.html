@@ -1,12 +1,11 @@
 <template name="colorsPoolPage">
   <div class="container">
     <div class="header">
-      <div>
-        eboy/colors
-      </div>
-      {{> poolHeader}}
+      {{> navLinks}}
+      {{> countColors}}
     </div>
     <div id="poolBody">
+      {{> colorInput}}
       {{> colorsPool}}
     </div>
   </div>

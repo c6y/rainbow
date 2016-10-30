@@ -3,8 +3,6 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { DocHead } from 'meteor/kadira:dochead';
 import { Session } from 'meteor/session';
 
-// import { getPicName } from '../../api/functions.js';
-
 import './addDocPage.html';
 
 // Components used
@@ -12,6 +10,13 @@ import '../components/pixInput.html';
 import '../components/pixInput.js';
 import '../components/pixPoolLatest.html';
 import '../components/pixPoolLatest.js';
+import '../components/navigation/navLinks.html';
+import '../components/navigation/navLinks.js';
+import '../components/navigation/navPageInfo.html';
+import '../components/navigation/navPageInfo.js';
+
+import '../components/pixCount.html';
+import '../components/pixCount.js';
 
 // Template onCreated
 Template.addDocPage.onCreated(function() {
@@ -27,12 +32,6 @@ Template.addDocPage.onCreated(function() {
     }
   });
 });
-
-// function getPicName(url) {
-//   const picNameEncoded = url.substring(url.lastIndexOf("/") + 1, url.length);
-//   const picNameDecoded = decodeURIComponent(picNameEncoded);
-//   return picNameDecoded;
-// }
 
 Template.addDocPage.helpers({
   showInsertErrors() {

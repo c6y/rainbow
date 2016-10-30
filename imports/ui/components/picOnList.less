@@ -1,0 +1,69 @@
+@import './picSprite.less';
+@import './picMeta.less';
+
+.picOnListbox {
+  display: flex;
+  .picSpriteOnList {
+    width: @cell;
+    margin-right: 0.5 * @cell-margin;
+    // flex-grow: 1;
+    overflow: hidden;
+    display: inline-block;
+    background-color: red;
+  }
+  .picMetaEdit {
+    width: auto;
+    flex-grow: 2;
+    padding-left: @cell-margin;
+    display: inline-block;
+    color: @color-3;
+    background-color: @color-1;
+    font-size: 0.8em;
+    color: @color-3;
+    background-color: @color-1;
+    padding: 2 * @cell-margin;
+    ul {
+      padding: 0;
+      margin: 0;
+    }
+    li {
+      list-style: none;
+    }
+    .property {
+      color: @color-6;
+    }
+    .tag:after {
+      content: ',';
+    }
+    .tag:last-of-type:after {
+      content: '';
+    }
+  }
+  .deletePic {
+    position: absolute;
+    background: @color-2;
+    color: @color-5;
+    padding: 0.5 * @cell-margin @cell-margin;
+    z-index: 10;
+    cursor: pointer;
+  }
+  .deletePic:hover {
+    color: @color-2;
+    background-color: @color-5;
+  }
+  .editName {
+    cursor: pointer;
+  }
+  input {
+    color: @color-3;
+    font-family: inherit;
+    font-size: 0.8rem;
+    background-color: @color-1;
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
+  // .editCopyright :active {
+  //   background-color: red;
+  // }
+}

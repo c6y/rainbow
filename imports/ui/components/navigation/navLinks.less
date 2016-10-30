@@ -1,0 +1,19 @@
+.linkslist {
+  margin: 0;
+  padding: 0;
+  li {
+    color: @color-1;
+    list-style: none;
+    display: inline-block;
+    a {
+      text-decoration: none;
+      color: @color-link-2;
+    }
+  }
+  li:after {
+    content: '|';
+  }
+  li:last-of-type:after {
+    content: '';
+  }
+}

@@ -4,9 +4,10 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import { Colors } from '../../api/colors/colors.js';
 
-import './metadata.html';
+import './picSprite.html';
 
-Template.metadata.helpers({
+// Template helpers
+Template.picSprite.helpers({
   toSpriteBoxPath() {
     const thisId = this._id;
     const params = { _id: thisId };
@@ -46,6 +47,25 @@ Template.metadata.helpers({
     return {
       info: 'Warning! Assign a color!',
       value: emptyColor
+    };
+  },
+  scaledDims() {
+    const width = this.dimensions.width;
+    const height = this.dimensions.height;
+    const boxDim = 256 + 16;
+    const maxDim = Math.max(width, height);
+    let divisor = boxDim / maxDim;
+    if (divisor <= 0.5) {
+      divisor = 0.5;
+    } else {
+      divisor = Math.max(Math.floor(divisor), 1);
+    }
+    // Return scaled dimensions
+    const scaledWidth = width * divisor;
+    const scaledHeight = height * divisor;
+    return {
+      width: scaledWidth,
+      height: scaledHeight
     };
   }
 });

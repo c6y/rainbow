@@ -1,0 +1,43 @@
+.navPagingBox {
+  font-size: 2rem;
+  padding: 0;
+  margin: 0;
+  color: @color-1;
+  li {
+    display: inline;
+    margin-right: 0.25em;
+    a {
+      padding: 0 0.25em;
+    }
+  }
+  .active {
+    a {
+      cursor: pointer;
+      color: @color-link-1;
+      background-color: @color-link-3;
+      transition: background-color 0.2s linear;
+      user-select: none;
+      box-shadow: @boxshadow-1;
+    }
+    a:hover {
+      background-color: @color-link-2;
+      color: @color-link-1;
+    }
+    a:active {
+      background-color: @color-link-1;
+      color: @color-link-2;
+      box-shadow: none;
+    }
+  }
+  .inactive {
+    a {
+      color: @color-12;
+      background-color: @color-link-3;
+      opacity: 0.5;
+      box-shadow: none;
+      transition: background-color 0.2s linear, box-shadow 0.2s linear;
+      user-select: none;
+
+    }
+  }
+}

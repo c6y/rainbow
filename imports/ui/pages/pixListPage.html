@@ -1,4 +1,4 @@
-<template name="pixPoolPage">
+<template name="pixListPage">
   <div class="container">
     <div class="header-fixed">
       {{> navPaging}}
@@ -8,9 +8,9 @@
       {{> navPageInfo}}
       {{> pixCount}}
     </div>
-    <div id="poolBody">
+    <div id="listBody">
       {{#if Template.subscriptionsReady}}
-        {{> pixPool}}
+        {{> pixList}}
       {{/if}}
     </div>
   </div>

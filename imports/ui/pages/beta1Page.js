@@ -5,22 +5,22 @@ import { DocHead } from 'meteor/kadira:dochead';
 import './beta1Page.html';
 
 // Components used inside the template
-import '../components/poolHeader.html';
-import '../components/poolHeader.js';
+import '../components/pixCount.html';
+import '../components/pixCount.js';
 import '../components/pixInput.html';
 import '../components/pixInput.js';
-import '../components/colorInput.html';
-import '../components/colorInput.js';
-import '../components/color.html';
-import '../components/color.js';
-import '../components/colorsPool.html';
-import '../components/colorsPool.js';
-import '../components/pic.html';
-import '../components/pic.js';
+import '../components/colors/colorInput.html';
+import '../components/colors/colorInput.js';
+import '../components/colors/color.html';
+import '../components/colors/color.js';
+import '../components/colors/colorsPool.html';
+import '../components/colors/colorsPool.js';
+import '../components/picSprite.html';
+import '../components/picSprite.js';
 import '../components/pixPool.html';
 import '../components/pixPool.js';
-import '../components/deleteAll.html';
-import '../components/deleteAll.js';
+import '../components/navigation/deleteAll.html';
+import '../components/navigation/deleteAll.js';
 
 // Template onCreated
 Template.beta1Page.onCreated(function() {

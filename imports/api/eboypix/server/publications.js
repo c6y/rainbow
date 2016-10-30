@@ -22,12 +22,12 @@ Meteor.publish('pix.afterDate.public', function pixAfterDatePublic(date) {
 // Publish paged documents
 Meteor.publish('pix.paged.public', function pixPagedPublic(page) {
   // Sub-publish total count of docs in EboyPix collection
-  Counts.publish(
-    this,
-    'pixCount',
-    EboyPix.find(),
-    { noReady: true }
-  );
+  // Counts.publish(
+  //   this,
+  //   'pixCount',
+  //   EboyPix.find(),
+  //   { noReady: true }
+  // );
 
   const selector = {}; // find all pix
   const pixPage = Meteor.settings.public.pixPerPage;
@@ -47,4 +47,14 @@ Meteor.publish('pix.single.public', function picPublic(id) {
   const selector = { _id: id }; // find single pic
   console.log('id: ' + id);
   return EboyPix.find(selector);
+});
+
+// publish total count of docs in EboyPix as separate collection
+Meteor.publish('pix.counts.public', function() {
+  Counts.publish(
+    this,
+    'totalDocsCount',
+    EboyPix.find(),
+    { noReady: true }
+  );
 });

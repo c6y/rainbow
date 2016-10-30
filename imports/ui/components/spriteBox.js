@@ -1,4 +1,4 @@
-import { Meteor } from 'meteor/meteor';
+// import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
@@ -8,10 +8,10 @@ import { Colors } from '../../api/colors/colors.js';
 import './spriteBox.html';
 
 // Components used
-import './pic.js';
-import './pic.html';
-import './metadata.js';
-import './metadata.html';
+import './picSprite.js';
+import './picSprite.html';
+import './picMeta.js';
+import './picMeta.html';
 
 // Template helpers
 Template.spriteBox.helpers({

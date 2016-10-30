@@ -1,23 +1,17 @@
-// import { Meteor } from 'meteor/meteor';
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import { Colors } from '../../api/colors/colors.js';
 
 import './pic.html';
 
-// Template helpers
+// Components used
+import './picSprite.js';
+import './picSprite.html';
+import './picMeta.js';
+import './picMeta.html';
+
 Template.pic.helpers({
-  toSpriteBoxPath() {
-    const thisId = this._id;
-    const params = { _id: thisId };
-    return FlowRouter.path('spriteBox', params);
-  },
-  isNotSpriteBoxRoute() {
-    const routeName = FlowRouter.getRouteName();
-    // Returns true if we're not on spriteBox
-    return routeName !== 'spriteBox';
-  },
   colorHSL() {
     // Get the color by name
     const color = Colors.findOne(
@@ -48,24 +42,12 @@ Template.pic.helpers({
       info: 'Warning! Assign a color!',
       value: emptyColor
     };
-  },
-  scaledDims() {
-    const width = this.dimensions.width;
-    const height = this.dimensions.height;
-    const boxDim = 256 + 16;
-    const maxDim = Math.max(width, height);
-    let divisor = boxDim / maxDim;
-    if (divisor <= 0.5) {
-      divisor = 0.5;
-    } else {
-      divisor = Math.max(Math.floor(divisor), 1);
-    }
-    // Return scaled dimensions
-    const scaledWidth = width * divisor;
-    const scaledHeight = height * divisor;
-    return {
-      width: scaledWidth,
-      height: scaledHeight
-    };
+  }
+});
+
+// Template events
+Template.pic.events({
+  'click .deletePic'() {
+    Meteor.call('eboypix.delete', this._id);
   }
 });

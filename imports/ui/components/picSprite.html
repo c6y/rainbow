@@ -1,0 +1,11 @@
+<template name="picSprite">
+  <figure class="picSpriteBox" style="background: {{colorHSL.value}}">
+    {{#if isNotSpriteBoxRoute}}
+      <a href="{{toSpriteBoxPath}}">
+        <img src="{{url}}" width="{{scaledDims.width}}" height="{{.scaledDims.height}}" alt="" />
+      </a>
+    {{else}}
+      <img src="{{url}}" width="{{scaledDims.width}}" height="{{scaledDims.height}}" alt="" />
+    {{/if}}
+  </figure>
+</template>

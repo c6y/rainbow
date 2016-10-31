@@ -44,8 +44,8 @@ Template.editTags.events({
       const tagsString = event.target.value;
       // Only allow alphanumerics, commas and minus
       let tagsStringClean = tagsString.replace(/[^a-z0-9,-]/gi, '');
-      // Remove trailing comma
-      tagsStringClean = tagsStringClean.replace(/,$/gi, '');
+      // Remove initial and trailing commas
+      tagsStringClean = tagsStringClean.replace(/(,*$)|(^,)/gi, '');
       // Turn string into a tags array
       const tagsArray = tagsStringClean.split(',');
       Meteor.call('eboypix.updateTags', this._id, tagsArray);

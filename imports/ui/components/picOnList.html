@@ -1,7 +1,6 @@
 <template name="picOnList">
   <span class="picOnListbox">
     <span class="deletePic">×</span>
-    <!-- <div class="picSpriteOnList" style="background: {{colorHSL.value}}"> -->
       <div class="picSpriteOnList">
       {{> picSprite}}
     </div>
@@ -15,6 +14,10 @@
           <span class="property">copyright: </span>
           {{> editCopyright}}
         </li>
+        <li>
+          <span class="property">backgroundColor: </span>
+          {{> editBackColor}}
+        </li>
         {{#if tags}}
           <li >
             <span class="property">tags:</span> {{#each tags}}
@@ -22,10 +25,6 @@
             {{/each}}
           </li>
         {{/if}}
-        <li>
-          <span class="property">backgroundColor: </span>
-          {{> editBackColor}}
-        </li>
       </ul>
     </div>
   </span>

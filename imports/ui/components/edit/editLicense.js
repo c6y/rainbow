@@ -7,16 +7,9 @@ import './editLicense.html';
 Template.editLicense.onCreated(function() {
   const self = this;
   self.TargetValuesCache = new ReactiveDict();
-  self.autorun(function() {
-    console.log('current license: ' + self.TargetValuesCache.get('license'));
-  });
-});
-
-Template.editLicense.helpers({
-  currentLicense() {
-    const originalLicense = this.TargetValuesCache.get('license');
-    return originalLicense;
-  }
+  // self.autorun(function() {
+  //   console.log('current license: ' + self.TargetValuesCache.get('license'));
+  // });
 });
 
 Template.editLicense.events({
@@ -33,7 +26,7 @@ Template.editLicense.events({
     event.target.value = originalLicense;
   },
   'keyup .editLicense'(event, target) {
-    if (event.keyCode === 13) { // return key submits new license
+    if (event.keyCode === 13) { // return submits new license
       Meteor.call('eboypix.updateLicense', this._id, event.target.value);
       // Deselect input field
       event.target.blur();

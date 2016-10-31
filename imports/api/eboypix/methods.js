@@ -70,5 +70,11 @@ Meteor.methods({
       taskId,
       { $set: { copyright: newCopyright } }
     );
+  },
+  'eboypix.updateBackColor'(taskId, newBackColor) {
+    EboyPix.update(
+      taskId,
+      { $set: { backgroundColor: newBackColor } }
+    );
   }
 });

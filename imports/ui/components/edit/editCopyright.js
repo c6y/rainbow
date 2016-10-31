@@ -7,16 +7,9 @@ import './editCopyright.html';
 Template.editCopyright.onCreated(function() {
   const self = this;
   self.TargetValuesCache = new ReactiveDict();
-  self.autorun(function() {
-    console.log('current copyright: ' + self.TargetValuesCache.get('copyright'));
-  });
-});
-
-Template.editCopyright.helpers({
-  currentCopyright() {
-    const originalcopyright = this.TargetValuesCache.get('copyright');
-    return originalcopyright;
-  }
+  // self.autorun(function() {
+  //   console.log('current copyright: ' + self.TargetValuesCache.get('copyright'));
+  // });
 });
 
 Template.editCopyright.events({

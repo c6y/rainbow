@@ -14,6 +14,8 @@ import './edit/editLicense.js';
 import './edit/editLicense.html';
 import './edit/editCopyright.js';
 import './edit/editCopyright.html';
+import './edit/editBackColor.js';
+import './edit/editBackColor.html';
 
 Template.picOnList.helpers({
   colorHSL() {

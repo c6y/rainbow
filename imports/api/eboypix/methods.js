@@ -76,5 +76,11 @@ Meteor.methods({
       taskId,
       { $set: { backgroundColor: newBackColor } }
     );
+  },
+  'eboypix.updateTags'(taskId, newTagsArray) {
+    EboyPix.update(
+      taskId,
+      { $set: { tags: newTagsArray } }
+    );
   }
 });

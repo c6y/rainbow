@@ -18,13 +18,10 @@
           <span class="property">backgroundColor: </span>
           {{> editBackColor}}
         </li>
-        {{#if tags}}
-          <li >
-            <span class="property">tags:</span> {{#each tags}}
-              <span class="tag">{{this}}</span>
-            {{/each}}
-          </li>
-        {{/if}}
+        <li>
+          <span class="property">tags: </span>
+          {{> editTags}}
+        </li>
       </ul>
     </div>
   </span>

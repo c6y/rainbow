@@ -14,6 +14,8 @@ import './edit/editCopyright.js';
 import './edit/editCopyright.html';
 import './edit/editBackColor.js';
 import './edit/editBackColor.html';
+import './edit/editTags.js';
+import './edit/editTags.html';
 
 Template.picOnList.events({
   'click .deletePic'() {

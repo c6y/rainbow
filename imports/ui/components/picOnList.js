@@ -1,6 +1,5 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-import { ReactiveDict } from 'meteor/reactive-dict';
 
 import { Colors } from '../../api/colors/colors.js';
 
@@ -11,14 +10,10 @@ import './picSprite.js';
 import './picSprite.html';
 import './picMeta.js';
 import './picMeta.html';
-
-Template.picOnList.onCreated(function() {
-  const self = this;
-  self.TargetValuesCache = new ReactiveDict();
-  self.autorun(function() {
-    console.log('current license: ' + self.TargetValuesCache.get('license'));
-  });
-});
+import './edit/editLicense.js';
+import './edit/editLicense.html';
+import './edit/editCopyright.js';
+import './edit/editCopyright.html';
 
 Template.picOnList.helpers({
   colorHSL() {
@@ -51,10 +46,6 @@ Template.picOnList.helpers({
       info: 'Warning! Assign a color!',
       value: emptyColor
     };
-  },
-  currentLicense() {
-    const originalLicense = this.TargetValuesCache.get('license');
-    return originalLicense;
   }
 });
 
@@ -62,47 +53,5 @@ Template.picOnList.helpers({
 Template.picOnList.events({
   'click .deletePic'() {
     Meteor.call('eboypix.delete', this._id);
-  },
-  // // // Edit license events
-  'click .editLicense'(event, target) {
-    // Store original license in ReactiveDict
-    target.TargetValuesCache.set('license', this.license);
-  },
-  'blur .editLicense'(event, target) {
-    // Restore license input to original value
-    // if user leaves input and does not press return
-    const originalLicense = target.TargetValuesCache.get('license');
-    this.license = originalLicense;
-    event.target.value = originalLicense;
-  },
-  'keyup .editLicense'(event, target) {
-    if (event.keyCode === 13) { // return key submits new license
-      Meteor.call('eboypix.updateLicense', this._id, event.target.value);
-      // Deselect input field
-      event.target.blur();
-    } else if (event.keyCode === 27) { // escape restores license
-      event.target.blur();
-    }
-  },
-  // // // Edit copyright events
-  'click .editCopyright'(event, target) {
-    // Store original license in ReactiveDict
-    target.TargetValuesCache.set('copyright', this.copyright);
-  },
-  'blur .editCopyright'(event, target) {
-    // Restore copyright input to original value
-    // if user leaves input and does not press return
-    const originalLicense = target.TargetValuesCache.get('copyright');
-    this.copyright = originalLicense;
-    event.target.value = originalLicense;
-  },
-  'keyup .editCopyright'(event, target) {
-    if (event.keyCode === 13) { // return key submits new copyright
-      Meteor.call('eboypix.updateCopyright', this._id, event.target.value);
-      // Deselect input field
-      event.target.blur();
-    } else if (event.keyCode === 27) { // escape restores copyright
-      event.target.blur();
-    }
   }
 });

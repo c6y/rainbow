@@ -9,11 +9,11 @@
       <ul>
         <li>
           <span class="property">license: </span>
-          <input class="editLicense" type="text" name="licenseInput" value="{{this.license}}" size="36">
+          {{> editLicense}}
         </li>
         <li>
           <span class="property">copyright: </span>
-          <input class="editCopyright" type="text" name="copyrightInput" value="{{this.copyright}}" size="36">
+          {{> editCopyright}}
         </li>
         {{#if tags}}
           <li >
@@ -23,10 +23,6 @@
           </li>
         {{/if}}
         <li><span class="property">backgroundColor: </span>{{this.backgroundColor}}</li>
-        <!-- <li>
-          <span class="property">copyright: </span>
-          <span class="editCopyright" contenteditable={{isEditable}}>{{this.copyright}}</span>
-        </li> -->
       </ul>
     </div>
   </span>

@@ -4,13 +4,23 @@
 .picOnListbox {
   display: flex;
   .picSpriteOnList {
-    width: @cell;
-    margin-right: 0.5 * @cell-margin;
+    // at 3 column containers
+    @media only screen
+    and (min-width: (3 * @cell + 4 * @cell-margin)){
+      width: 2 * @cell;
+    }
+    // at 2 column containers
+    @media only screen
+    and (max-width: (3 * @cell + 4 * @cell-margin)){
+      width: @cell;
+    }
+    // margin-right: 0.5 * @cell-margin;
     // flex-grow: 1;
     overflow: hidden;
     display: inline-block;
     padding: 0;
     // background-color: red;
+    // box-shadow: @boxshadow-1;
   }
   .picMetaEdit {
     // line-height: 1rem;
@@ -18,9 +28,9 @@
     width: @cell - 2 * @cell-margin;
     flex-grow: 2;
     display: inline-block;
-    color: @color-3;
     background-color: @color-1;
     padding: @cell-margin;
+    // box-shadow: @boxshadow-1;
     ul {
       padding: 0;
       margin: 0;
@@ -40,13 +50,21 @@
       content: '';
     }
   }
-  .deletePic {
+  .picLabel {
     position: absolute;
     background: @color-2;
-    color: @color-5;
+    padding: 0;
+    padding: 0.5 * @cell-margin @cell-margin 0.5 * @cell-margin 0;
+
+  }
+  .deletePic {
     padding: 0.5 * @cell-margin @cell-margin;
+    color: @color-5;
     z-index: 10;
     cursor: pointer;
+  }
+  .fileName {
+    color: @color-1;
   }
   .deletePic:hover {
     color: @color-2;
@@ -58,17 +76,13 @@
   .editMeta {
   }
   textarea {
-    // box-sizing: border-box;
-    // display:inline-block;
     width: 100%;
-    display: inline-block;
-    vertical-align:top;
-    // width: auto;
+    display: block;
+    // vertical-align:top;
     resize: none;
-    // overflow: visible;
     border: 0;
-    margin: 0 0 @cell-margin 0;
     padding: 0;
+    margin: 0 0 @cell-margin 0;
   }
   input {
     border: 0;
@@ -81,10 +95,10 @@
     font-family: inherit;
     font-size: inherit;
     background-color: @color-1;
-    // background-color: @color-link-3;
+    background-color: @color-15;
   }
   textarea:focus, input:focus {
     color: @color-2;
-    background-color: @color-15;
+    background-color: @color-7;
   }
 }

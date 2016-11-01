@@ -1,13 +1,16 @@
 <template name="picOnList">
   <span class="picOnListbox">
-    <span class="deletePic">×</span>
-      <div class="picSpriteOnList">
+    <span class="picLabel">
+      <span class="deletePic">×</span>
+      <span class="fileName">{{this.name}}</span>
+    </span>
+    <div class="picSpriteOnList">
       {{> picSprite}}
     </div>
     <div class="picMetaEdit">
       <ul>
         <li>
-          <span class="property">tags: </span>
+          <!-- <span class="property">tags: </span> -->
           <span class="editMeta">{{> editTags}}</span>
         </li>
         <li>

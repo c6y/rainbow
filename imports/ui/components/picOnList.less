@@ -12,13 +12,11 @@
     // background-color: red;
   }
   .picMetaEdit {
+    font-size: 0.8rem;
     width: auto;
     flex-grow: 2;
     padding-left: @cell-margin;
     display: inline-block;
-    color: @color-3;
-    background-color: @color-1;
-    font-size: 0.8em;
     color: @color-3;
     background-color: @color-1;
     padding: 2 * @cell-margin;
@@ -28,9 +26,11 @@
     }
     li {
       list-style: none;
+      background-color: @color-8;
     }
     .property {
       color: @color-6;
+      background-color: @color-1;
     }
     .tag:after {
       content: ',';
@@ -54,13 +54,16 @@
   .editName {
     cursor: pointer;
   }
+  .editMeta {
+  }
   input {
     color: @color-3;
     font-family: inherit;
-    font-size: 0.8rem;
-    background-color: @color-1;
+    font-size: inherit;
+    background-color: @color-7;
     border: 0;
     margin: 0;
     padding: 0;
+    // width: 100%;
   }
 }

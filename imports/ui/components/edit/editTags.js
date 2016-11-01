@@ -1,22 +1,20 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-import { ReactiveDict } from 'meteor/reactive-dict';
 
 import './editTags.html';
-
-Template.editTags.onCreated(function() {
-  const self = this;
-  self.TargetValuesCache = new ReactiveDict();
-  // self.autorun(function() {
-  //   console.log('current tags: ' + self.TargetValuesCache.get('tags'));
-  // });
-});
 
 Template.editTags.helpers({
   allTags() {
     const tagsString = String(this.tags);
     const tagsStringSpaced = tagsString.replace(/,/g, ', ');
     return tagsStringSpaced;
+  },
+  initialInputWidth() {
+    // Set initial width of input field based on length of tags
+    const tagsString = String(this.tags);
+    const tagsStringSpaced = tagsString.replace(/,/g, ', ');
+    const lengthString = Math.max(tagsStringSpaced.length, 6);
+    return lengthString;
   }
 });
 
@@ -29,7 +27,10 @@ Template.editTags.events({
     // for nice display, add a space after commas
     const tagsStringSpaced = tagsStringClean.replace(/,/g, ', ');
     // live update input value
-    event.target.value = tagsStringSpaced;
+    event.target.value = tagsStringSpaced;// http://www.w3schools.com/jsref/met_element_setattribute.asp
+    // Update width of input field as you type
+    const lengthString = Math.max(tagsStringSpaced.length, 6);
+    event.target.setAttribute('size', lengthString);
   },
   'blur .editTags'(event, target) {
     // Restore tags input to original value
@@ -38,6 +39,9 @@ Template.editTags.events({
     // for nice display, add a space after commas
     const tagsStringSpaced = tagsString.replace(/,/g, ', ');
     event.target.value = tagsStringSpaced;
+    const originalLength = tagsStringSpaced.length;
+    // Restore width of input field
+    event.target.setAttribute('size', Math.max(originalLength, 6));
   },
   'keyup .editTags'(event, target) {
     if (event.keyCode === 13) { // return key submits new tags

@@ -3,11 +3,26 @@ import { Template } from 'meteor/templating';
 
 import './editBackColor.html';
 
+Template.editBackColor.helpers({
+  initialInputWidth() {
+    // Set initial width of input field based on length of string
+    const lengthStr = Math.max(this.backgroundColor.length, 2);
+    return lengthStr;
+  }
+});
+
 Template.editBackColor.events({
+  'input .editBackColor'(event, target) {
+    // Update width of input field as you type
+    const lengthStr = Math.max(event.target.value.length, 6);
+    event.target.setAttribute('size', lengthStr);
+  },
   'blur .editBackColor'(event, target) {
     // Restore backgroundColor input to original value
     // if user leaves input and does not press return
     event.target.value = this.backgroundColor;
+    // Restore width of input field
+    event.target.setAttribute('size', Math.max(this.backgroundColor.length, 2));
   },
   'keyup .editBackColor'(event, target) {
     if (event.keyCode === 13) { // return key submits new backgroundColor

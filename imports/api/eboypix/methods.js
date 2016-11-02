@@ -82,5 +82,11 @@ Meteor.methods({
       taskId,
       { $set: { tags: newTagsArray } }
     );
+  },
+  'eboypix.updateProject'(taskId, newProject) {
+    EboyPix.update(
+      taskId,
+      { $set: { project: newProject } }
+    );
   }
 });

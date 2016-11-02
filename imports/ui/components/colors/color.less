@@ -23,11 +23,23 @@
       // background-color: hsla(0, 0%, 100%, 0.8);
       padding: 0.5 * @cell-margin @cell-margin;
     }
-    .colorTags {
+    .colorMeta {
+      padding: 0.5 * @cell-margin @cell-margin;
+      // background-color: @color-2;
       font-size: 0.75rem;
       display: block;
-      padding: 0.5 * @cell-margin @cell-margin;
-      // background-color: yellow;
+      color: @color-1;
+      // opacity: 0.2;
+      .colorTags {
+        // display: block;
+        padding: 0;
+        // background-color: @color-2;
+      }
+      .hslValue {
+        display: block;
+        padding: 0;
+        // background-color: @color-2;
+      }
     }
   }
 }

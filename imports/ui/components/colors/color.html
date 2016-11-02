@@ -2,7 +2,10 @@
   <span class="colorSwatch" style="background: hsl({{hue}}, {{saturation}}%, {{luminosity}}%)">
     <span class="colorInfos">
       <span class="deleteColor">×</span><span class="colorName">{{name}}</span>
-      <span class="colorTags">{{tags}}</span>
+      <span class="colorMeta">
+        <span class="colorTags">{{tags}}</span>
+        <span class="hslValue">hsl ({{hue}}º, {{saturation}}%, {{luminosity}}%)</span>
+      </span>
     </span>
   </span>
 </template>

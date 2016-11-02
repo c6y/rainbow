@@ -20,7 +20,12 @@ Schemas.Pix = new SimpleSchema({
     type: Number
   },
   'tags': {
-    type: [String]
+    type: [String],
+    optional: true
+  },
+  'projects': {
+    type: [String],
+    optional: true
   },
   'backgroundColor': {
     type: String

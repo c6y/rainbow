@@ -14,6 +14,7 @@ Meteor.methods({
   'eboypix.insert'(url, imageWidth, imageHeight) {
     const picName = getPicName(url);
     let projectName = getProjectName(url);
+    console.log('typeof projectName: ' + typeof projectName);
     // projectName = projectName === undefined ? '' : projectName;
     // console.log('typeof projectName: ' + typeof projectName);
     const fileType = getFileType(url);
@@ -45,10 +46,10 @@ Meteor.methods({
       createdAt: new Date(),
       dimensions: { width: imageWidth, height: imageHeight },
       backgroundColor: colorName,
-      tags: ['sprite', 'eboy'],
+      tags: [],
       copyright: '©eBoy',
       license: 'CC BY-NC-ND 4.0',
-      project: projectName,
+      projects: [projectName],
       fullframe: fullFrame
     });
     console.log('successfully inserted: ' + picName);
@@ -81,6 +82,12 @@ Meteor.methods({
     EboyPix.update(
       taskId,
       { $set: { tags: newTagsArray } }
+    );
+  },
+  'eboypix.updateProjects'(taskId, newProjects) {
+    EboyPix.update(
+      taskId,
+      { $set: { projects: newProjects } }
     );
   },
   'eboypix.updateProject'(taskId, newProject) {

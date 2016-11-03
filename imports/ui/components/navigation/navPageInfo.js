@@ -5,12 +5,16 @@ import { Counts } from 'meteor/tmeasday:publish-counts';
 
 import './navPageInfo.html';
 
-Template.navPageInfo.onCreated(function() {
-  const self = this;
-  self.autorun(function() {
-    self.subscribe('pix.counts.public');
-  });
-});
+// This seems to mess up counting if there's
+// the same subscription on navPaging
+// Template.navPageInfo.onCreated(function() {
+  // const self = this;
+  // const theSlug = FlowRouter.getParam('slug');
+  // console.log('navPageInfo: theSlug: ' + theSlug);
+  // self.autorun(function() {
+  //   self.subscribe('pix.counts.public', theSlug);
+  // });
+// });
 
 Template.navPageInfo.helpers({
   thisRouteName() {

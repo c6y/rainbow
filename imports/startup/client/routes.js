@@ -12,7 +12,7 @@ import '../../ui/pages/addDocPage.js';
 import '../../ui/pages/beta1Page.js';
 import '../../ui/pages/pixListPage.js';
 
-FlowRouter.route('/pool/:page', {
+FlowRouter.route('/pool/:slug/:page', {
   name: 'pool',
   action() {
     console.log('pool route is being rendered');

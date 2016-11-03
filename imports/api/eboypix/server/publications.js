@@ -20,16 +20,12 @@ Meteor.publish('pix.afterDate.public', function pixAfterDatePublic(date) {
 });
 
 // Publish paged documents
-Meteor.publish('pix.paged.public', function pixPagedPublic(page) {
-  // Sub-publish total count of docs in EboyPix collection
-  // Counts.publish(
-  //   this,
-  //   'pixCount',
-  //   EboyPix.find(),
-  //   { noReady: true }
-  // );
+Meteor.publish('pix.paged.public', function pixPagedPublic(slug, page) {
+  const reg = RegExp(slug, 'i', 's');
+  const slugRegExp = { $regex: reg };
+  // If slug is 'everything' return full search, else search in tags
+  const selector = slug === 'everything' ? {} : { tags: slugRegExp };
 
-  const selector = {}; // find all pix
   const pixPage = Meteor.settings.public.pixPerPage;
   // Convert page string to integer
   let pageInt = parseInt(page, 10);
@@ -39,6 +35,7 @@ Meteor.publish('pix.paged.public', function pixPagedPublic(page) {
     skip: skipCount,
     sort: { createdAt: -1 }
   };
+  // return EboyPix.find({tags: 'test'}, options);
   return EboyPix.find(selector, options);
 });
 
@@ -50,11 +47,16 @@ Meteor.publish('pix.single.public', function picPublic(id) {
 });
 
 // publish total count of docs in EboyPix as separate collection
-Meteor.publish('pix.counts.public', function() {
+Meteor.publish('pix.counts.public', function(slug) {
+  const reg = RegExp(slug, 'i', 's');
+  const slugRegExp = { $regex: reg };
+  // If slug is 'everything' return full search, else search in tags
+  const selector = slug === 'everything' ? {} : { tags: slugRegExp };
+  console.log('slug: ' + slug);
   Counts.publish(
     this,
     'totalDocsCount',
-    EboyPix.find(),
+    EboyPix.find(selector),
     { noReady: true }
   );
 });

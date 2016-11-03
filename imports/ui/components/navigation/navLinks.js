@@ -7,7 +7,7 @@ Template.navLinks.helpers({
   toPoolPath() {
     const thisRouteName = FlowRouter.getRouteName();
     if (thisRouteName !== 'pool') {
-      return FlowRouter.path('pool', { page: '1' });
+      return FlowRouter.path('pool', { slug: 'everything', page: '1' });
     }
   },
   toAddDocsPath() {

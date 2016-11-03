@@ -7,7 +7,9 @@ Template.navPaging.onCreated(function() {
   const self = this;
   self.autorun(function() {
     // subscribe to total document count
-    self.subscribe('pix.counts.public');
+    let theSlug = FlowRouter.getParam('slug');
+    console.log('navPaging theSlug: ' + theSlug);
+    self.subscribe('pix.counts.public', theSlug);
   });
 });
 

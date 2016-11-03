@@ -24,9 +24,10 @@ Template.pixPoolPage.onCreated(function() {
   self.autorun(function() {
     const title = FlowRouter.getRouteName();
     const thisPage = FlowRouter.getParam('page');
+    const thisSlug = FlowRouter.getParam('slug');
 
     DocHead.setTitle(title + '/' + thisPage);
-    self.subscribe('pix.paged.public', thisPage);
+    self.subscribe('pix.paged.public', thisSlug, thisPage);
     self.subscribe('colors.public');
   });
 });

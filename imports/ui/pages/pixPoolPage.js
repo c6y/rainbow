@@ -15,6 +15,8 @@ import '../components/navigation/navLinks.html';
 import '../components/navigation/navLinks.js';
 import '../components/navigation/navPageInfo.js';
 import '../components/navigation/navPageInfo.html';
+import '../components/navigation/navSearch.js';
+import '../components/navigation/navSearch.html';
 
 // Template onCreated
 Template.pixPoolPage.onCreated(function() {

@@ -17,7 +17,6 @@ Template.pixPoolLatest.helpers({
     return newDocsCount;
   },
   latestUploadTime() {
-    // console.log('latestUploadAt: ' + Session.get('latestUploadAt'));
     return Session.get('latestUploadAt');
   }
 });

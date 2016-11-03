@@ -5,10 +5,13 @@ import './navSearch.html';
 
 Template.navSearch.events({
   'keyup input'(event, target) {
-    if (event.keyCode === 13) { // return key submits search term
-      const searchValue = event.target.value;
-      console.log(searchValue);
-      FlowRouter.setParams({ page: 1, slug: searchValue });
+    // Add return key below, if no live search is needed
+    // if (event.keyCode === 13) {
+    let searchValue = 'everything';
+    if (event.target.value) {
+      searchValue = event.target.value;
     }
+    FlowRouter.setParams({ page: 1, slug: searchValue });
+    // }
   }
 });

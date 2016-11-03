@@ -55,8 +55,6 @@ Template.editProjects.events({
       projectsString = projectsString.replace(/, *,/gi, ',');
       // Turn string into a projects array
       const projectsArray = projectsString.split(',');
-      console.log('projectsArray: ' + projectsArray);
-      console.log('typeof projectsArray: ' + typeof projectsArray);
       // Remove duplicates from array
       // (each value in a Set has to be unique)
       const uniqueProjectsArray = Array.from(new Set(projectsArray));

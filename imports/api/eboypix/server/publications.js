@@ -42,7 +42,6 @@ Meteor.publish('pix.paged.public', function pixPagedPublic(slug, page) {
 // Publish one single document
 Meteor.publish('pix.single.public', function picPublic(id) {
   const selector = { _id: id }; // find single pic
-  console.log('id: ' + id);
   return EboyPix.find(selector);
 });
 
@@ -52,7 +51,6 @@ Meteor.publish('pix.counts.public', function(slug) {
   const slugRegExp = { $regex: reg };
   // If slug is 'everything' return full search, else search in tags
   const selector = slug === 'everything' ? {} : { tags: slugRegExp };
-  console.log('slug: ' + slug);
   Counts.publish(
     this,
     'totalDocsCount',

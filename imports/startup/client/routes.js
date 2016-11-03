@@ -15,7 +15,6 @@ import '../../ui/pages/pixListPage.js';
 FlowRouter.route('/pool/:slug/:page', {
   name: 'pool',
   action() {
-    console.log('pool route is being rendered');
     BlazeLayout.render('applayout', {
       main: 'pixPoolPage'
     });
@@ -25,7 +24,6 @@ FlowRouter.route('/pool/:slug/:page', {
 FlowRouter.route('/list/:page', {
   name: 'list',
   action() {
-    console.log('list route is being rendered');
     BlazeLayout.render('applayout', {
       main: 'pixListPage'
     });
@@ -35,7 +33,6 @@ FlowRouter.route('/list/:page', {
 FlowRouter.route('/colors', {
   name: 'colors',
   action() {
-    console.log('colors route is being rendered');
     BlazeLayout.render('applayout', {
       main: 'colorsPoolPage'
     });
@@ -45,7 +42,6 @@ FlowRouter.route('/colors', {
 FlowRouter.route('/spritebox/:_id', {
   name: 'spriteBox',
   action() {
-    console.log('spritebox route is being rendered');
     BlazeLayout.render('applayout', {
       main: 'spriteBoxPage'
     });
@@ -55,7 +51,6 @@ FlowRouter.route('/spritebox/:_id', {
 FlowRouter.route('/addDoc', {
   name: 'addDoc',
   action() {
-    console.log('addDoc route is being rendered');
     BlazeLayout.render('applayout', {
       main: 'addDocPage'
     });
@@ -65,7 +60,6 @@ FlowRouter.route('/addDoc', {
 FlowRouter.route('/beta-A', {
   name: 'beta-A',
   action() {
-    console.log('beta-A route is being rendered');
     BlazeLayout.render('applayout', {
       main: 'beta1Page'
     });

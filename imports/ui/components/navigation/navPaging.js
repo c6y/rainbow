@@ -8,7 +8,6 @@ Template.navPaging.onCreated(function() {
   self.autorun(function() {
     // subscribe to total document count
     let theSlug = FlowRouter.getParam('slug');
-    console.log('navPaging theSlug: ' + theSlug);
     self.subscribe('pix.counts.public', theSlug);
   });
 });
@@ -33,11 +32,6 @@ Template.navPaging.helpers({
     const thisPageString = FlowRouter.getParam('page');
     return parseInt(thisPageString, 10);//
   },
-  // totalPageCount() {
-  //   const docsCount = Counts.get('pixCount');
-  //   const docsPerPage = Meteor.settings.public.pixPerPage;
-  //   return Math.max(Math.ceil(docsCount / docsPerPage), 1);
-  // },
   previousPageClass() {
     const thisPageString = FlowRouter.getParam('page');
     if (parseInt(thisPageString, 10) !== 1) {

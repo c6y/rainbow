@@ -14,7 +14,6 @@ Template.pixInput.events({
     const imgBatchURLs = target.batchchurls.value;
     // Remove line breaks
     const imgBatchURLsClean = imgBatchURLs.replace(/[\r\n]/g, ',');
-    // console.log('imgBatchURLsClean: ' + imgBatchURLsClean);
 
     // Create an array and populate with urls
     let urls = [];

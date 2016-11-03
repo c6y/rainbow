@@ -28,20 +28,20 @@
     width: @cell - 2 * @cell-margin;
     flex-grow: 2;
     display: inline-block;
-    background-color: @color-1;
-    padding: @cell-margin;
+    background-color: @color-0;
+    // padding: @cell-margin;
     // box-shadow: @boxshadow-1;
-    ul {
-      padding: 0;
-      margin: 0;
-    }
+    // ul {
+    //   padding: 0;
+    //   margin: 0;
+    // }
     li {
       list-style: none;
       // background-color: @color-8;
     }
     .property {
       color: @color-6;
-      // background-color: @color-1;
+      // background-color: @color-15;
     }
     .tag:after {
       content: ',';
@@ -81,13 +81,22 @@
     // vertical-align:top;
     resize: none;
     border: 0;
+    padding: @cell-margin;
+    border-bottom: 1px solid @color-7;
+  }
+  .multiInput {
     padding: 0;
-    margin: 0 0 @cell-margin 0;
+    margin: 0;
+  }
+  .singleInput {
+    margin: 0;
+    padding: @cell-margin;
+    background-color: @color-15;
   }
   input {
     border: 0;
     margin: 0;
-    padding: 0;
+    // padding: @cell-margin;
   }
   input, textarea {
     outline: none;

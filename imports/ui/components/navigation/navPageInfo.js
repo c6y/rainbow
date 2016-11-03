@@ -6,8 +6,8 @@ import { Counts } from 'meteor/tmeasday:publish-counts';
 import './navPageInfo.html';
 
 Template.navPageInfo.helpers({
-  thisRouteName() {
-    return FlowRouter.getRouteName();
+  thisRouteSlug() {
+    return FlowRouter.getParam('slug');
   },
   thisPage() {
     const page = FlowRouter.getParam('page');

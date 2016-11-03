@@ -24,7 +24,17 @@ Meteor.publish('pix.paged.public', function pixPagedPublic(slug, page) {
   const reg = RegExp(slug, 'i', 's');
   const slugRegExp = { $regex: reg };
   // If slug is 'everything' return full search, else search in tags
-  const selector = slug === 'everything' ? {} : { tags: slugRegExp };
+  // const selector = slug === 'everything' ? {} : { tags: slugRegExp };
+
+  let selector = {};
+  if (slug !== 'everything') {
+    selector = {
+      $or: [
+        { tags: slugRegExp },
+        { projects: slugRegExp }
+      ]
+    };
+  }
 
   const pixPage = Meteor.settings.public.pixPerPage;
   // Convert page string to integer
@@ -50,7 +60,16 @@ Meteor.publish('pix.counts.public', function(slug) {
   const reg = RegExp(slug, 'i', 's');
   const slugRegExp = { $regex: reg };
   // If slug is 'everything' return full search, else search in tags
-  const selector = slug === 'everything' ? {} : { tags: slugRegExp };
+  // const selector = slug === 'everything' ? {} : { tags: slugRegExp };
+  let selector = {};
+  if (slug !== 'everything') {
+    selector = {
+      $or: [
+        { tags: slugRegExp },
+        { projects: slugRegExp }
+      ]
+    };
+  }
   Counts.publish(
     this,
     'totalDocsCount',

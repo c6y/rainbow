@@ -1,10 +1,11 @@
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
+import { _ } from 'meteor/underscore';
 
 import './navSearch.html';
 
 Template.navSearch.events({
-  'keyup input'(event, target) {
+  'keyup input': _.throttle(function(event, target) {
     // Add return key below, if no live search is needed
     // if (event.keyCode === 13) {
     let searchValue = 'everything';
@@ -13,5 +14,5 @@ Template.navSearch.events({
     }
     FlowRouter.setParams({ page: 1, slug: searchValue });
     // }
-  }
+  }, 500)
 });

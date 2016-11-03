@@ -21,7 +21,7 @@ FlowRouter.route('/pool/:slug/:page', {
   }
 });
 
-FlowRouter.route('/list/:page', {
+FlowRouter.route('/list/:slug/:page', {
   name: 'list',
   action() {
     BlazeLayout.render('applayout', {

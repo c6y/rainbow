@@ -25,7 +25,7 @@ Template.navLinks.helpers({
   toListPath() {
     const thisRouteName = FlowRouter.getRouteName();
     if (thisRouteName !== 'list') {
-      return FlowRouter.path('list', { page: '1' });
+      return FlowRouter.path('list', { slug: 'everything', page: '1' });
     }
   },
   thisIsHere() {

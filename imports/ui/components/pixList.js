@@ -1,4 +1,5 @@
 import { Template } from 'meteor/templating';
+
 import { EboyPix } from '../../api/eboypix/eboypix.js';
 
 // Components used

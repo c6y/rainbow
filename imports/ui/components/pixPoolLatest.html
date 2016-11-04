@@ -1,16 +1,10 @@
 <template name="pixPoolLatest">
   {{#if latestUploadTime}}
     {{#if docsCount}}
-      <div class="pixPoolLatestBox">
-        <div class="uploadedInfo">
-          {{docsCount}} documents successfuly added:
-        </div>
-          {{#each pix}}
-            <ul>
-              {{> pic}}
-            </ul>
-          {{/each}}
+      <div class="uploadedInfo">
+        {{docsCount}} documents successfuly added:
       </div>
+      {{> pixList}}
     {{/if}}
   {{/if}}
 </template>

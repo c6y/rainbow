@@ -5,24 +5,5 @@
 @import '../components/navigation/navPageInfo.less';
 @import '../components/navigation/navSearch.less';
 
-.header-fixed {
-  position: fixed;
-  margin: @cell-margin;
-  z-index: 100;
-  padding: @cell-margin;
-  width: @cell - 2 * @cell-margin;
-  height: 0.5 * @cell - 2 * @cell-margin;
-}
-
-.header {
-  z-index: 9;
-  padding: 2 * @cell-margin;
-  width: 0 auto;
-  height: 0.5 * @cell - 2 * @cell-margin;
-  background-color: @color-12;
-  text-align: right;
-}
-
-#poolBody {
-  padding: 0;
-}
+@import '../stylesheets/header.less';
+@import '../stylesheets/body.less';

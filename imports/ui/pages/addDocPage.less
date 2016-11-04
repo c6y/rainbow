@@ -1,18 +1,25 @@
 @import '../stylesheets/base.less';
 @import '../components/pixInput.less';
-@import '../components/pixPoolLatest.less';
+@import '../components/pixList.less';
 @import '../components/navigation/navLinks.less';
 
 .failedInsertsClass {
-  background-color: @color-5;
-  margin: 0 @cell-margin @cell-margin @cell-margin;
+  // display: none;
+  // background-color: @color-5;
+  // border-left: @cell-margin solid red;
+  margin: @cell-margin @cell-margin 2 * @cell-margin @cell-margin;
   .errorHeader {
     padding: @cell-margin;
+    background-color: @color-5;
+    color: #822;
+    // margin-bottom: @cell-margin;
   }
   ol {
-    color: @color-5;
+    // color: @color-5;
+    color: #822;
     font-size: 0.75rem;
-    background-color: @color-1;
+    // background-color: #433;
+    background-color: rgb(242, 179, 179);
     margin: 0;
     padding-left: 2em;
     padding: @cell-margin;
@@ -23,4 +30,13 @@
       list-style: none
     }
   }
+}
+
+.uploadedInfo {
+  padding: @cell-margin;
+  margin: @cell-margin @cell-margin 0 @cell-margin;
+  width: auto;
+  // background-color: @color-success;
+  background-color: #6f6;
+  color: #262;
 }

@@ -1,0 +1,19 @@
+#appheader-fixed {
+  position: fixed;
+  margin: @cell-margin;
+  z-index: 100;
+  padding: @cell-margin;
+  width: @cell - 2 * @cell-margin;
+  height: 0.5 * @cell - 2 * @cell-margin;
+}
+
+#appheader {
+  z-index: 9;
+  padding: 2 * @cell-margin;
+  width: 0 auto;
+  height: 0.5 * @cell - 2 * @cell-margin;
+  background-color: @color-headerback;
+  color: @color-headertext;
+  text-align: right;
+  line-height: 1.3rem;
+}

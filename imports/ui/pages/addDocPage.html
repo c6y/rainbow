@@ -1,25 +1,34 @@
 <template name="addDocPage">
   <div class="container">
-    <div class="header">
+    <div id="appheader">
       {{> navLinks}}
       {{> navPageInfo}}
       {{> pixCount}}
     </div>
-    {{> pixInput}}
-    {{#if showInsertErrors}}
-      <div class="failedInsertsClass">
-        <div class="errorHeader">
-          {{insertErrorsCount}} Errors:
+    <div id="appbody">
+      {{> pixInput}}
+      {{#if showInsertErrors}}
+        <div class="failedInsertsClass">
+          <div class="errorHeader">
+            {{insertErrorsCount}} Errors:
+          </div>
+          <ol>
+            {{#each showInsertErrors}}
+              <li>{{this}}</li>
+            {{/each}}
+          </ol>
         </div>
-        <ol>
-          {{#each showInsertErrors}}
-            <li>{{this}}</li>
-          {{/each}}
-        </ol>
-      </div>
-    {{/if}}
-    <div id="listBody">
-      {{> pixPoolLatest}}
+      {{/if}}
+      {{#if latestUploadTime}}
+        {{#if docsCount}}
+          <div class="uploadedInfo">
+            {{docsCount}} Documents successfuly added:
+          </div>
+        {{/if}}
+      {{/if}}
+      {{#if Template.subscriptionsReady}}
+        {{> pixList}}
+      {{/if}}
     </div>
   </div>
 </template>

@@ -1,15 +1,15 @@
 <template name="pixListPage">
   <div class="container">
-    <div class="header-fixed">
+    <div id="appheader-fixed">
       {{> navPaging}}
     </div>
-    <div class="header">
+    <div id="appheader">
       {{> navLinks}}
       {{> navPageInfo}}
       {{> pixCount}}
       {{> navSearch}}
     </div>
-    <div id="listBody">
+    <div id="appbody">
       {{#if Template.subscriptionsReady}}
         {{> pixList}}
       {{/if}}

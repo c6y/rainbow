@@ -18,6 +18,8 @@ import '../components/navigation/navPageInfo.html';
 import '../components/navigation/navPageInfo.js';
 import '../components/pixCount.html';
 import '../components/pixCount.js';
+import '../components/logo.js';
+import '../components/logo.html';
 
 // Template onCreated
 Template.addDocPage.onCreated(function() {

@@ -9,6 +9,8 @@ import '../components/colors/countColors.html';
 import '../components/colors/countColors.js';
 import '../components/colors/colorsPool.html';
 import '../components/colors/colorsPool.js';
+import '../components/logo.js';
+import '../components/logo.html';
 
 // Template onCreated
 Template.colorsPoolPage.onCreated(function() {

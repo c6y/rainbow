@@ -14,25 +14,25 @@
     a {
       cursor: pointer;
       color: @color-headerlink;
-      background-color: @color-link-3;
-      transition: background-color 0.2s linear;
+      background-color: @color-headerback;
+      // transition: background-color 0.2s linear;
       user-select: none;
       box-shadow: @boxshadow-1;
     }
     a:hover {
-      background-color: @color-headerinput;
-      color: @color-link-1;
+      background-color: @color-headerlink;
+      color: @color-headerback;
     }
     a:active {
-      background-color: @color-link-1;
-      color: @color-link-2;
+      background-color: @color-headeractive;
+      color: @color-headerback;
       box-shadow: none;
     }
   }
   .inactive {
     a {
       color: @color-headertext;
-      background-color: @color-link-3;
+      background-color: @color-headerback;
       // opacity: 0.5;
       box-shadow: none;
       transition: background-color 0.2s linear, box-shadow 0.2s linear;

@@ -7,7 +7,11 @@ Template.navLinks.helpers({
   toPoolPath() {
     const thisRouteName = FlowRouter.getRouteName();
     if (thisRouteName !== 'pool') {
-      return FlowRouter.path('pool', { slug: 'everything', page: '1' });
+      let thisPage = 1;
+      if (thisRouteName === 'editor') {
+        thisPage = FlowRouter.getParam('page');
+      }
+      return FlowRouter.path('pool', { slug: 'everything', page: thisPage });
     }
   },
   toAddDocsPath() {
@@ -25,7 +29,11 @@ Template.navLinks.helpers({
   toEditorPath() {
     const thisRouteName = FlowRouter.getRouteName();
     if (thisRouteName !== 'editor') {
-      return FlowRouter.path('editor', { slug: 'everything', page: '1' });
+      let thisPage = 1;
+      if (thisRouteName === 'pool') {
+        thisPage = FlowRouter.getParam('page');
+      }
+      return FlowRouter.path('editor', { slug: 'everything', page: thisPage });
     }
   },
   thisIsHere() {

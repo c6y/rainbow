@@ -10,7 +10,7 @@ import '../../ui/pages/colorsPoolPage.js';
 import '../../ui/pages/spriteBoxPage.js';
 import '../../ui/pages/addDocPage.js';
 import '../../ui/pages/beta1Page.js';
-import '../../ui/pages/pixListPage.js';
+import '../../ui/pages/pixEditorPage.js';
 
 FlowRouter.route('/pool/:slug/:page', {
   name: 'pool',
@@ -21,11 +21,11 @@ FlowRouter.route('/pool/:slug/:page', {
   }
 });
 
-FlowRouter.route('/list/:slug/:page', {
-  name: 'list',
+FlowRouter.route('/editor/:slug/:page', {
+  name: 'editor',
   action() {
     BlazeLayout.render('applayout', {
-      main: 'pixListPage'
+      main: 'pixEditorPage'
     });
   }
 });

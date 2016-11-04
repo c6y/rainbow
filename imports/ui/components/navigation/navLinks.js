@@ -22,10 +22,10 @@ Template.navLinks.helpers({
       return FlowRouter.path('colors');
     }
   },
-  toListPath() {
+  toEditorPath() {
     const thisRouteName = FlowRouter.getRouteName();
-    if (thisRouteName !== 'list') {
-      return FlowRouter.path('list', { slug: 'everything', page: '1' });
+    if (thisRouteName !== 'editor') {
+      return FlowRouter.path('editor', { slug: 'everything', page: '1' });
     }
   },
   thisIsHere() {

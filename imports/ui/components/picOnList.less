@@ -3,6 +3,7 @@
 
 .picOnListbox {
   display: flex;
+  font-size: 0.8rem;
   .picSpriteOnList {
     // at 3 column containers
     @media only screen
@@ -14,34 +15,20 @@
     and (max-width: (3 * @cell + 4 * @cell-margin)){
       width: @cell;
     }
-    // margin-right: 0.5 * @cell-margin;
-    // flex-grow: 1;
     overflow: hidden;
     display: inline-block;
     padding: 0;
-    // background-color: red;
-    // box-shadow: @boxshadow-1;
   }
   .picMetaEdit {
-    // line-height: 1rem;
-    font-size: 0.8rem;
     width: @cell - 2 * @cell-margin;
     flex-grow: 2;
     display: inline-block;
     background-color: @color-0;
-    // padding: @cell-margin;
-    // box-shadow: @boxshadow-1;
-    // ul {
-    //   padding: 0;
-    //   margin: 0;
-    // }
     li {
       list-style: none;
-      // background-color: @color-8;
     }
     .property {
       color: @color-6;
-      // background-color: @color-15;
     }
     .tag:after {
       content: ',';
@@ -50,21 +37,20 @@
       content: '';
     }
   }
-  .picLabel {
-    position: absolute;
-    background: @color-2;
-    padding: 0;
-    padding: 0.5 * @cell-margin @cell-margin 0.5 * @cell-margin 0;
-
+  .fileName {
+    display: block;
+    color: @color-1;
+    padding: @cell-margin;
+    background-color: @color-8;
+    width: auto;
   }
   .deletePic {
-    padding: 0.5 * @cell-margin @cell-margin;
+    background: @color-2;
+    position: absolute;
+    padding: @cell-margin;
     color: @color-5;
     z-index: 10;
     cursor: pointer;
-  }
-  .fileName {
-    color: @color-1;
   }
   .deletePic:hover {
     color: @color-2;

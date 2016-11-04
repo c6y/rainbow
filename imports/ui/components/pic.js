@@ -1,4 +1,3 @@
-import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 
 import { Colors } from '../../api/colors/colors.js';
@@ -42,12 +41,5 @@ Template.pic.helpers({
       info: 'Warning! Assign a color!',
       value: emptyColor
     };
-  }
-});
-
-// Template events
-Template.pic.events({
-  'click .deletePic'() {
-    Meteor.call('eboypix.delete', this._id);
   }
 });

@@ -99,14 +99,20 @@ Meteor.methods({
       { $set: { madeDate: newDate } }
     );
   },
-  'eboypix.updateFullFrame'(taskId) {
-    const oldState = EboyPix.findOne({ _id: taskId }, { fullFrame: 1 });
-    // If oldState is undefined set fixedOldState as false, else true;
-    const fixedOldState = oldState.fullFrame === true;
-    const newState = fixedOldState === false;
+  'eboypix.updateFullFrame'(taskId, newState) {
     EboyPix.update(
       taskId,
       { $set: { fullFrame: newState } }
     );
   }
+  // 'eboypix.updateFullFrame'(taskId) {
+  //   const oldState = EboyPix.findOne({ _id: taskId }, { fullFrame: 1 });
+  //   // If oldState is undefined set fixedOldState as false, else true;
+  //   const fixedOldState = oldState.fullFrame === true;
+  //   const newState = fixedOldState === false;
+  //   EboyPix.update(
+  //     taskId,
+  //     { $set: { fullFrame: newState } }
+  //   );
+  // }
 });

@@ -2,9 +2,11 @@
   <!-- <span class="editFullFrame">{{isFullFrame}}</span> -->
   <span class="editFullFrame">
     {{#if this.fullFrame}}
-      &block;&block;&block;
+      <!-- &block;&block; -->
+      <span class="fullYes">Y</span>
     {{else}}
-      &bigcirc;&bigcirc;&bigcirc;
+      <!-- &gt;&lt; -->
+      <span class="fullNo">N</span>
     {{/if}}
   </span>
 </template>

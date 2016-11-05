@@ -7,7 +7,9 @@ Template.logo.helpers({
   toHomePath() {
     // Return path to home, if not on pool, page 1
     const isPool = FlowRouter.getRouteName() === 'pool';
-    if (isPool && FlowRouter.getParam('page') === '1') {
+    const isPageOne = FlowRouter.getParam('page') === '1';
+    const isSlugEverything = FlowRouter.getParam('slug') === 'everything';
+    if (isPool && isPageOne && isSlugEverything) {
       return false;
     }
     return FlowRouter.path('pool', { slug: 'everything', page: 1 });

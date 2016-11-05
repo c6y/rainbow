@@ -40,7 +40,32 @@
     .editFullFrame {
       cursor: pointer;
       user-select: none;
+    }
+    // .editFullFrame:hover {
+    //   color: @color-0;
+    //   background-color: @color-7;
+    // }
+    .fullYes {
+      background-color: @color-3;
+      color: @color-15;
+      padding: 0 0.5em;
+      transition: background-color 0.2s linear;
+    }
+    .fullYes:hover {
+      background-color: @color-0;
+      color: @color-7;
+      transition: background-color 0.2s linear;
+    }
+    .fullNo {
       color: @color-3;
+      background-color: inherit;
+      padding: 0 0.5em;
+      transition: background-color 0.2s linear;
+    }
+    .fullNo:hover {
+      background-color: @color-7;
+      color: @color-0;
+      transition: background-color 0.2s linear;
     }
   }
   .fileName {

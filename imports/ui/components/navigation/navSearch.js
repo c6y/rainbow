@@ -13,6 +13,14 @@ Template.navSearch.events({
       searchValue = event.target.value;
     }
     FlowRouter.setParams({ page: 1, slug: searchValue });
+    if (event.keyCode === 13) {
+      event.target.value = '';
+      // event.target.blur();
+    }
     // }
-  }, 500)
+  }, 500),
+  'blur input'(event, target) {
+    // if user leaves input and does not press return
+    event.target.value = '';
+  }
 });

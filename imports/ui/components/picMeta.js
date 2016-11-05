@@ -49,6 +49,6 @@ Template.picMeta.helpers({
     };
   },
   isFullFrame() {
-    return this.isFullFrame ? 'true' : 'false';
+    return this.fullFrame ? 'true' : 'false';
   }
 });

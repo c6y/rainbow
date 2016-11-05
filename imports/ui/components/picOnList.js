@@ -20,6 +20,8 @@ import './edit/editProjects.js';
 import './edit/editProjects.html';
 import './edit/editMadeDate.js';
 import './edit/editMadeDate.html';
+import './edit/editFullFrame.js';
+import './edit/editFullFrame.html';
 
 Template.picOnList.events({
   'click .deletePic'() {

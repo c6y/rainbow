@@ -44,7 +44,7 @@ Schemas.Pix = new SimpleSchema({
   //   type: String,
   //   optional: true
   // },
-  'fullframe': {
+  'fullFrame': {
     type: Boolean,
     optional: true
   }

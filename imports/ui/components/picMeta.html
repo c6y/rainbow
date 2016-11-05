@@ -18,18 +18,26 @@
           {{/each}}
         </li>
       {{/if}}
+      {{#if projects}}
+        <li >
+          <span class="property">projects:</span> {{#each projects}}
+            <span class="tag">{{this}}</span>
+          {{/each}}
+        </li>
+      {{/if}}
       <li><span class="property">dimensions:</span> {{dimensions.width}} &times; {{dimensions.height}}</li>
       <li><span class="property">backgroundColor:</span> {{backgroundColor}}</li>
       <li><span class="property">colorHSL(calc):</span> {{colorHSL.info}}</li>
       <li><span class="property">createdAt:</span> {{createdAt}}</li>
+      <li><span class="property">madeDate:</span> {{madeDate}}</li>
       {{#if project}}
         <li><span class="property">project:</span> {{project}}</li>
       {{/if}}
       <li><span class="property">license:</span> {{license}}</li>
       <li><span class="property">copyright:</span> {{copyright}}</li>
-      {{#if fullframe}}
-        <li><span class="property">fullframe:</span> {{fullframe}}</li>
-      {{/if}}
+      <!-- {{#if fullframe}} -->
+        <li><span class="property">fullframe:</span> {{isFullFrame}}</li>
+      <!-- {{/if}} -->
     </ul>
   </div>
 </template>

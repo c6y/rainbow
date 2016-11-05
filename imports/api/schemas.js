@@ -13,6 +13,10 @@ Schemas.Pix = new SimpleSchema({
   'createdAt': {
     type: Date
   },
+  'madeDate': {
+    type: Date,
+    optional: true
+  },
   'dimensions.width': {
     type: Number
   },
@@ -36,10 +40,10 @@ Schemas.Pix = new SimpleSchema({
   'license': {
     type: String
   },
-  'project': {
-    type: String,
-    optional: true
-  },
+  // 'project': {
+  //   type: String,
+  //   optional: true
+  // },
   'fullframe': {
     type: Boolean,
     optional: true

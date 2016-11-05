@@ -92,5 +92,11 @@ Meteor.methods({
       taskId,
       { $set: { project: newProject } }
     );
+  },
+  'eboypix.updateMadeDate'(taskId, newDate) {
+    EboyPix.update(
+      taskId,
+      { $set: { madeDate: newDate } }
+    );
   }
 });

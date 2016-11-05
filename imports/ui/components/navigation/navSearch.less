@@ -16,6 +16,11 @@
     outline: none;
   }
   ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    transition: opacity 0.2s 0.0s ease;
     color: @color-headerlink;
+  }
+  [placeholder]:focus::-webkit-input-placeholder {
+    transition: opacity 0.2s 0.4s ease;
+    opacity: 0;
   }
 }

@@ -23,7 +23,8 @@
     width: @cell - 2 * @cell-margin;
     flex-grow: 2;
     display: inline-block;
-    background-color: @color-0;
+    // background-color: @color-0;
+      background-color: @color-15;
     li {
       list-style: none;
     }
@@ -39,13 +40,15 @@
   }
   .fileName {
     display: block;
-    color: @color-1;
+    color: #4d5994;
     padding: @cell-margin;
-    background-color: @color-8;
+    background-color: @color-4;
     width: auto;
+    // text-align: center;
+    font-size: 0.6rem;
   }
   .deletePic {
-    background: @color-2;
+    background: @color-4;
     position: absolute;
     padding: @cell-margin;
     color: @color-5;
@@ -53,7 +56,7 @@
     cursor: pointer;
   }
   .deletePic:hover {
-    color: @color-2;
+    color: @color-0;
     background-color: @color-5;
   }
   .editName {
@@ -63,12 +66,12 @@
   }
   textarea {
     width: 100%;
+    box-sizing: border-box;
     display: block;
-    // vertical-align:top;
     resize: none;
     border: 0;
     padding: @cell-margin;
-    border-bottom: 1px solid @color-7;
+    border-bottom: 1px solid @color-3;
   }
   .multiInput {
     padding: 0;

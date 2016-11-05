@@ -47,5 +47,8 @@ Template.picMeta.helpers({
       info: 'Warning! Assign a color!',
       value: emptyColor
     };
+  },
+  isFullFrame() {
+    return this.isFullFrame ? 'true' : 'false';
   }
 });

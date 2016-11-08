@@ -24,13 +24,20 @@ Template.dashboard.helpers({
     return Meteor.userId();
   },
   users() {
-    return Meteor.users.find({});
+    return Meteor.users.find({}, { sort: { username: 1 } });
   },
   email() {
     return this.emails[0].address;
   },
   username() {
     return Meteor.user().username;
+  },
+  usersCount() {
+    return Meteor.users.find().count();
+  },
+  userIsEditor() {
+    const isEditor = Meteor.user().profile.isEditor;
+    return isEditor ? 'true' : 'false';
   }
 });
 

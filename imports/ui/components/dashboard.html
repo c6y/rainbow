@@ -7,8 +7,10 @@
     <li>user: {{username}}</li>
     <li>Id: {{userId}}</li>
     <li>email: {{userEmail}}</li>
+    <li>isAdmin: {{#if currentUser.profile.isAdmin}}true{{else}}false{{/if}}</li>
+    <li>isEditor: {{#if currentUser.profile.isEditor}}true{{else}}false{{/if}}</li>
   </ul>
-  <h4>Users List</h4>
+  <h4>Users List ({{usersCount}})</h4>
   <ul>
     {{#each users}}
       <li><span class="removeUser">×</span> {{_id}}: {{email}}, {{this.username}}</li>

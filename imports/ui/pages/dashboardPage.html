@@ -1,0 +1,12 @@
+<template name="dashboardPage">
+  <div class="container">
+    <div id="appbody">
+      {{#if currentUser}}
+        {{> dashboard}}
+      {{else}}
+        {{> register}}
+        {{> login}}
+      {{/if}}
+    </div>
+  </div>
+</template>

@@ -9,8 +9,10 @@ import '../../ui/pages/pixPoolPage.js';
 import '../../ui/pages/colorsPoolPage.js';
 import '../../ui/pages/spriteBoxPage.js';
 import '../../ui/pages/addDocPage.js';
-import '../../ui/pages/beta1Page.js';
 import '../../ui/pages/pixEditorPage.js';
+import '../../ui/pages/dashboardPage.js';
+
+import '../../ui/pages/beta1Page.js';
 
 FlowRouter.route('/pool/:slug/:page', {
   name: 'pool',
@@ -53,6 +55,15 @@ FlowRouter.route('/addDoc', {
   action() {
     BlazeLayout.render('applayout', {
       main: 'addDocPage'
+    });
+  }
+});
+
+FlowRouter.route('/dashboard', {
+  name: 'dashboard',
+  action() {
+    BlazeLayout.render('applayout', {
+      main: 'dashboardPage'
     });
   }
 });

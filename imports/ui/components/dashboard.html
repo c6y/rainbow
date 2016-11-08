@@ -1,12 +1,17 @@
 <template name="dashboard">
+  <div class="logout">
+    <a href="#" class="logout">Logout</a>
+  </div>
   <h4>Logged in</h4>
-  <p>Id: {{userId}}</p>
-  <p>email: {{userEmail}}</p>
-  <p><a href="#" class="logout">Logout</a></p>
+  <ul>
+    <li>user: {{username}}</li>
+    <li>Id: {{userId}}</li>
+    <li>email: {{userEmail}}</li>
+  </ul>
   <h4>Users List</h4>
-  {{#each users}}
-    <ul>
-      <li>{{_id}}: {{email}}</li>
-    </ul>
-  {{/each}}
+  <ul>
+    {{#each users}}
+      <li><span class="removeUser">×</span> {{_id}}: {{email}}, {{this.username}}</li>
+    {{/each}}
+  </ul>
 </template>

@@ -28,6 +28,9 @@ Template.dashboard.helpers({
   },
   email() {
     return this.emails[0].address;
+  },
+  username() {
+    return Meteor.user().username;
   }
 });
 
@@ -35,5 +38,10 @@ Template.dashboard.events({
   'click .logout'(event) {
     event.preventDefault();
     Meteor.logout();
+  },
+  'click .removeUser'() {
+    const userId = this._id;
+    console.log('removing userId: ' + userId);
+    Meteor.call('users.delete', this._id);
   }
 });

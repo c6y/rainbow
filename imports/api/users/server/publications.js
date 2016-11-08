@@ -1,7 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 
 Meteor.publish('allUsers', function() {
-  const selector = {}; // find all pix
-  const collection = Meteor.users.find(selector);
+  const query = {}; // find all pix
+  const projection = {};
+  const collection = Meteor.users.find(query, projection);
   return collection;
 });

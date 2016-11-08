@@ -10,3 +10,4 @@ import '/imports/api/colors/methods.js';
 
 // Users collection
 import '/imports/api/users/server/publications.js';
+import '/imports/api/users/methods.js';

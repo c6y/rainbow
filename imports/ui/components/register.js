@@ -1,6 +1,6 @@
-// import { Meteor } from 'meteor/meteor';
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-import { Accounts } from 'meteor/accounts-base';
+// import { Accounts } from 'meteor/accounts-base';
 
 import './register.html';
 
@@ -21,12 +21,13 @@ Template.register.events({
     const newUsername = event.target.registerUsername.value;
     const newEmail = event.target.registerEmail.value;
     const newPassword = event.target.registerPassword.value;
-    const defaultRoles = { isAdmin: false, isEditor: true };
-    Accounts.createUser({
-      username: newUsername,
-      email: newEmail,
-      password: newPassword,
-      profile: defaultRoles
-    });
+    Meteor.call('users.insert', newUsername, newEmail, newPassword);
+    Meteor.loginWithPassword(newUsername, newPassword);
+    // Accounts.createUser({
+    //   username: newUsername,
+    //   email: newEmail,
+    //   password: newPassword,
+    //   profile: defaultRoles
+    // });
   }
 });

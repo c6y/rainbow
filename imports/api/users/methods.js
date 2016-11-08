@@ -1,9 +1,18 @@
 import { Meteor } from 'meteor/meteor';
-// import { Accounts } from 'meteor/accounts-base';
+import { Accounts } from 'meteor/accounts-base';
 
 Meteor.methods({
   'users.delete'(userId) {
     Meteor.users.remove(userId);
+  },
+  'users.insert'(newUsername, newEmail, newPassword) {
+    const defaultRoles = { isAdmin: true, isEditor: true };
+    Accounts.createUser({
+      username: newUsername,
+      email: newEmail,
+      password: newPassword,
+      profile: defaultRoles
+    });
   }
   // 'users.insert'(newUserName, newUserEmail, newUserPassword, newUserRoles) {
   //   let newUser = Accounts.createUser({

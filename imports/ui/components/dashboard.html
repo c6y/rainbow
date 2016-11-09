@@ -1,10 +1,10 @@
 <template name="dashboard">
+  <div class="dashMenu">
+    <a class="logoutButton">Logout</a>
+  </div>
   <div class="dashboardBox">
-    <div class="logout">
-      <a href="#" class="logout">Logout</a>
-    </div>
     <div class="userInfo">
-      <h4>Logged in</h4>
+      <h4>My Profile</h4>
       <ul>
         <li>user: {{username}}</li>
         <li>email: {{userEmail}}</li>
@@ -17,7 +17,7 @@
     </div>
     {{#if currentUser.profile.isAdmin}}
       <div class="usersList">
-        <h4>Users List ({{usersCount}})</h4>
+        <h4>Registered Users ({{usersCount}})</h4>
         <div class="adminNote">
           // Set permissions to create user accounts in settings.json
         </div>

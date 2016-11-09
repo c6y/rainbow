@@ -42,7 +42,7 @@ Template.dashboard.helpers({
 });
 
 Template.dashboard.events({
-  'click .logout'(event) {
+  'click .logoutButton'(event) {
     event.preventDefault();
     Meteor.logout();
   },

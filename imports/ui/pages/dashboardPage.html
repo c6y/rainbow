@@ -1,11 +1,38 @@
 <template name="dashboardPage">
   <div class="container">
+    <div id="appheader">
+      {{> logo}}
+      {{#if currentUser}}
+        {{> navLinks}}
+      {{/if}}
+
+    </div>
     <div id="appbody">
       {{#if currentUser}}
         {{> dashboard}}
       {{else}}
-        {{> register}}
-        {{> login}}
+
+          {{#unless switchRegisterLogin}}
+            <div class="dashMenu">
+            &nbsp;
+            {{#if allowNewUsers}}
+              <span class="toggle">
+                Switch to Register
+              </span>
+            {{/if}}
+            </div>
+            {{> login}}
+          {{/unless}}
+
+        {{#if switchRegisterLogin}}
+          <div class="dashMenu">
+            <span class="toggle">
+              Switch to Login
+            </span>
+          </div>
+          {{> register}}
+        {{/if}}
+
       {{/if}}
     </div>
   </div>

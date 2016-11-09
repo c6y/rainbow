@@ -1,32 +1,34 @@
 <template name="navLinks">
   <ul class="linkslist">
-    <li>
-      {{#if toPoolPath}}
-        <a href="{{toPoolPath}}">pool</a>
-      {{else}}
-        pool
-      {{/if}}
-    </li>
-    <li>
-      {{#if toAddDocsPath}}
-        <a href="{{toAddDocsPath}}">addDoc</a>
-      {{else}}
-        addDoc
-      {{/if}}
-    </li>
-    <li>
-      {{#if toColorsPath}}
-        <a href="{{toColorsPath}}">colors</a>
-      {{else}}
-        colors
-      {{/if}}
-    </li>
-    <li>
-      {{#if toEditorPath}}
-        <a href="{{toEditorPath}}">editor</a>
-      {{else}}
-        editor
-      {{/if}}
-    </li>
+    {{#if currentUser.profile.isEditor}}
+      <li>
+        {{#if toPoolPath}}
+          <a href="{{toPoolPath}}">pool</a>
+        {{else}}
+          pool
+        {{/if}}
+      </li>
+      <li>
+        {{#if toAddDocsPath}}
+          <a href="{{toAddDocsPath}}">addDoc</a>
+        {{else}}
+          addDoc
+        {{/if}}
+      </li>
+      <li>
+        {{#if toColorsPath}}
+          <a href="{{toColorsPath}}">colors</a>
+        {{else}}
+          colors
+        {{/if}}
+      </li>
+      <li>
+        {{#if toEditorPath}}
+          <a href="{{toEditorPath}}">editor</a>
+        {{else}}
+          editor
+        {{/if}}
+      </li>
+    {{/if}}
   </ul>
 </template>

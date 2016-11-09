@@ -46,9 +46,32 @@ Template.dashboard.events({
     event.preventDefault();
     Meteor.logout();
   },
-  'click .removeUser'() {
-    const userId = this._id;
-    console.log('removing userId: ' + userId);
-    Meteor.call('users.delete', this._id);
+  'click .removeUser'(event) {
+    event.preventDefault();
+    if (Meteor.user().profile.isAdmin) {
+      if (confirm('Delete Document: ' + this._id)) {
+        const userId = this._id;
+        console.log('removing userId: ' + userId);
+        Meteor.call('users.delete', this._id);
+      }
+    }
+  },
+  'click .isEditor'() {
+    const thisUsername = this.username;
+    const thisState = this.profile.isEditor;
+    const thisNewState = thisState === false;
+    const thisId = this._id;
+    if (confirm('set Editor for ' + thisUsername + ' to ' + thisNewState + '?')) {
+      Meteor.call('toggleIsEditor', thisId);
+    }
+  },
+  'click .isAdmin'() {
+    const thisUsername = this.username;
+    const thisState = this.profile.isAdmin;
+    const thisNewState = thisState === false;
+    const thisId = this._id;
+    if (confirm('set Admin for ' + thisUsername + ' to ' + thisNewState + '?')) {
+      Meteor.call('toggleIsAdmin', thisId);
+    }
   }
 });

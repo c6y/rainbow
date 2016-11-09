@@ -1,19 +1,39 @@
 <template name="dashboard">
-  <div class="logout">
-    <a href="#" class="logout">Logout</a>
+  <div class="dashboardBox">
+    <div class="logout">
+      <a href="#" class="logout">Logout</a>
+    </div>
+    <div class="userInfo">
+      <h4>Logged in</h4>
+      <ul>
+        <li>user: {{username}}</li>
+        <li>email: {{userEmail}}</li>
+        {{#if currentUser.profile.isAdmin}}
+          <li>Id: {{userId}}</li>
+          <li>isAdmin: {{#if currentUser.profile.isAdmin}}true{{else}}false{{/if}}</li>
+          <li>isEditor: {{#if currentUser.profile.isEditor}}true{{else}}false{{/if}}</li>
+        {{/if}}
+      </ul>
+    </div>
+    {{#if currentUser.profile.isAdmin}}
+      <div class="usersList">
+        <h4>Users List ({{usersCount}})</h4>
+        <div class="adminNote">
+          // Set permissions to create user accounts in settings.json
+        </div>
+        <ul>
+          {{#each users}}
+            <li>
+              <span class="removeUser">×</span>
+              {{_id}},
+              {{this.username}},
+              {{email}},
+              <span class="isAdmin">{{#if this.profile.isAdmin}}Admin{{else}}<span class="isOff">Admit</span>{{/if}}</span>,
+              <span class="isEditor">{{#if this.profile.isEditor}}Editor{{else}}<span class="isOff">Editor</span>{{/if}}</span>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+    {{/if}}
   </div>
-  <h4>Logged in</h4>
-  <ul>
-    <li>user: {{username}}</li>
-    <li>Id: {{userId}}</li>
-    <li>email: {{userEmail}}</li>
-    <li>isAdmin: {{#if currentUser.profile.isAdmin}}true{{else}}false{{/if}}</li>
-    <li>isEditor: {{#if currentUser.profile.isEditor}}true{{else}}false{{/if}}</li>
-  </ul>
-  <h4>Users List ({{usersCount}})</h4>
-  <ul>
-    {{#each users}}
-      <li><span class="removeUser">×</span> {{_id}}: {{email}}, {{this.username}}</li>
-    {{/each}}
-  </ul>
 </template>

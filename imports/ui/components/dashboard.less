@@ -1,9 +1,46 @@
-li {
-  list-style: none;
+.dashboardBox {
+  padding: @cell-margin;
+  h4 {
+    font-size: @font-size-body;
+    margin: 4 * @cell-margin 0 1 * @cell-margin 0;
+  }
+}
+.userInfo ul {
+  font-size: @font-size-body;
+  padding: 0;
+  margin: @cell-margin;
+  li {
+    list-style: none;
+  }
+}
+.usersList ul {
+  font-size: @font-size-body;
+  padding: 0;
+  margin: @cell-margin;
+  li {
+    list-style: none;
+  }
 }
 .removeUser {
   color: @color-5;
   background-color: @color-4;
   padding: 0 0.5rem;
   cursor: pointer;
+}
+.isEditor, .isAdmin {
+  cursor: pointer;
+  user-select: none;
+  background-color: @color-4;
+  padding: 0 0.5rem;
+}
+.isOff {
+  text-decoration: line-through;
+  color: @color-5;
+}
+.adminNote {
+  font-size: @font-size-meta;
+  color: @color-3;
+}
+.logout {
+  float: right;
 }

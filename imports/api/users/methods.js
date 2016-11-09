@@ -6,34 +6,45 @@ Meteor.methods({
     Meteor.users.remove(userId);
   },
   'users.insert'(newUsername, newEmail, newPassword) {
-    const defaultRoles = { isAdmin: true, isEditor: true };
-    Accounts.createUser({
-      username: newUsername,
-      email: newEmail,
-      password: newPassword,
-      profile: defaultRoles
-    });
+    // Set permissions to create user accounts in settings.json
+    const allowNewAdmins = Meteor.settings.public.allowNewAdmins;
+    const allowNewEditors = Meteor.settings.public.allowNewEditors;
+    const allowNewUsers = Meteor.settings.public.allowNewUsers;
+
+    const defaultRoles = { isAdmin: allowNewAdmins, isEditor: allowNewEditors };
+    if (allowNewUsers) {
+      Accounts.createUser({
+        username: newUsername,
+        email: newEmail,
+        password: newPassword,
+        profile: defaultRoles
+      });
+    }
+  },
+  toggleIsEditor(thisId) {
+    // only if current User is admin
+    const isAdmin = Meteor.user().profile.isAdmin;
+    if (isAdmin) {
+      const oldUser = Meteor.users.findOne(thisId);
+      const oldState = oldUser.profile.isEditor;
+      const newState = oldState === false;
+      Meteor.users.update(
+        thisId,
+        { $set: { 'profile.isEditor': newState } }
+      );
+    }
+  },
+  toggleIsAdmin(thisId) {
+    // only if current User is admin
+    const isAdmin = Meteor.user().profile.isAdmin;
+    if (isAdmin) {
+      const oldUser = Meteor.users.findOne(thisId);
+      const oldState = oldUser.profile.isAdmin;
+      const newState = oldState === false;
+      Meteor.users.update(
+        thisId,
+        { $set: { 'profile.isAdmin': newState } }
+      );
+    }
   }
-  // 'users.insert'(newUserName, newUserEmail, newUserPassword, newUserRoles) {
-  //   let newUser = Accounts.createUser({
-  //     username: newUserName,
-  //     email: newUserEmail,
-  //     password: newUserPassword
-  //   });
-    // Accounts.onCreateUser(function(newUser, user) {
-    //   user.test = 'this is a test';
-    //   return user;
-    // });
-    // Accounts.createUser({
-    //   username: newUserName,
-    //   email: newUserEmail,
-    //   password: newUserPassword,
-    //   roles: 'ROLESTEST'
-    // });
-    // Meteor.users.insert({
-    //   username: newUserEmail,
-    //   emails: emailsArray,
-    //   password: newUserPassword
-    // });
-  // }
 });

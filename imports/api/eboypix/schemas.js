@@ -1,8 +1,10 @@
+import { EboyPix } from './eboypix.js';
+
 // Create Schema
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
-export const Schemas = {};
+export const PicSchema = {};
 
-Schemas.Pix = new SimpleSchema({
+PicSchema.Pic = new SimpleSchema({
   'url': {
     type: SimpleSchema.RegEx.Url,
     unique: true
@@ -40,47 +42,10 @@ Schemas.Pix = new SimpleSchema({
   'license': {
     type: String
   },
-  // 'project': {
-  //   type: String,
-  //   optional: true
-  // },
   'fullFrame': {
     type: Boolean,
     optional: true
   }
 });
 
-Schemas.HSLAColors = new SimpleSchema({
-  name: {
-    type: String,
-    unique: true
-  },
-  createdAt: {
-    type: Date
-  },
-  hue: {
-    type: Number,
-    min: 0,
-    max: 360
-  },
-  saturation: {
-    type: Number,
-    min: 0,
-    max: 100
-  },
-  luminosity: {
-    type: Number,
-    min: 0,
-    max: 100
-  },
-  alpha: {
-    type: Number,
-    decimal: true,
-    defaultValue: 1,
-    min: 0,
-    max: 1
-  },
-  tags: {
-    type: [String]
-  }
-});
+EboyPix.attachSchema(PicSchema.Pic);

@@ -1,6 +1,6 @@
 <template name="navLinks">
   <ul class="linkslist">
-    {{#if currentUser.profile.isEditor}}
+    {{#if isAdminOrEditor}}
       <li>
         {{#if toPoolPath}}
           <a href="{{toPoolPath}}">pool</a>
@@ -9,10 +9,17 @@
         {{/if}}
       </li>
       <li>
-        {{#if toAddDocsPath}}
-          <a href="{{toAddDocsPath}}">addDoc</a>
+        {{#if toEditorPath}}
+          <a href="{{toEditorPath}}">edit</a>
         {{else}}
-          addDoc
+          edit
+        {{/if}}
+      </li>
+      <li>
+        {{#if toAddDocsPath}}
+          <a href="{{toAddDocsPath}}">add</a>
+        {{else}}
+          add
         {{/if}}
       </li>
       <li>
@@ -23,10 +30,10 @@
         {{/if}}
       </li>
       <li>
-        {{#if toEditorPath}}
-          <a href="{{toEditorPath}}">editor</a>
+        {{#if toDashboardPath}}
+          <a href="{{toDashboardPath}}">dash</a>
         {{else}}
-          editor
+          dash
         {{/if}}
       </li>
     {{/if}}

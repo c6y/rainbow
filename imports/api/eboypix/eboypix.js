@@ -1,5 +1,4 @@
 import { Mongo } from 'meteor/mongo';
-import { Schemas } from '../schemas.js';
+// import { Schemas } from '../schemas.js';
 
 export const EboyPix = new Mongo.Collection('eboypix');
-EboyPix.attachSchema(Schemas.Pix);

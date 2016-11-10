@@ -3,7 +3,10 @@ import { Accounts } from 'meteor/accounts-base';
 
 Meteor.methods({
   'users.delete'(userId) {
-    Meteor.users.remove(userId);
+    const isAdmin = Meteor.user().profile.isAdmin;
+    if (isAdmin) {
+      Meteor.users.remove(userId);
+    }
   },
   'users.insert'(newUsername, newEmail, newPassword) {
     // Set permissions to create user accounts in settings.json

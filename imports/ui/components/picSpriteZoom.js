@@ -44,14 +44,11 @@ Template.picSpriteZoom.helpers({
     const deviceRatio = window.devicePixelRatio;
     const oWidth = this.dimensions.width / deviceRatio;
     const oHeight = this.dimensions.height / deviceRatio;
-    console.log('Image:  oWidth x oHeight: ' + oWidth + 'x' + oHeight);
 
     const wWidth = window.innerWidth;
     const wHeight = window.innerHeight;
-    console.log('Window: wWidth x wHeight: ' + wWidth + 'x' + wHeight);
 
     const scaled = scaleByIntToFit(oWidth, oHeight, wWidth, wHeight);
-    console.log('scaled.factor: ' + scaled.factor);
     return {
       width: scaled.width,
       height: scaled.height

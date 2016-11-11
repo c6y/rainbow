@@ -1,3 +1,18 @@
 <template name="spriteBoxPage">
-  {{> spriteBox}}
+  {{#if Template.subscriptionsReady}}
+    {{#with spriteDoc}}
+    <div class="copyright" style="color:{{colorHSL.value}}">
+      {{copyright}}
+    </div>
+    <div class="spriteBox">
+      {{> picSpriteZoom}}
+      <div class="spriteBoxInfoToggle" style="color:{{colorHSL.value}}">{{toggleMetDots}}</div>
+      {{#if isVisible}}
+        <div class="picMetaBox">
+          {{> picMeta}}
+        </div>
+      {{/if}}
+    </div>
+    {{/with}}
+  {{/if}}
 </template>

@@ -56,7 +56,6 @@ Template.picSprite.helpers({
     const rem = Meteor.settings.public.rem;
     const cell = Meteor.settings.public.cell;
     const cellMargin = Meteor.settings.public.cellMargin;
-    console.log('cellMargin: ' + cellMargin);
 
     const thumbDim = rem * cell;
     const border = rem * cellMargin;
@@ -64,14 +63,11 @@ Template.picSprite.helpers({
     const deviceRatio = window.devicePixelRatio;
     const oWidth = this.dimensions.width / deviceRatio;
     const oHeight = this.dimensions.height / deviceRatio;
-    console.log('Image:  oWidth x oHeight: ' + oWidth + 'x' + oHeight);
 
     const wWidth = thumbDim - 2 * border;
     const wHeight = thumbDim - 2 * border;
-    console.log('Window: wWidth x wHeight: ' + wWidth + 'x' + wHeight);
 
     const scaledDims = scaleByIntToFit(oWidth, oHeight, wWidth, wHeight);
-    console.log('scaledDims.factor: ' + scaledDims.factor);
     return {
       width: scaledDims.width,
       height: scaledDims.height

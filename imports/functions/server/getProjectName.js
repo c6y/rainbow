@@ -1,10 +1,10 @@
 /**
- * returns the project name from the URL
- * given that the ultimate directory is the project name
- * checks if URL is located in the projects folder
- * @param {string} url The url.
- * @return {string} The decoded project name.
- */
+  * returns the project name from the URL
+  * given that the ultimate directory is the project name
+  * checks if URL is located in the projects folder
+  * @param {string} url The url.
+  * @return {string} The decoded project name.
+  */
 export function getProjectName(url) {
   // Only do this if URL has 'projects' directory
   if (url.includes('/projects/')) {

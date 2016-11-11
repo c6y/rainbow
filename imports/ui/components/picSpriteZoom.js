@@ -1,19 +1,11 @@
-// import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-// import { FlowRouter } from 'meteor/kadira:flow-router';
-// import { ReactiveVar } from 'meteor/reactive-var';
-// import { Session } from 'meteor/session';
-// import { Tracker } from 'meteor/tracker';
-// import { $ } from 'meteor/jquery';
 
 import { Colors } from '../../api/colors/colors.js';
 
 import './picSpriteZoom.html';
 
-// Template.picSpriteZoom.onRendered(function() {
-//   let width = document.getElementById('picSpriteBox').offsetWidth;
-//   Session.set('width', width);
-// });
+// Import functions
+import { scaleByIntToFit } from '../../functions/client/scaleByIntToFit.js';
 
 // Template helpers
 Template.picSpriteZoom.helpers({
@@ -49,24 +41,20 @@ Template.picSpriteZoom.helpers({
     };
   },
   scaledDims() {
-    const width = this.dimensions.width;
-    const height = this.dimensions.height;
+    const deviceRatio = window.devicePixelRatio;
+    const oWidth = this.dimensions.width / deviceRatio;
+    const oHeight = this.dimensions.height / deviceRatio;
+    console.log('Image:  oWidth x oHeight: ' + oWidth + 'x' + oHeight);
 
-    const boxDim = Math.max(window.innerHeight, window.innerWidth) - 200;
-    const maxDim = Math.max(width, height);
+    const wWidth = window.innerWidth;
+    const wHeight = window.innerHeight;
+    console.log('Window: wWidth x wHeight: ' + wWidth + 'x' + wHeight);
 
-    let divisor = boxDim / maxDim;
-    if (divisor <= 0.5) {
-      divisor = 0.5;
-    } else {
-      divisor = Math.max(Math.floor(divisor), 1);
-    }
-    // Return scaled dimensions
-    const scaledWidth = width * divisor;
-    const scaledHeight = height * divisor;
+    const scaled = scaleByIntToFit(oWidth, oHeight, wWidth, wHeight);
+    console.log('scaled.factor: ' + scaled.factor);
     return {
-      width: scaledWidth,
-      height: scaledHeight
+      width: scaled.width,
+      height: scaled.height
     };
   }
 });

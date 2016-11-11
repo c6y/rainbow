@@ -3,6 +3,9 @@
     "pixPerPage" : 24,
     "allowNewUsers" : true,
     "allowNewEditors" : true,
-    "allowNewAdmins" : true
+    "allowNewAdmins" : true,
+    "rem": 16,
+    "cell": 16,
+    "cellMargin": 0.5
   }
 }

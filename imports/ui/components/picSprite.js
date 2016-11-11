@@ -1,10 +1,13 @@
-// import { Meteor } from 'meteor/meteor';
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import { Colors } from '../../api/colors/colors.js';
 
 import './picSprite.html';
+
+// Import functions
+import { scaleByIntToFit } from '../../functions/client/scaleByIntToFit.js';
 
 // Template helpers
 Template.picSprite.helpers({
@@ -50,22 +53,28 @@ Template.picSprite.helpers({
     };
   },
   scaledDims() {
-    const width = this.dimensions.width;
-    const height = this.dimensions.height;
-    const boxDim = 256 + 16;
-    const maxDim = Math.max(width, height);
-    let divisor = boxDim / maxDim;
-    if (divisor <= 0.5) {
-      divisor = 0.5;
-    } else {
-      divisor = Math.max(Math.floor(divisor), 1);
-    }
-    // Return scaled dimensions
-    const scaledWidth = width * divisor;
-    const scaledHeight = height * divisor;
+    const rem = Meteor.settings.public.rem;
+    const cell = Meteor.settings.public.cell;
+    const cellMargin = Meteor.settings.public.cellMargin;
+    console.log('cellMargin: ' + cellMargin);
+
+    const thumbDim = rem * cell;
+    const border = rem * cellMargin;
+
+    const deviceRatio = window.devicePixelRatio;
+    const oWidth = this.dimensions.width / deviceRatio;
+    const oHeight = this.dimensions.height / deviceRatio;
+    console.log('Image:  oWidth x oHeight: ' + oWidth + 'x' + oHeight);
+
+    const wWidth = thumbDim - 2 * border;
+    const wHeight = thumbDim - 2 * border;
+    console.log('Window: wWidth x wHeight: ' + wWidth + 'x' + wHeight);
+
+    const scaledDims = scaleByIntToFit(oWidth, oHeight, wWidth, wHeight);
+    console.log('scaledDims.factor: ' + scaledDims.factor);
     return {
-      width: scaledWidth,
-      height: scaledHeight
+      width: scaledDims.width,
+      height: scaledDims.height
     };
   }
 });

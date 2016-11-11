@@ -1,2 +1,56 @@
-@import './picSprite.less';
+@import './picSpriteZoom.less';
 @import './picMeta.less';
+
+.spriteBox {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  bottom: 20px;
+  left: 20px;
+  right: 0;
+  // display: flex; /* add */
+  justify-content: center; /* add to align horizontal */
+  align-items: center; /* add to align vertical */
+// overflow: hidden;
+  // font-size: @font-size-meta;
+  font-size: @font-size-meta;
+}
+
+.spriteBoxInfoToggle {
+  // color: @color-3;
+  // color: green;
+  // background-color: @color-1;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  padding: 6px 12px;
+  z-index: 30;
+  cursor: pointer;
+  user-select: none;
+  // -webkit-filter: hue-rotate(180deg);
+  // filter: hue-rotate(180deg);
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
+}
+
+.picMetaBox {
+  margin: 0;
+  left: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 15;
+  width: 100%;
+  border-top: 1px solid #333326;
+}
+
+.copyright {
+  position: fixed;
+  right: 0;
+  top: 0;
+  padding: 6px 12px;
+  z-index: 30;
+  user-select: none;
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
+}

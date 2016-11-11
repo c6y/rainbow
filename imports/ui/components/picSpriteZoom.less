@@ -1,0 +1,30 @@
+figure {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  bottom: 20px;
+  left: 20px;
+  right: 0;
+  // display: flex; /* add */
+  justify-content: center; /* add to align horizontal */
+  align-items: center; /* add to align vertical */
+// overflow: hidden;
+}
+
+figure img {
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  -ms-interpolation-mode: nearest-neighbor;
+  image-rendering: pixelated;
+  padding: @cell-margin;
+
+}
+// #picSpriteBox {
+//   width: 100%;
+//   height: 100%;
+//   z-index: 0;
+//   text-align: center;
+//   display: table;
+// }

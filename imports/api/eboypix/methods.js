@@ -4,11 +4,10 @@ import { Random } from 'meteor/random';
 import { EboyPix } from './eboypix.js';
 import { Colors } from '../colors/colors.js';
 
-import {
-  getPicName,
-  getProjectName,
-  getFileType
-} from '../functions.js';
+// Import functions
+import { getProjectName } from '../../functions/server/getProjectName.js';
+import { getPicName } from '../../functions/server/getPicName.js';
+import { getFileType } from '../../functions/server/getFileType.js';
 
 Meteor.methods({
   'eboypix.insert'(url, imageWidth, imageHeight) {

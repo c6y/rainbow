@@ -1,15 +1,7 @@
 <template name="picMeta">
   <div class="picMeta">
     <ul>
-      <li><span class="property">_id: </span>
-        {{#if isNotSpriteBoxRoute}}
-          <a href="{{toSpriteBoxPath}}">
-            {{_id}}
-          </a>
-        {{else}}
-          {{_id}}
-        {{/if}}
-      </li>
+      <li><span class="property">_id: </span>{{_id}}</li>
       <li><span class="property">name: </span>{{name}}</li>
       {{#if tags}}
         <li >
@@ -29,15 +21,14 @@
       <li><span class="property">backgroundColor:</span> {{backgroundColor}}</li>
       <li><span class="property">colorHSL(calc):</span> {{colorHSL.info}}</li>
       <li><span class="property">createdAt:</span> {{createdAt}}</li>
-      <li><span class="property">madeDate:</span> {{madeDate}}</li>
-      {{#if project}}
-        <li><span class="property">project:</span> {{project}}</li>
+      {{#if madeDate}}
+        <li><span class="property">madeDate:</span> {{madeDate}}</li>
       {{/if}}
       <li><span class="property">license:</span> {{license}}</li>
       <li><span class="property">copyright:</span> {{copyright}}</li>
-      <!-- {{#if fullFrame}} -->
+      {{#if fullFrame}}
         <li><span class="property">fullFrame:</span> {{isFullFrame}}</li>
-      <!-- {{/if}} -->
+      {{/if}}
     </ul>
   </div>
 </template>

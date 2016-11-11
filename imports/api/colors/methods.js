@@ -2,10 +2,9 @@ import { Meteor } from 'meteor/meteor';
 
 import { Colors } from './colors.js';
 
-import {
-  tagsToArray,
-  cleanString
-} from '../functions.js';
+// Import functions
+import { cleanString } from '../../functions/server/cleanString.js';
+import { tagsToArray } from '../../functions/server/tagsToArray.js';
 
 Meteor.methods({
   'colors.insert'(n, h, s, l, a, t) {

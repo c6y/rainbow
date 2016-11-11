@@ -1,4 +1,4 @@
-// import { Meteor } from 'meteor/meteor';
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
@@ -47,8 +47,13 @@ Template.picMeta.helpers({
       info: 'Warning! Assign a color!',
       value: emptyColor
     };
+  },
+  isAdminOrEditor() {
+    if (Meteor.user()) {
+      const isAdmin = Meteor.user().profile.isAdmin;
+      const isEditor = Meteor.user().profile.isEditor;
+      return isAdmin || isEditor;
+    }
+    return false;
   }
-  // isFullFrame() {
-  //   return this.fullFrame ? 'true' : 'false';
-  // }
 });

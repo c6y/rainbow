@@ -64,45 +64,15 @@ Template.spriteBox.helpers({
     const showingMeta = Template.instance().metaShow.get();
     return showingMeta === true ? '.' : '...';
   }
-  // toggleDotsColor() {
-  //   // Get the color by name
-  //   const color = Colors.findOne(
-  //     { name: this.backgroundColor }
-  //   );
-  //
-  //   color.hue += 180;
-  //
-  //   // If it's in the color database return hsl values as css hsl string
-  //   if (color) {
-  //     const hslColor = String(
-  //       'hsl(' +
-  //       color.hue + ', ' +
-  //       color.saturation + '%, ' +
-  //       color.luminosity + '%)'
-  //     );
-  //     return {
-  //       info: hslColor,
-  //       value: hslColor
-  //     };
-  //   }
-  //   // If color does not exist return diagonal stripes warning pattern
-  //   const emptyColor = 'repeating-linear-gradient(' +
-  //     '135deg,' +
-  //     'transparent,' +
-  //     'transparent 0.5em,' +
-  //     '#ccc 0.5em,' +
-  //     '#ccc 1em' +
-  //     ')';
-  //   return {
-  //     info: 'Warning! Assign a color!',
-  //     value: emptyColor
-  //   };
-  //
-  // }
 });
 
 Template.spriteBox.events({
   'click .spriteBoxInfoToggle'() {
+    const oldShowingMeta = Template.instance().metaShow.get();
+    const newShowingMeta = oldShowingMeta === false;
+    Template.instance().metaShow.set(newShowingMeta);
+  },
+  'click .copyright'() {
     const oldShowingMeta = Template.instance().metaShow.get();
     const newShowingMeta = oldShowingMeta === false;
     Template.instance().metaShow.set(newShowingMeta);

@@ -1,7 +1,6 @@
 <template name="picMeta">
   <div class="picMeta">
     <ul>
-      <li><span class="property">_id: </span>{{_id}}</li>
       <li><span class="property">name: </span>{{name}}</li>
       {{#if tags}}
         <li >
@@ -16,18 +15,22 @@
             <span class="tag">{{this}}</span>
           {{/each}}
         </li>
+        {{#if madeDate}}
+          <li><span class="property">madeDate:</span> {{madeDate}}</li>
+        {{/if}}
       {{/if}}
       <li><span class="property">dimensions:</span> {{dimensions.width}} &times; {{dimensions.height}}</li>
-      <li><span class="property">backgroundColor:</span> {{backgroundColor}}</li>
-      <li><span class="property">colorHSL(calc):</span> {{colorHSL.info}}</li>
-      <li><span class="property">createdAt:</span> {{createdAt}}</li>
-      {{#if madeDate}}
-        <li><span class="property">madeDate:</span> {{madeDate}}</li>
-      {{/if}}
-      <li><span class="property">license:</span> {{license}}</li>
       <li><span class="property">copyright:</span> {{copyright}}</li>
-      {{#if fullFrame}}
-        <li><span class="property">fullFrame:</span> {{isFullFrame}}</li>
+      <li><span class="property">license:</span> {{license}}</li>
+      {{#if isAdminOrEditor}}
+        <li><span class="property">_id: </span>{{_id}}</li>
+
+        <li><span class="property">backgroundColor:</span> {{backgroundColor}}</li>
+        <li><span class="property">colorHSL(calc):</span> {{colorHSL.info}}</li>
+        <li><span class="property">createdAt:</span> {{createdAt}}</li>
+        {{#if fullFrame}}
+          <li><span class="property">fullFrame:</span> {{isFullFrame}}</li>
+        {{/if}}
       {{/if}}
     </ul>
   </div>

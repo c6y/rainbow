@@ -11,8 +11,34 @@ import '../../ui/pages/spriteBoxPage.js';
 import '../../ui/pages/addDocPage.js';
 import '../../ui/pages/pixEditorPage.js';
 import '../../ui/pages/dashboardPage.js';
+import '../../ui/pages/notFoundPage.js';
 
-import '../../ui/pages/beta1Page.js';
+// Redirects
+FlowRouter.route('/', {
+  triggersEnter: [function(context, redirect) {
+    redirect('/pool/everything/1');
+  }]
+});
+
+FlowRouter.route('/pool/', {
+  triggersEnter: [function(context, redirect) {
+    redirect('/pool/everything/1');
+  }]
+});
+
+FlowRouter.route('/pool/:slug/', {
+  triggersEnter: [function(context, redirect) {
+    redirect('/pool/everything/1');
+  }]
+});
+
+FlowRouter.notFound = {
+  action() {
+    BlazeLayout.render('applayout', {
+      main: 'notFound'
+    });
+  }
+};
 
 FlowRouter.route('/pool/:slug/:page', {
   name: 'pool',
@@ -64,15 +90,6 @@ FlowRouter.route('/dashboard', {
   action() {
     BlazeLayout.render('applayout', {
       main: 'dashboardPage'
-    });
-  }
-});
-
-FlowRouter.route('/beta-A', {
-  name: 'beta-A',
-  action() {
-    BlazeLayout.render('applayout', {
-      main: 'beta1Page'
     });
   }
 });

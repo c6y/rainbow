@@ -53,12 +53,30 @@ Template.picSprite.helpers({
     };
   },
   scaledDims() {
+    // console.log('this.name: ' + this.name);
     const rem = Meteor.settings.public.rem;
     const cell = Meteor.settings.public.cell;
     const cellMargin = Meteor.settings.public.cellMargin;
 
     const thumbDim = rem * cell;
-    const border = rem * cellMargin;
+
+    // Calculate areas of image, thumbnail box and difference
+    const areaImg = this.dimensions.width * this.dimensions.height;
+    const areaThumbBox = thumbDim * thumbDim;
+    const areaDif = areaThumbBox - areaImg;
+    // console.log('areaDif: ' + areaDif);
+
+    // Define the two different border options
+    const borderDefault = rem * cellMargin;
+    const borderOverlap = rem * cellMargin * -8;
+
+    // Calculate threshold that triggers overlap border
+    const areaDifThreshold = rem * cell * rem * cell / 4;
+    // console.log('areaDifThreshold: ' + areaDifThreshold);
+
+    // images with similar area as thumbnail are allowed to overlap
+    const border = areaDif < areaDifThreshold ? borderOverlap : borderDefault;
+    // console.log('border: ' + border);
 
     const deviceRatio = window.devicePixelRatio;
     const oWidth = this.dimensions.width / deviceRatio;

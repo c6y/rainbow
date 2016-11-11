@@ -7,6 +7,8 @@ import './colorsPoolPage.html';
 // Components used inside the template
 import '../components/colors/countColors.html';
 import '../components/colors/countColors.js';
+import '../components/colors/colorInput.html';
+import '../components/colors/colorInput.js';
 import '../components/colors/colorsPool.html';
 import '../components/colors/colorsPool.js';
 import '../components/logo.js';

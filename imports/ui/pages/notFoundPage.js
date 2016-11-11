@@ -1,7 +1,17 @@
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
+import { DocHead } from 'meteor/kadira:dochead';
 
 import './notFoundPage.html';
+
+// Template onCreated
+Template.notFound.onCreated(function() {
+  const self = this;
+  self.autorun(function() {
+    const title = FlowRouter.getRouteName();
+    DocHead.setTitle(title);
+  });
+});
 
 Template.notFound.helpers({
   toHomePath() {

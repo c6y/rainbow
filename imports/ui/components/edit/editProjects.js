@@ -8,7 +8,6 @@ Template.editProjects.helpers({
     let projectsString = '';
     if (this.projects) {
       projectsString = String(this.projects);
-      // console.log('projectsString: ' + projectsString);
     }
     const projectsStringSpaced = projectsString.replace(/,/g, ', ');
     return projectsStringSpaced;
@@ -61,7 +60,6 @@ Template.editProjects.events({
       // Remove duplicates from array
       // (each value in a Set has to be unique)
       const uniqueProjectsArray = Array.from(new Set(projectsArray));
-      console.log('uniqueProjectsArray: ' + uniqueProjectsArray);
 
       Meteor.call('eboypix.updateProjects', this._id, uniqueProjectsArray);
       // Deselect input field

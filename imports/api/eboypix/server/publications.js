@@ -20,20 +20,31 @@ Meteor.publish('pix.afterDate.public', function pixAfterDatePublic(date) {
 });
 
 // Publish paged documents
-Meteor.publish('pix.paged.public', function pixPagedPublic(slug, page) {
+Meteor.publish('pix.paged.public', function pixPagedPublic(slug, page, query) {
   const reg = RegExp(slug, 'i', 's');
   const slugRegExp = { $regex: reg };
-  // If slug is 'everything' return full search, else search in tags
-  // const selector = slug === 'everything' ? {} : { tags: slugRegExp };
+
+  console.log('query pix.paged.public: ' + query);
 
   let selector = {};
+
   if (slug !== 'everything') {
-    selector = {
-      $or: [
-        { tags: slugRegExp },
-        { projects: slugRegExp }
-      ]
-    };
+    if (query === 'name') {
+      console.log('search Name is ON');
+      selector = {
+        $or: [
+          { name: slugRegExp }
+        ]
+      };
+    } else {
+      console.log('search Name is OFF');
+      selector = {
+        $or: [
+          { tags: slugRegExp },
+          { projects: slugRegExp }
+        ]
+      };
+    }
   }
 
   const pixPage = Meteor.settings.public.pixPerPage;
@@ -56,20 +67,33 @@ Meteor.publish('pix.single.public', function picPublic(id) {
 });
 
 // publish total count of docs in EboyPix as separate collection
-Meteor.publish('pix.counts.public', function(slug) {
+Meteor.publish('pix.counts.public', function(slug, query) {
   const reg = RegExp(slug, 'i', 's');
   const slugRegExp = { $regex: reg };
-  // If slug is 'everything' return full search, else search in tags
-  // const selector = slug === 'everything' ? {} : { tags: slugRegExp };
+
+  console.log('query pix.counts.public: ' + query);
+
   let selector = {};
+
   if (slug !== 'everything') {
-    selector = {
-      $or: [
-        { tags: slugRegExp },
-        { projects: slugRegExp }
-      ]
-    };
+    if (query === 'name') {
+      console.log('search Name is ON');
+      selector = {
+        $or: [
+          { name: slugRegExp }
+        ]
+      };
+    } else {
+      console.log('search Name is OFF');
+      selector = {
+        $or: [
+          { tags: slugRegExp },
+          { projects: slugRegExp }
+        ]
+      };
+    }
   }
+
   Counts.publish(
     this,
     'totalDocsCount',

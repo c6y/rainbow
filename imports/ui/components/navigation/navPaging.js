@@ -7,8 +7,10 @@ Template.navPaging.onCreated(function() {
   const self = this;
   self.autorun(function() {
     // subscribe to total document count
-    let theSlug = FlowRouter.getParam('slug');
-    self.subscribe('pix.counts.public', theSlug);
+    const theSlug = FlowRouter.getParam('slug');
+    const searchQuery = FlowRouter.getQueryParam('q');
+    console.log('searchQuery Nav: ' + searchQuery);
+    self.subscribe('pix.counts.public', theSlug, searchQuery);
   });
 });
 

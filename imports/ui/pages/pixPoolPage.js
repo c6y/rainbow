@@ -23,13 +23,15 @@ import '../components/logo.html';
 // Template onCreated
 Template.pixPoolPage.onCreated(function() {
   const self = this;
+  const searchQuery = FlowRouter.getQueryParam('q');
+  console.log('searchQuery Pool: ' + searchQuery);
   self.autorun(function() {
     const title = FlowRouter.getRouteName();
     const thisPage = FlowRouter.getParam('page');
     const thisSlug = FlowRouter.getParam('slug');
 
     DocHead.setTitle(title + '/' + thisPage);
-    self.subscribe('pix.paged.public', thisSlug, thisPage);
+    self.subscribe('pix.paged.public', thisSlug, thisPage, searchQuery);
     self.subscribe('colors.public');
   });
 });

@@ -9,7 +9,6 @@ Template.navPaging.onCreated(function() {
     // subscribe to total document count
     const theSlug = FlowRouter.getParam('slug');
     const searchQuery = FlowRouter.getQueryParam('q');
-    console.log('searchQuery Nav: ' + searchQuery);
     self.subscribe('pix.counts.public', theSlug, searchQuery);
   });
 });

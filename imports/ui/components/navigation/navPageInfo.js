@@ -6,6 +6,10 @@ import { Counts } from 'meteor/tmeasday:publish-counts';
 import './navPageInfo.html';
 
 Template.navPageInfo.helpers({
+  isNameSearch() {
+    const query = FlowRouter.getQueryParam('q');
+    return query === 'name';
+  },
   thisRouteSlug() {
     return FlowRouter.getParam('slug');
   },

@@ -53,14 +53,14 @@ Template.navSearch.events({
   },
   // To keep search simple:
   // Reset to global search if not a logged in user
-  'focus input'(event, target) {
-    if (!Meteor.user()) {
-      const query = FlowRouter.getQueryParam('q');
-      if (query !== null) {
-        FlowRouter.setQueryParams({ q: null });
-      }
-    }
-  },
+  // 'focus input'(event, target) {
+  //   if (!Meteor.user()) {
+  //     const query = FlowRouter.getQueryParam('q');
+  //     if (query !== null) {
+  //       FlowRouter.setQueryParams({ q: null });
+  //     }
+  //   }
+  // },
   'click .switchToNext'() {
     // switch through different search options
     const oldSearchQuery = FlowRouter.getQueryParam('q');

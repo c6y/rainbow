@@ -46,7 +46,6 @@ Meteor.publish('pix.paged.public', function pixPagedPublic(slug, page, query) {
       };
     }
   }
-
   const pixPage = Meteor.settings.public.pixPerPage;
   // Convert page string to integer
   let pageInt = parseInt(page, 10);
@@ -93,7 +92,6 @@ Meteor.publish('pix.counts.public', function(slug, query) {
       };
     }
   }
-
   Counts.publish(
     this,
     'totalDocsCount',

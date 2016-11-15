@@ -29,23 +29,28 @@ const hasMorePages = function() {
 };
 
 Template.navPaging.helpers({
-  thisPageNumber() {
-    const thisPageString = FlowRouter.getParam('page');
-    return parseInt(thisPageString, 10);//
-  },
+  // thisPageNumber() {
+  //   const thisPageString = FlowRouter.getParam('page');
+  //   return parseInt(thisPageString, 10);//
+  // },
   previousPageClass() {
     const thisPageString = FlowRouter.getParam('page');
-    if (parseInt(thisPageString, 10) !== 1) {
+    const thisPage = parseInt(thisPageString, 10);
+    const docsCount = Counts.get('totalDocsCount');
+    const docsPerPage = Meteor.settings.public.pixPerPage;
+    const pageCount = Math.max(1, Math.ceil(docsCount / docsPerPage));
+    if (thisPage !== 1 && thisPage <= pageCount) {
       return 'active';
     }
     return 'inactive';
   },
   nextPageClass() {
     const thisPageString = FlowRouter.getParam('page');
+    const thisPage = parseInt(thisPageString, 10);
     const docsCount = Counts.get('totalDocsCount');
     const docsPerPage = Meteor.settings.public.pixPerPage;
-    const pageCount = Math.ceil(docsCount / docsPerPage);
-    if (parseInt(thisPageString, 10) !== pageCount) {
+    const pageCount = Math.max(1, Math.ceil(docsCount / docsPerPage));
+    if (thisPage < pageCount) {
       return 'active';
     }
     return 'inactive';

@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { _ } from 'meteor/underscore';
@@ -17,18 +18,13 @@ Template.navSearch.helpers({
     }
     return 'search';
   },
-  searchNameSwitch() {
-    const query = FlowRouter.getQueryParam('q');
-    return query === 'name' ? '\\' : '/';
-  },
-  isTagSearch() {
-    return FlowRouter.getQueryParam('q') === 'tag';
-  },
-  isProjectSearch() {
-    return FlowRouter.getQueryParam('q') === 'project';
-  },
-  isNameSearch() {
-    return FlowRouter.getQueryParam('q') === 'name';
+  isAdminOrEditor() {
+    if (Meteor.user()) {
+      const isAdmin = Meteor.user().profile.isAdmin;
+      const isEditor = Meteor.user().profile.isEditor;
+      return isAdmin || isEditor;
+    }
+    return false;
   }
 });
 
@@ -50,20 +46,36 @@ Template.navSearch.events({
   'blur input'(event, target) {
     // if user leaves input and does not press return
     event.target.value = '';
+    // // Reset to global search if not a logged in user
+    // if (!Meteor.user()) {
+    //   FlowRouter.setQueryParams({ q: null });
+    // }
   },
-  'click .toggleNameSearch'() {
-    const oldSearchQuery = FlowRouter.getQueryParam('q');
-    const newSearchQuery = oldSearchQuery === 'name' ? null : 'name';
-    FlowRouter.setQueryParams({ q: newSearchQuery });
+  // To keep search simple:
+  // Reset to global search if not a logged in user
+  'focus input'(event, target) {
+    if (!Meteor.user()) {
+      const query = FlowRouter.getQueryParam('q');
+      if (query !== null) {
+        FlowRouter.setQueryParams({ q: null });
+      }
+    }
   },
-  'click .toggleProjectSearch'() {
+  'click .switchToNext'() {
+    // switch through different search options
     const oldSearchQuery = FlowRouter.getQueryParam('q');
-    const newSearchQuery = oldSearchQuery === 'project' ? null : 'project';
-    FlowRouter.setQueryParams({ q: newSearchQuery });
-  },
-  'click .toggleTagSearch'() {
-    const oldSearchQuery = FlowRouter.getQueryParam('q');
-    const newSearchQuery = oldSearchQuery === 'tag' ? null : 'tag';
-    FlowRouter.setQueryParams({ q: newSearchQuery });
+    if (!oldSearchQuery) {
+      FlowRouter.setQueryParams({ q: 'tag' });
+      FlowRouter.setParams({ page: 1 });
+    } else if (oldSearchQuery === 'tag') {
+      FlowRouter.setQueryParams({ q: 'project' });
+      FlowRouter.setParams({ page: 1 });
+    } else if (oldSearchQuery === 'project') {
+      FlowRouter.setQueryParams({ q: 'name' });
+      FlowRouter.setParams({ page: 1 });
+    } else {
+      FlowRouter.setQueryParams({ q: null });
+      FlowRouter.setParams({ page: 1 });
+    }
   }
 });

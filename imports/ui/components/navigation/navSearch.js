@@ -7,11 +7,28 @@ import './navSearch.html';
 Template.navSearch.helpers({
   searchPlaceholder() {
     const query = FlowRouter.getQueryParam('q');
-    return query === 'name' ? 'name search' : 'search';
+    // return query === 'name' ? 'name search' : 'search';
+    if (query === 'name') {
+      return 'name search';
+    } else if (query === 'project') {
+      return 'project search';
+    } else if (query === 'tag') {
+      return 'tag search';
+    }
+    return 'search';
   },
   searchNameSwitch() {
     const query = FlowRouter.getQueryParam('q');
     return query === 'name' ? '\\' : '/';
+  },
+  isTagSearch() {
+    return FlowRouter.getQueryParam('q') === 'tag';
+  },
+  isProjectSearch() {
+    return FlowRouter.getQueryParam('q') === 'project';
+  },
+  isNameSearch() {
+    return FlowRouter.getQueryParam('q') === 'name';
   }
 });
 
@@ -37,6 +54,16 @@ Template.navSearch.events({
   'click .toggleNameSearch'() {
     const oldSearchQuery = FlowRouter.getQueryParam('q');
     const newSearchQuery = oldSearchQuery === 'name' ? null : 'name';
+    FlowRouter.setQueryParams({ q: newSearchQuery });
+  },
+  'click .toggleProjectSearch'() {
+    const oldSearchQuery = FlowRouter.getQueryParam('q');
+    const newSearchQuery = oldSearchQuery === 'project' ? null : 'project';
+    FlowRouter.setQueryParams({ q: newSearchQuery });
+  },
+  'click .toggleTagSearch'() {
+    const oldSearchQuery = FlowRouter.getQueryParam('q');
+    const newSearchQuery = oldSearchQuery === 'tag' ? null : 'tag';
     FlowRouter.setQueryParams({ q: newSearchQuery });
   }
 });

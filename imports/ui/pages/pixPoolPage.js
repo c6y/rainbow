@@ -24,10 +24,10 @@ import '../components/logo.html';
 Template.pixPoolPage.onCreated(function() {
   const self = this;
   self.autorun(function() {
-    const searchQuery = FlowRouter.getQueryParam('q');
     const title = FlowRouter.getRouteName();
     const thisPage = FlowRouter.getParam('page');
     const thisSlug = FlowRouter.getParam('slug');
+    const searchQuery = FlowRouter.getQueryParam('q');
 
     DocHead.setTitle(title + '/' + thisPage);
     self.subscribe('pix.paged.public', thisSlug, thisPage, searchQuery);

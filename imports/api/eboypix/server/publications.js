@@ -24,20 +24,20 @@ Meteor.publish('pix.paged.public', function pixPagedPublic(slug, page, query) {
   const reg = RegExp(slug, 'i', 's');
   const slugRegExp = { $regex: reg };
 
-  console.log('query pix.paged.public: ' + query);
-
   let selector = {};
 
   if (slug !== 'everything') {
     if (query === 'name') {
-      console.log('search Name is ON');
-      selector = {
-        $or: [
-          { name: slugRegExp }
-        ]
-      };
+      console.log('search Name');
+      selector = { name: slugRegExp };
+    } else if (query === 'tag') {
+      console.log('search Tag');
+      selector = { tags: slugRegExp };
+    } else if (query === 'project') {
+      console.log('search Project');
+      selector = { projects: slugRegExp };
     } else {
-      console.log('search Name is OFF');
+      console.log('search GENERAL');
       selector = {
         $or: [
           { tags: slugRegExp },
@@ -71,20 +71,20 @@ Meteor.publish('pix.counts.public', function(slug, query) {
   const reg = RegExp(slug, 'i', 's');
   const slugRegExp = { $regex: reg };
 
-  console.log('query pix.counts.public: ' + query);
-
   let selector = {};
 
   if (slug !== 'everything') {
     if (query === 'name') {
-      console.log('search Name is ON');
-      selector = {
-        $or: [
-          { name: slugRegExp }
-        ]
-      };
+      console.log('search Name');
+      selector = { name: slugRegExp };
+    } else if (query === 'tag') {
+      console.log('search Tag');
+      selector = { tags: slugRegExp };
+    } else if (query === 'project') {
+      console.log('search Project');
+      selector = { projects: slugRegExp };
     } else {
-      console.log('search Name is OFF');
+      console.log('search GENERAL');
       selector = {
         $or: [
           { tags: slugRegExp },

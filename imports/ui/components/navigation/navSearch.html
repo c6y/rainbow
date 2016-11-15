@@ -1,6 +1,22 @@
 <template name="navSearch">
   <span id="navSearch">
+    <div class="toggleSearch">
+      {{#if isTagSearch}}
+        tags: <span class="toggleTagSearch">x</span>
+      {{else}}
+        tags: <span class="toggleTagSearch"><span class="checkOff">-</span></span>
+      {{/if}}
+      {{#if isProjectSearch}}
+        projects: <span class="toggleProjectSearch">x</span>
+      {{else}}
+        projects: <span class="toggleProjectSearch"><span class="checkOff">-</span></span>
+      {{/if}}
+      {{#if isNameSearch}}
+        names: <span class="toggleNameSearch">x</span>
+      {{else}}
+        names: <span class="toggleNameSearch"><span class="checkOff">-</span></span>
+      {{/if}}
+    </div>
     <input type="text" name="search" value="" placeholder="{{searchPlaceholder}}" size="18">
-    <span class="toggleNameSearch">{{searchNameSwitch}}</span>
   </span>
 </template>

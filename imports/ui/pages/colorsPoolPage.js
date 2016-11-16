@@ -11,8 +11,8 @@ import '../components/colors/colorInput.html';
 import '../components/colors/colorInput.js';
 import '../components/colors/colorsPool.html';
 import '../components/colors/colorsPool.js';
-import '../components/logo.js';
-import '../components/logo.html';
+import '../components/navigation/logo.js';
+import '../components/navigation/logo.html';
 
 // Template onCreated
 Template.colorsPoolPage.onCreated(function() {

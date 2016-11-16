@@ -11,15 +11,15 @@ Template.navLinks.helpers({
       let thisPage = 1;
       let thisSlug = 'everything';
       let thisQuery = null;
-      if (thisRouteName === 'editor') {
+      if (thisRouteName === 'edit') {
         thisSlug = FlowRouter.getParam('slug');
         thisPage = FlowRouter.getParam('page');
-        thisQuery = FlowRouter.getQueryParam('q');
+        thisQuery = { q: FlowRouter.getQueryParam('q') };
       }
       return FlowRouter.path(
         'pool',
         { slug: thisSlug, page: thisPage },
-        { q: thisQuery }
+        thisQuery
       );
     }
   },
@@ -37,7 +37,7 @@ Template.navLinks.helpers({
   },
   toEditorPath() {
     const thisRouteName = FlowRouter.getRouteName();
-    if (thisRouteName !== 'editor') {
+    if (thisRouteName !== 'edit') {
       let thisPage = 1;
       let thisSlug = 'everything';
       let thisQuery = null;
@@ -47,7 +47,7 @@ Template.navLinks.helpers({
         thisQuery = FlowRouter.getQueryParam('q');
       }
       return FlowRouter.path(
-        'editor',
+        'edit',
         { slug: thisSlug, page: thisPage },
         { q: thisQuery }
       );

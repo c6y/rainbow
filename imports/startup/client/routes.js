@@ -9,7 +9,7 @@ import '../../ui/pages/pixPoolPage.js';
 import '../../ui/pages/colorsPoolPage.js';
 import '../../ui/pages/spriteBoxPage.js';
 import '../../ui/pages/addDocPage.js';
-import '../../ui/pages/pixEditorPage.js';
+import '../../ui/pages/pixEditPage.js';
 import '../../ui/pages/dashboardPage.js';
 import '../../ui/pages/notFoundPage.js';
 
@@ -49,11 +49,11 @@ FlowRouter.route('/pool/:slug/:page', {
   }
 });
 
-FlowRouter.route('/editor/:slug/:page', {
-  name: 'editor',
+FlowRouter.route('/edit/:slug/:page', {
+  name: 'edit',
   action() {
     BlazeLayout.render('applayout', {
-      main: 'pixEditorPage'
+      main: 'pixEditPage'
     });
   }
 });

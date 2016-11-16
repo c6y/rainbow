@@ -12,7 +12,11 @@
     </div>
     <div id="appbody">
       {{#if Template.subscriptionsReady}}
-        {{> pixPool}}
+        {{#if totalPixCount}}
+          {{> pixPool}}
+        {{else}}
+          {{> pixNone}}
+        {{/if}}
       {{/if}}
     </div>
   </div>

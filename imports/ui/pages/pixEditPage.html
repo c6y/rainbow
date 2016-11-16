@@ -1,4 +1,4 @@
-<template name="pixEditorPage">
+<template name="pixEditPage">
   <div class="container">
     <div id="appheader-fixed">
       {{> navPaging}}
@@ -12,7 +12,11 @@
     </div>
     <div id="appbody">
       {{#if Template.subscriptionsReady}}
-        {{> pixList}}
+        {{#if totalPixCount}}
+          {{> pixList}}
+        {{else}}
+          {{> pixNone}}
+        {{/if}}
       {{/if}}
     </div>
   </div>

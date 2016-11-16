@@ -28,16 +28,16 @@ Meteor.publish('pix.paged.public', function pixPagedPublic(slug, page, query) {
 
   if (slug !== 'everything') {
     if (query === 'name') {
-      console.log('search Name');
+      // console.log('search Name');
       selector = { name: slugRegExp };
     } else if (query === 'tag') {
-      console.log('search Tag');
+      // console.log('search Tag');
       selector = { tags: slugRegExp };
     } else if (query === 'project') {
-      console.log('search Project');
+      // console.log('search Project');
       selector = { projects: slugRegExp };
     } else {
-      console.log('search GENERAL');
+      // console.log('search GENERAL');
       selector = {
         $or: [
           { tags: slugRegExp },
@@ -74,16 +74,16 @@ Meteor.publish('pix.counts.public', function(slug, query) {
 
   if (slug !== 'everything') {
     if (query === 'name') {
-      console.log('search Name');
+      // console.log('search Name');
       selector = { name: slugRegExp };
     } else if (query === 'tag') {
-      console.log('search Tag');
+      // console.log('search Tag');
       selector = { tags: slugRegExp };
     } else if (query === 'project') {
-      console.log('search Project');
+      // console.log('search Project');
       selector = { projects: slugRegExp };
     } else {
-      console.log('search GENERAL');
+      // console.log('search GENERAL');
       selector = {
         $or: [
           { tags: slugRegExp },

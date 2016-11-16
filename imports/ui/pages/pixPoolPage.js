@@ -1,6 +1,8 @@
+// import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { DocHead } from 'meteor/kadira:dochead';
+import { Counts } from 'meteor/tmeasday:publish-counts';
 
 import './pixPoolPage.html';
 
@@ -11,6 +13,8 @@ import '../components/navigation/navPaging.html';
 import '../components/navigation/navPaging.js';
 import '../components/pixPool.html';
 import '../components/pixPool.js';
+import '../components/pixNone.html';
+import '../components/pixNone.js';
 import '../components/navigation/navLinks.html';
 import '../components/navigation/navLinks.js';
 import '../components/navigation/navPageInfo.js';
@@ -33,4 +37,11 @@ Template.pixPoolPage.onCreated(function() {
     self.subscribe('pix.paged.public', thisSlug, thisPage, searchQuery);
     self.subscribe('colors.public');
   });
+});
+
+Template.pixPoolPage.helpers({
+  totalPixCount() {
+    const pixCount = Counts.get('totalDocsCount');
+    return pixCount > 0;
+  }
 });

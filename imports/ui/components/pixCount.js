@@ -5,6 +5,6 @@ import './pixCount.html';
 
 Template.pixCount.helpers({
   pixCounter() {
-    return Counts.get('totalDocsCount');
+    return Math.max(0, Counts.get('totalDocsCount'));
   }
 });

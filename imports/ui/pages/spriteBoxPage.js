@@ -1,8 +1,8 @@
-// import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { DocHead } from 'meteor/kadira:dochead';
+import { Session } from 'meteor/session';
 
 import { EboyPix } from '../../api/eboypix/eboypix.js';
 import { Colors } from '../../api/colors/colors.js';
@@ -57,13 +57,7 @@ Template.spriteBoxPage.helpers({
       };
     }
     // If color does not exist return diagonal stripes warning pattern
-    const emptyColor = 'repeating-linear-gradient(' +
-      '135deg,' +
-      'transparent,' +
-      'transparent 0.5em,' +
-      '#ccc 0.5em,' +
-      '#ccc 1em' +
-      ')';
+    const emptyColor = 'hsl(180, 100%, 50%)';
     return {
       info: 'Warning! Assign a color!',
       value: emptyColor
@@ -71,22 +65,39 @@ Template.spriteBoxPage.helpers({
   },
   isVisible() {
     return Template.instance().metaShow.get();
-  },
-  toggleMetDots() {
-    const showingMeta = Template.instance().metaShow.get();
-    return showingMeta === true ? '.' : '...';
   }
 });
 
 Template.spriteBoxPage.events({
-  'click .spriteBoxInfoToggle'() {
-    const oldShowingMeta = Template.instance().metaShow.get();
-    const newShowingMeta = oldShowingMeta === false;
-    Template.instance().metaShow.set(newShowingMeta);
-  },
+  // Toggle metadata
   'click .copyright'() {
     const oldShowingMeta = Template.instance().metaShow.get();
     const newShowingMeta = oldShowingMeta === false;
     Template.instance().metaShow.set(newShowingMeta);
+  },
+  // Go back to the originating search page
+  'click .spriteBox'() {
+    let lastRoute = Session.get('lastRoute');
+    let lastSlug = Session.get('lastSlug');
+    let lastPage = Session.get('lastPage');
+    let lastQuery = Session.get('lastQuery');
+
+    if (lastRoute === undefined) {
+      lastRoute = 'pool';
+    }
+    lastRoute = lastRoute === undefined ? 'pool' : lastRoute;
+    lastSlug = lastSlug === undefined ? 'everything' : lastSlug;
+    lastPage = lastPage === undefined ? 1 : lastPage;
+
+    FlowRouter.go(
+      lastRoute,
+      {
+        slug: lastSlug,
+        page: lastPage
+      },
+      {
+        q: lastQuery
+      }
+    );
   }
 });

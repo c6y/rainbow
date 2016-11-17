@@ -48,7 +48,10 @@ Template.picSpriteZoom.helpers({
     const wWidth = window.innerWidth;
     const wHeight = window.innerHeight;
 
-    const scaled = scaleByIntToFit(oWidth, oHeight, wWidth, wHeight);
+    const boxWidth = wWidth - 128;
+    const boxHeight = wHeight - 128;
+
+    const scaled = scaleByIntToFit(oWidth, oHeight, boxWidth, boxHeight);
     return {
       width: scaled.width,
       height: scaled.height

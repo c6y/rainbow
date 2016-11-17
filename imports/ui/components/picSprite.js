@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
+import { Session } from 'meteor/session';
 
 import { Colors } from '../../api/colors/colors.js';
 
@@ -90,5 +91,20 @@ Template.picSprite.helpers({
       width: scaledDims.width,
       height: scaledDims.height
     };
+  }
+});
+
+Template.picSprite.events({
+  // Remember location when leaving search page
+  'click .picSpriteBox'(event) {
+    const thisRoute = FlowRouter.getRouteName();
+    const thisSlug = FlowRouter.getParam('slug');
+    const thisPage = FlowRouter.getParam('page');
+    const thisQuery = FlowRouter.getQueryParam('q');
+
+    Session.set('lastRoute', thisRoute);
+    Session.set('lastSlug', thisSlug);
+    Session.set('lastPage', thisPage);
+    Session.set('lastQuery', thisQuery);
   }
 });

@@ -5,7 +5,8 @@
 @import '../components/register.less';
 @import '../components/dashboard.less';
 
-.toggle {
+.toggleLogin {
+  display: inline-block;
   background-color: @color-4;
   cursor: pointer;
   user-select: none;
@@ -16,9 +17,12 @@
 .loginBox {
 }
 .dashMenu {
+  font-family: @font-meta;
+  font-weight: @font-weight-meta;
   font-size: @font-size-meta;
+  line-height: @line-height-meta;
   text-align: right;
   margin: 0;
-  padding: 0 @cell-margin;
-  background-color: yellow;
+  padding: 0 2 * @cell-margin;
+  background-color: @color-2;
 }

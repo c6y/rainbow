@@ -14,19 +14,19 @@
 
           {{#unless switchRegisterLogin}}
             <div class="dashMenu">
-            &nbsp;
-            {{#if allowNewUsers}}
-              <span class="toggle">
-                Switch to Register
-              </span>
-            {{/if}}
+              &nbsp;
+              {{#if allowNewUsers}}
+                <span class="toggleLogin">
+                  Switch to Register
+                </span>
+              {{/if}}
             </div>
             {{> login}}
           {{/unless}}
 
         {{#if switchRegisterLogin}}
           <div class="dashMenu">
-            <span class="toggle">
+            <span class="toggleLogin">
               Switch to Login
             </span>
           </div>

@@ -27,7 +27,7 @@ Template.dashboardPage.helpers({
 });
 
 Template.dashboardPage.events({
-  'click .toggle'() {
+  'click .toggleLogin'() {
     const oldState = Template.instance().showRegister.get();
     const newState = oldState === false;
     Template.instance().showRegister.set(newState);

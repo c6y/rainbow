@@ -16,8 +16,8 @@ import '../components/navigation/navLinks.html';
 import '../components/navigation/navLinks.js';
 import '../components/navigation/navPageInfo.html';
 import '../components/navigation/navPageInfo.js';
-import '../components/pixCount.html';
-import '../components/pixCount.js';
+import '../components/navigation/pixCount.html';
+import '../components/navigation/pixCount.js';
 import '../components/navigation/logo.js';
 import '../components/navigation/logo.html';
 

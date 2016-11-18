@@ -6,8 +6,8 @@ import { Counts } from 'meteor/tmeasday:publish-counts';
 import './pixEditPage.html';
 
 // Components used inside the template
-import '../components/pixCount.html';
-import '../components/pixCount.js';
+import '../components/navigation/pixCount.html';
+import '../components/navigation/pixCount.js';
 import '../components/navigation/navPaging.html';
 import '../components/navigation/navPaging.js';
 import '../components/pixList.html';

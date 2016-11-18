@@ -6,6 +6,8 @@
     "allowNewAdmins" : true,
     "rem": 16,
     "cell": 16,
-    "cellMargin": 0.5
+    "cellMargin": 0.5,
+    "copyright": "©eBoy",
+    "logotext": "eBoy"
   }
 }

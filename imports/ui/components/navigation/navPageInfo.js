@@ -3,6 +3,9 @@ import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Counts } from 'meteor/tmeasday:publish-counts';
 
+import './pixCount.html';
+import './pixCount.js';
+
 import './navPageInfo.html';
 
 Template.navPageInfo.helpers({

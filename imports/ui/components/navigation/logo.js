@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
@@ -17,5 +18,8 @@ Template.logo.helpers({
       return false;
     }
     return FlowRouter.path('pool', { slug: 'everything', page: 1 });
+  },
+  logotext() {
+    return Meteor.settings.public.logotext;
   }
 });

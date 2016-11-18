@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { ReactiveVar } from 'meteor/reactive-var';
@@ -5,7 +6,7 @@ import { DocHead } from 'meteor/kadira:dochead';
 import { Session } from 'meteor/session';
 
 import { EboyPix } from '../../api/eboypix/eboypix.js';
-import { Colors } from '../../api/colors/colors.js';
+// import { Colors } from '../../api/colors/colors.js';
 
 import './spriteBoxPage.html';
 
@@ -38,33 +39,36 @@ Template.spriteBoxPage.helpers({
     const pixDoc = EboyPix.findOne(thisId);
     return pixDoc;
   },
-  colorHSL() {
-    // Get the color by name
-    const color = Colors.findOne(
-      { name: this.backgroundColor }
-    );
-    // If it's in the color database return hsl values as css hsl string
-    if (color) {
-      const hslColor = String(
-        'hsl(' +
-        color.hue + ', ' +
-        color.saturation + '%, ' +
-        color.luminosity + '%)'
-      );
-      return {
-        info: hslColor,
-        value: hslColor
-      };
-    }
-    // If color does not exist return diagonal stripes warning pattern
-    const emptyColor = 'hsl(180, 100%, 50%)';
-    return {
-      info: 'Warning! Assign a color!',
-      value: emptyColor
-    };
-  },
+  // colorHSL() {
+  //   // Get the color by name
+  //   const color = Colors.findOne(
+  //     { name: this.backgroundColor }
+  //   );
+  //   // If it's in the color database return hsl values as css hsl string
+  //   if (color) {
+  //     const hslColor = String(
+  //       'hsl(' +
+  //       color.hue + ', ' +
+  //       color.saturation + '%, ' +
+  //       color.luminosity + '%)'
+  //     );
+  //     return {
+  //       info: hslColor,
+  //       value: hslColor
+  //     };
+  //   }
+  //   // If color does not exist return diagonal stripes warning pattern
+  //   const emptyColor = 'hsl(180, 100%, 50%)';
+  //   return {
+  //     info: 'Warning! Assign a color!',
+  //     value: emptyColor
+  //   };
+  // },
   isVisible() {
     return Template.instance().metaShow.get();
+  },
+  copyright() {
+    return Meteor.settings.public.copyright;
   }
 });
 

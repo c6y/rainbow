@@ -4,9 +4,11 @@
       {{> navPaging}}
     </div>
     <div id="appheader">
-      {{> logo}}
-      {{> navLinks}}
-      {{> navPageInfo}}
+      <div>{{> logo}}</div>
+      {{#if isAdminOrEditor}}
+        <div>{{> navLinks}}</div>
+      {{/if}}
+      <div class="navInfo">{{> navPageInfo}}</div>
       {{> navSearch}}
     </div>
     <div id="appbody">

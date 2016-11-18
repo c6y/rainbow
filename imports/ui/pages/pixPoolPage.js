@@ -1,4 +1,4 @@
-// import { Meteor } from 'meteor/meteor';
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { DocHead } from 'meteor/kadira:dochead';
@@ -17,6 +17,8 @@ import '../components/pixNone.html';
 import '../components/pixNone.js';
 import '../components/navigation/navLinks.html';
 import '../components/navigation/navLinks.js';
+import '../components/navigation/quickLinks.html';
+import '../components/navigation/quickLinks.js';
 import '../components/navigation/navPageInfo.js';
 import '../components/navigation/navPageInfo.html';
 import '../components/navigation/navSearch.js';
@@ -43,5 +45,13 @@ Template.pixPoolPage.helpers({
   totalPixCount() {
     const pixCount = Counts.get('totalDocsCount');
     return pixCount > 0;
+  },
+  isAdminOrEditor() {
+    if (Meteor.user()) {
+      const isAdmin = Meteor.user().profile.isAdmin;
+      const isEditor = Meteor.user().profile.isEditor;
+      return isAdmin || isEditor;
+    }
+    return false;
   }
 });

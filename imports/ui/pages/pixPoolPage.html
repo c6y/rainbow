@@ -5,7 +5,11 @@
     </div>
     <div id="appheader">
       <div>{{> logo}}</div>
-      <div>{{> navLinks}}</div>
+      {{#if isAdminOrEditor}}
+        <div>{{> navLinks}}</div>
+      {{else}}
+        <div>{{> quickLinks}}</div>
+      {{/if}}
       <div class="navInfo">{{> navPageInfo}}</div>
       {{> navSearch}}
     </div>

@@ -1,4 +1,4 @@
-import { Meteor } from 'meteor/meteor';
+// import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
@@ -59,15 +59,13 @@ Template.navLinks.helpers({
       return FlowRouter.path('dashboard');
     }
   },
+  toQuicksPath() {
+    const thisRouteName = FlowRouter.getRouteName();
+    if (thisRouteName !== 'quicks') {
+      return FlowRouter.path('quicks');
+    }
+  },
   thisIsHere() {
     return FlowRouter.getRouteName();
-  },
-  isAdminOrEditor() {
-    if (Meteor.user()) {
-      const isAdmin = Meteor.user().profile.isAdmin;
-      const isEditor = Meteor.user().profile.isEditor;
-      return isAdmin || isEditor;
-    }
-    return false;
   }
 });

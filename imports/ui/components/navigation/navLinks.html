@@ -1,41 +1,46 @@
 <template name="navLinks">
   <ul class="linkslist">
-    {{#if isAdminOrEditor}}
-      <li>
-        {{#if toPoolPath}}
-          <a href="{{toPoolPath}}">pool</a>
-        {{else}}
-          pool
-        {{/if}}
-      </li>
-      <li>
-        {{#if toEditorPath}}
-          <a href="{{toEditorPath}}">edit</a>
-        {{else}}
-          edit
-        {{/if}}
-      </li>
-      <li>
-        {{#if toAddDocsPath}}
-          <a href="{{toAddDocsPath}}">add</a>
-        {{else}}
-          add
-        {{/if}}
-      </li>
-      <li>
-        {{#if toColorsPath}}
-          <a href="{{toColorsPath}}">colors</a>
-        {{else}}
-          colors
-        {{/if}}
-      </li>
-      <li>
-        {{#if toDashboardPath}}
-          <a href="{{toDashboardPath}}">dash</a>
-        {{else}}
-          dash
-        {{/if}}
-      </li>
-    {{/if}}
+    <li>
+      {{#if toPoolPath}}
+        <a href="{{toPoolPath}}">pool</a>
+      {{else}}
+        pool
+      {{/if}}
+    </li>
+    <li>
+      {{#if toEditorPath}}
+        <a href="{{toEditorPath}}">edit</a>
+      {{else}}
+        edit
+      {{/if}}
+    </li>
+    <li>
+      {{#if toAddDocsPath}}
+        <a href="{{toAddDocsPath}}">add</a>
+      {{else}}
+        add
+      {{/if}}
+    </li>
+    <li>
+      {{#if toColorsPath}}
+        <a href="{{toColorsPath}}">colors</a>
+      {{else}}
+        colors
+      {{/if}}
+    </li>
+    <li>
+      {{#if toQuicksPath}}
+        <a href="{{toQuicksPath}}">quicks</a>
+      {{else}}
+        quicks
+      {{/if}}
+    </li>
+    <li>
+      {{#if toDashboardPath}}
+        <a href="{{toDashboardPath}}">dash</a>
+      {{else}}
+        dash
+      {{/if}}
+    </li>
   </ul>
 </template>

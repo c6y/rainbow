@@ -6,7 +6,8 @@ import '../../ui/layouts/applayout.js';
 
 // Import pages
 import '../../ui/pages/pixPoolPage.js';
-import '../../ui/pages/colorsPoolPage.js';
+import '../../ui/pages/colorsPage.js';
+import '../../ui/pages/quicksPage.js';
 import '../../ui/pages/spriteBoxPage.js';
 import '../../ui/pages/addDocPage.js';
 import '../../ui/pages/pixEditPage.js';
@@ -62,7 +63,7 @@ FlowRouter.route('/colors', {
   name: 'colors',
   action() {
     BlazeLayout.render('applayout', {
-      main: 'colorsPoolPage'
+      main: 'colorsPage'
     });
   }
 });
@@ -90,6 +91,15 @@ FlowRouter.route('/dashboard', {
   action() {
     BlazeLayout.render('applayout', {
       main: 'dashboardPage'
+    });
+  }
+});
+
+FlowRouter.route('/quicks', {
+  name: 'quicks',
+  action() {
+    BlazeLayout.render('applayout', {
+      main: 'quicksPage'
     });
   }
 });

@@ -1,0 +1,25 @@
+.linkslist {
+  margin: 0;
+  padding: 0;
+  li {
+    color: @color-headertext;
+    list-style: none;
+    display: inline-block;
+    a {
+      text-decoration: none;
+      color: @color-headerlink;
+    }
+    a:hover {
+      color: @color-headerback;
+      background-color: @color-headerlink;
+      padding: 0 3px;
+      margin: 0 -3px;
+    }
+  }
+  li:after {
+    content: '|';
+  }
+  li:last-of-type:after {
+    content: '';
+  }
+}

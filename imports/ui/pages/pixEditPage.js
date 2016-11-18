@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { DocHead } from 'meteor/kadira:dochead';
@@ -42,5 +43,13 @@ Template.pixEditPage.helpers({
   totalPixCount() {
     const pixCount = Counts.get('totalDocsCount');
     return pixCount > 0;
+  },
+  isAdminOrEditor() {
+    if (Meteor.user()) {
+      const isAdmin = Meteor.user().profile.isAdmin;
+      const isEditor = Meteor.user().profile.isEditor;
+      return isAdmin || isEditor;
+    }
+    return false;
   }
 });

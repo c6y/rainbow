@@ -2,7 +2,7 @@ import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { DocHead } from 'meteor/kadira:dochead';
 
-import './colorsPoolPage.html';
+import './colorsPage.html';
 
 // Components used inside the template
 import '../components/colors/countColors.html';
@@ -15,7 +15,7 @@ import '../components/navigation/logo.js';
 import '../components/navigation/logo.html';
 
 // Template onCreated
-Template.colorsPoolPage.onCreated(function() {
+Template.colorsPage.onCreated(function() {
   const self = this;
   self.autorun(function() {
     const title = FlowRouter.getRouteName();

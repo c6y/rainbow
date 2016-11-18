@@ -4,9 +4,9 @@
 .picOnListbox {
   display: flex;
   font-family: @font-meta;
-  font-weight: @font-weight-meta;
-  font-size: @font-size-meta;
-  line-height: @line-height-meta;
+  font-weight: @font-meta-weight;
+  font-size: @font-meta-size;
+  line-height: @font-meta-lineheight;
   .picSpriteOnList {
     // at 3 column containers
     @media only screen
@@ -23,15 +23,22 @@
     padding: 0;
   }
   .picMetaEdit {
+    line-height: inherit;
     width: @cell - 2 * @cell-margin;
     flex-grow: 2;
     display: inline-block;
     // background-color: @color-0;
-      background-color: @color-15;
+    background-color: @color-15;
+
     li {
       list-style: none;
+      line-height: inherit;
+      display: block;
+      // height: 44px;
+      // background-color: green;
     }
     .property {
+      line-height: @font-meta-lineheight;
       color: @color-6;
     }
     .tag:after {
@@ -96,8 +103,10 @@
     cursor: pointer;
   }
   .editMeta {
+    line-height: @font-meta-lineheight;
   }
   textarea {
+    line-height: inherit;
     width: 100%;
     box-sizing: border-box;
     display: block;
@@ -107,10 +116,12 @@
     border-bottom: 1px solid @color-3;
   }
   .multiInput {
+    line-height: inherit;
     padding: 0;
     margin: 0;
   }
   .singleInput {
+    line-height: inherit;
     margin: 0;
     padding: @cell-margin;
     background-color: @color-15;
@@ -118,9 +129,10 @@
   input {
     border: 0;
     margin: 0;
-    // padding: @cell-margin;
+    padding: 0;
   }
   input, textarea {
+    line-height: inherit;
     outline: none;
     color: @color-3;
     font-family: inherit;

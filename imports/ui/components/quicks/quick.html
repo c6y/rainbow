@@ -1,5 +1,8 @@
 <template name="quick">
   <span class="quickBox">
-    <span class="deleteQuick">×</span> {{name}}, {{slug}}, {{query}}
+    <span class="quickInfos">
+      <span class="quickDelete">×</span><a class="quickName" href="{{quickUrl}}"> {{name}}</a >
+      <div class="quickMeta">{{query}}: {{slug}}</div>
+    </span>
   </span>
 </template>

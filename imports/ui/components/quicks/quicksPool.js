@@ -11,6 +11,6 @@ import './quick.js';
 // Template helpers
 Template.quicksPool.helpers({
   quicks() {
-    return Quicks.find({}, { sort: { name: -1 } });
+    return Quicks.find({}, { sort: { name: 1 } });
   }
 });

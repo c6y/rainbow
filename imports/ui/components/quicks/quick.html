@@ -1,8 +1,13 @@
 <template name="quick">
   <span class="quickBox">
     <span class="quickInfos">
-      <span class="quickDelete">×</span><a class="quickName" href="{{quickUrl}}"> {{name}}</a >
-      <div class="quickMeta">{{query}}: {{slug}}</div>
+      {{#if isAdminOrEditor}}
+        <span class="quickDelete">×</span>
+      {{/if}}
+      <a class="quickName" href="{{quickUrl}}"> {{name}}</a >
+      {{#if isAdminOrEditor}}
+        <div class="quickMeta">{{query}}: {{slug}}</div>
+      {{/if}}
     </span>
   </span>
 </template>

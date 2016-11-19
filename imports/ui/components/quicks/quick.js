@@ -9,6 +9,14 @@ import './quick.html';
 Template.quick.helpers({
   quickUrl() {
     return getQuickUrl(this.slug, this.query);
+  },
+  isAdminOrEditor() {
+    if (Meteor.user()) {
+      const isAdmin = Meteor.user().profile.isAdmin;
+      const isEditor = Meteor.user().profile.isEditor;
+      return isAdmin || isEditor;
+    }
+    return false;
   }
 });
 

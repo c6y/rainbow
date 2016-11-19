@@ -2,11 +2,15 @@
   <div class="container">
     <div id="appheader">
       {{> logo}}
-      {{> navLinks}}
+      {{#if isAdminOrEditor}}
+        {{> navLinks}}
+      {{/if}}
       <!-- {{> countColors}} -->
     </div>
     <div id="appbody">
-      {{> quicksInput}}
+      {{#if isAdminOrEditor}}
+        {{> quicksInput}}
+      {{/if}}
       {{> quicksPool}}
       <!-- {{> colorsPool}} -->
     </div>

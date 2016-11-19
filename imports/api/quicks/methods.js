@@ -17,7 +17,7 @@ Meteor.methods({
   'quicks.deleteAll'() {
     Quicks.remove({});
   },
-  'quicks.delete'(id) {
+  'quick.delete'(id) {
     Quicks.remove(id);
   }
 });

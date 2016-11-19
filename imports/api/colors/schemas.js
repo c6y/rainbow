@@ -1,4 +1,4 @@
-import { Colors } from './colors.js';
+// import { Colors } from './colors.js';
 
 // Create Schema
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
@@ -35,8 +35,9 @@ ColorSchema.HSLAColors = new SimpleSchema({
     max: 1
   },
   tags: {
-    type: [String]
+    type: [String],
+    optional: true
   }
 });
 
-Colors.attachSchema(ColorSchema.HSLAColors);
+// Colors.attachSchema(ColorSchema.HSLAColors);

@@ -7,10 +7,12 @@ import './quicksPage.html';
 // Components used inside the template
 import '../components/colors/countColors.html';
 import '../components/colors/countColors.js';
-import '../components/colors/quicksInput.html';
-import '../components/colors/quicksInput.js';
-import '../components/colors/colorsPool.html';
-import '../components/colors/colorsPool.js';
+import '../components/quicks/quicksInput.html';
+import '../components/quicks/quicksInput.js';
+import '../components/quicks/quicksPool.html';
+import '../components/quicks/quicksPool.js';
+// import '../components/colors/colorsPool.html';
+// import '../components/colors/colorsPool.js';
 import '../components/navigation/logo.js';
 import '../components/navigation/logo.html';
 
@@ -21,6 +23,6 @@ Template.quicksPage.onCreated(function() {
     const title = FlowRouter.getRouteName();
 
     DocHead.setTitle(title);
-    self.subscribe('colors.public');
+    self.subscribe('quicks.public');
   });
 });

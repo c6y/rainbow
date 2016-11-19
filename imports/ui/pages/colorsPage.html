@@ -2,11 +2,15 @@
   <div class="container">
     <div id="appheader">
       {{> logo}}
-      {{> navLinks}}
-      {{> countColors}}
+      {{#if isAdminOrEditor}}
+        {{> navLinks}}
+        {{> countColors}}
+      {{/if}}
     </div>
     <div id="appbody">
-      {{> colorInput}}
+      {{#if isAdminOrEditor}}
+        {{> colorInput}}
+      {{/if}}
       {{> colorsPool}}
     </div>
   </div>

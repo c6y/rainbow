@@ -1,14 +1,18 @@
 .quickBox {
-  // background-color: @color-2;
   display: block;
   height: 100%;
-  // background-color: green;
   .quickInfos {
+    .quickMainInfo {
+      display: flex;
+    }
     .quickDelete {
       display: inline-block;
       background-color: @color-2;
       color: @color-5;
-      padding: 0.5 * @cell-margin @cell-margin;
+      padding-top: 0.5 * @cell-margin;
+      padding-right: 0;
+      padding-bottom: 0.5 * @cell-margin;
+      padding-left: @cell-margin;
       z-index: 10;
       cursor: pointer;
     }

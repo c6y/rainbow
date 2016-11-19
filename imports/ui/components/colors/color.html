@@ -1,11 +1,18 @@
 <template name="color">
   <span class="colorSwatch" style="background: hsl({{hue}}, {{saturation}}%, {{luminosity}}%)">
     <span class="colorInfos">
-      <span class="deleteColor">×</span><span class="colorName">{{name}}</span>
-      <span class="colorMeta">
-        <span class="colorTags">{{tags}}</span>
-        <span class="hslValue">hsl ({{hue}}º, {{saturation}}%, {{luminosity}}%)</span>
+      <span class="colorMainInfo">
+        {{#if isAdminOrEditor}}
+          <span class="deleteColor">×</span>
+        {{/if}}
+        <span class="colorName">{{name}}</span>
       </span>
+      {{#if isAdminOrEditor}}
+        <span class="colorMeta">
+          <span class="colorTags">{{tags}}</span>
+          <span class="hslValue">hsl ({{hue}}º, {{saturation}}%, {{luminosity}}%)</span>
+        </span>
+      {{/if}}
     </span>
   </span>
 </template>

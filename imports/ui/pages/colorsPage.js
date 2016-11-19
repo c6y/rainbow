@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { DocHead } from 'meteor/kadira:dochead';
@@ -23,4 +24,15 @@ Template.colorsPage.onCreated(function() {
     DocHead.setTitle(title);
     self.subscribe('colors.public');
   });
+});
+
+Template.colorsPage.helpers({
+  isAdminOrEditor() {
+    if (Meteor.user()) {
+      const isAdmin = Meteor.user().profile.isAdmin;
+      const isEditor = Meteor.user().profile.isEditor;
+      return isAdmin || isEditor;
+    }
+    return false;
+  }
 });

@@ -1,8 +1,9 @@
 <template name="quickLinks">
-  <ul class="linkslist">
-    <li><a href="/pool/Pixorama/1">Pixorama </a></li>
-    <li><a href="">Showcase </a></li>
-    <li><a href="">Peecol </a></li>
-    <li><a href="">Portrait &lt;</a></li>
+  <ul class="quickslist">
+    {{#each allQuicks}}
+      <li>
+        <a href="{{quickUrl}}">{{name}}</a>
+      </li>
+    {{/each}}
   </ul>
 </template>

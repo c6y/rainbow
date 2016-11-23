@@ -1,12 +1,3 @@
-#appheader-fixed {
-  position: fixed;
-  margin: @cell-margin;
-  z-index: 100;
-  padding: @cell-margin;
-  width: @cell - 2 * @cell-margin;
-  height: 0.5 * @cell - 2 * @cell-margin;
-}
-
 #appheader {
   z-index: 9;
   padding: 2 * @cell-margin;
@@ -14,6 +5,76 @@
   height: 0.5 * @cell - 2 * @cell-margin;
   background-color: @color-headerback;
   color: @color-headertext;
-  text-align: right;
-  line-height: @font-regular-lineheight
+  text-align: left;
+  line-height: @font-regular-lineheight;
+  display: flex;
+
+  #appheader-left {
+    // background-color: red;
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    #navlogo {
+      // background-color: magenta;
+      font-size: @font-big-size;
+      font-family: @font-big;
+      font-weight: @font-big-weight;
+      line-height: @font-big-lineheight;
+      text-transform: uppercase;
+      padding: 0.25em;
+      padding: 0;
+      margin: 0;
+      display: inline-block;
+      span, a {
+        padding: 0 0.25em;
+      }
+      a {
+        box-shadow: @boxshadow-1;
+        text-decoration: none;
+        color: @color-headerlink;
+      }
+      a:hover {
+        background-color: @color-headerlink;
+        color: @color-headerback;
+      }
+    }
+    #quicks {
+      // background-color: blue;
+      display: block;
+      font-size: 1rem;
+    }
+    #navSearch {
+      // background-color: green;
+      display: block;
+    }
+  }
+  #appheader-right {
+    // background-color: cyan;
+    flex-grow: 2;
+    flex-direction: row-reverse;
+    display: flex;
+    #pageInfo {
+      // background-color: grey;
+      display: block;
+      align-self: flex-end;
+      .searchSlug {
+        text-transform: capitalize;
+      }
+    }
+    #appheader-fixed {
+      position: fixed;
+      z-index: 100;
+      display: block;
+    }
+  }
+}
+
+#linkStrip {
+  // background-color: #efef00;
+  // background-color: #f2f371;
+  // background-color: #f6f6a6;
+  background-color: @color-1;
+  // background-color: @color-15;
+  padding: @cell-margin 2 * @cell-margin;
 }

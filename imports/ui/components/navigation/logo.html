@@ -1,9 +1,9 @@
 <template name="logo">
-  <span class="logo">
+  <span id="navlogo">
     {{#if toHomePath}}
-      <a href="{{toHomePath}}">&gt; {{logotext}}</a>
+      <a href="{{toHomePath}}">{{logotext}}</a>
     {{else}}
-      {{logotext}}
+      <span>{{logotext}}</span>
     {{/if}}
   </span>
 </template>

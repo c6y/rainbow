@@ -1,6 +1,14 @@
 <template name="dashboardPage">
   <div class="container">
 
+    <div id="linkStrip">
+      {{#if isAdminOrEditor}}
+        {{> navLinks}}
+      {{else}}
+        {{> quickLinks}}
+      {{/if}}
+    </div>
+
     <div id="appheader">
       <div id="appheader-left">
         {{> logo}}

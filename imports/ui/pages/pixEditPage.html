@@ -1,16 +1,28 @@
 <template name="pixEditPage">
   <div class="container">
-    <div id="appheader-fixed">
-      {{> navPaging}}
-    </div>
-    <div id="appheader">
-      <div>{{> logo}}</div>
+    <div id="linkStrip">
       {{#if isAdminOrEditor}}
-        <div>{{> navLinks}}</div>
+        {{> navLinks}}
+      {{else}}
+        {{> quickLinks}}
       {{/if}}
-      <div class="navInfo">{{> navPageInfo}}</div>
-      {{> navSearch}}
     </div>
+
+    <div id="appheader">
+      <div id="appheader-left">
+        {{> logo}}
+        <div id="linksAndSearch">
+          {{> navSearch}}
+        </div>
+      </div>
+      <div id="appheader-right">
+        <div id="appheader-fixed">
+          {{> navPaging}}
+        </div>
+        {{> navPageInfo}}
+      </div>
+    </div>
+
     <div id="appbody">
       {{#if Template.subscriptionsReady}}
         {{#if totalPixCount}}

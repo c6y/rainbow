@@ -1,9 +1,19 @@
 <template name="addDocPage">
   <div class="container">
-    <div id="appheader">
-      {{> logo}}
-      {{> navLinks}}
+    <div id="linkStrip">
+      {{#if isAdminOrEditor}}
+        {{> navLinks}}
+      {{else}}
+        {{> quickLinks}}
+      {{/if}}
     </div>
+
+    <div id="appheader">
+      <div id="appheader-left">
+        {{> logo}}
+      </div>
+    </div>
+
     <div id="appbody">
       {{> pixInput}}
       {{#if showInsertErrors}}

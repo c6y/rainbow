@@ -9,6 +9,10 @@ import '../components/login.html';
 import '../components/login.js';
 import '../components/dashboard.html';
 import '../components/dashboard.js';
+import '../components/navigation/navLinks.html';
+import '../components/navigation/navLinks.js';
+import '../components/navigation/quickLinks.html';
+import '../components/navigation/quickLinks.js';
 
 import './dashboardPage.html';
 
@@ -23,6 +27,14 @@ Template.dashboardPage.helpers({
   // Check settings.json if new users are allowed
   allowNewUsers() {
     return Meteor.settings.public.allowNewUsers;
+  },
+  isAdminOrEditor() {
+    if (Meteor.user()) {
+      const isAdmin = Meteor.user().profile.isAdmin;
+      const isEditor = Meteor.user().profile.isEditor;
+      return isAdmin || isEditor;
+    }
+    return false;
   }
 });
 

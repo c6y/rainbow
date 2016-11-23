@@ -1,12 +1,19 @@
 <template name="quicksPage">
   <div class="container">
-    <div id="appheader">
-      {{> logo}}
+    <div id="linkStrip">
       {{#if isAdminOrEditor}}
         {{> navLinks}}
+      {{else}}
+        {{> quickLinks}}
       {{/if}}
-      <!-- {{> countColors}} -->
     </div>
+
+    <div id="appheader">
+      <div id="appheader-left">
+        {{> logo}}
+      </div>
+    </div>
+
     <div id="appbody">
       {{#if isAdminOrEditor}}
         {{> quicksInput}}

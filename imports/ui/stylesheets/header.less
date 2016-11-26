@@ -5,16 +5,19 @@
   height: 0.5 * @cell - 2 * @cell-margin;
   background-color: @color-headerback;
   color: @color-headertext;
-  text-align: left;
+  // text-align: left;
   line-height: @font-regular-lineheight;
   display: flex;
+  justify-content: space-between;
 
   #appheader-left {
-    // background-color: red;
-    flex-grow: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    background-color: red;
+    // flex-grow: 2;
+    min-width: @cell;
+    position: relative;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-between;
     #navlogo {
       // background-color: magenta;
       font-size: @font-big-size;
@@ -25,7 +28,7 @@
       padding: 0.25em;
       padding: 0;
       margin: 0;
-      display: inline-block;
+      // display: inline-block;
       span, a {
         padding: 0 0.25em;
       }
@@ -42,25 +45,55 @@
     #navSearch {
       // background-color: green;
       display: block;
+      left: 0;
+      bottom: 0;
+      position: absolute;
     }
   }
   #appheader-right {
-    // background-color: cyan;
-    flex-grow: 2;
-    flex-direction: row-reverse;
-    display: flex;
+    background-color: cyan;
+    min-width: @cell;
+    position: relative;
+    // flex-grow: 2;
+    // display: block;
+    // flex-direction: column;
+    // justify-content: space-between;
+    // text-align: right;
+
     #pageInfo, #countColors {
-      // background-color: grey;
+      background-color: grey;
+      text-align: right;
       display: block;
-      align-self: flex-end;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      white-space: nowrap;
+      // vertical-align: bottom;
+      // height: auto;
+      // display: inline;
+      // align-self: flex-end;
       .searchSlug {
         text-transform: capitalize;
       }
     }
-    #appheader-fixed {
+    #navPagingBox {
+      // position: relative;
+      // position: relative;
       position: fixed;
+      background-color: green;
+      min-width: @cell;
+      // margin-right: 0;
+      // top: 0;
+      // right: 0;
+      // align-self: flex-end;
+      // display: block;
+      text-align: right;
       z-index: 100;
-      display: block;
+      // display: run-in;
+      // span {
+      //   position: fixed;
+      //   left: 0;
+      // }
     }
   }
 }

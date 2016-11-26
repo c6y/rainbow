@@ -1,0 +1,22 @@
+<template name="linkStrip" >
+  <div id="linkStrip">
+    {{#if isAdminOrEditor}}
+      {{> navLinks}}
+    {{else}}
+      {{> quickLinks}}
+    {{/if}}
+    <ul id="social">
+      <li class="toptextlink">
+        <a href="#">shop</a>
+      </li>
+      <li class="toptextlink">
+        <a href="#">contact</a>
+      </li>
+      <li class="topiconlink">
+        <a href="#">F</a>
+        <a href="#">E</a>
+        <a href="#">T</a>
+      </li>
+    </ul>
+  </div>
+</template>

@@ -3,16 +3,14 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 
 // Components used inside the template
+import '../components/navigation/linkStrip.html';
+import '../components/navigation/linkStrip.js';
 import '../components/register.html';
 import '../components/register.js';
 import '../components/login.html';
 import '../components/login.js';
 import '../components/dashboard.html';
 import '../components/dashboard.js';
-import '../components/navigation/navLinks.html';
-import '../components/navigation/navLinks.js';
-import '../components/navigation/quickLinks.html';
-import '../components/navigation/quickLinks.js';
 
 import './dashboardPage.html';
 

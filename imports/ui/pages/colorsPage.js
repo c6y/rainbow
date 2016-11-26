@@ -6,6 +6,8 @@ import { DocHead } from 'meteor/kadira:dochead';
 import './colorsPage.html';
 
 // Components used inside the template
+import '../components/navigation/linkStrip.js';
+import '../components/navigation/linkStrip.html';
 import '../components/colors/countColors.html';
 import '../components/colors/countColors.js';
 import '../components/colors/colorInput.html';

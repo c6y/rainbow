@@ -1,13 +1,6 @@
 <template name="pixEditPage">
   <div class="container">
-    <div id="linkStrip">
-      {{#if isAdminOrEditor}}
-        {{> navLinks}}
-      {{else}}
-        {{> quickLinks}}
-      {{/if}}
-    </div>
-
+    {{>linkStrip}}
     <div id="appheader">
       <div id="appheader-left">
         {{> logo}}
@@ -22,7 +15,6 @@
         {{> navPageInfo}}
       </div>
     </div>
-
     <div id="appbody">
       {{#if Template.subscriptionsReady}}
         {{#if totalPixCount}}

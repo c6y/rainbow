@@ -1,20 +1,11 @@
 <template name="dashboardPage">
   <div class="container">
-
-    <div id="linkStrip">
-      {{#if isAdminOrEditor}}
-        {{> navLinks}}
-      {{else}}
-        {{> quickLinks}}
-      {{/if}}
-    </div>
-
+    {{>linkStrip}}
     <div id="appheader">
       <div id="appheader-left">
         {{> logo}}
       </div>
     </div>
-
     <div id="appbody">
       {{#if currentUser}}
         {{> dashboard}}
@@ -30,7 +21,6 @@
           </div>
           {{> login}}
         {{/unless}}
-
         {{#if switchRegisterLogin}}
           <div class="dashMenu">
             <span class="toggleLogin">
@@ -39,7 +29,6 @@
           </div>
           {{> register}}
         {{/if}}
-
       {{/if}}
     </div>
   </div>

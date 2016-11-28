@@ -8,6 +8,15 @@
   font-size: @font-meta-size;
   line-height: @font-meta-lineheight;
   .picSpriteOnList {
+    background-color: red;
+    position: relative;
+    .picSpriteBox {
+      position: absolute;
+      left: 0;
+      right: 0
+      top: 0;
+      bottom: 0;
+    }
     // at 3 column containers
     @media only screen
     and (min-width: (3 * @cell + 4 * @cell-margin)){

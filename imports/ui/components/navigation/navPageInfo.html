@@ -1,7 +1,9 @@
 <template name="navPageInfo">
   {{#if thisPage}}
     <span id="pageInfo">
-      <span class="searchSlug">{{thisRouteSlug}}</span> #{{>pixCount}}.{{thisPage}}/{{totalPageCount}}
+      {{#if thisQuery}}<span class="searchQuery">{{thisQuery}}</span>{{/if}}
+      <span class="searchSlug">{{thisRouteSlug}}</span>
+      <span>#{{>pixCount}}.{{thisPage}}/{{totalPageCount}}</span>
     </span>
   {{/if}}
 </template>

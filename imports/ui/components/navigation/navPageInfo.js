@@ -9,9 +9,17 @@ import './pixCount.js';
 import './navPageInfo.html';
 
 Template.navPageInfo.helpers({
-  isNameSearch() {
+  thisQuery() {
     const query = FlowRouter.getQueryParam('q');
-    return query === 'name';
+    // return query === 'name';
+    if (query === 'tag') {
+      return 't';
+    } else if (query === 'project') {
+      return 'p';
+    } else if (query === 'name') {
+      return 'n';
+    }
+    return query;
   },
   thisRouteSlug() {
     return FlowRouter.getParam('slug');

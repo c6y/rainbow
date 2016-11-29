@@ -1,6 +1,3 @@
-import { Meteor } from 'meteor/meteor';
-
-// Create Schema
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 export const UserSchema = {};
 
@@ -41,11 +38,9 @@ UserSchema.User = new SimpleSchema({
     optional: true,
     blackbox: true
   },
-  // In order to avoid an 'Exception in setInterval callback' from Meteor
+  // avoid an 'Exception in setInterval callback' from Meteor
   'heartbeat': {
     type: Date,
     optional: true
   }
 });
-
-Meteor.users.attachSchema(UserSchema.User);

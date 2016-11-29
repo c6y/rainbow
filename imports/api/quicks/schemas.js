@@ -1,6 +1,3 @@
-// import { Quicks } from './quicks.js';
-
-// Create Schema
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 export const QuicksSchema = {};
 
@@ -35,5 +32,3 @@ QuicksSchema.Links = new SimpleSchema({
     }
   }
 });
-
-// Quicks.attachSchema(QuicksSchema.Links);

@@ -1,5 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 
+import { UserSchema } from '../schemas.js';
+Meteor.users.attachSchema(UserSchema.User);
+
 Meteor.publish('allUsers', function() {
   const query = {}; // find all pix
   const projection = {};

@@ -21,22 +21,20 @@ body {
   line-height: @font-regular-lineheight
 }
 
-@cell: 16rem;
-@cell-margin: 0.5rem;
-
 .container {
   margin: 0 auto;
   background-color: white;
   height: 100%;
   display: flex;
   flex-direction: column;
+  min-width: @content-min-width;
 
   // 1 column container
-  @media only screen
-  and (max-width: (2 * @cell + 3 * @cell-margin)) {
-    width: @cell + 2 * @cell-margin;
-    // background-color: cyan;
-  }
+  // @media only screen
+  // and (max-width: (2 * @cell + 3 * @cell-margin)) {
+  //   width: @cell + 2 * @cell-margin;
+  //   // background-color: cyan;
+  // }
   // 2 column container
   @media only screen
   and (min-width: (2 * @cell + 3 * @cell-margin))

@@ -1,4 +1,4 @@
-import { EboyPix } from './eboypix.js';
+// import { EboyPix } from './eboypix.js';
 
 // Create Schema
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
@@ -48,4 +48,4 @@ PicSchema.Pic = new SimpleSchema({
   }
 });
 
-EboyPix.attachSchema(PicSchema.Pic);
+// EboyPix.attachSchema(PicSchema.Pic);

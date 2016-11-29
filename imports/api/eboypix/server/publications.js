@@ -3,6 +3,9 @@ import { Counts } from 'meteor/tmeasday:publish-counts';
 
 import { EboyPix } from '../eboypix.js';
 
+import { PicSchema } from '../schemas.js';
+EboyPix.attachSchema(PicSchema.Pic);
+
 // Publish all documents
 Meteor.publish('pix.public', function pixPublic() {
   const selector = {}; // find all pix

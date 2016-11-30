@@ -5,16 +5,13 @@ import './editMadeDate.html';
 
 Template.editMadeDate.helpers({
   // Display as GMT
-  madeDateGMT() {
+  madeDateShort() {
     const date = this.madeDate;
-    if (date) {
-      return {
-        iso: date.toISOString(),
-        short: date.toISOString().substring(0, 10),
-        utc: date.toUTCString()
-      };
+    if (date === undefined) {
+      return '';
     }
-    return '';
+    const shortDate = date.toISOString().substring(0, 10);
+    return shortDate;
   }
 });
 
@@ -22,9 +19,13 @@ Template.editMadeDate.events({
   // Restore madeDate input to original value
   // if user leaves input and does not press return
   'blur .editMadeDate'(event, target) {
-    const date = this.madeDate;
-    const shortDate = date.toISOString().substring(0, 10);
-    event.target.value = shortDate;
+    let date = this.madeDate;
+    if (date === undefined) {
+      event.target.value = '';
+    } else {
+      const shortDate = date.toISOString().substring(0, 10);
+      event.target.value = shortDate;
+    }
   },
   'keyup .editMadeDate'(event, target) {
     // Update with new madeDate

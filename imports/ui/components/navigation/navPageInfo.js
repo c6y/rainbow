@@ -11,7 +11,6 @@ import './navPageInfo.html';
 Template.navPageInfo.helpers({
   thisQuery() {
     const query = FlowRouter.getQueryParam('q');
-    // return query === 'name';
     if (query === 'tag') {
       return 't';
     } else if (query === 'project') {
@@ -22,7 +21,8 @@ Template.navPageInfo.helpers({
     return query;
   },
   thisRouteSlug() {
-    return FlowRouter.getParam('slug');
+    const slug = FlowRouter.getParam('slug');
+    return slug === 'everything' ? false : slug;
   },
   thisPage() {
     const page = FlowRouter.getParam('page');

@@ -1,5 +1,6 @@
 #navSearch {
   display: inline-block;
+  white-space: nowrap;
   input {
     font-family: inherit;
     font-size: inherit;
@@ -11,15 +12,7 @@
     text-align: left;
     background-color: transparent;
     text-transform: capitalize;
-    // border-left: 1px solid @color-headeractive;
-    // padding-left: 3px;
   }
-  // input:hover {
-  //   // color: @color-headerback;
-  //   outline: none;
-  //   border-bottom: 1px solid @color-1;
-  //   transition: border-bottom 1.5s 0.0s ease;
-  // }
   input:focus {
     color: @color-headeractive;
     background-color: transparent;
@@ -38,10 +31,4 @@
   cursor: pointer;
   user-select:none;
   color: @color-headerlink;
-  // color: @color-headerback;
-  // background-color: @color-headertext;
-  // border: 2px solid @color-headerlink;
-  // border-radius: 2em;
-  // outline-offset: -2px;
-  // padding: 0.1em 0.4em;
 }

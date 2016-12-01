@@ -1,0 +1,36 @@
+@media only screen
+and (max-device-width: @breakpoint) {
+  #navlogo {
+    font-size: @font-big-size * 0.8;
+  }
+}
+
+@media only screen
+and (min-device-width: @breakpoint) {
+  #navlogo {
+    font-size: @font-big-size;
+  }
+}
+
+// shared properties
+#navlogo {
+  font-family: @font-big;
+  font-weight: @font-big-weight;
+  line-height: @font-big-lineheight;
+  user-select: none;
+  // padding: 0.2em;
+  padding: 0;
+  margin: 0;
+  span, a {
+    padding: 0 0.25em;
+  }
+  a {
+    box-shadow: @boxshadow-1;
+    text-decoration: none;
+    color: @color-headerlink;
+  }
+  a:hover {
+    background-color: @color-headerlink;
+    color: @color-headerback;
+  }
+}

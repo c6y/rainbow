@@ -1,6 +1,37 @@
+@media only screen
+and (max-device-width: @breakpoint) {
+  #appheader {
+    padding: @cell-margin;
+  }
+  #appheader-left {
+    min-width: 50%;
+  }
+  #appheader-right {
+    min-width: 50%;
+    #navPagingBox {
+      right: @cell-margin;
+    }
+  }
+}
+
+@media only screen
+and (min-device-width: @breakpoint) {
+  #appheader {
+    padding: 2 * @cell-margin;
+  }
+  #appheader-left {
+    min-width: @cell;
+  }
+  #appheader-right {
+    min-width: @cell;
+    #navPagingBox {
+      width: @cell;
+    }
+  }
+}
+// shared properties
 #appheader {
   z-index: 9;
-  padding: 2 * @cell-margin;
   width: 0 auto;
   height: 0.5 * @cell - 2 * @cell-margin;
   background-color: @color-headerback;
@@ -8,31 +39,10 @@
   line-height: @font-regular-lineheight;
   display: flex;
   justify-content: space-between;
+  position: relative;
   #appheader-left {
-    min-width: @cell;
+    // background-color: red;
     position: relative;
-    #navlogo {
-      font-size: @font-big-size;
-      font-family: @font-big;
-      font-weight: @font-big-weight;
-      line-height: @font-big-lineheight;
-      user-select: none;
-      padding: 0.25em;
-      padding: 0;
-      margin: 0;
-      span, a {
-        padding: 0 0.25em;
-      }
-      a {
-        box-shadow: @boxshadow-1;
-        text-decoration: none;
-        color: @color-headerlink;
-      }
-      a:hover {
-        background-color: @color-headerlink;
-        color: @color-headerback;
-      }
-    }
     #navSearch {
       display: block;
       left: 0;
@@ -41,9 +51,11 @@
     }
   }
   #appheader-right {
-    min-width: @cell;
+    // background-color: blue;
     position: relative;
-
+    // position: absolute;
+    top: 0;
+    right: 0;
     #pageInfo, #countColors {
       text-align: right;
       display: block;
@@ -56,8 +68,8 @@
       }
     }
     #navPagingBox {
+      // background-color: green;
       position: fixed;
-      min-width: @cell;
       text-align: right;
       z-index: 100;
     }

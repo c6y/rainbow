@@ -16,7 +16,7 @@
           {{/each}}
         </li>
         {{#if madeDate}}
-          <li><span class="property">madeDate:</span> {{madeDate}}</li>
+          <li><span class="property">madeDate:</span> {{madeDateShort}}</li>
         {{/if}}
       {{/if}}
       <li><span class="property">dimensions:</span> {{dimensions.width}} &times; {{dimensions.height}}</li>
@@ -27,7 +27,7 @@
 
         <li><span class="property">backgroundColor:</span> {{backgroundColor}}</li>
         <li><span class="property">colorHSL(calc):</span> {{colorHSL.info}}</li>
-        <li><span class="property">createdAt:</span> {{createdAt}}</li>
+        <li><span class="property">createdAt:</span> {{createdAtShort}}</li>
         {{#if fullFrame}}
           <li><span class="property">fullFrame:</span> {{isFullFrame}}</li>
         {{/if}}

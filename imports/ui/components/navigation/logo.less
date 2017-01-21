@@ -18,19 +18,30 @@ and (min-device-width: @breakpoint) {
   font-weight: @font-big-weight;
   line-height: @font-big-lineheight;
   user-select: none;
-  // padding: 0.2em;
+  // background-color: blue;
   padding: 0;
   margin: 0;
   span, a {
-    padding: 0 0.25em;
+    padding: 0;
+    // margin: -10px;
+
   }
   a {
     box-shadow: @boxshadow-1;
     text-decoration: none;
     color: @color-headerlink;
+    // color: @color-headerback;
+    // text-shadow: 1px 1px 1px @color-headeractive;
   }
   a:hover {
     background-color: @color-headerlink;
     color: @color-headerback;
+    // text-shadow: 0.0625em 0.0625em @color-headerlink;
+    // text-shadow:  0.0125em 0.0125em 0 @color-headerlink,
+    //               0.0225em 0.0225em 0 @color-headerlink,
+    //               0.0325em 0.0325em 0 @color-headerlink,
+    //               0.0425em 0.0425em 0 @color-headerlink,
+    //               0.0525em 0.0525em 0 @color-headerlink,
+    //               0.0625em 0.0625em 0 @color-headerlink;
   }
 }

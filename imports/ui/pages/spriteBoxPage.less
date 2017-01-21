@@ -16,37 +16,60 @@
   user-select: none;
 }
 
-.spriteBoxInfoToggle {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  padding: 6px 12px;
-  z-index: 30;
-  cursor: pointer;
-  user-select: none;
-  -webkit-filter: invert(100%);
-  filter: invert(100%);
-}
+// .spriteBoxInfoToggle {
+//   position: fixed;
+//   right: 0;
+//   bottom: 0;
+//   padding: 6px 12px;
+//   z-index: 30;
+//   cursor: pointer;
+//   user-select: none;
+//   -webkit-filter: invert(100%);
+//   filter: invert(100%);
+// }
 
 .picMetaBox {
   margin: 0;
+  padding: 0;
   left: 0;
   bottom: 0;
   position: fixed;
   z-index: 15;
   width: 100%;
-  border-top: 1px solid #333326;
+  // border-top: 1px solid #333326;
 }
 
 .copyright {
   cursor: pointer;
   position: fixed;
-  right: 0;
-  top: 0;
-  padding: 6px 12px;
+  right: @cell-margin;
+  top: @cell-margin;
+  margin: @cell-margin;
+  // background-color: @color-headerlink;
+  // background-color: blue;
+  margin: 0;
   z-index: 30;
   user-select: none;
   font-family: @font-big;
+  // font-family: @font-navbar;
+  // font-family: @font-meta;
+  // font-size: @font-meta-size;
+  // font-weight: @font-meta-weight;
+  // line-height: @font-meta-lineheight;
+  padding: 0 0.5em;
+  color: @color-headerlink;
+  // font-size: @font-navbar-size;
+  // opacity: 0.5;
+  // color: @color-3;
+  // text-shadow: 1px 1px 1px @color-headerlink;
+  &:hover {
+    // background-color: @color-headerlink;
+    opacity: 1;
+  }
+  &:active {
+    color: @color-2;
+    opacity: 1;
+  }
   // -webkit-filter: invert(100%);
   // filter: invert(100%);
 }

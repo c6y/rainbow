@@ -17,6 +17,22 @@ Template.picMeta.helpers({
     // Returns true if we're not on spriteBox
     return routeName !== 'spriteBox';
   },
+  madeDateShort() {
+    const date = this.madeDate;
+    if (date === undefined) {
+      return '';
+    }
+    const shortDate = date.toISOString().substring(0, 4);
+    return shortDate;
+  },
+  createdAtShort() {
+    const date = this.createdAt;
+    if (date === undefined) {
+      return '';
+    }
+    const shortDate = date.toISOString().substring(0, 10);
+    return shortDate;
+  },
   colorHSL() {
     // Get the color by name
     const color = Colors.findOne(

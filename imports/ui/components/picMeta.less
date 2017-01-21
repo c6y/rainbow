@@ -1,7 +1,8 @@
 .picMeta {
   color: @color-3;
-  background-color: @color-1;
-  padding: 2 * @cell-margin;
+  // background-color: @color-headerlink;
+  padding: @cell-margin;
+  margin: 0;
   font-family: @font-meta;
   font-weight: @font-meta-weight;
   font-size: @font-meta-size;
@@ -9,9 +10,15 @@
   ul {
     padding: 0;
     margin: 0;
+    // background-color: @color-headerlink;
   }
   li {
     list-style: none;
+    // padding: 0;
+    margin: 0;
+    background-color: @color-headerlink;
+    display: inline-block;
+    padding: 0 0.5em;
   }
   .property {
     color: @color-6;

@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-// import { FlowRouter } from 'meteor/kadira:flow-router';
+import { Session } from 'meteor/session';
 
 import './linkStrip.html';
 
@@ -12,6 +12,7 @@ import './quickLinks.js';
 
 // Template onCreated
 Template.linkStrip.onCreated(function() {
+  Session.set('plusBox', false); // hide plusBox at start
   const self = this;
   self.autorun(function() {
     self.subscribe('quicks.public');
@@ -26,5 +27,10 @@ Template.linkStrip.helpers({
       return isAdmin || isEditor;
     }
     return false;
+  },
+  // toggle linkStrip via navPaging template
+  isVisible() {
+    const foo = Session.get('plusBox');
+    return foo;
   }
 });

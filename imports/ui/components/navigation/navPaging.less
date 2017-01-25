@@ -19,22 +19,24 @@ and (min-device-width: @breakpoint) {
   padding: 0;
   margin: 0;
   white-space: nowrap;
+  user-select: none;
   .nextPage {
     margin-left: @cell-margin;
   }
   span {
     display: inline-block;
     a {
-      padding: 0;
+      // padding: 0;
+      padding: 0 0.1em;
     }
   }
-  .active {
+  .active, .togglePlusBox {
     a {
       cursor: pointer;
       color: @color-headerlink;
       background-color: @color-headerback;
-      user-select: none;
       box-shadow: @boxshadow-1;
+      text-decoration: none;
     }
     a:hover {
       background-color: @color-headerlink;
@@ -46,13 +48,12 @@ and (min-device-width: @breakpoint) {
       box-shadow: none;
     }
   }
-  .inactive {
+  .inactive{
     a {
       color: @color-headertext;
       background-color: @color-headerback;
       box-shadow: none;
       transition: background-color 0.2s linear, box-shadow 0.2s linear;
-      user-select: none;
     }
   }
 }

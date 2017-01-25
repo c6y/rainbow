@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Counts } from 'meteor/tmeasday:publish-counts';
+import { Session } from 'meteor/session';
 
 Template.navPaging.onCreated(function() {
   const self = this;
@@ -54,6 +55,13 @@ Template.navPaging.helpers({
       return 'active';
     }
     return 'inactive';
+  },
+  togglePluxChar() {
+    const plusBoxShow = Session.get('plusBox');
+    if (plusBoxShow) {
+      return '-';
+    }
+    return '+';
   }
 });
 
@@ -70,5 +78,10 @@ Template.navPaging.events({
     // return previous page, if lower than 1 return 1
     const previousPage = Math.max(1, thisPage - 1);
     FlowRouter.setParams({ page: previousPage });
+  },
+  'click .togglePlusBox'() {
+    const oldPlusBoxShow = Session.get('plusBox');
+    const newPlusBoxShow = oldPlusBoxShow === false;
+    Session.set('plusBox', newPlusBoxShow);
   }
 });

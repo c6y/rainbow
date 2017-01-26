@@ -1,0 +1,30 @@
+<template name="sideBox" >
+  {{#if isVisible}}
+    <div id="sideBox">
+      {{#if isAdminOrEditor}}
+        {{> navLinks}}
+      {{else}}
+        {{> quickLinks}}
+      {{/if}}
+      <hr>
+      <ul class="fineprint">
+        <li><a href="#">Support this on Patreon</a></li>
+      <!-- </ul>
+      <hr>
+      <ul class="fineprint"> -->
+        <li><a href="#">eboy@eboy.com</a></li>
+        <li><a href="#">The eBoy Shop</a></li>
+        <li><a href="#">Twitter</a> | <a href="#">Facebook</a> | <a href="#">Ello</a></li>
+      </ul>
+      <!-- <span class="social">
+        <a href="#">F</a>
+        <a href="#">E</a>
+        <a href="#">T</a>
+      </span> -->
+      <hr>
+      <ul class="fineprint">
+        <li>©eBoy {{thisYear}}</li>
+      </ul>
+    </div>
+  {{/if}}
+</template>

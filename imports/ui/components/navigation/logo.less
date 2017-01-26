@@ -29,7 +29,7 @@ and (min-device-width: @breakpoint) {
     // margin: inherit;
   }
   a {
-    box-shadow: @boxshadow-1;
+    // box-shadow: @boxshadow-1;
     text-decoration: none;
     color: @color-headerlink;
     // color: @color-headerback;
@@ -38,12 +38,25 @@ and (min-device-width: @breakpoint) {
   a:hover {
     background-color: @color-headerlink;
     color: @color-headerback;
-    // text-shadow: 0.0625em 0.0625em @color-headerlink;
-    // text-shadow:  0.0125em 0.0125em 0 @color-headerlink,
-    //               0.0225em 0.0225em 0 @color-headerlink,
-    //               0.0325em 0.0325em 0 @color-headerlink,
-    //               0.0425em 0.0425em 0 @color-headerlink,
-    //               0.0525em 0.0525em 0 @color-headerlink,
-    //               0.0625em 0.0625em 0 @color-headerlink;
+  }
+  .togglePlusBox {
+    padding: 0;
+    margin: 0;
+    .active, .inactive {
+      color: @color-5;
+      &:hover {
+        // color: @color-5;
+        // background-color: @color-0;
+        color: @color-1;
+        background-color: inherit;
+      }
+    }
+    // .inactive {
+    //   color: @color-5;
+    //   background-color: @color-0;
+    //   &:hover {
+    //     color: @color-1;
+    //   }
+    // }
   }
 }

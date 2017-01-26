@@ -22,6 +22,20 @@ Template.logo.helpers({
   },
   logotext() {
     return Meteor.settings.public.logotext;
+  },
+  isActive() {
+    const oldPlusBoxShow = Session.get('plusBox');
+    if (oldPlusBoxShow) {
+      return 'active';
+    }
+    return 'inactive';
+  },
+  isActiveChar() {
+    const oldPlusBoxShow = Session.get('plusBox');
+    if (oldPlusBoxShow) {
+      return '×';
+    }
+    return '+';
   }
 });
 

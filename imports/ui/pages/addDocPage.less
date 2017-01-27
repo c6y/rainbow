@@ -3,27 +3,48 @@
 @import '../components/pixList.less';
 @import '../components/navigation/linkStrip.less';
 @import '../components/navigation/logo.less';
+@import '../components/navigation/sideBox.less';
+
+// .mainBox {
+//   display: flex;
+//   flex-wrap: wrap;
+//   background-color: @color-20;
+//   margin: 0;
+//   padding: 0;
+// }
+
+.mainBox {
+  display: flex;
+  // width: 100% - 3 * @cell-margin;
+  // width: 100%;
+  background-color: @color-20;
+
+  flex-grow: 2;
+  flex-wrap: wrap;
+  padding: 0.5 * @cell-margin;
+}
+
+
+
+
 
 .failedInsertsClass {
-  // display: none;
-  // background-color: @color-5;
-  // border-left: @cell-margin solid red;
-  margin: @cell-margin @cell-margin 2 * @cell-margin @cell-margin;
+  width: 100%;
+  margin: 0.5 * @cell-margin;
   .errorHeader {
     padding: @cell-margin;
     background-color: @color-5;
     color: #822;
-    // margin-bottom: @cell-margin;
+    display: block;
   }
   ol {
-    // color: @color-5;
     color: #822;
     font-family: @font-meta;
     font-weight: @font-meta-weight;
     font-size: @font-meta-size;
     line-height: @font-meta-lineheight;
-    // background-color: #433;
     background-color: rgb(242, 179, 179);
+    display: block;
     margin: 0;
     padding-left: 2em;
     padding: @cell-margin;
@@ -35,12 +56,10 @@
     }
   }
 }
-
 .uploadedInfo {
+  width: 100%;
   padding: @cell-margin;
-  margin: @cell-margin @cell-margin 0 @cell-margin;
-  width: auto;
-  // background-color: @color-success;
+  margin: 0.5 * @cell-margin;
   background-color: #6f6;
   color: #262;
 }

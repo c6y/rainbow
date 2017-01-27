@@ -1,35 +1,38 @@
 <template name="addDocPage">
   <div class="container">
-    {{>linkStrip}}
+    <!-- {{>linkStrip}} -->
     <div id="appheader">
       <div id="appheader-left">
         {{> logo}}
       </div>
     </div>
     <div id="appbody">
-      {{> pixInput}}
-      {{#if showInsertErrors}}
-        <div class="failedInsertsClass">
-          <div class="errorHeader">
-            {{insertErrorsCount}} Errors:
-          </div>
-          <ol>
-            {{#each showInsertErrors}}
-              <li>{{this}}</li>
-            {{/each}}
-          </ol>
-        </div>
-      {{/if}}
-      {{#if latestUploadTime}}
-        {{#if docsCount}}
-          <div class="uploadedInfo">
-            {{docsCount}} Documents successfuly added:
+      {{> sideBox}}
+      <span class="mainBox">
+        {{> pixInput}}
+        {{#if showInsertErrors}}
+          <div class="failedInsertsClass">
+            <div class="errorHeader">
+              {{insertErrorsCount}} Errors:
+            </div>
+            <ol>
+              {{#each showInsertErrors}}
+                <li>{{this}}</li>
+              {{/each}}
+            </ol>
           </div>
         {{/if}}
-      {{/if}}
-      {{#if Template.subscriptionsReady}}
-        {{> pixList}}
-      {{/if}}
+        {{#if latestUploadTime}}
+          {{#if docsCount}}
+            <div class="uploadedInfo">
+              {{docsCount}} Documents successfuly added:
+            </div>
+          {{/if}}
+        {{/if}}
+        {{#if Template.subscriptionsReady}}
+          {{> pixList}}
+        {{/if}}
+      </span>
     </div>
   </div>
 </template>

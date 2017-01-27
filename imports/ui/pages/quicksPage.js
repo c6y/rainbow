@@ -16,6 +16,8 @@ import '../components/quicks/quicksPool.html';
 import '../components/quicks/quicksPool.js';
 import '../components/navigation/logo.js';
 import '../components/navigation/logo.html';
+import '../components/navigation/sideBox.js';
+import '../components/navigation/sideBox.html';
 
 // Template onCreated
 Template.quicksPage.onCreated(function() {

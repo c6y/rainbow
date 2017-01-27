@@ -1,12 +1,13 @@
 <template name="quicksPage">
   <div class="container">
-    {{>linkStrip}}
+    <!-- {{>linkStrip}} -->
     <div id="appheader">
       <div id="appheader-left">
         {{> logo}}
       </div>
     </div>
     <div id="appbody">
+      {{> sideBox}}
       {{#if isAdminOrEditor}}
         {{> quicksInput}}
       {{/if}}

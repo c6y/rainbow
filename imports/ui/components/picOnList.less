@@ -2,7 +2,9 @@
 @import './picMeta.less';
 
 .picOnListbox {
+  // background-color: @color-5;
   display: flex;
+  flex-wrap: nowrap;
   font-family: @font-meta;
   font-weight: @font-meta-weight;
   font-size: @font-meta-size;
@@ -10,19 +12,17 @@
   .picSpriteOnList {
     background-color: red;
     position: relative;
-    .picSpriteBox {
-      position: relative;
-      left: 0;
-      right: 0
-      top: 0;
-      bottom: 0;
-    }
     overflow: hidden;
     padding: 0;
-    flex-grow: 2;
+    flex-grow: 3;
+    width: @cell;
+    // .picSpriteBox {
+    //
+    // }
   }
   .picMetaEdit {
-    flex-grow: 2;
+    width: @cell;
+    margin-left: @cell-margin;
     line-height: inherit;
     background-color: @color-15;
     li {

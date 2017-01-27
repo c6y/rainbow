@@ -17,13 +17,15 @@
     </div>
     <div id="appbody">
       {{> sideBox}}
-      {{#if Template.subscriptionsReady}}
-        {{#if totalPixCount}}
-          {{> pixList}}
-        {{else}}
-          {{> pixNone}}
+      <span id="mainBox">
+        {{#if Template.subscriptionsReady}}
+          {{#if totalPixCount}}
+            {{> pixList}}
+          {{else}}
+            {{> pixNone}}
+          {{/if}}
         {{/if}}
-      {{/if}}
+      </span>
     </div>
   </div>
 </template>

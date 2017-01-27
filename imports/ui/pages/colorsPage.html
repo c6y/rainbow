@@ -1,6 +1,6 @@
 <template name="colorsPage">
   <div class="container">
-    {{>linkStrip}}
+    <!-- {{>linkStrip}} -->
     <div id="appheader">
       <div id="appheader-left">
         {{> logo}}
@@ -11,6 +11,7 @@
     </div>
 
     <div id="appbody">
+      {{> sideBox}}
       {{#if isAdminOrEditor}}
         {{> colorInput}}
       {{/if}}

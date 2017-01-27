@@ -2,7 +2,9 @@
 @import './picMeta.less';
 
 .picOnListbox {
+  // background-color: @color-5;
   display: flex;
+  flex-wrap: nowrap;
   font-family: @font-meta;
   font-weight: @font-meta-weight;
   font-size: @font-meta-size;
@@ -10,41 +12,23 @@
   .picSpriteOnList {
     background-color: red;
     position: relative;
-    .picSpriteBox {
-      position: absolute;
-      left: 0;
-      right: 0
-      top: 0;
-      bottom: 0;
-    }
-    // at 3 column containers
-    @media only screen
-    and (min-width: (3 * @cell + 4 * @cell-margin)){
-      width: 2 * @cell;
-    }
-    // at 2 column containers
-    @media only screen
-    and (max-width: (3 * @cell + 4 * @cell-margin)){
-      width: @cell;
-    }
     overflow: hidden;
-    display: inline-block;
     padding: 0;
+    flex-grow: 3;
+    width: @cell;
+    // .picSpriteBox {
+    //
+    // }
   }
   .picMetaEdit {
+    width: @cell;
+    margin-left: @cell-margin;
     line-height: inherit;
-    width: @cell - 2 * @cell-margin;
-    flex-grow: 2;
-    display: inline-block;
-    // background-color: @color-0;
     background-color: @color-15;
-
     li {
       list-style: none;
       line-height: inherit;
       display: block;
-      // height: 44px;
-      // background-color: green;
     }
     .property {
       line-height: @font-meta-lineheight;
@@ -60,10 +44,6 @@
       cursor: pointer;
       user-select: none;
     }
-    // .editFullFrame:hover {
-    //   color: @color-0;
-    //   background-color: @color-7;
-    // }
     .fullYes {
       background-color: @color-3;
       color: @color-15;
@@ -93,8 +73,6 @@
     padding: @cell-margin;
     background-color: @color-4;
     width: auto;
-    // text-align: center;
-    // font-size: 0.6rem;
   }
   .deletePic {
     background: @color-4;

@@ -11,6 +11,8 @@ import '../components/login.html';
 import '../components/login.js';
 import '../components/dashboard.html';
 import '../components/dashboard.js';
+import '../components/navigation/sideBox.js';
+import '../components/navigation/sideBox.html';
 
 import './dashboardPage.html';
 

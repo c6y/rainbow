@@ -1,6 +1,6 @@
 <template name="pixEditPage">
   <div class="container">
-    {{>linkStrip}}
+    <!-- {{>linkStrip}} -->
     <div id="appheader">
       <div id="appheader-left">
         {{> logo}}
@@ -16,13 +16,16 @@
       </div>
     </div>
     <div id="appbody">
-      {{#if Template.subscriptionsReady}}
-        {{#if totalPixCount}}
-          {{> pixList}}
-        {{else}}
-          {{> pixNone}}
+      {{> sideBox}}
+      <span id="mainBox">
+        {{#if Template.subscriptionsReady}}
+          {{#if totalPixCount}}
+            {{> pixList}}
+          {{else}}
+            {{> pixNone}}
+          {{/if}}
         {{/if}}
-      {{/if}}
+      </span>
     </div>
   </div>
 </template>

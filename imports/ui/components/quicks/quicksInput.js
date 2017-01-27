@@ -11,11 +11,12 @@ Template.quicksInput.events({
     const name = target.name.value;
     const slug = target.slug.value;
     const query = target.query.value;
-    console.log('name: ' + name);
-    Meteor.call('quicks.insert', name, slug, query);
+    const rank = target.rank.value;
+    Meteor.call('quicks.insert', name, slug, query, rank);
     // Clear form
     target.name.value = '';
     target.slug.value = '';
     target.query.value = '';
+    target.rank.value = '';
   }
 });

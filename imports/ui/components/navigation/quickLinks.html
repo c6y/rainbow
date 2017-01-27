@@ -2,7 +2,11 @@
   <ul id="quicks">
     {{#each allQuicks}}
       <li class="toptextlink">
-        <a href="{{quickUrl}}">{{name}}</a>
+        {{#if toHerePath}}
+          <span>{{name}}</span>
+        {{else}}
+          <a href="{{quickUrl}}">{{name}}</a>
+        {{/if}}
       </li>
     {{/each}}
   </ul>

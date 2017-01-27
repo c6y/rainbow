@@ -2,8 +2,6 @@
 @import './quickLinks.less';
 
 #sideBox {
-  color: #555;
-  // background-color: cyan;
   width: @cell;
   margin: @cell-margin 0 @cell-margin @cell-margin;
   float: left;
@@ -16,22 +14,23 @@
     margin: 0;
     display: block;
   }
-  #quicks li {
+  #quicks li, .shoplink li {
     list-style: none;
-    // background-color: #aaa;
-    // background-color: #eee;
     span {
-      background-color: #eee;
+      background-color: @color-9;
+      color: @color-1;
     }
     a, span {
       display: block;
       padding: @cell-margin 2 * @cell-margin;
       text-decoration: none;
+    }
+    a {
       color: @color-5;
-      &:hover {
-        background-color: #f5f5f5;
-        color: @color-1;
-      }
+    }
+    a:hover {
+      background-color: #f5f5f5;
+      color: @color-5;
     }
   }
   .fineprint {
@@ -54,18 +53,18 @@
       }
     }
   }
-  .social{
-    padding: @cell-margin 2 * @cell-margin;
-    font-family: @font-icons;
-    font-size: 1.5rem;
-    a {
-      text-decoration: none;
-      color: @color-5;
-      &:hover {
-        color: @color-1;
-      }
-    }
-  }
+  // .social{
+  //   padding: @cell-margin 2 * @cell-margin;
+  //   font-family: @font-icons;
+  //   font-size: 1.5rem;
+  //   a {
+  //     text-decoration: none;
+  //     color: @color-5;
+  //     &:hover {
+  //       color: @color-1;
+  //     }
+  //   }
+  // }
   hr {
     border: 0;
     padding: 0;

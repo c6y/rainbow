@@ -7,11 +7,12 @@ import { Quicks } from './quicks.js';
 // import { tagsToArray } from '../../functions/server/tagsToArray.js';
 
 Meteor.methods({
-  'quicks.insert'(name, slug, query) {
+  'quicks.insert'(name, slug, query, rank) {
     Quicks.insert({
       name: name,
       slug: slug,
-      query: query
+      query: query,
+      rank: rank
     });
   },
   'quicks.deleteAll'() {

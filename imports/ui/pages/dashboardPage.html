@@ -8,30 +8,31 @@
     </div>
     <div id="appbody">
       {{> sideBox}}
-
-      {{#if currentUser}}
-        {{> dashboard}}
-      {{else}}
-        {{#unless switchRegisterLogin}}
-          <div class="dashMenu">
-            &nbsp;
-            {{#if allowNewUsers}}
+      <span id="mainBox">
+        {{#if currentUser}}
+          {{> dashboard}}
+        {{else}}
+          {{#unless switchRegisterLogin}}
+            <div class="dashMenu">
+              &nbsp;
+              {{#if allowNewUsers}}
+                <span class="toggleLogin">
+                  Switch to Register
+                </span>
+              {{/if}}
+            </div>
+            {{> login}}
+          {{/unless}}
+          {{#if switchRegisterLogin}}
+            <div class="dashMenu">
               <span class="toggleLogin">
-                Switch to Register
+                Switch to Login
               </span>
-            {{/if}}
-          </div>
-          {{> login}}
-        {{/unless}}
-        {{#if switchRegisterLogin}}
-          <div class="dashMenu">
-            <span class="toggleLogin">
-              Switch to Login
-            </span>
-          </div>
-          {{> register}}
+            </div>
+            {{> register}}
+          {{/if}}
         {{/if}}
-      {{/if}}
+      </span>
     </div>
   </div>
 </template>

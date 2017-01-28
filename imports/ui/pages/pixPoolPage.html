@@ -15,15 +15,15 @@
     </div>
     <div id="appbody">
       {{> sideBox}}
-      {{#if Template.subscriptionsReady}}
-        {{#if totalPixCount}}
-          {{> pixPool}}
-        {{else}}
-          {{> pixNone}}
+      <span id="mainBox">
+        {{#if Template.subscriptionsReady}}
+          {{#if totalPixCount}}
+            {{> pixPool}}
+          {{else}}
+            {{> pixNone}}
+          {{/if}}
         {{/if}}
-      {{/if}}
+      </span>
     </div>
-    {{#if Template.subscriptionsReady}}
-    {{/if}}
   </div>
 </template>

@@ -12,10 +12,12 @@
 
     <div id="appbody">
       {{> sideBox}}
-      {{#if isAdminOrEditor}}
-        {{> colorInput}}
-      {{/if}}
-      {{> colorsPool}}
+      <span id="mainBox">
+        {{#if isAdminOrEditor}}
+          {{> colorInput}}
+        {{/if}}
+        {{> colorsPool}}
+      </span>
     </div>
   </div>
 </template>

@@ -7,34 +7,37 @@
     }
     .quickDelete {
       display: inline-block;
-      background-color: @color-2;
+      background-color: @color-4;
       color: @color-5;
-      padding-top: 0.5 * @cell-margin;
-      padding-right: 0;
-      padding-bottom: 0.5 * @cell-margin;
+      padding-top: 0.5*@cell-margin;
+      padding-right: @cell-margin;
+      padding-bottom: 0.5*@cell-margin;
       padding-left: @cell-margin;
       z-index: 10;
       cursor: pointer;
-    }
-    .quickDelete:hover {
-      color: @color-2;
-      background-color: @color-5;
+      &:hover {
+        color: @color-2;
+        background-color: @color-5;
+      }
     }
     .quickName {
       display: inline-block;
-      background-color: @color-2;
-      padding: 0.5 * @cell-margin @cell-margin;
+      background-color: @color-4;
+      padding-top: 0.5*@cell-margin;
+      padding-right: 1.5*@cell-margin;
+      padding-bottom: 0.5*@cell-margin;
+      padding-left: 0;
       text-decoration: none;
       color: inherit;
     }
     .quickMeta {
+      color: @color-3;
       padding: 0.5 * @cell-margin @cell-margin;
       // background-color: @color-2;
       font-family: @font-meta;
       font-size: @font-meta-size;
       line-height: @font-meta-lineheight;
       display: block;
-      color: @color-1;
       // opacity: 0.2;
     }
   }

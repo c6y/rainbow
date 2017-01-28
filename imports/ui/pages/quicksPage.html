@@ -8,10 +8,12 @@
     </div>
     <div id="appbody">
       {{> sideBox}}
-      {{#if isAdminOrEditor}}
-        {{> quicksInput}}
-      {{/if}}
-      {{> quicksPool}}
+      <span id="mainBox">
+        {{#if isAdminOrEditor}}
+          {{> quicksInput}}
+        {{/if}}
+        {{> quicksPool}}
+      </span>
     </div>
   </div>
 </template>

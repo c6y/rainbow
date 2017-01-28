@@ -7,6 +7,14 @@
   ::-webkit-input-placeholder {
     color: @color-10;
   }
+  background-color: @color-10;
+  .buttonbox {
+    background-color: inherit;
+    display: block;
+    padding: 0.5*@cell-margin;
+    margin-top: -@cell-margin;
+    text-align: right;
+  }
   textarea {
     font-family: @font-meta;
     font-weight: @font-meta-weight;
@@ -21,10 +29,6 @@
     overflow-wrap: break-word;
     border: @cell-margin solid @color-10;
     margin: 0;
-    padding: @cell-margin;
-  }
-  button {
-    margin-top: @cell-margin;
     padding: @cell-margin;
   }
 }

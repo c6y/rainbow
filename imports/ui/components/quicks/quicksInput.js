@@ -14,9 +14,9 @@ Template.quicksInput.events({
     const rank = target.rank.value;
     Meteor.call('quicks.insert', name, slug, query, rank);
     // Clear form
+    target.query.value = 'tag';
     target.name.value = '';
     target.slug.value = '';
-    target.query.value = '';
     target.rank.value = '';
   }
 });

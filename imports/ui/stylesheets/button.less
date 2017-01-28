@@ -1,8 +1,14 @@
+
 button {
-  font-size: 1em;
+  font-size: @font-regular;
   font-family: inherit;
-  border: none;
+  border: @color-inputbox 0.4*@cell-margin solid;
+  line-height: 2em;
   cursor: pointer;
-  background-color: @color-4;
-  background-color: @color-10;
+  margin: 0;
+  padding: @cell-margin 2*@cell-margin;
+  display: inline-block;
+  // -webkit-flex: 1;
+  color: @color-buttontxt;
+  background-color: @color-button;
 }

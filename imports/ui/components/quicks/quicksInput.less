@@ -6,23 +6,34 @@
     padding: 0;
     display: flex;
     padding: 0.5 * @cell-margin;
+    font-family: @font-meta;
+    font-size: @font-meta-size;
+    color: @color-10;
+    select {
+      font-family: inherit;
+      font-size: inherit;
+      color: white;
+      -webkit-appearance: none;
+      background-color: @color-10;
+      padding: 0.5em;
+      margin: 0;
+      border: 0.5*@cell-margin solid @color-10;
+      overflow: hidden;
+      border-radius: 0;
+      option {
+        font-family: inherit;
+      }
+    }
     input {
       border: 0.5 * @cell-margin solid @color-10;
-      font-family: @font-meta;
+      font-family: inherit;
       font-size: @font-meta-size;
-      font-family: @font-regular;
-      padding: 0.5 * @cell-margin;
-      -webkit-flex: 0.2;
+      padding: @cell-margin;
+      -webkit-flex: 0.5;
       margin: 0;
     }
     ::-webkit-input-placeholder {
       color: @color-10;
-    }
-    button {
-      padding: @cell-margin;
-      display: inline-block;
-      bottom: 0;
-      -webkit-flex: 1;
     }
   }
 }

@@ -1,0 +1,14 @@
+<template name="searchBox">
+  <div id="searchBox">
+    <form class="searchFor">
+      <select name="query">
+        <option value="tag" selected>tags</option>
+        <option value="project">project</option>
+        <option value="name">name</option>
+        <option value="default">default</option>
+      </select>
+      <input type="text" name="slug" placeholder="search" maxlength="24" size="24"/>
+      <button type="submit">Search</button>
+    </form>
+  </div>
+</template>

@@ -2,13 +2,14 @@
   <div id="searchBox">
     <form class="searchFor">
       <select name="query">
-        <option value="tag" selected>tags</option>
-        <option value="project">project</option>
-        <option value="name">name</option>
-        <option value="default">default</option>
+        {{#each queryList}}
+          <option value="{{this.value}}" {{this.selected}}>
+              {{this.label}}
+            </option>
+        {{/each}}
       </select>
-      <input type="text" name="slug" placeholder="search" maxlength="24" size="24"/>
-      <button type="submit">Search</button>
+      <input type="text" name="slug" placeholder="{{searchPlaceholder}}" maxlength="24" size="24"/>
+      <!-- <button type="submit">Go</button> -->
     </form>
   </div>
 </template>

@@ -14,8 +14,6 @@ import './quickLinks.js';
 Template.sideBox.onCreated(function() {
   if (Session.get('plusBox') === undefined) {
     Session.set('plusBox', false); // hide plusBox at start
-  } else {
-    Session.set('plusBox', true);
   }
   const self = this;
   self.autorun(function() {

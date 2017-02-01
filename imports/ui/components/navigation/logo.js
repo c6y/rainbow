@@ -9,16 +9,16 @@ Template.logo.helpers({
   toHomePath() {
     const isPool = FlowRouter.getRouteName() === 'pool';
     const isPageOne = FlowRouter.getParam('page') === '1';
-    const isSlugEverything = FlowRouter.getParam('slug') === 'portfolio';
+    const isSlugEverything = FlowRouter.getParam('slug') === 'showfoo';
     const query = FlowRouter.getQueryParam('q');
-    let hadProjectQuery = false;
-    if (query === 'project') {
-      hadProjectQuery = true;
+    let hasNoQuery = false;
+    if (query === undefined) {
+      hasNoQuery = true;
     }
-    if (isPool && isPageOne && isSlugEverything && hadProjectQuery) {
+    if (isPool && isPageOne && isSlugEverything && hasNoQuery) {
       return false;
     }
-    return FlowRouter.path('pool', { slug: 'portfolio', page: 1 }, { q: 'project' });
+    return FlowRouter.path('pool', { slug: 'showfoo', page: 1 });
   },
   logotext() {
     return Meteor.settings.public.logotext;

@@ -17,19 +17,19 @@ import '../../ui/pages/notFoundPage.js';
 // Redirects
 FlowRouter.route('/', {
   triggersEnter: [function(context, redirect) {
-    redirect('/pool/portfolio/1?q=project');
+    redirect('/pool/showfoo/1');
   }]
 });
 
 FlowRouter.route('/pool/', {
   triggersEnter: [function(context, redirect) {
-    redirect('/pool/portfolio/1?q=project');
+    redirect('/pool/showfoo/1');
   }]
 });
 
 FlowRouter.route('/pool/:slug/', {
   triggersEnter: [function(context, redirect) {
-    redirect('/pool/everything/1');
+    redirect('/pool/showfoo/1');
   }]
 });
 

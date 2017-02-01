@@ -112,7 +112,6 @@ Template.searchBox.events({
 
     let query = Session.get('searchBoxQuery');
     query = query === 'default' ? null : query;
-    // console.log('query: ' + query);
 
     if (event.target.value) {
       searchValue = event.target.value;
@@ -124,13 +123,9 @@ Template.searchBox.events({
       event.target.blur();
     }
     // }
-  }, 600)
-  // 'blur input'(event, target) {
-  //   // if user leaves input and does not press return
-  //   event.target.value = '';
-  //   // // Reset to global search if not a logged in user
-  //   // if (!Meteor.user()) {
-  //   //   FlowRouter.setQueryParams({ q: null });
-  //   // }
-  // }
+  }, 600),
+  'blur input'(event, target) {
+    // if user leaves input and does not press return
+    event.target.value = '';
+  }
 });

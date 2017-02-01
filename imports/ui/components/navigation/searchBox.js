@@ -10,7 +10,7 @@ import './searchBox.html';
 Template.searchBox.onCreated(function() {
   // Set initial value of query to default if undefined
   if (Session.get('searchBoxQuery') === undefined) {
-    console.log('it is undefined');
+    // console.log('it is undefined');
     Session.set('searchBoxQuery', 'default');
     // Just to be sure, remove any query remains from URL
     FlowRouter.setQueryParams({ q: null });
@@ -21,15 +21,39 @@ Template.searchBox.onCreated(function() {
 
 Template.searchBox.helpers({
   queryList() {
-    const defaultSel = 'selected';
-    const tagSel = '';
-    const projectSel = '';
-    const nameSel = '';
+    const query = FlowRouter.getQueryParam('q');
+
+    let selectDefault = 'selected';
+    let selectTag = '';
+    let selectProject = '';
+    let selectName = '';
+
+    if (query === undefined) {
+      selectDefault = 'selected';
+    } else {
+      selectDefault = '';
+    }
+    if (query === 'tag') {
+      selectTag = 'selected';
+    } else {
+      selectTag = '';
+    }
+    if (query === 'project') {
+      selectProject = 'selected';
+    } else {
+      selectProject = '';
+    }
+    if (query === 'name') {
+      selectName = 'selected';
+    } else {
+      selectName = '';
+    }
+
     return [
-      { value: 'default', label: 'anywhere', selected: tagSel },
-      { value: 'tag', label: 'tag', selected: tagSel },
-      { value: 'project', label: 'project', selected: tagSel },
-      { value: 'name', label: 'name', selected: tagSel }
+      { value: 'default', label: 'anywhere', selected: selectDefault },
+      { value: 'tag', label: 'tag', selected: selectTag },
+      { value: 'project', label: 'project', selected: selectProject },
+      { value: 'name', label: 'name', selected: selectName }
     ];
   },
   // searchPlaceholder() {
@@ -67,7 +91,7 @@ Template.searchBox.helpers({
 Template.searchBox.events({
   'change select': function(event, template) {
     const theQuery = event.target.value;
-    console.log('theQuery: ' + theQuery);
+    // console.log('theQuery: ' + theQuery);
     Session.set('searchBoxQuery', theQuery);
     if (theQuery === 'default') {
       FlowRouter.setQueryParams({ q: null });
@@ -88,7 +112,7 @@ Template.searchBox.events({
 
     let query = Session.get('searchBoxQuery');
     query = query === 'default' ? null : query;
-    console.log('query: ' + query);
+    // console.log('query: ' + query);
 
     if (event.target.value) {
       searchValue = event.target.value;

@@ -9,13 +9,13 @@ Template.logo.helpers({
   toHomePath() {
     const isPool = FlowRouter.getRouteName() === 'pool';
     const isPageOne = FlowRouter.getParam('page') === '1';
-    const isSlugEverything = FlowRouter.getParam('slug') === 'showfoo';
+    const isSlugShowfoo = FlowRouter.getParam('slug') === 'showfoo';
     const query = FlowRouter.getQueryParam('q');
     let hasNoQuery = false;
     if (query === undefined) {
       hasNoQuery = true;
     }
-    if (isPool && isPageOne && isSlugEverything && hasNoQuery) {
+    if (isPool && isPageOne && isSlugShowfoo && hasNoQuery) {
       return false;
     }
     return FlowRouter.path('pool', { slug: 'showfoo', page: 1 });

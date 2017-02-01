@@ -4,19 +4,10 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { EboyPix } from '../../api/eboypix/eboypix.js';
 import { Colors } from '../../api/colors/colors.js';
 
-import './pixPool.html';
-
-// Components used
-import './pic.html';
-import './pic.js';
 import './picPinned.html';
-import './picPinned.js';
 
 // Template helpers
-Template.pixPool.helpers({
-  pix() {
-    return EboyPix.find({}, { sort: { createdAt: -1 } });
-  },
+Template.picPinned.helpers({
   showPinned() {
     const isPool = FlowRouter.getRouteName() === 'pool';
     const isPageOne = FlowRouter.getParam('page') === '1';

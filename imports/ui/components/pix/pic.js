@@ -2,7 +2,7 @@ import { Template } from 'meteor/templating';
 // import { FlowRouter } from 'meteor/kadira:flow-router';
 // import { Session } from 'meteor/session';
 
-import { Colors } from '../../api/colors/colors.js';
+import { Colors } from '../../../api/colors/colors.js';
 
 import './pic.html';
 

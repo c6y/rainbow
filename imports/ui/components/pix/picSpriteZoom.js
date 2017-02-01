@@ -1,11 +1,11 @@
 import { Template } from 'meteor/templating';
 
-import { Colors } from '../../api/colors/colors.js';
+import { Colors } from '../../../api/colors/colors.js';
 
 import './picSpriteZoom.html';
 
 // Import functions
-import { scaleByIntToFit } from '../../functions/client/scaleByIntToFit.js';
+import { scaleByIntToFit } from '../../../functions/client/scaleByIntToFit.js';
 
 // Template helpers
 Template.picSpriteZoom.helpers({

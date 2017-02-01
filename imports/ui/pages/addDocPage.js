@@ -9,10 +9,10 @@ import { EboyPix } from '../../api/eboypix/eboypix.js';
 import './addDocPage.html';
 
 // Components used
-import '../components/pixInput.html';
-import '../components/pixInput.js';
-import '../components/pixList.html';
-import '../components/pixList.js';
+import '../components/pix/pixInput.html';
+import '../components/pix/pixInput.js';
+import '../components/pix/pixList.html';
+import '../components/pix/pixList.js';
 import '../components/navigation/linkStrip.html';
 import '../components/navigation/linkStrip.js';
 import '../components/navigation/navPageInfo.html';

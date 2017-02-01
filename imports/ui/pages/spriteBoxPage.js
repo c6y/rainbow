@@ -11,10 +11,10 @@ import { EboyPix } from '../../api/eboypix/eboypix.js';
 import './spriteBoxPage.html';
 
 // Components used
-import '../components/picSpriteZoom.js';
-import '../components/picSpriteZoom.html';
-import '../components/picMeta.js';
-import '../components/picMeta.html';
+import '../components/pix/picSpriteZoom.js';
+import '../components/pix/picSpriteZoom.html';
+import '../components/pix/picMeta.js';
+import '../components/pix/picMeta.html';
 
 // Template onCreated
 Template.spriteBoxPage.onCreated(function() {

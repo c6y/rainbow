@@ -1,6 +1,7 @@
 <template name="searchBox">
   <div id="searchBox">
     <form class="searchFor">
+      {{>pixCount}}
       <select name="query">
         {{#each queryList}}
           <option value="{{this.value}}" {{this.selected}}>

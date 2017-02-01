@@ -4,6 +4,9 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { _ } from 'meteor/underscore';
 import { Session } from 'meteor/session';
 
+import './pixCount.html';
+import './pixCount.js';
+
 import './searchBox.html';
 
 // Template onCreated
@@ -54,6 +57,7 @@ Template.searchBox.helpers({
   },
   searchPlaceholder() {
     const slug = FlowRouter.getParam('slug');
+    // return slug + ' (875)';
     return slug;
   },
   isAdminOrEditor() {

@@ -25,6 +25,8 @@ import '../components/navigation/logo.js';
 import '../components/navigation/logo.html';
 import '../components/navigation/sideBox.js';
 import '../components/navigation/sideBox.html';
+import '../components/navigation/searchBox.js';
+import '../components/navigation/searchBox.html';
 
 // Template onCreated
 Template.pixEditPage.onCreated(function() {

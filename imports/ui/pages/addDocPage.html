@@ -8,31 +8,33 @@
     </div>
     <div id="appbody">
       {{> sideBox}}
-      <span id="mainBox">
-        {{> pixInput}}
-        {{#if showInsertErrors}}
-          <div class="failedInsertsClass">
-            <div class="errorHeader">
-              {{insertErrorsCount}} Errors:
-            </div>
-            <ol>
-              {{#each showInsertErrors}}
-                <li>{{this}}</li>
-              {{/each}}
-            </ol>
-          </div>
-        {{/if}}
-        {{#if latestUploadTime}}
-          {{#if docsCount}}
-            <div class="uploadedInfo">
-              {{docsCount}} Documents successfuly added:
+      {{#if currentUser.profile.isEditor}}
+        <span id="mainBox">
+          {{> pixInput}}
+          {{#if showInsertErrors}}
+            <div class="failedInsertsClass">
+              <div class="errorHeader">
+                {{insertErrorsCount}} Errors:
+              </div>
+              <ol>
+                {{#each showInsertErrors}}
+                  <li>{{this}}</li>
+                {{/each}}
+              </ol>
             </div>
           {{/if}}
-        {{/if}}
-        {{#if Template.subscriptionsReady}}
-          {{> pixList}}
-        {{/if}}
-      </span>
+          {{#if latestUploadTime}}
+            {{#if docsCount}}
+              <div class="uploadedInfo">
+                {{docsCount}} Documents successfuly added:
+              </div>
+            {{/if}}
+          {{/if}}
+          {{#if Template.subscriptionsReady}}
+            {{> pixList}}
+          {{/if}}
+        </span>
+      {{/if}}
     </div>
   </div>
 </template>

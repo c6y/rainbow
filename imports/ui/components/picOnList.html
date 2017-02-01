@@ -1,11 +1,12 @@
 <template name="picOnList">
   <span class="picOnListbox">
-    <!-- <span class="picLabel"> -->
-    <span class="deletePic">×</span>
-    <!-- </span> -->
+    {{#if currentUser.profile.isEditor}}
+      <span class="deletePic">×</span>
+    {{/if}}
     <div class="picSpriteOnList">
       {{> picSprite}}
     </div>
+    {{#if currentUser.profile.isEditor}}
     <div class="picMetaEdit">
       <ul class="multiInput">
         <li>
@@ -43,5 +44,6 @@
         </li>
       </ul>
     </div>
+    {{/if}}
   </span>
 </template>

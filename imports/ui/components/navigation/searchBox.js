@@ -15,19 +15,16 @@ Template.searchBox.onCreated(function() {
     // Just to be sure, remove any query remains from URL
     FlowRouter.setQueryParams({ q: null });
   }
-  // const sessionQuery = Session.get('searchBoxQuery');
-  // console.log('sessionQuery: ' + sessionQuery);
 });
 
 Template.searchBox.helpers({
+  // Reactive selected property in dropdown menu
   queryList() {
     const query = FlowRouter.getQueryParam('q');
-
     let selectDefault = 'selected';
     let selectTag = '';
     let selectProject = '';
     let selectName = '';
-
     if (query === undefined) {
       selectDefault = 'selected';
     } else {
@@ -48,7 +45,6 @@ Template.searchBox.helpers({
     } else {
       selectName = '';
     }
-
     return [
       { value: 'default', label: 'anywhere', selected: selectDefault },
       { value: 'tag', label: 'tag', selected: selectTag },
@@ -56,25 +52,7 @@ Template.searchBox.helpers({
       { value: 'name', label: 'name', selected: selectName }
     ];
   },
-  // searchPlaceholder() {
-  //   const query = FlowRouter.getQueryParam('q');
-  //   // return query === 'name' ? 'name search' : 'search';
-  //   if (query === 'name') {
-  //     return 'name search';
-  //   } else if (query === 'project') {
-  //     return 'project search';
-  //   } else if (query === 'tag') {
-  //     return 'tag search';
-  //   }
-  //   return 'search';
-  // },
-  // searchPlaceholder() {
-  //   // const query = FlowRouter.getQueryParam('q');
-  //   const slug = FlowRouter.getParam('slug');
-  //   return slug;
-  // },
   searchPlaceholder() {
-    // const query = FlowRouter.getQueryParam('q');
     const slug = FlowRouter.getParam('slug');
     return slug;
   },
@@ -85,7 +63,7 @@ Template.searchBox.helpers({
       return isAdmin || isEditor;
     }
     return false;
-  },
+  }
 });
 
 Template.searchBox.events({

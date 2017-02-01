@@ -2,7 +2,7 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 export const QuicksSchema = {};
 
 QuicksSchema.Links = new SimpleSchema({
-  name: {
+  label: {
     type: String,
     unique: true,
     autoValue: function() {

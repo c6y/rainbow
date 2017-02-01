@@ -7,9 +7,9 @@ import { Quicks } from './quicks.js';
 // import { tagsToArray } from '../../functions/server/tagsToArray.js';
 
 Meteor.methods({
-  'quicks.insert'(name, slug, query, rank) {
+  'quicks.insert'(label, slug, query, rank) {
     Quicks.insert({
-      name: name,
+      label: label,
       slug: slug,
       query: query,
       rank: rank

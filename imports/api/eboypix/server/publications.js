@@ -12,6 +12,11 @@ Meteor.publish('pix.public', function pixPublic() {
   return EboyPix.find(selector);
 });
 
+Meteor.publish('pix.pinned.public', function pixOinnedPublic() {
+  const selector = { projects: 'pinned' }; // pix that are pinned
+  return EboyPix.find(selector);
+});
+
 // Publish all documents later than given date
 Meteor.publish('pix.afterDate.public', function pixAfterDatePublic(date) {
   const selector = {

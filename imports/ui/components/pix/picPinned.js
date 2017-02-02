@@ -23,7 +23,6 @@ Template.picPinned.helpers({
   },
   pinnedPic() {
     const pinnedPic = EboyPix.findOne({ projects: 'pinned' });
-    // console.log('pinnedPic.url: ' + pinnedPic.url);
     return pinnedPic;
   },
   pinnedPicColor() {

@@ -39,6 +39,7 @@ Template.pixPoolPage.onCreated(function() {
 
     DocHead.setTitle(title + '/' + thisPage);
     self.subscribe('pix.paged.public', thisSlug, thisPage, searchQuery);
+    self.subscribe('pix.pinned.public');
     self.subscribe('colors.public');
     self.subscribe('quicks.public');
   });

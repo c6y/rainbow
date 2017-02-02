@@ -6,6 +6,8 @@ import { Session } from 'meteor/session';
 
 import './pixCount.html';
 import './pixCount.js';
+import './pageCount.html';
+import './pageCount.js';
 
 import './searchBox.html';
 

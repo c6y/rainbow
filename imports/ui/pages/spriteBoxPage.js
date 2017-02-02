@@ -69,6 +69,14 @@ Template.spriteBoxPage.helpers({
   },
   copyright() {
     return Meteor.settings.public.copyright;
+  },
+  madeDateShort() {
+    const date = this.madeDate;
+    if (date === undefined) {
+      return '';
+    }
+    const shortDate = date.toISOString().substring(0, 4);
+    return shortDate;
   }
 });
 

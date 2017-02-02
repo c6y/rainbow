@@ -31,16 +31,22 @@ Template.pixInput.events({
       if (urls.length) {
         let img = new Image();
         img.onload = function() {
-          Meteor.call('eboypix.insert', img.src, img.width, img.height, function(err, result) {
-            if (err) {
-              // Populate insertErrors Session array variable
-              const session = Session.get('insertErrors');
-              session.push(img.src);
-              Session.set('insertErrors', session);
-            } else {
-              console.log('insert successfull: ' + img.src);
+          Meteor.call(
+            'eboypix.insert',
+            img.src,
+            img.width,
+            img.height,
+            function(err, result) {
+              if (err) {
+                // Populate insertErrors Session array variable
+                const session = Session.get('insertErrors');
+                session.push(img.src);
+                Session.set('insertErrors', session);
+              } else {
+                console.log('insert successfull: ' + img.src);
+              }
             }
-          });
+          );
           // setTimeout(function() {
           nextImage(urls);
           // }, 2000);

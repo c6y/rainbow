@@ -6,14 +6,23 @@ import { Colors } from '../colors/colors.js';
 
 // Import functions
 import { getProjectName } from '../../functions/server/getProjectName.js';
+import { getPathDate } from '../../functions/server/getPathDate.js';
 import { getPicName } from '../../functions/server/getPicName.js';
 import { getFileType } from '../../functions/server/getFileType.js';
 
 Meteor.methods({
   'eboypix.insert'(url, imageWidth, imageHeight) {
     const picName = getPicName(url);
-    let projectName = getProjectName(url);
-    // projectName = projectName === undefined ? '' : projectName;
+
+    const projectName = getProjectName(url);
+    // Create array if there's a projectName, else keep it undefined
+    let projectArray = [projectName];
+    if (!projectName) {
+      projectArray = undefined;
+    }
+
+    const picMadeDate = getPathDate(url);
+
     const fileType = getFileType(url);
     // default jpgs to fullFrame
     let fullFrame = false;
@@ -46,8 +55,9 @@ Meteor.methods({
       tags: [],
       copyright: '©eBoy',
       license: 'CC BY-NC-ND 4.0',
-      projects: [projectName],
-      fullFrame: fullFrame
+      projects: projectArray,
+      fullFrame: fullFrame,
+      madeDate: picMadeDate
     });
   },
   'eboypix.delete'(pixId) {

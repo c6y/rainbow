@@ -1,25 +1,30 @@
+// Meteor stuff
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
+// Collections
 import { EboyPix } from '../../../api/eboypix/eboypix.js';
 import { Colors } from '../../../api/colors/colors.js';
 
+// Functions
+import { isHome } from '../../../functions/client/isHome.js';
+
 import './picPinned.html';
+
+// Template onCreated
+Template.picPinned.onCreated(function() {
+  const self = this;
+  if (isHome()) {
+    self.autorun(function() {
+      self.subscribe('pix.pinned.public');
+    });
+  }
+});
 
 // Template helpers
 Template.picPinned.helpers({
-  showPinned() {
-    const isPool = FlowRouter.getRouteName() === 'pool';
-    const isPageOne = FlowRouter.getParam('page') === '1';
-    const isSlugShowfoo = FlowRouter.getParam('slug') === 'showfoo';
-    const query = FlowRouter.getQueryParam('q');
-    let hasNoQuery = false;
-    if (query === undefined) {
-      hasNoQuery = true;
-    }
-    if (isPool && isPageOne && isSlugShowfoo && hasNoQuery) {
-      return true;
-    }
+  thisIsHome() {
+    return isHome();
   },
   pinnedPic() {
     const pinnedPic = EboyPix.findOne({ projects: 'pinned' });
@@ -28,18 +33,21 @@ Template.picPinned.helpers({
   pinnedPicColor() {
     // Get the color by name
     const pinnedPic = EboyPix.findOne({ projects: 'pinned' });
-    const color = Colors.findOne(
-      { name: pinnedPic.backgroundColor }
-    );
-    // If it's in the color database return hsl values as css hsl string
-    if (color) {
-      const hslColor = String(
-        'hsl(' +
-        color.hue + ', ' +
-        color.saturation + '%, ' +
-        color.luminosity + '%)'
+    // Do this only when pinnedPic object exists
+    if (pinnedPic) {
+      const color = Colors.findOne(
+        { name: pinnedPic.backgroundColor }
       );
-      return hslColor;
+      // If it's in the color database return hsl values as css hsl string
+      if (color) {
+        const hslColor = String(
+          'hsl(' +
+          color.hue + ', ' +
+          color.saturation + '%, ' +
+          color.luminosity + '%)'
+        );
+        return hslColor;
+      }
     }
   }
 });

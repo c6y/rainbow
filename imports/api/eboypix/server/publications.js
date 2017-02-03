@@ -12,7 +12,7 @@ Meteor.publish('pix.public', function pixPublic() {
   return EboyPix.find(selector);
 });
 
-Meteor.publish('pix.pinned.public', function pixOinnedPublic() {
+Meteor.publish('pix.pinned.public', function pixPinnedPublic() {
   const selector = { projects: 'pinned' }; // pix that are pinned
   return EboyPix.find(selector);
 });

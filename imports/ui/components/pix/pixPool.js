@@ -1,18 +1,31 @@
+// Meteor stuff
 import { Template } from 'meteor/templating';
 
+// Collections
 import { EboyPix } from '../../../api/eboypix/eboypix.js';
 
-import './pixPool.html';
+// Functions
+import { isHome } from '../../../functions/client/isHome.js';
 
-// Components used
+// Components
 import './pic.html';
 import './pic.js';
 import './picPinned.html';
 import './picPinned.js';
 
+import './pixPool.html';
+
 // Template helpers
 Template.pixPool.helpers({
   pix() {
-    return EboyPix.find({}, { sort: { createdAt: -1 } });
+    // Show all posts ...
+    let selector = {};
+    // ... except if we're on the homepage
+    // ... then remove the pinned posts from the results
+    if (isHome()) {
+      selector = { projects: { $ne: 'pinned' } };
+    }
+
+    return EboyPix.find(selector, { sort: { createdAt: -1 } });
   }
 });

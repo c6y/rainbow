@@ -1,3 +1,4 @@
+// Collections
 // Pix collection
 import '/imports/api/eboypix/eboypix.js';
 import '/imports/api/eboypix/server/publications.js';

@@ -1,8 +1,11 @@
+// Meteor stuff
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
+// Collections
 import { Quicks } from '../../../api/quicks/quicks.js';
 
+// Functions
 import { getQuickUrl } from '../../../functions/client/getQuickUrl.js';
 
 import './quickLinks.html';

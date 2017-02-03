@@ -1,10 +1,12 @@
+// Meteor stuff
 import { Meteor } from 'meteor/meteor';
 import { Random } from 'meteor/random';
 
+// Collections
 import { EboyPix } from './eboypix.js';
 import { Colors } from '../colors/colors.js';
 
-// Import functions
+// Functions
 import { getProjectName } from '../../functions/server/getProjectName.js';
 import { getPathDate } from '../../functions/server/getPathDate.js';
 import { getPicName } from '../../functions/server/getPicName.js';

@@ -1,3 +1,4 @@
+// Meteor stuff
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
 /**

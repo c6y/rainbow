@@ -1,7 +1,9 @@
+// Meteor stuff
 import { Template } from 'meteor/templating';
 // import { FlowRouter } from 'meteor/kadira:flow-router';
 // import { Session } from 'meteor/session';
 
+// Collections
 import { Colors } from '../../../api/colors/colors.js';
 
 import './pic.html';
@@ -45,17 +47,3 @@ Template.pic.helpers({
     };
   }
 });
-//
-// Template.pic.events({
-//   'click .picbox'(event) {
-//     const thisRoute = FlowRouter.getRouteName();
-//     const thisSlug = FlowRouter.getParam('slug');
-//     const thisPage = FlowRouter.getParam('page');
-//     const thisQuery = FlowRouter.getQueryParam('q');
-//
-//     Session.set('lastRoute', thisRoute);
-//     Session.set('lastSlug', thisSlug);
-//     Session.set('lastPage', thisPage);
-//     Session.set('lastQuery', thisQuery);
-//   }
-// });

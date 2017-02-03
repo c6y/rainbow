@@ -1,14 +1,15 @@
+// Meteor stuff
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { Session } from 'meteor/session';
 
-import './linkStrip.html';
-
-// Components used inside the template
+// Components
 import './navLinks.html';
 import './navLinks.js';
 import './quickLinks.html';
 import './quickLinks.js';
+
+import './linkStrip.html';
 
 // Template onCreated
 Template.linkStrip.onCreated(function() {

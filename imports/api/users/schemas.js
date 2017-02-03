@@ -1,4 +1,6 @@
+// Meteor stuff
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+
 export const UserSchema = {};
 
 UserSchema.UserProfile = new SimpleSchema({

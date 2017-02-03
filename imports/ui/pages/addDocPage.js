@@ -1,14 +1,14 @@
+// Meteor stuff
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { DocHead } from 'meteor/kadira:dochead';
 import { Session } from 'meteor/session';
 
+// Collections
 import { EboyPix } from '../../api/eboypix/eboypix.js';
 
-import './addDocPage.html';
-
-// Components used
+// Components
 import '../components/pix/pixInput.html';
 import '../components/pix/pixInput.js';
 import '../components/pix/pixList.html';
@@ -23,6 +23,8 @@ import '../components/navigation/logo.js';
 import '../components/navigation/logo.html';
 import '../components/navigation/sideBox.js';
 import '../components/navigation/sideBox.html';
+
+import './addDocPage.html';
 
 // Template onCreated
 Template.addDocPage.onCreated(function() {

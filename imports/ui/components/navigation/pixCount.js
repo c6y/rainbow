@@ -1,3 +1,4 @@
+// Meteor stuff
 import { Template } from 'meteor/templating';
 import { Counts } from 'meteor/tmeasday:publish-counts';
 

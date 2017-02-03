@@ -1,3 +1,4 @@
+// Meteor stuff
 import { Mongo } from 'meteor/mongo';
 
 // A collection for quick links

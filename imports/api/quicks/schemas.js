@@ -1,4 +1,6 @@
+// Meteor stuff
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+
 export const QuicksSchema = {};
 
 QuicksSchema.Links = new SimpleSchema({

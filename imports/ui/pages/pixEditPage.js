@@ -1,12 +1,11 @@
+// Meteor stuff
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { DocHead } from 'meteor/kadira:dochead';
 import { Counts } from 'meteor/tmeasday:publish-counts';
 
-import './pixEditPage.html';
-
-// Components used inside the template
+// Components
 import '../components/navigation/pixCount.html';
 import '../components/navigation/pixCount.js';
 import '../components/navigation/navPaging.html';
@@ -27,6 +26,8 @@ import '../components/navigation/sideBox.js';
 import '../components/navigation/sideBox.html';
 import '../components/navigation/searchBox.js';
 import '../components/navigation/searchBox.html';
+
+import './pixEditPage.html';
 
 // Template onCreated
 Template.pixEditPage.onCreated(function() {

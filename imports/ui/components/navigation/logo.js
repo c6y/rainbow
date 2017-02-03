@@ -1,24 +1,19 @@
+// Meteor stuff
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Session } from 'meteor/session';
 
+// Functions
+import { isHome } from '../../../functions/client/isHome.js';
+
 import './logo.html';
 
 Template.logo.helpers({
   toHomePath() {
-    const isPool = FlowRouter.getRouteName() === 'pool';
-    const isPageOne = FlowRouter.getParam('page') === '1';
-    const isSlugShowfoo = FlowRouter.getParam('slug') === 'showfoo';
-    const query = FlowRouter.getQueryParam('q');
-    let hasNoQuery = false;
-    if (query === undefined) {
-      hasNoQuery = true;
+    if (!isHome()) {
+      return FlowRouter.path('pool', { slug: 'showfoo', page: 1 });
     }
-    if (isPool && isPageOne && isSlugShowfoo && hasNoQuery) {
-      return false;
-    }
-    return FlowRouter.path('pool', { slug: 'showfoo', page: 1 });
   },
   logotext() {
     return Meteor.settings.public.logotext;

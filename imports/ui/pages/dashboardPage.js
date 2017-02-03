@@ -1,8 +1,9 @@
+// Meteor stuff
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 
-// Components used inside the template
+// Components
 import '../components/navigation/linkStrip.html';
 import '../components/navigation/linkStrip.js';
 import '../components/register.html';

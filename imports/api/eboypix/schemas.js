@@ -1,4 +1,6 @@
+// Meteor stuff
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+
 export const PicSchema = {};
 
 PicSchema.Pic = new SimpleSchema({

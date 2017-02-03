@@ -1,9 +1,13 @@
+// Meteor stuff
 import { Meteor } from 'meteor/meteor';
 import { Counts } from 'meteor/tmeasday:publish-counts';
 
+// Collections
 import { EboyPix } from '../eboypix.js';
 
+// Schemas
 import { PicSchema } from '../schemas.js';
+
 EboyPix.attachSchema(PicSchema.Pic);
 
 // Publish all documents

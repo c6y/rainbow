@@ -1,8 +1,10 @@
+// Meteor stuff
 import { Meteor } from 'meteor/meteor';
 
+// Collections
 import { Colors } from './colors.js';
 
-// Import functions
+// Functions
 import { cleanString } from '../../functions/server/cleanString.js';
 import { tagsToArray } from '../../functions/server/tagsToArray.js';
 

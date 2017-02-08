@@ -8,6 +8,9 @@ import { EboyPix } from '../eboypix.js';
 // Schemas
 import { PicSchema } from '../schemas.js';
 
+// Functions
+import { urlToSelector } from '../../../functions/server/urlToSelector.js';
+
 EboyPix.attachSchema(PicSchema.Pic);
 
 // Publish all documents
@@ -33,31 +36,7 @@ Meteor.publish('pix.afterDate.public', function pixAfterDatePublic(date) {
 
 // Publish paged documents
 Meteor.publish('pix.paged.public', function pixPagedPublic(slug, page, query) {
-  const reg = RegExp(slug, 'i', 's');
-  const slugRegExp = { $regex: reg };
-
-  let selector = {};
-
-  if (slug !== 'everything') {
-    if (query === 'name') {
-      // console.log('search Name');
-      selector = { name: slugRegExp };
-    } else if (query === 'tag') {
-      // console.log('search Tag');
-      selector = { tags: slugRegExp };
-    } else if (query === 'project') {
-      // console.log('search Project');
-      selector = { projects: slugRegExp };
-    } else {
-      // console.log('search GENERAL');
-      selector = {
-        $or: [
-          { tags: slugRegExp },
-          { projects: slugRegExp }
-        ]
-      };
-    }
-  }
+  const selector = urlToSelector(slug, query);
   const pixPage = Meteor.settings.public.pixPerPage;
   // Convert page string to integer
   let pageInt = parseInt(page, 10);
@@ -79,31 +58,7 @@ Meteor.publish('pix.single.public', function picPublic(id) {
 
 // publish total count of docs in EboyPix as separate collection
 Meteor.publish('pix.counts.public', function(slug, query) {
-  const reg = RegExp(slug, 'i', 's');
-  const slugRegExp = { $regex: reg };
-
-  let selector = {};
-
-  if (slug !== 'everything') {
-    if (query === 'name') {
-      // console.log('search Name');
-      selector = { name: slugRegExp };
-    } else if (query === 'tag') {
-      // console.log('search Tag');
-      selector = { tags: slugRegExp };
-    } else if (query === 'project') {
-      // console.log('search Project');
-      selector = { projects: slugRegExp };
-    } else {
-      // console.log('search GENERAL');
-      selector = {
-        $or: [
-          { tags: slugRegExp },
-          { projects: slugRegExp }
-        ]
-      };
-    }
-  }
+  const selector = urlToSelector(slug, query);
   Counts.publish(
     this,
     'totalDocsCount',

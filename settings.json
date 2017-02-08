@@ -1,13 +1,14 @@
 {
   "public": {
     "pixPerPage" : 24,
-    "allowNewUsers" : true,
-    "allowNewEditors" : true,
-    "allowNewAdmins" : true,
+    "allowNewUsers" : false,
+    "allowNewEditors" : false,
+    "allowNewAdmins" : false,
     "rem": 16,
     "cell": 16,
     "cellMargin": 0.5,
-    "copyright": "©EBOY",
-    "logotext": "EBOY"
+    "copyright": "EBOY",
+    "logotext": "EBOY",
+    "slugHome": "showreel"
   }
 }

@@ -12,7 +12,8 @@ import './logo.html';
 Template.logo.helpers({
   toHomePath() {
     if (!isHome()) {
-      return FlowRouter.path('pool', { slug: 'showfoo', page: 1 });
+      const slugHome = Meteor.settings.public.slugHome;
+      return FlowRouter.path('pool', { slug: slugHome, page: 1 });
     }
   },
   logotext() {

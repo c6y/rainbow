@@ -1,4 +1,5 @@
 // Meteor stuff
+import { Meteor } from 'meteor/meteor';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
 /**
@@ -8,13 +9,14 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 export function isHome() {
   const isPool = FlowRouter.getRouteName() === 'pool';
   const isPageOne = FlowRouter.getParam('page') === '1';
-  const isSlugShowfoo = FlowRouter.getParam('slug') === 'showfoo';
+  const slugHome = Meteor.settings.public.slugHome;
+  const isSlugHome = FlowRouter.getParam('slug') === slugHome;
   const query = FlowRouter.getQueryParam('q');
   let hasNoQuery = false;
   if (query === undefined) {
     hasNoQuery = true;
   }
-  if (isPool && isPageOne && isSlugShowfoo && hasNoQuery) {
+  if (isPool && isPageOne && isSlugHome && hasNoQuery) {
     return true;
   }
   return false;

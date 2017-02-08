@@ -1,10 +1,12 @@
+// Meteor stuff
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { BlazeLayout } from 'meteor/kadira:blaze-layout';
+import { Meteor } from 'meteor/meteor';
 
-// Import layouts
+// Layouts
 import '../../ui/layouts/applayout.js';
 
-// Import pages
+// Pages
 import '../../ui/pages/pixPoolPage.js';
 import '../../ui/pages/colorsPage.js';
 import '../../ui/pages/quicksPage.js';
@@ -14,22 +16,24 @@ import '../../ui/pages/pixEditPage.js';
 import '../../ui/pages/dashboardPage.js';
 import '../../ui/pages/notFoundPage.js';
 
+const slugHome = Meteor.settings.public.slugHome;
+
 // Redirects
 FlowRouter.route('/', {
   triggersEnter: [function(context, redirect) {
-    redirect('/pool/showfoo/1');
+    redirect('/pool/' + slugHome + '/1');
   }]
 });
 
 FlowRouter.route('/pool/', {
   triggersEnter: [function(context, redirect) {
-    redirect('/pool/showfoo/1');
+    redirect('/pool/' + slugHome + '/1');
   }]
 });
 
 FlowRouter.route('/pool/:slug/', {
   triggersEnter: [function(context, redirect) {
-    redirect('/pool/showfoo/1');
+    redirect('/pool/' + slugHome + '/1');
   }]
 });
 

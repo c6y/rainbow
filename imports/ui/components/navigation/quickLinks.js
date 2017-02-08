@@ -19,7 +19,7 @@ Template.quickLinks.helpers({
     return getQuickUrl(this.slug, this.query);
   },
   // Return true if current quickLink is active
-  toHerePath() {
+  isHerePath() {
     // Check if slug in URL is same as quickLink
     const urlSlug = FlowRouter.getParam('slug');
     const linkSlug = this.slug;

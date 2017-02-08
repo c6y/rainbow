@@ -22,42 +22,45 @@ and (min-device-width: @breakpoint) {
   // background-color: blue;
   padding: 0;
   margin: 0;
+  color: @color-headerlink;
   span, a {
-    // padding: 0;
-    // margin: -10px;
     float:left;
     padding: 0.04em 0.12em 0 0.12em;
-    // margin: inherit;
   }
   a {
-    // box-shadow: @boxshadow-1;
     text-decoration: none;
-    color: @color-headerlink;
-    // color: @color-headerback;
-    // text-shadow: 1px 1px 1px @color-headeractive;
-  }
-  a:hover {
-    background-color: @color-headerlink;
-    color: @color-headerback;
+    color: @color-5;
+    // transition: color 0.6s linear;
+    &:hover {
+      background-color: @color-headerlink;
+      transition: background-color 0.3s linear;
+      // transition: background-color 0.3s linear, color 0.3s linear;
+      // transition: color 2s linear;
+    }
+    &:active {
+      color: @color-5-fifty;
+      background-color: @color-headerback;
+      transition: background-color 0s linear;
+    }
   }
   .togglePlusBox {
     padding: 0;
     margin: 0;
-    .active, .inactive {
+    .inactive {
       color: @color-5;
+    }
+    .active {
+      color: @color-headerlink;
+    }
+    .active, .inactive {
       &:hover {
-        // color: @color-5;
-        // background-color: @color-0;
-        color: @color-1;
-        background-color: inherit;
+        color: @color-5;
+        background-color: @color-headerlink;
+      }
+      &:active {
+        color: @color-5-fifty;
+        background-color: @color-headerback;
       }
     }
-    // .inactive {
-    //   color: @color-5;
-    //   background-color: @color-0;
-    //   &:hover {
-    //     color: @color-1;
-    //   }
-    // }
   }
 }

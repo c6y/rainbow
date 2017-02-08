@@ -32,7 +32,8 @@ and (min-device-width: @breakpoint) {
     color: @color-5;
     // transition: color 0.6s linear;
     &:hover {
-      background-color: @color-headerlink;
+      background-color: @color-5;
+      color: @color-headerback;
       transition: background-color 0.3s linear;
       // transition: background-color 0.3s linear, color 0.3s linear;
       // transition: color 2s linear;
@@ -50,12 +51,12 @@ and (min-device-width: @breakpoint) {
       color: @color-5;
     }
     .active {
-      color: @color-headerlink;
+      color: @color-5;
     }
     .active, .inactive {
       &:hover {
-        color: @color-5;
-        background-color: @color-headerlink;
+        background-color: @color-5;
+        color: @color-headerback;
       }
       &:active {
         color: @color-5-fifty;

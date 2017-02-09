@@ -66,3 +66,14 @@ Meteor.publish('pix.counts.public', function(slug, query) {
     { noReady: true }
   );
 });
+
+// Publish all project 'Game Frame' documents
+Meteor.publish('pix.gameFrame.public', function pixGameFramePublic() {
+  const selector = { projects: 'Game Frame' }; // find all pix
+  const options = {
+    fields: {
+      url: 1
+    }
+  };
+  return EboyPix.find(selector, options);
+});

@@ -16,8 +16,6 @@ import '../components/pix/pixNone.html';
 import '../components/pix/pixNone.js';
 import '../components/navigation/navPageInfo.js';
 import '../components/navigation/navPageInfo.html';
-import '../components/navigation/navSearch.js';
-import '../components/navigation/navSearch.html';
 import '../components/navigation/logo.js';
 import '../components/navigation/logo.html';
 import '../components/navigation/sideBox.js';

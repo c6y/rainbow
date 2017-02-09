@@ -5,8 +5,6 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { DocHead } from 'meteor/kadira:dochead';
 
 // Components
-import '../components/navigation/linkStrip.js';
-import '../components/navigation/linkStrip.html';
 import '../components/colors/countColors.html';
 import '../components/colors/countColors.js';
 import '../components/quicks/quicksInput.html';

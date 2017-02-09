@@ -13,8 +13,6 @@ import '../components/pix/pixInput.html';
 import '../components/pix/pixInput.js';
 import '../components/pix/pixList.html';
 import '../components/pix/pixList.js';
-import '../components/navigation/linkStrip.html';
-import '../components/navigation/linkStrip.js';
 import '../components/navigation/navPageInfo.html';
 import '../components/navigation/navPageInfo.js';
 import '../components/navigation/pixCount.html';

@@ -14,8 +14,6 @@ import '../components/pix/pixPool.html';
 import '../components/pix/pixPool.js';
 import '../components/pix/pixNone.html';
 import '../components/pix/pixNone.js';
-import '../components/navigation/linkStrip.html';
-import '../components/navigation/linkStrip.js';
 import '../components/navigation/navPageInfo.js';
 import '../components/navigation/navPageInfo.html';
 import '../components/navigation/navSearch.js';

@@ -4,8 +4,6 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 
 // Components
-import '../components/navigation/linkStrip.html';
-import '../components/navigation/linkStrip.js';
 import '../components/register.html';
 import '../components/register.js';
 import '../components/login.html';

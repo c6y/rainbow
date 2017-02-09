@@ -1,4 +1,5 @@
 // Meteor stuff
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 
 // Collections
@@ -20,12 +21,23 @@ Template.pixPool.helpers({
   pix() {
     // Show all posts ...
     let selector = {};
-    // ... except if we're on the homepage
-    // ... then remove the pinned posts from the results
+
+    // Sort by newest on top
+    let options = { sort: { createdAt: -1 } };
+
+    // To keep out the pinned post in case it is not part of page 1:
+    // If on home, do crop off anything older than the latest 24 posts
+    // Necessary, because the pinned post will pop up as the 25th post ...
+    // ... if part of any page other than page 1
+    // See forum post: https://goo.gl/VDwXBg
+    const pixPerPage = Meteor.settings.public.pixPerPage;
     if (isHome()) {
-      selector = { projects: { $ne: 'pinned' } };
+      options = {
+        limit: pixPerPage,
+        sort: { createdAt: -1 }
+      };
     }
 
-    return EboyPix.find(selector, { sort: { createdAt: -1 } });
+    return EboyPix.find(selector, options);
   }
 });

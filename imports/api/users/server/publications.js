@@ -8,7 +8,7 @@ Meteor.users.attachSchema(UserSchema.User);
 
 Meteor.publish('allUsers', function() {
   const query = {}; // find all pix
-  const projection = {};
-  const collection = Meteor.users.find(query, projection);
+  const options = {};
+  const collection = Meteor.users.find(query, options);
   return collection;
 });

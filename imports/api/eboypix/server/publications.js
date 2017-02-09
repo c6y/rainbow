@@ -69,7 +69,7 @@ Meteor.publish('pix.counts.public', function(slug, query) {
 
 // Publish all project 'Game Frame' documents
 Meteor.publish('pix.gameFrame.public', function pixGameFramePublic() {
-  const selector = { projects: 'Game Frame' }; // find all pix
+  const selector = { projects: 'gfsub' }; // find all pix
   const options = {
     fields: {
       url: 1

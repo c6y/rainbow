@@ -3,5 +3,10 @@ A simple image database and client, optimized to store and render small original
 
 Rainbow is a rewrite of eboydb. Image files are not stored in the database anymore. Instead, the files can be located anywhere and are referenced as URLs.
 
-## Notes
+## Notes for Admins
+- see settings.json for some globals
+- once everything is up and running, set new Admins, new Editors to false in settings
+
+## Notes for Editors
 - add project: "pinned" to the post that should be featured on the homepage
+- add project: "gfsub" for Game Frame subscription posts

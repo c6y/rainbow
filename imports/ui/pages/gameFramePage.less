@@ -1,0 +1,30 @@
+@import '../stylesheets/utils.less';
+
+#allGameFrameURLs {
+  padding: @cell-margin;
+  margin: 0;
+}
+
+.gameFrameURL {
+  font-family: @font-meta;
+  font-size: @font-meta-size;
+  line-height: 1.4em;
+  list-style: decimal;
+  &:nth-child(3n+1) {
+    color: #f00;
+    background: #0ff;
+  }
+  &:nth-child(3n+2) {
+    color: #0f0;
+    background: #f0f;
+  }
+  &:nth-child(3n+0) {
+    color: #00f;
+    background: #ff0;
+  }
+}
+.gameFrameURL:hover {
+  color: @color-2;
+  background-color: @color-1;
+  cursor: pointer;
+}

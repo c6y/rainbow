@@ -1,6 +1,7 @@
 // Meteor stuff
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
+import { Session } from 'meteor/session';
 
 // Collections
 import { EboyPix } from '../../../api/eboypix/eboypix.js';
@@ -26,6 +27,15 @@ Template.picPinned.helpers({
   thisIsHome() {
     return isHome();
   },
+  toSpriteBoxPath() {
+    const pinnedPic = EboyPix.findOne({ projects: 'pinned' });
+    if (pinnedPic) {
+      const thisId = pinnedPic._id;
+      console.log('thisId: ' + thisId);
+      const params = { _id: thisId };
+      return FlowRouter.path('spriteBox', params);
+    }
+  },
   pinnedPic() {
     const pinnedPic = EboyPix.findOne({ projects: 'pinned' });
     return pinnedPic;
@@ -49,5 +59,20 @@ Template.picPinned.helpers({
         return hslColor;
       }
     }
+  }
+});
+
+Template.picPinned.events({
+  // Remember location when leaving search page
+  'click #pinned'(event) {
+    const thisRoute = FlowRouter.getRouteName();
+    const thisSlug = FlowRouter.getParam('slug');
+    const thisPage = FlowRouter.getParam('page');
+    const thisQuery = FlowRouter.getQueryParam('q');
+
+    Session.set('lastRoute', thisRoute);
+    Session.set('lastSlug', thisSlug);
+    Session.set('lastPage', thisPage);
+    Session.set('lastQuery', thisQuery);
   }
 });

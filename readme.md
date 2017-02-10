@@ -8,5 +8,6 @@ Rainbow is a rewrite of eboydb. Image files are not stored in the database anymo
 - once everything is up and running, set new Admins, new Editors to false in settings
 
 ## Notes for Editors
-- add project: "pinned" to the post that should be featured on the homepage
-- add project: "gfsub" for Game Frame subscription posts
+- Pinned Post: add "pinned" to projects and post will be featured on home (one post only)
+- Game Frame: add "gfsub" to projects to publish to GF subscription
+- Editor: click on the backColor label and get a new random color

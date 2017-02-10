@@ -109,7 +109,7 @@ FlowRouter.route('/quicks', {
   }
 });
 
-FlowRouter.route('/urls', {
+FlowRouter.route('/urls/:slug/', {
   name: 'urls',
   action() {
     BlazeLayout.render('applayout', {

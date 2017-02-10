@@ -22,8 +22,8 @@ import '../edit/editMadeDate.js';
 import '../edit/editMadeDate.html';
 import '../edit/editFullFrame.js';
 import '../edit/editFullFrame.html';
-import '../edit/editRndColor.js';
-import '../edit/editRndColor.html';
+import '../edit/luckyBackColor.js';
+import '../edit/luckyBackColor.html';
 
 Template.picOnList.events({
   'click .deletePic'() {

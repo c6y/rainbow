@@ -16,9 +16,6 @@
     padding: 0;
     flex-grow: 3;
     width: @cell;
-    // .picSpriteBox {
-    //
-    // }
   }
   .picMetaEdit {
     width: @cell;
@@ -33,6 +30,8 @@
     .property {
       line-height: @font-meta-lineheight;
       color: @color-6;
+      // float:left;
+      // clear:none;
     }
     .tag:after {
       content: ',';
@@ -47,25 +46,30 @@
     .fullYes {
       background-color: @color-3;
       color: @color-15;
-      padding: 0 0.5em;
-      transition: background-color 0.2s linear;
-    }
-    .fullYes:hover {
-      background-color: @color-0;
-      color: @color-7;
       transition: background-color 0.2s linear;
     }
     .fullNo {
       color: @color-3;
       background-color: inherit;
-      padding: 0 0.5em;
       transition: background-color 0.2s linear;
+      // float:left;
+      // clear:none;
     }
+    .fullYes::after,
+    .fullYes::before,
+    .fullNo::after,
+    .fullNo::before {
+      content: '\00a0';
+    }
+    .fullYes:hover,
     .fullNo:hover {
-      background-color: @color-7;
-      color: @color-0;
+      background-color: @color-0;
+      color: @color-7;
+      // background-color: @color-7;
+      // color: @color-0;
       transition: background-color 0.2s linear;
     }
+
   }
   .fileName {
     display: block;
@@ -126,7 +130,6 @@
     color: @color-3;
     font-family: inherit;
     font-size: inherit;
-    // background-color: @color-1;
     background-color: @color-15;
   }
   textarea:focus, input:focus {
@@ -137,11 +140,20 @@
     color: @color-7;
   }
   .rndColor {
+    color: @color-3;
     cursor: pointer;
+    user-select: none;
+    // background-color: rgba(255, 255, 255, 0.1);
+    // padding: 0 0.5em;
+  }
+  .rndColor::after, .rndColor::before {
+    content: '\00a0';
+    // padding: 0 0.5em;
   }
   .rndColor:hover {
     background-color: @color-7;
     color: @color-0;
+    transition: background-color 0.2s linear;
   }
   .rndColor:active {
     color: @color-7;

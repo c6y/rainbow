@@ -13,18 +13,16 @@
           <span class="fileName">{{this.name}}</span>
         </li>
         <li>
-          <!-- <span class="property">tags: </span> -->
           <span class="editMeta">{{> editTags}}</span>
         </li>
         <li>
-          <!-- <span class="property">projects: </span> -->
           <span class="editMeta">{{> editProjects}}</span>
         </li>
       </ul>
       <ul class="singleInput">
         <li>
-          <span class="property">{{> editRndColor }}: </span>
-          <span class="editMeta">{{> editBackColor}}</span>
+          <span class="property">backColor: </span>
+          <span class="editMeta">{{> luckyBackColor}}{{> editBackColor}}</span>
         </li>
         <li>
           <span class="property">license: </span>
@@ -39,7 +37,7 @@
           <span class="editMeta">{{> editMadeDate}}</span>
         </li>
         <li>
-          <span class="property">fullFrame: </span>
+          <span class="property">fullFrame:</span>
           <span class="editMeta">{{> editFullFrame}}</span>
         </li>
       </ul>

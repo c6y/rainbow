@@ -5,9 +5,9 @@ import { Template } from 'meteor/templating';
 // Collections
 import { Colors } from '../../../api/colors/colors.js';
 
-import './editRndColor.html';
+import './luckyBackColor.html';
 
-Template.editRndColor.events({
+Template.luckyBackColor.events({
   // Change background color to random color
   'click .rndColor'() {
     const arrayColors = Colors.find().fetch();

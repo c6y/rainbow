@@ -15,7 +15,7 @@ import '../../ui/pages/addDocPage.js';
 import '../../ui/pages/pixEditPage.js';
 import '../../ui/pages/dashboardPage.js';
 import '../../ui/pages/notFoundPage.js';
-import '../../ui/pages/gameFramePage.js';
+import '../../ui/pages/urlsPage.js';
 
 const slugHome = Meteor.settings.public.slugHome;
 
@@ -109,11 +109,11 @@ FlowRouter.route('/quicks', {
   }
 });
 
-FlowRouter.route('/gameframe', {
-  name: 'gameframe',
+FlowRouter.route('/urls', {
+  name: 'urls',
   action() {
     BlazeLayout.render('applayout', {
-      main: 'gameFramePage'
+      main: 'urlsPage'
     });
   }
 });

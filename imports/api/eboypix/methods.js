@@ -15,18 +15,16 @@ import { getFileType } from '../../functions/server/getFileType.js';
 Meteor.methods({
   'eboypix.insert'(url, imageWidth, imageHeight) {
     const picName = getPicName(url);
-
     const projectName = getProjectName(url);
+    const picMadeDate = getPathDate(url);
+
     // Create array if there's a projectName, else keep it undefined
     let projectArray = [projectName];
     if (!projectName) {
       projectArray = undefined;
     }
-
-    const picMadeDate = getPathDate(url);
-
+    // Default jpgs to fullFrame
     const fileType = getFileType(url);
-    // default jpgs to fullFrame
     let fullFrame = false;
     if (fileType === 'jpg') {
       fullFrame = true;
@@ -47,6 +45,7 @@ Meteor.methods({
     );
     // Get random color name with random index
     const colorName = colorNamesArray[randomColorIndex];
+
     // Create new document
     EboyPix.insert({
       url: url,

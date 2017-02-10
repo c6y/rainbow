@@ -67,9 +67,9 @@ Meteor.publish('pix.counts.public', function(slug, query) {
   );
 });
 
-// Publish all project 'Game Frame' documents
-Meteor.publish('pix.gameFrame.public', function pixGameFramePublic() {
-  const selector = { projects: 'gfsub' }; // find all pix
+// Publish all project urls for subscriptions
+Meteor.publish('pix.urls.public', function pixUrlsPublic(project) {
+  const selector = { projects: project }; // find all pix
   const options = {
     fields: {
       url: 1

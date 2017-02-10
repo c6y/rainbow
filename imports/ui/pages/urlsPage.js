@@ -4,17 +4,18 @@ import { Template } from 'meteor/templating';
 // Collections
 import { EboyPix } from '../../api/eboypix/eboypix.js';
 
-import './gameFramePage.html';
+import './urlsPage.html';
 
 // Template onCreated
-Template.gameFramePage.onCreated(function() {
+Template.urlsPage.onCreated(function() {
   const self = this;
+  const projectname = 'gfsub'; // //
   self.autorun(function() {
-    self.subscribe('pix.gameFrame.public');
+    self.subscribe('pix.urls.public', projectname);
   });
 });
 
-Template.gameFramePage.helpers({
+Template.urlsPage.helpers({
   gameFramePix() {
     const selector = {};
     const options = { sort: { createdAt: -1 } };

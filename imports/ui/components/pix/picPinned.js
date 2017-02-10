@@ -31,7 +31,6 @@ Template.picPinned.helpers({
     const pinnedPic = EboyPix.findOne({ projects: 'pinned' });
     if (pinnedPic) {
       const thisId = pinnedPic._id;
-      console.log('thisId: ' + thisId);
       const params = { _id: thisId };
       return FlowRouter.path('spriteBox', params);
     }

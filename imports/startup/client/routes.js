@@ -15,7 +15,6 @@ import '../../ui/pages/addDocPage.js';
 import '../../ui/pages/pixEditPage.js';
 import '../../ui/pages/dashboardPage.js';
 import '../../ui/pages/notFoundPage.js';
-import '../../ui/pages/urlsPage.js';
 
 const slugHome = Meteor.settings.public.slugHome;
 
@@ -105,15 +104,6 @@ FlowRouter.route('/quicks', {
   action() {
     BlazeLayout.render('applayout', {
       main: 'quicksPage'
-    });
-  }
-});
-
-FlowRouter.route('/urls/:slug/', {
-  name: 'urls',
-  action() {
-    BlazeLayout.render('applayout', {
-      main: 'urlsPage'
     });
   }
 });

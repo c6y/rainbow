@@ -70,10 +70,16 @@ Meteor.publish('pix.counts.public', function(slug, query) {
 // Publish all project urls for subscriptions
 Meteor.publish('pix.urls.public', function pixUrlsPublic(project) {
   const selector = { projects: project }; // find all pix
+  // const selector = { projects: 'gfsub' }; // find all pix
   const options = {
     fields: {
-      url: 1
+      url: 1,
+      backgroundColor: 1
     }
   };
   return EboyPix.find(selector, options);
+// Set server route for simple:rest package
+//
+}, {
+  url: "api/projects/:0"
 });

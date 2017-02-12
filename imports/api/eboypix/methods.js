@@ -11,109 +11,134 @@ import { getProjectName } from '../../functions/server/getProjectName.js';
 import { getPathDate } from '../../functions/server/getPathDate.js';
 import { getPicName } from '../../functions/server/getPicName.js';
 import { getFileType } from '../../functions/server/getFileType.js';
+import { isAdminOrEditor, isAdmin } from '../../functions/server/isUser.js';
 
 Meteor.methods({
   'eboypix.insert'(url, imageWidth, imageHeight) {
-    const picName = getPicName(url);
-    const projectName = getProjectName(url);
-    const picMadeDate = getPathDate(url);
+    if (isAdminOrEditor()) {
+      const picName = getPicName(url);
+      const projectName = getProjectName(url);
+      const picMadeDate = getPathDate(url);
 
-    // Create array if there's a projectName, else keep it undefined
-    let projectArray = [projectName];
-    if (!projectName) {
-      projectArray = undefined;
-    }
-    // Default jpgs to fullFrame
-    const fileType = getFileType(url);
-    let fullFrame = false;
-    if (fileType === 'jpg') {
-      fullFrame = true;
-    }
-    // Get all available colors by name
-    let colorNamesArray = [];
-    const colorlist = Colors.find(
-      {},
-      { name: 1, _id: 0 },
-      { sort: { createdAt: -1 } }
-    );
-    colorlist.forEach(function(u) {
-      colorNamesArray.push(u.name);
-    });
-    // Get random index of color array
-    const randomColorIndex = Math.floor(
-      Random.fraction() * colorNamesArray.length
-    );
-    // Get random color name with random index
-    const colorName = colorNamesArray[randomColorIndex];
+      // Create array if there's a projectName, else keep it undefined
+      let projectArray = [projectName];
+      if (!projectName) {
+        projectArray = undefined;
+      }
+      // Default jpgs to fullFrame
+      const fileType = getFileType(url);
+      let fullFrame = false;
+      if (fileType === 'jpg') {
+        fullFrame = true;
+      }
+      // Get all available colors by name
+      let colorNamesArray = [];
+      const colorlist = Colors.find(
+        {},
+        { name: 1, _id: 0 },
+        { sort: { createdAt: -1 } }
+      );
+      colorlist.forEach(function(u) {
+        colorNamesArray.push(u.name);
+      });
+      // Get random index of color array
+      const randomColorIndex = Math.floor(
+        Random.fraction() * colorNamesArray.length
+      );
+      // Get random color name with random index
+      const colorName = colorNamesArray[randomColorIndex];
 
-    // Create new document
-    EboyPix.insert({
-      url: url,
-      name: picName,
-      createdAt: new Date(),
-      dimensions: { width: imageWidth, height: imageHeight },
-      backgroundColor: colorName,
-      tags: [],
-      copyright: '©eBoy',
-      license: 'CC BY-NC-ND 4.0',
-      projects: projectArray,
-      fullFrame: fullFrame,
-      madeDate: picMadeDate
-    });
+      // Create new document
+      EboyPix.insert({
+        url: url,
+        name: picName,
+        createdAt: new Date(),
+        dimensions: { width: imageWidth, height: imageHeight },
+        backgroundColor: colorName,
+        tags: [],
+        copyright: '©eBoy',
+        license: 'CC BY-NC-ND 4.0',
+        projects: projectArray,
+        fullFrame: fullFrame,
+        madeDate: picMadeDate
+      });
+      console.log(url + ': inserted to EboyPix');
+    }
   },
   'eboypix.delete'(pixId) {
-    EboyPix.remove(pixId);
+    if (isAdminOrEditor()) {
+      EboyPix.remove(pixId);
+      console.log(pixId + ': removed from EboyPix');
+    }
   },
   'eboypix.deleteAll'() {
-    EboyPix.remove({});
+    if (isAdmin()) {
+      EboyPix.remove({});
+      console.log('removed all documents from EboyPix');
+    }
   },
   'eboypix.updateLicense'(taskId, newLicense) {
-    EboyPix.update(
-      taskId,
-      { $set: { license: newLicense } }
-    );
+    if (isAdminOrEditor()) {
+      EboyPix.update(
+        taskId,
+        { $set: { license: newLicense } }
+      );
+      console.log(taskId + ': license updated: "' + newLicense + '"');
+    }
   },
   'eboypix.updateCopyright'(taskId, newCopyright) {
-    EboyPix.update(
-      taskId,
-      { $set: { copyright: newCopyright } }
-    );
+    if (isAdminOrEditor()) {
+      EboyPix.update(
+        taskId,
+        { $set: { copyright: newCopyright } }
+      );
+      console.log(taskId + ': copyright updated: "' + newCopyright + '"');
+    }
   },
   'eboypix.updateBackColor'(taskId, newBackColor) {
-    EboyPix.update(
-      taskId,
-      { $set: { backgroundColor: newBackColor } }
-    );
+    if (isAdminOrEditor()) {
+      EboyPix.update(
+        taskId,
+        { $set: { backgroundColor: newBackColor } }
+      );
+      console.log(taskId + ': backColor updated: "' + newBackColor + '"');
+    }
   },
   'eboypix.updateTags'(taskId, newTagsArray) {
-    EboyPix.update(
-      taskId,
-      { $set: { tags: newTagsArray } }
-    );
+    if (isAdminOrEditor()) {
+      EboyPix.update(
+        taskId,
+        { $set: { tags: newTagsArray } }
+      );
+      console.log(taskId + ': tags updated: "' + newTagsArray + '"');
+    }
   },
   'eboypix.updateProjects'(taskId, newProjects) {
-    EboyPix.update(
-      taskId,
-      { $set: { projects: newProjects } }
-    );
-  },
-  'eboypix.updateProject'(taskId, newProject) {
-    EboyPix.update(
-      taskId,
-      { $set: { project: newProject } }
-    );
+    if (isAdminOrEditor()) {
+      EboyPix.update(
+        taskId,
+        { $set: { projects: newProjects } }
+      );
+      console.log(taskId + ': projects updated: "' + newProjects + '"');
+    }
   },
   'eboypix.updateMadeDate'(taskId, newDate) {
-    EboyPix.update(
-      taskId,
-      { $set: { madeDate: newDate } }
-    );
+    if (isAdminOrEditor()) {
+      EboyPix.update(
+        taskId,
+        { $set: { madeDate: newDate } }
+      );
+      console.log(taskId + ': madeDate updated: "' + newDate + '"');
+    }
   },
   'eboypix.updateFullFrame'(taskId, newState) {
-    EboyPix.update(
-      taskId,
-      { $set: { fullFrame: newState } }
-    );
+    if (isAdminOrEditor()) {
+      EboyPix.update(
+        taskId,
+        { $set: { fullFrame: newState } }
+      );
+      console.log(taskId + ': fullFrame updated: "' + newState + '"');
+    }
   }
   // 'eboypix.updateFullFrame'(taskId) {
   //   const oldState = EboyPix.findOne({ _id: taskId }, { fullFrame: 1 });

@@ -2,11 +2,14 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 
+// Functions
+import { isAdmin } from '../../functions/server/isUser.js';
+
 Meteor.methods({
   'users.delete'(userId) {
-    const isAdmin = Meteor.user().profile.isAdmin;
-    if (isAdmin) {
+    if (isAdmin()) {
       Meteor.users.remove(userId);
+      console.log(userId + ': removed from users');
     }
   },
   'users.insert'(newUsername, newEmail, newPassword) {
@@ -15,7 +18,10 @@ Meteor.methods({
     const allowNewEditors = Meteor.settings.public.allowNewEditors;
     const allowNewUsers = Meteor.settings.public.allowNewUsers;
 
-    const defaultRoles = { isAdmin: allowNewAdmins, isEditor: allowNewEditors };
+    const defaultRoles = {
+      isAdmin: allowNewAdmins,
+      isEditor: allowNewEditors
+    };
     if (allowNewUsers) {
       Accounts.createUser({
         username: newUsername,
@@ -24,11 +30,10 @@ Meteor.methods({
         profile: defaultRoles
       });
     }
+    console.log(newUsername + ': new User');
   },
   toggleIsEditor(thisId) {
-    // only if current User is admin
-    const isAdmin = Meteor.user().profile.isAdmin;
-    if (isAdmin) {
+    if (isAdmin()) {
       const oldUser = Meteor.users.findOne(thisId);
       const oldState = oldUser.profile.isEditor;
       const newState = oldState === false;
@@ -36,12 +41,11 @@ Meteor.methods({
         thisId,
         { $set: { 'profile.isEditor': newState } }
       );
+      console.log(oldUser.username + ': isEditor: ' + newState);
     }
   },
   toggleIsAdmin(thisId) {
-    // only if current User is admin
-    const isAdmin = Meteor.user().profile.isAdmin;
-    if (isAdmin) {
+    if (isAdmin()) {
       const oldUser = Meteor.users.findOne(thisId);
       const oldState = oldUser.profile.isAdmin;
       const newState = oldState === false;
@@ -49,6 +53,7 @@ Meteor.methods({
         thisId,
         { $set: { 'profile.isAdmin': newState } }
       );
+      console.log(oldUser.username + ': isAdmin: ' + newState);
     }
   }
 });

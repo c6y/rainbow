@@ -3,7 +3,7 @@
     "pixPerPage" : 24,
     "allowNewUsers" : true,
     "allowSelfRegister": false,
-    "defaultIsUser" : true,
+    "defaultIsUser" : false,
     "defaultIsEditor" : false,
     "defaultIsAdmin" : false,
     "rem": 16,

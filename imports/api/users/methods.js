@@ -29,7 +29,7 @@ Meteor.methods({
           profile: defaultRoles
         });
       }
-      console.log(newUsername + ': new User');
+      console.log(newUsername + ', ' + newEmail + ': new User');
     } else {
       throw new Meteor.Error('no new Users allowed');
     }

@@ -9,6 +9,9 @@ UserSchema.UserProfile = new SimpleSchema({
   },
   isEditor: {
     type: Boolean
+  },
+  isUser: {
+    type: Boolean
   }
 });
 

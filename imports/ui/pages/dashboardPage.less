@@ -5,10 +5,13 @@
 @import '../components/dashboard.less';
 @import '../components/navigation/sideBox.less';
 
-.registerBox {
+.registerBox, .loginBox {
+  // padding-left: 4*@cell-margin;
+  display: block;
+  margin: @cell-margin;
+  width: 100%;
 }
-.loginBox {
-}
+
 .dashMenu {
   background-color: @color-inputbox;
   text-align: right;

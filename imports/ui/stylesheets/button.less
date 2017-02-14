@@ -1,15 +1,21 @@
 button,
 .logoutButton,
 .toggleLogin {
+  margin: 0;
+  padding: @cell-margin 2*@cell-margin;
+  color: @color-buttontxt;
+  background-color: @color-button;
   font-size: @font-meta-size;
   font-family: @font-meta;
   border: @color-inputbox 0.4*@cell-margin solid;
-  line-height: 2em;
-  cursor: pointer;
-  margin: 0;
-  padding: @cell-margin 2*@cell-margin;
   display: inline-block;
-  // -webkit-flex: 1;
-  color: @color-buttontxt;
-  background-color: @color-button;
+  cursor: pointer;
+}
+.loginButton, .registerButton {
+  font-size: @font-meta-size;
+  font-family: @font-meta;
+  border: 1px @color-4 solid;
+  background-color: @color-4;
+  cursor: pointer;
+  // padding defined on forms.less input[type=submit]
 }

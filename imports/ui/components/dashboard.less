@@ -1,5 +1,6 @@
 .dashboardBox {
   margin: @cell-margin;
+  width: 100%;
   // margin-top: 0;
   // background-color: @color-2;
   h4 {
@@ -12,24 +13,15 @@
     padding: 0;
   }
 }
-.userInfo ul {
+.usersList ul, .userInfo ul, .registerForm {
   font-family: @font-meta;
   font-weight: @font-meta-weight;
   font-size: @font-meta-size;
   line-height: @font-meta-lineheight;
   padding: 0 0 0 4 * @cell-margin;
   margin: 0;
-  li {
-    list-style: none;
-  }
 }
-.usersList ul {
-  font-family: @font-meta;
-  font-weight: @font-meta-weight;
-  font-size: @font-meta-size;
-  line-height: @font-meta-lineheight;
-  padding: 0 0 0 4 * @cell-margin;
-  margin: 0;
+.usersList ul, .userInfo ul {
   li {
     list-style: none;
   }
@@ -40,7 +32,7 @@
   padding: 0 0.5rem;
   cursor: pointer;
 }
-.isEditor, .isAdmin {
+.isUser, .isEditor, .isAdmin {
   cursor: pointer;
   user-select: none;
   background-color: @color-4;

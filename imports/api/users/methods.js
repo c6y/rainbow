@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 
 // Functions
-import { isAdmin } from '../../functions/server/isUser.js';
+import { isAdmin, isAdminOrEditor } from '../../functions/server/isUser.js';
 
 Meteor.methods({
   'users.delete'(userId) {
@@ -14,23 +14,37 @@ Meteor.methods({
   },
   'users.insert'(newUsername, newEmail, newPassword) {
     // Set permissions to create user accounts in settings.json
-    const allowNewAdmins = Meteor.settings.public.allowNewAdmins;
-    const allowNewEditors = Meteor.settings.public.allowNewEditors;
     const allowNewUsers = Meteor.settings.public.allowNewUsers;
-
-    const defaultRoles = {
-      isAdmin: allowNewAdmins,
-      isEditor: allowNewEditors
-    };
     if (allowNewUsers) {
-      Accounts.createUser({
-        username: newUsername,
-        email: newEmail,
-        password: newPassword,
-        profile: defaultRoles
-      });
+      const defaultRoles = {
+        isAdmin: Meteor.settings.public.defaultIsAdmin,
+        isEditor: Meteor.settings.public.defaultIsEditor,
+        isUser: Meteor.settings.public.defaultIsUser
+      };
+      if (allowNewUsers) {
+        Accounts.createUser({
+          username: newUsername,
+          email: newEmail,
+          password: newPassword,
+          profile: defaultRoles
+        });
+      }
+      console.log(newUsername + ': new User');
+    } else {
+      throw new Meteor.Error('no new Users allowed');
     }
-    console.log(newUsername + ': new User');
+  },
+  toggleIsUser(thisId) {
+    if (isAdmin()) {
+      const oldUser = Meteor.users.findOne(thisId);
+      const oldState = oldUser.profile.isUser;
+      const newState = oldState === false;
+      Meteor.users.update(
+        thisId,
+        { $set: { 'profile.isUser': newState } }
+      );
+      console.log(oldUser.username + ': isUser: ' + newState);
+    }
   },
   toggleIsEditor(thisId) {
     if (isAdmin()) {

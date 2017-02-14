@@ -12,15 +12,17 @@
           {{> dashboard}}
         {{else}}
           {{#unless switchRegisterLogin}}
-            <div class="dashMenu">
-              &nbsp;
-              {{#if allowNewUsers}}
+            {{#if allowToSelfRegister}}
+              <div class="dashMenu">
+                &nbsp;
                 <span class="toggleLogin">
                   Switch to Register
                 </span>
-              {{/if}}
+              </div>
+            {{/if}}
+            <div class="loginBox">
+              {{> login}}
             </div>
-            {{> login}}
           {{/unless}}
           {{#if switchRegisterLogin}}
             <div class="dashMenu">
@@ -28,7 +30,9 @@
                 Switch to Login
               </span>
             </div>
-            {{> register}}
+            <div class="registerBox">
+              {{> register}}
+            </div>
           {{/if}}
         {{/if}}
       </span>

@@ -25,7 +25,7 @@ Template.dashboard.helpers({
     return Meteor.userId();
   },
   users() {
-    return Meteor.users.find({}, { sort: { username: 1 } });
+    return Meteor.users.find({}, { sort: { profile: -1, createdAt: 1 } });
   },
   email() {
     return this.emails[0].address;
@@ -36,9 +36,12 @@ Template.dashboard.helpers({
   usersCount() {
     return Meteor.users.find().count();
   },
-  userIsEditor() {
-    const isEditor = Meteor.user().profile.isEditor;
-    return isEditor ? 'true' : 'false';
+  userCreatedAt() {
+    if (Meteor.user().createdAt) {
+      const userDate = Meteor.user().createdAt;
+      const shortDate = userDate.toISOString().substring(0, 10);
+      return shortDate;
+    }
   }
 });
 
@@ -50,28 +53,36 @@ Template.dashboard.events({
   'click .removeUser'(event) {
     event.preventDefault();
     if (Meteor.user().profile.isAdmin) {
-      if (confirm('Delete Document: ' + this._id)) {
-        const userId = this._id;
-        console.log('removing userId: ' + userId);
+      if (confirm('Delete user: ' + this.username + ', ' + this.emails[0].address)) {
+        console.log('removing user: ' + this.username);
         Meteor.call('users.delete', this._id);
       }
     }
   },
+  'click .isUser'() {
+    const userName = this.username;
+    const thisState = this.profile.isUser;
+    const thisNewState = thisState === false;
+    const thisId = this._id;
+    if (confirm('set Editor for ' + userName + ' to ' + thisNewState + '?')) {
+      Meteor.call('toggleIsUser', thisId);
+    }
+  },
   'click .isEditor'() {
-    const thisUsername = this.username;
+    const userName = this.username;
     const thisState = this.profile.isEditor;
     const thisNewState = thisState === false;
     const thisId = this._id;
-    if (confirm('set Editor for ' + thisUsername + ' to ' + thisNewState + '?')) {
+    if (confirm('set Editor for ' + userName + ' to ' + thisNewState + '?')) {
       Meteor.call('toggleIsEditor', thisId);
     }
   },
   'click .isAdmin'() {
-    const thisUsername = this.username;
+    const userName = this.username;
     const thisState = this.profile.isAdmin;
     const thisNewState = thisState === false;
     const thisId = this._id;
-    if (confirm('set Admin for ' + thisUsername + ' to ' + thisNewState + '?')) {
+    if (confirm('set Admin for ' + userName + ' to ' + thisNewState + '?')) {
       Meteor.call('toggleIsAdmin', thisId);
     }
   }

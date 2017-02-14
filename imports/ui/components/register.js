@@ -11,6 +11,8 @@ Template.register.events({
     const newEmail = event.target.registerEmail.value;
     const newPassword = event.target.registerPassword.value;
     Meteor.call('users.insert', newUsername, newEmail, newPassword);
-    Meteor.loginWithPassword(newUsername, newPassword);
+    if (!Meteor.user().profile.isAdmin) {
+      Meteor.loginWithPassword(newUsername, newPassword);
+    }
   }
 });

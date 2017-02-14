@@ -1,9 +1,11 @@
 {
   "public": {
     "pixPerPage" : 24,
-    "allowNewUsers" : false,
-    "allowNewEditors" : false,
-    "allowNewAdmins" : false,
+    "allowNewUsers" : true,
+    "allowSelfRegister": false,
+    "defaultIsUser" : true,
+    "defaultIsEditor" : false,
+    "defaultIsAdmin" : false,
     "rem": 16,
     "cell": 16,
     "cellMargin": 0.5,

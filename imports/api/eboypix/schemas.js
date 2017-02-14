@@ -44,5 +44,9 @@ PicSchema.Pic = new SimpleSchema({
   'fullFrame': {
     type: Boolean,
     optional: true
+  },
+  'isPublic': {
+    type: Boolean,
+    optional: true
   }
 });

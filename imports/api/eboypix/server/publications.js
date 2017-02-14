@@ -14,10 +14,10 @@ import { urlToSelector } from '../../../functions/server/urlToSelector.js';
 EboyPix.attachSchema(PicSchema.Pic);
 
 // Publish all documents
-Meteor.publish('pix.public', function pixPublic() {
-  const selector = {}; // find all pix
-  return EboyPix.find(selector);
-});
+// Meteor.publish('pix.public', function pixPublic() {
+//   const selector = {}; // find all pix
+//   return EboyPix.find(selector);
+// });
 
 Meteor.publish('pix.pinned.public', function pixPinnedPublic() {
   const selector = { projects: 'pinned' }; // pix that are pinned
@@ -36,7 +36,10 @@ Meteor.publish('pix.afterDate.public', function pixAfterDatePublic(date) {
 
 // Publish paged documents
 Meteor.publish('pix.paged.public', function pixPagedPublic(slug, page, query) {
-  const selector = urlToSelector(slug, query);
+  // Check is user is logged in
+  const userId = this.userId;
+  // Generate a proper selector for the query
+  const selector = urlToSelector(slug, query, userId);
   const pixPage = Meteor.settings.public.pixPerPage;
   // Convert page string to integer
   let pageInt = parseInt(page, 10);
@@ -56,9 +59,11 @@ Meteor.publish('pix.single.public', function picPublic(id) {
   return EboyPix.find(selector);
 });
 
-// publish total count of docs in EboyPix as separate collection
+// publish total count of search query in EboyPix as separate collection
 Meteor.publish('pix.counts.public', function(slug, query) {
-  const selector = urlToSelector(slug, query);
+  // Check is user is logged in
+  const userId = this.userId;
+  const selector = urlToSelector(slug, query, userId);
   Counts.publish(
     this,
     'totalDocsCount',

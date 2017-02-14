@@ -60,7 +60,8 @@ Meteor.methods({
         license: 'CC BY-NC-ND 4.0',
         projects: projectArray,
         fullFrame: fullFrame,
-        madeDate: picMadeDate
+        madeDate: picMadeDate,
+        isPublic: false
       });
       console.log(url + ': inserted to EboyPix');
     }
@@ -139,15 +140,14 @@ Meteor.methods({
       );
       console.log(taskId + ': fullFrame updated: "' + newState + '"');
     }
+  },
+  'eboypix.updateIsPublic'(taskId, newState) {
+    if (isAdminOrEditor()) {
+      EboyPix.update(
+        taskId,
+        { $set: { isPublic: newState } }
+      );
+      console.log(taskId + ': isPublic updated: "' + newState + '"');
+    }
   }
-  // 'eboypix.updateFullFrame'(taskId) {
-  //   const oldState = EboyPix.findOne({ _id: taskId }, { fullFrame: 1 });
-  //   // If oldState is undefined set fixedOldState as false, else true;
-  //   const fixedOldState = oldState.fullFrame === true;
-  //   const newState = fixedOldState === false;
-  //   EboyPix.update(
-  //     taskId,
-  //     { $set: { fullFrame: newState } }
-  //   );
-  // }
 });

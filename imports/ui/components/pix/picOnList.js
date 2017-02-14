@@ -24,6 +24,10 @@ import '../edit/editFullFrame.js';
 import '../edit/editFullFrame.html';
 import '../edit/luckyBackColor.js';
 import '../edit/luckyBackColor.html';
+import '../edit/editIsPublic.js';
+import '../edit/editIsPublic.html';
+
+
 
 Template.picOnList.events({
   'click .deletePic'() {

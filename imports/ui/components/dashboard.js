@@ -64,7 +64,7 @@ Template.dashboard.events({
     const thisState = this.profile.isUser;
     const thisNewState = thisState === false;
     const thisId = this._id;
-    if (confirm('set Editor for ' + userName + ' to ' + thisNewState + '?')) {
+    if (confirm('set User for ' + userName + ' to ' + thisNewState + '?')) {
       Meteor.call('toggleIsUser', thisId);
     }
   },

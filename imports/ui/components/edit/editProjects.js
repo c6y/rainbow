@@ -27,6 +27,8 @@ Template.editProjects.events({
     projectsString = projectsString.replace(/, *,/gi, ', ');
     // Replace commas with any number of spaces
     projectsString = projectsString.replace(/(\s*,\s*)/gi, ', ');
+    // Replace carriage returns and new lines
+    projectsString = projectsString.replace(/\r\n?|\n/gi, '');
     // live update input value
     event.target.value = projectsString;
   },

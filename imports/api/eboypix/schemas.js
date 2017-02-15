@@ -48,5 +48,11 @@ PicSchema.Pic = new SimpleSchema({
   'isPublic': {
     type: Boolean,
     optional: true
+  },
+  'access': {
+    type: Number,
+    defaultValue: 3,
+    min: 0,
+    max: 3
   }
 });

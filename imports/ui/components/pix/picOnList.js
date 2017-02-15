@@ -26,8 +26,8 @@ import '../edit/luckyBackColor.js';
 import '../edit/luckyBackColor.html';
 import '../edit/editIsPublic.js';
 import '../edit/editIsPublic.html';
-
-
+import '../edit/editAccess.js';
+import '../edit/editAccess.html';
 
 Template.picOnList.events({
   'click .deletePic'() {

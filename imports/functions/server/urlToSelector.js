@@ -1,3 +1,6 @@
+// Meteor stuff
+import { Meteor } from 'meteor/meteor';
+
 /**
  * takes the slug, the query and returns a proper Mongo selector
  * it does not take the page though — this returns all results
@@ -10,17 +13,21 @@ export function urlToSelector(slug, query, userId) {
   const reg = RegExp(slug, 'i', 's');
   const slugRegExp = { $regex: reg };
 
-  console.log('function gets this userId: ' + userId);
+  // If user is not logged in,
+  // limit search query to documents with access level 0
+  // let userAccess = { isPublic: true };
+  let userAccess = { access: 0 };
 
-  // if user is not logged in,
-  // limit search query to public documents ...
-  let userAccess = { isPublic: true };
-
+  // If user is logged in, allow increased access levels
   if (userId) {
-    // ... if user is logged in though,
-    // do not limit seach to public docs
-    // do show everything
-    userAccess = {};
+    const user = Meteor.users.findOne(userId);
+    const isEditor = user.profile.isEditor;
+    const isAdmin = user.profile.isAdmin;
+    if (isEditor || isAdmin) {
+      userAccess = {};
+    } else {
+      userAccess = { access: { $lt: 2 } };
+    }
   }
 
   let selector = userAccess;

@@ -39,7 +39,7 @@
     .tag:last-of-type:after {
       content: '';
     }
-    .editFullFrame, .editIsPublic {
+    .editFullFrame, .editIsPublic, .stepAccess {
       cursor: pointer;
       user-select: none;
     }
@@ -145,18 +145,46 @@
     user-select: none;
     // background-color: rgba(255, 255, 255, 0.1);
     // padding: 0 0.5em;
+    &::after, &::before {
+      content: '\00a0';
+      // padding: 0 0.5em;
+    }
+    &:hover {
+      background-color: @color-7;
+      color: @color-0;
+      transition: background-color 0.2s linear;
+    }
+    &:active {
+      color: @color-7;
+      background-color: @color-0;
+    }
   }
-  .rndColor::after, .rndColor::before {
-    content: '\00a0';
-    // padding: 0 0.5em;
+
+  .stepAccess {
+    color: @color-3;
+    &::before, &::after {
+      content: '\00a0';
+    }
+    &:hover {
+      background-color: @color-7;
+      color: @color-0;
+      transition: background-color 0.2s linear;
+    }
+    &:active {
+      color: @color-7;
+      background-color: @color-0;
+    }
   }
-  .rndColor:hover {
-    background-color: @color-7;
-    color: @color-0;
-    transition: background-color 0.2s linear;
+  .access0 {
+    background-color: green;
   }
-  .rndColor:active {
-    color: @color-7;
-    background-color: @color-0;
+  .access1 {
+    background-color: blue;
+  }
+  .access2 {
+    background-color: purple;
+  }
+  .access3 {
+    background-color: black;
   }
 }

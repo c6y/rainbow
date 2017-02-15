@@ -149,5 +149,14 @@ Meteor.methods({
       );
       console.log(taskId + ': isPublic updated: "' + newState + '"');
     }
+  },
+  'eboypix.updateAccess'(taskId, newState) {
+    if (isAdminOrEditor()) {
+      EboyPix.update(
+        taskId,
+        { $set: { access: newState } }
+      );
+      console.log(taskId + ': access updated: "' + newState + '"');
+    }
   }
 });

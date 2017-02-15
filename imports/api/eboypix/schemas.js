@@ -1,4 +1,5 @@
 // Meteor stuff
+import { Meteor } from 'meteor/meteor';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
 export const PicSchema = {};
@@ -36,16 +37,14 @@ PicSchema.Pic = new SimpleSchema({
     type: String
   },
   'copyright': {
-    type: String
+    type: String,
+    defaultValue: Meteor.settings.public.copyright
   },
   'license': {
-    type: String
+    type: String,
+    defaultValue: Meteor.settings.public.defaultLicense
   },
   'fullFrame': {
-    type: Boolean,
-    optional: true
-  },
-  'isPublic': {
     type: Boolean,
     optional: true
   },

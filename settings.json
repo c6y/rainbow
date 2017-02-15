@@ -9,8 +9,9 @@
     "rem": 16,
     "cell": 16,
     "cellMargin": 0.5,
-    "copyright": "EBOY",
+    "copyright": "eBoy",
     "logotext": "EBOY",
-    "slugHome": "everything"
+    "slugHome": "everything",
+    "defaultLicense": "CC BY-NC-ND 4.0"
   }
 }

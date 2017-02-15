@@ -15,7 +15,6 @@ export function urlToSelector(slug, query, userId) {
 
   // If user is not logged in,
   // limit search query to documents with access level 0
-  // let userAccess = { isPublic: true };
   let userAccess = { access: 0 };
 
   // If user is logged in, allow increased access levels

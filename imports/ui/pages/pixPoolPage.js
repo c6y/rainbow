@@ -22,6 +22,8 @@ import '../components/navigation/sideBox.js';
 import '../components/navigation/sideBox.html';
 import '../components/navigation/searchBox.js';
 import '../components/navigation/searchBox.html';
+import '../components/user.js';
+import '../components/user.html';
 
 import './pixPoolPage.html';
 

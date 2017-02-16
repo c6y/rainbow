@@ -1,0 +1,39 @@
+.logoffOrLogin {
+  font-family: @font-meta;
+  font-size: @font-meta-size;
+  line-height: 1em;
+  position: relative;
+  display: inline-block;
+  float: right;
+  cursor: pointer;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  .dropdown-content {
+    margin-top: @cell-margin;
+    display: none;
+    position: absolute;
+    text-align: right;
+    background-color: @color-0;
+    right: 0;
+    a {
+      display: block;
+      padding: @cell-margin;
+      color: @color-5;
+      &:hover {
+        color: @color-0;
+        background-color: @color-5;
+      }
+    }
+  }
+  &:hover .dropdown-content {
+    display: block;
+  }
+  &:hover {
+    color: @color-headerback;
+    background-color: @color-5;
+    margin: -@cell-margin;
+    padding: @cell-margin;
+  }
+}

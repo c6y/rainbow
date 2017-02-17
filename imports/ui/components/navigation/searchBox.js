@@ -84,6 +84,11 @@ Template.searchBox.helpers({
       return 'true';
     }
     return 'none';
+  },
+  isVisible() {
+    const foo = Session.get('plusBox');
+    console.log('foo: ' + foo);
+    return foo;
   }
 });
 

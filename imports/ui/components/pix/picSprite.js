@@ -53,20 +53,25 @@ Template.picSprite.helpers({
       { name: this.backgroundColor }
     );
 
-    const randomOffSat = Math.random() * 20;
+    // const randomOffHue = Math.random() * 30;
+    // // const randomOffHue = 180;
+    // const offsetHue = Math.floor((color.hue + randomOffHue) % 360);
+    // console.log('offsetHue: ' + color.hue + ' > ' + offsetHue);
+
+    const randomOffSat = Math.random() * 15;
     const offsetSat = Math.floor(Math.max(color.saturation - randomOffSat, 0));
-    console.log('offsetSat: ' + color.saturation + ' > ' + offsetSat);
+    // console.log('offsetSat: ' + color.saturation + ' > ' + offsetSat);
 
     const randomOffLum = Math.random() * 10;
     const offsetLum = Math.floor(Math.min(color.luminosity + randomOffLum, 100));
-    console.log('offsetLum: ' + color.luminosity + ' > ' + offsetLum);
+    // console.log('offsetLum: ' + color.luminosity + ' > ' + offsetLum);
 
     // If it's in the color database return hsl values as css hsl string
     if (color) {
       const hslColor = String(
         'hsl(' +
         color.hue + ', ' +
-        // offsetLum + ', ' +
+        // offsetHue + ', ' +
         // color.saturation + '%, ' +
         offsetSat + '%, ' +
         // color.luminosity + '%)'

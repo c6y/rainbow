@@ -33,7 +33,9 @@ and (min-device-width: @breakpoint) {
 #appheader {
   z-index: 9;
   width: 0 auto;
-  height: 0.5 * @cell - 2 * @cell-margin;
+  // height: 0.5 * @cell - 2 * @cell-margin;
+  height: 0.5*@cell + 2*@cell-margin;
+  box-sizing: border-box;
   background-color: @color-headerback;
   color: @color-headertext;
   line-height: @font-regular-lineheight;

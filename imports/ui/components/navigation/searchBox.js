@@ -80,15 +80,20 @@ Template.searchBox.helpers({
   },
   isUser() {
     if (Meteor.user()) {
-      console.log('isUser');
       return 'true';
     }
     return 'none';
   },
   isVisible() {
-    const foo = Session.get('plusBox');
-    console.log('foo: ' + foo);
-    return foo;
+    const isVisible = Session.get('plusBox');
+    return isVisible;
+  },
+  searchSliderCSS() {
+    const isVisible = Session.get('plusBox');
+    if (isVisible) {
+      return 'searchShow';
+    }
+    return 'searchHide';
   }
 });
 

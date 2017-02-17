@@ -1,9 +1,11 @@
 <template name="picSprite">
-  <figure class="picSpriteBox" style="background: {{colorHSL.value}}">
+  <!-- <figure class="picSpriteBox" style="background: {{colorHSL.value}}"> -->
+  <!-- <figure class="picSpriteBox" style="background: radial-gradient({{colorHSL}}, {{colorHSLPlus}})"> -->
+  <figure class="picSpriteBox" style="background: url('http://eboy.s3.amazonaws.com/bubble/projects/2014/Game%20Frame/GFR-loops-08s.gif'); background-size: 100% 100%; image-rendering: pixelated;">
   <!-- <figure class="picSpriteBox" style="background: #fefefe"> -->
     {{#if isNotSpriteBoxRoute}}
       <a href="{{toSpriteBoxPath}}">
-        <img src="{{url}}" width="{{scaledDims.width}}" height="{{.scaledDims.height}}" alt="" />
+        <img src="{{url}}" width="{{scaledDims.width}}" height="{{scaledDims.height}}" alt="" />
       </a>
     {{else}}
       <img src="{{url}}" width="{{scaledDims.width}}" height="{{scaledDims.height}}" alt="" />

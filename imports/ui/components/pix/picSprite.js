@@ -35,10 +35,7 @@ Template.picSprite.helpers({
         color.saturation + '%, ' +
         color.luminosity + '%)'
       );
-      return {
-        info: hslColor,
-        value: hslColor
-      };
+      return hslColor;
     }
     // If color does not exist return diagonal stripes warning pattern
     const emptyColor = 'repeating-linear-gradient(' +
@@ -48,10 +45,35 @@ Template.picSprite.helpers({
       '#ccc 0.5rem,' +
       '#ccc 1rem' +
       ')';
-    return {
-      info: 'Warning! Assign a color!',
-      value: emptyColor
-    };
+    return emptyColor;
+  },
+  colorHSLPlus() {
+    // Get the color by name
+    const color = Colors.findOne(
+      { name: this.backgroundColor }
+    );
+
+    const randomOffSat = Math.random() * 20;
+    const offsetSat = Math.floor(Math.max(color.saturation - randomOffSat, 0));
+    console.log('offsetSat: ' + color.saturation + ' > ' + offsetSat);
+
+    const randomOffLum = Math.random() * 10;
+    const offsetLum = Math.floor(Math.min(color.luminosity + randomOffLum, 100));
+    console.log('offsetLum: ' + color.luminosity + ' > ' + offsetLum);
+
+    // If it's in the color database return hsl values as css hsl string
+    if (color) {
+      const hslColor = String(
+        'hsl(' +
+        color.hue + ', ' +
+        // offsetLum + ', ' +
+        // color.saturation + '%, ' +
+        offsetSat + '%, ' +
+        // color.luminosity + '%)'
+        offsetLum + '%)'
+      );
+      return hslColor;
+    }
   },
   scaledDims() {
     // console.log('this.name: ' + this.name);

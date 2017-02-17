@@ -15,6 +15,9 @@
   #quicks li, .shoplink li {
     list-style: none;
     // text-transform: uppercase;
+    .toggleEditorLinks {
+      cursor: pointer;
+    }
     span {
       background-color: @color-9;
       color: @color-1;
@@ -26,10 +29,11 @@
       padding: @cell-margin 2 * @cell-margin;
       text-decoration: none;
     }
-    a {
+    a, .toggleEditorLinks {
       color: @color-5;
+      background-color: @color-0;
     }
-    a:hover {
+    a:hover, .toggleEditorLinks:hover {
       background-color: #f5f5f5;
       color: @color-5;
     }

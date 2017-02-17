@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { DocHead } from 'meteor/kadira:dochead';
+import { GAnalytics } from 'meteor/datariot:ganalytics';
 
 import './dashboard.html';
 
@@ -48,6 +49,8 @@ Template.dashboard.helpers({
 Template.dashboard.events({
   'click .logoutButton'(event) {
     event.preventDefault();
+    const userEmail = Meteor.user().emails[0].address;
+    GAnalytics.event('users', 'logout', userEmail);
     Meteor.logout();
   },
   'click .removeUser'(event) {

@@ -12,6 +12,9 @@
     "copyright": "eBoy",
     "logotext": "EBOY",
     "slugHome": "everything",
-    "defaultLicense": "CC BY-NC-ND 4.0"
+    "defaultLicense": "CC BY-NC-ND 4.0",
+    "ga": {
+      "account":"UA-XXXXXXX-Y"
+    }
   }
 }

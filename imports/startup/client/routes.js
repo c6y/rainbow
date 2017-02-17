@@ -1,6 +1,7 @@
 // Meteor stuff
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { BlazeLayout } from 'meteor/kadira:blaze-layout';
+import { GAnalytics } from 'meteor/datariot:ganalytics';
 import { Meteor } from 'meteor/meteor';
 
 // Layouts
@@ -48,6 +49,7 @@ FlowRouter.notFound = {
 FlowRouter.route('/pool/:slug/:page', {
   name: 'pool',
   action() {
+    GAnalytics.pageview();
     BlazeLayout.render('applayout', {
       main: 'pixPoolPage'
     });
@@ -57,6 +59,7 @@ FlowRouter.route('/pool/:slug/:page', {
 FlowRouter.route('/edit/:slug/:page', {
   name: 'edit',
   action() {
+    GAnalytics.pageview();
     BlazeLayout.render('applayout', {
       main: 'pixEditPage'
     });
@@ -66,6 +69,7 @@ FlowRouter.route('/edit/:slug/:page', {
 FlowRouter.route('/colors', {
   name: 'colors',
   action() {
+    GAnalytics.pageview();
     BlazeLayout.render('applayout', {
       main: 'colorsPage'
     });
@@ -75,6 +79,7 @@ FlowRouter.route('/colors', {
 FlowRouter.route('/spritebox/:_id', {
   name: 'spriteBox',
   action() {
+    GAnalytics.pageview();
     BlazeLayout.render('applayout', {
       main: 'spriteBoxPage'
     });
@@ -84,6 +89,7 @@ FlowRouter.route('/spritebox/:_id', {
 FlowRouter.route('/addDoc', {
   name: 'addDoc',
   action() {
+    GAnalytics.pageview();
     BlazeLayout.render('applayout', {
       main: 'addDocPage'
     });
@@ -93,6 +99,7 @@ FlowRouter.route('/addDoc', {
 FlowRouter.route('/dashboard', {
   name: 'dashboard',
   action() {
+    GAnalytics.pageview();
     BlazeLayout.render('applayout', {
       main: 'dashboardPage'
     });
@@ -102,6 +109,7 @@ FlowRouter.route('/dashboard', {
 FlowRouter.route('/quicks', {
   name: 'quicks',
   action() {
+    GAnalytics.pageview();
     BlazeLayout.render('applayout', {
       main: 'quicksPage'
     });

@@ -3,15 +3,14 @@
     <form class="searchFor">
       {{> pageCount}}
       {{> pixCount}}
-      <select name="query">
+      <select name="query" style="display: {{isUser}}">
         {{#each queryList}}
           <option value="{{this.value}}" {{this.selected}}>
-              {{this.label}}
-            </option>
+            {{this.label}}
+          </option>
         {{/each}}
       </select>
       <input type="text" name="slug" placeholder="{{searchPlaceholder}}" maxlength="24" size="24"/>
-      <!-- <button type="submit">Go</button> -->
     </form>
   </div>
 </template>

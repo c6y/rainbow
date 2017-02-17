@@ -15,6 +15,12 @@ import './searchBox.html';
 
 // Template onCreated
 Template.searchBox.onCreated(function() {
+  // Check path if it has a query,
+  // ... if so set the Session variable
+  const query = FlowRouter.getQueryParam('q');
+  if (query) {
+    Session.set('searchBoxQuery', query);
+  }
   // Set initial value of query to default if undefined
   if (Session.get('searchBoxQuery') === undefined) {
     // console.log('it is undefined');
@@ -71,6 +77,13 @@ Template.searchBox.helpers({
       return isAdmin || isEditor;
     }
     return false;
+  },
+  isUser() {
+    if (Meteor.user()) {
+      console.log('isUser');
+      return 'true';
+    }
+    return 'none';
   }
 });
 
@@ -96,8 +109,17 @@ Template.searchBox.events({
     // if (event.keyCode === 13) {
     let searchValue = 'everything';
 
+    // Remove query if Session variable
+    // is set to 'default' in 'searchBoxQuery'
     let query = Session.get('searchBoxQuery');
     query = query === 'default' ? null : query;
+
+    // Remove query and seach globally if user is not logged in
+    // This will ensure that these users get global search
+    // .. even if they start with an url that contained a query
+    if (!Meteor.user()) {
+      query = null;
+    }
 
     if (event.target.value) {
       searchValue = event.target.value;

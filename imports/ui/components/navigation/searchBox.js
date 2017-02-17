@@ -84,16 +84,23 @@ Template.searchBox.helpers({
     }
     return 'none';
   },
-  isVisible() {
-    const isVisible = Session.get('plusBox');
-    return isVisible;
-  },
+  // isVisible() {
+  //   const isVisible = Session.get('plusBox');
+  //   return isVisible;
+  // },
   searchSliderCSS() {
     const isVisible = Session.get('plusBox');
     if (isVisible) {
       return 'searchShow';
     }
     return 'searchHide';
+  },
+  onPoolAndEdit() {
+    const isPool = FlowRouter.getRouteName() === 'pool';
+    const isEdit = FlowRouter.getRouteName() === 'edit';
+    if (isPool | isEdit) {
+      return true;
+    }
   }
 });
 

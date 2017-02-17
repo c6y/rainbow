@@ -1,10 +1,18 @@
 // Meteor stuff
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
+import { Session } from 'meteor/session';
 
-import './navLinks.html';
+import './editorLinks.html';
 
-Template.navLinks.helpers({
+// Template onCreated
+Template.editorLinks.onCreated(function() {
+  if (Session.get('editorLinks') === undefined) {
+    Session.set('editorLinks', false);
+  }
+});
+
+Template.editorLinks.helpers({
   toPoolPath() {
     const thisRouteName = FlowRouter.getRouteName();
     if (thisRouteName !== 'pool') {
@@ -67,5 +75,18 @@ Template.navLinks.helpers({
   },
   thisIsHere() {
     return FlowRouter.getRouteName();
+  },
+  showEditorLinks() {
+    const showEditorLinks = Session.get('editorLinks');
+    console.log('showEditorLinks: ' + showEditorLinks);
+    return showEditorLinks;
+  }
+});
+
+Template.editorLinks.events({
+  'click .toggleEditorLinks'() {
+    const oldEditorLinksShow = Session.get('editorLinks');
+    const newEditorLinksShow = oldEditorLinksShow === false;
+    Session.set('editorLinks', newEditorLinksShow);
   }
 });

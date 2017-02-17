@@ -4,8 +4,8 @@ import { Template } from 'meteor/templating';
 import { Session } from 'meteor/session';
 
 // Components
-import './navLinks.html';
-import './navLinks.js';
+import './editorLinks.html';
+import './editorLinks.js';
 import './quickLinks.html';
 import './quickLinks.js';
 
@@ -38,5 +38,8 @@ Template.sideBox.helpers({
   },
   thisYear() {
     return new Date().getFullYear();
+  },
+  copyright() {
+    return Meteor.settings.public.copyright;
   }
 });

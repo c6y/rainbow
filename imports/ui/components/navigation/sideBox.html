@@ -2,7 +2,7 @@
   {{#if isVisible}}
     <div id="sideBox">
       {{#if isAdminOrEditor}}
-        {{> navLinks}}
+        {{> editorLinks}}
         <hr>
       {{/if}}
       {{> quickLinks}}
@@ -10,20 +10,16 @@
         <ul class="shoplink">
           <li><a href="http://shop.eboy.com/" target="_blank">SHOP</a></li>
         </ul>
-      <hr>
+      <span class="social">
+        <a class="socicon-ello" href="https://ello.co/eboy" target="_blank"></a>
+        <a class="socicon-twitter" href="https://twitter.com/eboyarts" target="_blank"></a>
+        <a class="socicon-instagram" href="https://www.instagram.com/eboyarts/" target="_blank"></a>
+        <a class="socicon-facebook" href="https://www.facebook.com/eBoy-56718692455/" target="_blank"></a>
+        <a class="socicon-patreon" href="https://www.patreon.com/eboyarts" target="_blank"></a>
+      </span>
       <ul class="fineprint">
-        <li><a href="https://www.patreon.com/eboyarts" target="_blank">Support this on Patreon</a></li>
+        <li>&copy; {{copyright}} {{thisYear}}</li>
         <li><a href="mailto:someone@example.com?Subject=Hello%20eBoy!" target="_blank">eboy@eboy.com</a></li>
-        <li><a href="https://twitter.com/eboyarts" target="_blank">Twitter</a> | <a href="https://www.instagram.com/eboyarts/" target="_blank">Instagram</a> | <a href="https://ello.co/eboy" target="_blank">Ello</a></li>
-      </ul>
-      <!-- <span class="social">
-        <a href="#">F</a>
-        <a href="#">E</a>
-        <a href="#">T</a>
-      </span> -->
-      <hr>
-      <ul class="fineprint">
-        <li>© EBOY {{thisYear}}</li>
       </ul>
     </div>
   {{/if}}

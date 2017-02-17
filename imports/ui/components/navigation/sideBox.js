@@ -38,5 +38,8 @@ Template.sideBox.helpers({
   },
   thisYear() {
     return new Date().getFullYear();
+  },
+  copyright() {
+    return Meteor.settings.public.copyright;
   }
 });

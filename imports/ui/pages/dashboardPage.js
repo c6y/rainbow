@@ -25,7 +25,7 @@ Template.dashboardPage.helpers({
   },
   // Check settings.json if new users are allowed
   allowToSelfRegister() {
-    return Meteor.settings.public.allowSelfRegister;
+    return Meteor.settings.public.userSetup.allowSelfRegister;
   },
   isAdminOrEditor() {
     if (Meteor.user()) {

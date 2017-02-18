@@ -40,7 +40,7 @@ Meteor.publish('pix.paged.public', function pixPagedPublic(slug, page, query) {
   const userId = this.userId;
   // Generate a proper selector for the query
   const selector = urlToSelector(slug, query, userId);
-  const pixPage = Meteor.settings.public.pixPerPage;
+  const pixPage = Meteor.settings.public.navigation.pixPerPage;
   // Convert page string to integer
   let pageInt = parseInt(page, 10);
   const skipCount = (pageInt - 1) * pixPage;

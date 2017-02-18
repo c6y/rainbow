@@ -55,9 +55,9 @@ Template.picSprite.helpers({
   },
   scaledDims() {
     // console.log('this.name: ' + this.name);
-    const rem = Meteor.settings.public.rem;
-    const cell = Meteor.settings.public.cell;
-    const cellMargin = Meteor.settings.public.cellMargin;
+    const rem = Meteor.settings.public.dimensions.rem;
+    const cell = Meteor.settings.public.dimensions.cell;
+    const cellMargin = Meteor.settings.public.dimensions.cellMargin;
 
     const thumbDim = rem * cell;
 

@@ -38,11 +38,11 @@ PicSchema.Pic = new SimpleSchema({
   },
   'copyright': {
     type: String,
-    defaultValue: Meteor.settings.public.copyright
+    defaultValue: Meteor.settings.public.ownership.copyright
   },
   'license': {
     type: String,
-    defaultValue: Meteor.settings.public.defaultLicense
+    defaultValue: Meteor.settings.public.ownership.defaultLicense
   },
   'fullFrame': {
     type: Boolean,

@@ -12,12 +12,12 @@ import './logo.html';
 Template.logo.helpers({
   toHomePath() {
     if (!isHome()) {
-      const slugHome = Meteor.settings.public.slugHome;
+      const slugHome = Meteor.settings.public.navigation.slugHome;
       return FlowRouter.path('pool', { slug: slugHome, page: 1 });
     }
   },
   logotext() {
-    return Meteor.settings.public.logotext;
+    return Meteor.settings.public.ownership.logotext;
   },
   isActive() {
     const oldPlusBoxShow = Session.get('plusBox');

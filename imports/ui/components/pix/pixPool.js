@@ -30,7 +30,7 @@ Template.pixPool.helpers({
     // Necessary, because the pinned post will pop up as the 25th post ...
     // ... if part of any page other than page 1
     // See forum post: https://goo.gl/VDwXBg
-    const pixPerPage = Meteor.settings.public.pixPerPage;
+    const pixPerPage = Meteor.settings.public.navigation.pixPerPage;
     if (isHome()) {
       options = {
         limit: pixPerPage,

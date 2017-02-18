@@ -1,20 +1,28 @@
 {
   "public": {
-    "pixPerPage" : 24,
-    "allowNewUsers" : true,
-    "allowSelfRegister": false,
-    "defaultIsUser" : false,
-    "defaultIsEditor" : false,
-    "defaultIsAdmin" : false,
-    "rem": 16,
-    "cell": 16,
-    "cellMargin": 0.5,
-    "copyright": "eBoy",
-    "logotext": "EBOY",
-    "slugHome": "everything",
-    "defaultLicense": "CC BY-NC-ND 4.0",
     "ga": {
       "account":"UA-XXXXXXX-Y"
+    },
+    "dimensions": {
+      "rem": 16,
+      "cell": 16,
+      "cellMargin": 0.5
+    },
+    "ownership": {
+      "copyright": "eBoy",
+      "logotext": "EBOY",
+      "defaultLicense": "CC BY-NC-ND 4.0"
+    },
+    "userSetup": {
+      "allowNewUsers" : true,
+      "allowSelfRegister": false,
+      "defaultIsUser" : false,
+      "defaultIsEditor" : false,
+      "defaultIsAdmin" : false
+    },
+    "navigation": {
+      "pixPerPage" : 24,
+      "slugHome": "everything"
     }
   }
 }

@@ -26,7 +26,7 @@ const hasMorePages = function() {
   const thisPageString = FlowRouter.getParam('page');
   const thisPage = parseInt(thisPageString, 10);
   const docsCount = Counts.get('totalDocsCount');
-  const docsPerPage = Meteor.settings.public.pixPerPage;
+  const docsPerPage = Meteor.settings.public.navigation.pixPerPage;
   return thisPage * docsPerPage < docsCount;
 };
 
@@ -39,7 +39,7 @@ Template.navPaging.helpers({
     const thisPageString = FlowRouter.getParam('page');
     const thisPage = parseInt(thisPageString, 10);
     const docsCount = Counts.get('totalDocsCount');
-    const docsPerPage = Meteor.settings.public.pixPerPage;
+    const docsPerPage = Meteor.settings.public.navigation.pixPerPage;
     const pageCount = Math.max(1, Math.ceil(docsCount / docsPerPage));
     if (thisPage !== 1 && thisPage <= pageCount) {
       return 'active';
@@ -50,7 +50,7 @@ Template.navPaging.helpers({
     const thisPageString = FlowRouter.getParam('page');
     const thisPage = parseInt(thisPageString, 10);
     const docsCount = Counts.get('totalDocsCount');
-    const docsPerPage = Meteor.settings.public.pixPerPage;
+    const docsPerPage = Meteor.settings.public.navigation.pixPerPage;
     const pageCount = Math.max(1, Math.ceil(docsCount / docsPerPage));
     if (thisPage < pageCount) {
       return 'active';

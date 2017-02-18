@@ -9,7 +9,7 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 export function isHome() {
   const isPool = FlowRouter.getRouteName() === 'pool';
   const isPageOne = FlowRouter.getParam('page') === '1';
-  const slugHome = Meteor.settings.public.slugHome;
+  const slugHome = Meteor.settings.public.navigation.slugHome;
   const isSlugHome = FlowRouter.getParam('slug') === slugHome;
   const query = FlowRouter.getQueryParam('q');
   let hasNoQuery = false;

@@ -40,6 +40,6 @@ Template.sideBox.helpers({
     return new Date().getFullYear();
   },
   copyright() {
-    return Meteor.settings.public.copyright;
+    return Meteor.settings.public.ownership.copyright;
   }
 });

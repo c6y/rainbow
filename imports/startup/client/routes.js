@@ -17,7 +17,7 @@ import '../../ui/pages/pixEditPage.js';
 import '../../ui/pages/dashboardPage.js';
 import '../../ui/pages/notFoundPage.js';
 
-const slugHome = Meteor.settings.public.slugHome;
+const slugHome = Meteor.settings.public.navigation.slugHome;
 
 // Redirects
 FlowRouter.route('/', {

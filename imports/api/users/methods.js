@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 
 // Functions
-import { isAdmin, isAdminOrEditor } from '../../functions/server/isUser.js';
+import { isAdmin } from '../../functions/server/isUser.js';
 
 Meteor.methods({
   'users.delete'(userId) {
@@ -14,12 +14,12 @@ Meteor.methods({
   },
   'users.insert'(newUsername, newEmail, newPassword) {
     // Set permissions to create user accounts in settings.json
-    const allowNewUsers = Meteor.settings.public.allowNewUsers;
+    const allowNewUsers = Meteor.settings.public.userSetup.allowNewUsers;
     if (allowNewUsers) {
       const defaultRoles = {
-        isAdmin: Meteor.settings.public.defaultIsAdmin,
-        isEditor: Meteor.settings.public.defaultIsEditor,
-        isUser: Meteor.settings.public.defaultIsUser
+        isAdmin: Meteor.settings.public.userSetup.defaultIsAdmin,
+        isEditor: Meteor.settings.public.userSetup.defaultIsEditor,
+        isUser: Meteor.settings.public.userSetup.defaultIsUser
       };
       if (allowNewUsers) {
         Accounts.createUser({

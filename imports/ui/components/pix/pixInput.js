@@ -7,22 +7,33 @@ Template.pixInput.events({
     event.preventDefault();
 
     // Set Session to time when this batch was uploaded
-    Session.set('latestUploadAt', new Date());
+    const uploadedAt = new Date();
+    console.log('uploadedAt: ' + uploadedAt);
+
+    // const uploadedAtISO = uploadedAt.toISOString();
+    // console.log('uploadedAtISO: ' + uploadedAtISO);
+
+    Session.set('latestUploadAt', uploadedAt);
 
     // Assign form input to constant
     const target = event.target;
+    // get as string
     const imgBatchURLs = target.batchchurls.value;
+    console.log('imgBatchURLs: ' + imgBatchURLs);
     // Remove line breaks
     const imgBatchURLsClean = imgBatchURLs.replace(/[\r\n]/g, ',');
+    console.log('imgBatchURLsClean: ' + imgBatchURLsClean);
 
     // Create an array and populate with urls
     let urls = [];
     urls = imgBatchURLsClean.split(",");
+    console.log('urls[0]: ' + urls[0]); // return first element
 
     // Only keep elements that start with 'http'
     urls = urls.filter(function(element) {
       return element.startsWith('http');
     });
+    console.log('urls[0] http elements only: ' + urls[0]); // return first element
 
     // Initialize Session variable to hold insert errors
     Session.set('insertErrors', []);
@@ -43,7 +54,7 @@ Template.pixInput.events({
                 session.push(img.src);
                 Session.set('insertErrors', session);
               } else {
-                console.log('insert successfull: ' + img.src);
+                console.log('client: insert successfull: ' + img.src);
               }
             }
           );

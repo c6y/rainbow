@@ -33,6 +33,13 @@ Template.picMeta.helpers({
     const shortDate = date.toISOString().substring(0, 10);
     return shortDate;
   },
+  uploadedByName() {
+    if (this.uploadedBy) {
+      // const uploadedBy = this.uploadedBy.username;
+      const uploadedBy = this.uploadedBy.username;
+      return uploadedBy;
+    }
+  },
   colorHSL() {
     // Get the color by name
     const color = Colors.findOne(

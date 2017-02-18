@@ -78,7 +78,6 @@ Template.editorLinks.helpers({
   },
   showEditorLinks() {
     const showEditorLinks = Session.get('editorLinks');
-    console.log('showEditorLinks: ' + showEditorLinks);
     return showEditorLinks;
   }
 });

@@ -48,6 +48,17 @@ Meteor.methods({
       // Get random color name with random index
       const colorName = colorNamesArray[randomColorIndex];
 
+      // Get user id
+      const thisUserId = Meteor.user()._id;
+      console.log('thisUserId: ' + thisUserId);
+
+      // Get user name
+      const thisUserName = Meteor.user().username;
+      console.log('thisUserName: ' + thisUserName);
+
+      // const thisUserProfile = Meteor.user().profile;
+      // console.log('thisUserProfile: ' + thisUserProfile);
+
       // Create new document
       EboyPix.insert({
         url: url,
@@ -58,7 +69,11 @@ Meteor.methods({
         tags: [],
         projects: projectArray,
         fullFrame: fullFrame,
-        madeDate: picMadeDate
+        madeDate: picMadeDate,
+        uploadedBy: {
+          id: thisUserId,
+          username: thisUserName
+        }
       });
       console.log(url + ': inserted to EboyPix');
     }

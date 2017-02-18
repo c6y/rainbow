@@ -32,8 +32,10 @@ Template.addDocPage.onCreated(function() {
     DocHead.setTitle(title);
 
     if (Session.get('latestUploadAt')) {
-      let lastUpload = Session.get('latestUploadAt');
-      self.subscribe('pix.afterDate.public', lastUpload);
+      const lastUpload = Session.get('latestUploadAt');
+      const userId = Meteor.userId();
+      console.log('onCreated: Session lastUploadAt: ' + lastUpload);
+      self.subscribe('pix.afterDate.public', lastUpload, userId);
       self.subscribe('colors.public');
     }
   });
@@ -42,20 +44,23 @@ Template.addDocPage.onCreated(function() {
 Template.addDocPage.helpers({
   showInsertErrors() {
     const failedURLs = Session.get('insertErrors');
+    console.log('failedURLs: ' + failedURLs);
     return failedURLs;
   },
   insertErrorsCount() {
     const failedURLs = Session.get('insertErrors');
+    console.log('failedURLs.length: ' + failedURLs.length);
     return failedURLs.length;
   },
-  pix() {
-    return EboyPix.find({}, { sort: { createdAt: -1 } });
-  },
+  // pix() {
+  //   return EboyPix.find({}, { sort: { createdAt: -1 } });
+  // },
   docsCount() {
     const newDocsCount = EboyPix.find().count();
     return newDocsCount;
   },
   latestUploadTime() {
+    console.log('Session latestUploadAt: ' + Session.get('latestUploadAt'));
     return Session.get('latestUploadAt');
   },
   isAdminOrEditor() {

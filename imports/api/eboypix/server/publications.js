@@ -25,9 +25,14 @@ Meteor.publish('pix.pinned.public', function pixPinnedPublic() {
 });
 
 // Publish all documents later than given date
-Meteor.publish('pix.afterDate.public', function pixAfterDatePublic(date) {
+// this is used to show all newly added images
+Meteor.publish('pix.afterDate.public', function pixAfterDatePublic(date, userId) {
+  console.log('ISO serverTime: ' + new Date().toISOString());
+  console.log('ISO upload date: ' + date.toISOString());
+  console.log('userId: ' + userId);
   const selector = {
-    createdAt: {
+    'uploadedBy.id': userId,
+    'createdAt': {
       $gt: date
     }
   };

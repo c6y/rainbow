@@ -3,6 +3,16 @@ import { Meteor } from 'meteor/meteor';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
 export const PicSchema = {};
+export const UploadedBy = {};
+
+UploadedBy.UserInfo = new SimpleSchema({
+  id: {
+    type: String
+  },
+  username: {
+    type: String
+  }
+});
 
 PicSchema.Pic = new SimpleSchema({
   'url': {
@@ -14,6 +24,9 @@ PicSchema.Pic = new SimpleSchema({
   },
   'createdAt': {
     type: Date
+  },
+  'uploadedBy': {
+    type: UploadedBy.UserInfo
   },
   'madeDate': {
     type: Date,

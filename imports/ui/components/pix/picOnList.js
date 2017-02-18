@@ -6,8 +6,8 @@ import './picOnList.html';
 // Components used
 import './picSprite.js';
 import './picSprite.html';
-import './picMeta.js';
-import './picMeta.html';
+// import './picMeta.js';
+// import './picMeta.html';
 import '../edit/editLicense.js';
 import '../edit/editLicense.html';
 import '../edit/editCopyright.js';
@@ -27,6 +27,16 @@ import '../edit/luckyBackColor.html';
 import '../edit/editAccess.js';
 import '../edit/editAccess.html';
 
+// Template.picOnList.helpers({
+//   uploadedByName() {
+//     if (this.uploadedBy) {
+//       // const uploadedBy = this.uploadedBy.username;
+//       const uploadedBy = this.uploadedBy.username;
+//       console.log('uploadedBy: ' + uploadedBy);
+//       return uploadedBy;
+//     }
+//   }
+// });
 Template.picOnList.events({
   'click .deletePic'() {
     Meteor.call('eboypix.delete', this._id);

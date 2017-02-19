@@ -6,34 +6,28 @@ Template.pixInput.events({
   'submit .new-pic-batch'(event) {
     event.preventDefault();
 
-    // Set Session to time when this batch was uploaded
-    const uploadedAt = new Date();
-    console.log('uploadedAt: ' + uploadedAt);
-
-    // const uploadedAtISO = uploadedAt.toISOString();
-    // console.log('uploadedAtISO: ' + uploadedAtISO);
-
-    Session.set('latestUploadAt', uploadedAt);
+    // Set Session to time this batch was uploaded
+    // to catch timing glitches, set time back by 30 seconds
+    const timeNow = new Date();
+    const secondsOffset = -30;
+    const timeOffset = new Date(timeNow.getTime() + secondsOffset * 1000);
+    Session.set('latestUploadAt', timeOffset);
 
     // Assign form input to constant
     const target = event.target;
     // get as string
     const imgBatchURLs = target.batchchurls.value;
-    console.log('imgBatchURLs: ' + imgBatchURLs);
     // Remove line breaks
     const imgBatchURLsClean = imgBatchURLs.replace(/[\r\n]/g, ',');
-    console.log('imgBatchURLsClean: ' + imgBatchURLsClean);
 
     // Create an array and populate with urls
     let urls = [];
     urls = imgBatchURLsClean.split(",");
-    console.log('urls[0]: ' + urls[0]); // return first element
 
     // Only keep elements that start with 'http'
     urls = urls.filter(function(element) {
       return element.startsWith('http');
     });
-    console.log('urls[0] http elements only: ' + urls[0]); // return first element
 
     // Initialize Session variable to hold insert errors
     Session.set('insertErrors', []);

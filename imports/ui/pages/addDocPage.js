@@ -34,7 +34,6 @@ Template.addDocPage.onCreated(function() {
     if (Session.get('latestUploadAt')) {
       const lastUpload = Session.get('latestUploadAt');
       const userId = Meteor.userId();
-      console.log('onCreated: Session lastUploadAt: ' + lastUpload);
       self.subscribe('pix.afterDate.public', lastUpload, userId);
       self.subscribe('colors.public');
     }
@@ -44,12 +43,10 @@ Template.addDocPage.onCreated(function() {
 Template.addDocPage.helpers({
   showInsertErrors() {
     const failedURLs = Session.get('insertErrors');
-    console.log('failedURLs: ' + failedURLs);
     return failedURLs;
   },
   insertErrorsCount() {
     const failedURLs = Session.get('insertErrors');
-    console.log('failedURLs.length: ' + failedURLs.length);
     return failedURLs.length;
   },
   // pix() {
@@ -60,7 +57,6 @@ Template.addDocPage.helpers({
     return newDocsCount;
   },
   latestUploadTime() {
-    console.log('Session latestUploadAt: ' + Session.get('latestUploadAt'));
     return Session.get('latestUploadAt');
   },
   isAdminOrEditor() {

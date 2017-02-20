@@ -14,7 +14,9 @@ import './sideBox.html';
 // Template onCreated
 Template.sideBox.onCreated(function() {
   if (Session.get('plusBox') === undefined) {
-    Session.set('plusBox', false); // hide plusBox at start
+    // set plusBox visibility at start
+    const showPlusBox = Meteor.settings.public.navigation.extrasOnLanding;
+    Session.set('plusBox', showPlusBox);
   }
   const self = this;
   self.autorun(function() {

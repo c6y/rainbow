@@ -1,5 +1,10 @@
 {
   "public": {
+    "app": {
+      "name": "rainbow",
+      "version": "0.0.0",
+      "githubURL": "https://github.com/c6y/rainbow"
+    },
     "ga": {
       "account":"UA-XXXXXXX-Y"
     },
@@ -22,7 +27,8 @@
     },
     "navigation": {
       "pixPerPage" : 24,
-      "slugHome": "everything"
+      "slugHome": "everything",
+      "extrasOnLanding": true
     }
   }
 }

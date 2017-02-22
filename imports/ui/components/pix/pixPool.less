@@ -4,36 +4,33 @@
 @media only screen
 and (max-device-width: @breakpoint) {
   #pixPoolBox {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0.5 * @cell-margin;
     width: 100%;
     box-sizing: border-box;
     .pixPoolItem {
-      // width: @cell * 0.686;
-      // height: @cell * 0.686;
       width: 100%;
-      margin: 0.5 * @cell-margin;
-      padding: 0;
-      overflow: hidden;
-      box-shadow: @boxshadow-1;
+      max-height: 2*@cell;
+    }
+  }
+}
+@media only screen
+and (min-device-width: @breakpoint) {
+  #pixPoolBox {
+    .pixPoolItem {
+      width: @cell;
+      height: @cell;
     }
   }
 }
 
-@media only screen
-and (min-device-width: @breakpoint) {
-  #pixPoolBox {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0.5 * @cell-margin;
-    .pixPoolItem {
-      width: @cell;
-      height: @cell;
-      margin: 0.5 * @cell-margin;
-      padding: 0;
-      overflow: hidden;
-      box-shadow: @boxshadow-1;
-    }
+// Shared properties
+#pixPoolBox {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.5 * @cell-margin;
+  .pixPoolItem {
+    margin: 0.5 * @cell-margin;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: @boxshadow-1;
   }
 }

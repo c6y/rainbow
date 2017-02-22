@@ -1,7 +1,5 @@
 #sideBox {
-  width: @cell;
-  padding: @cell-margin 0 @cell-margin @cell-margin;
-  float: left;
+  padding: @cell-margin;
   font-family: @font-big;
   font-size: 2rem;
   line-height: 1.6rem;
@@ -12,6 +10,7 @@
   }
   #quicks li, .shoplink li {
     list-style: none;
+    width: 100%;
     // text-transform: uppercase;
     .toggleEditorLinks {
       cursor: pointer;
@@ -79,9 +78,26 @@
   hr {
     border: 0;
     padding: 0;
-    margin: @cell-margin;
+    margin: @cell-margin 0;
     height: 1px;
     background-image: linear-gradient(to right, @color-5, @color-0);
   }
 
+}
+
+@media only screen
+and (max-device-width: @breakpoint) {
+  #sideBox {
+    box-sizing: border-box;
+    width: 100%;
+  }
+}
+
+@media only screen
+and (min-device-width: @breakpoint) {
+  #sideBox {
+    box-sizing: border-box;
+    width: @cell;
+    float: left;
+  }
 }

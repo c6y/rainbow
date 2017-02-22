@@ -1,3 +1,22 @@
+@media only screen
+and (max-device-width: @breakpoint) {
+  #searchBox {
+    input {
+      width: 100%;
+    }
+  }
+}
+
+@media only screen
+and (min-device-width: @breakpoint) {
+  #searchBox {
+    input {
+      width: @cell - 2*@cell-margin;
+    }
+  }
+}
+
+
 #searchBox {
   box-sizing: border-box;
   height: 3rem;
@@ -56,7 +75,6 @@
       font-family: inherit;
       font-size: inherit;
       padding: @cell-margin;
-      width: @cell - 2*@cell-margin;
       // -webkit-flex: 0.5;
       margin: 0;
       // background-color: @color-5;

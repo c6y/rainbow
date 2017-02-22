@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { GAnalytics } from 'meteor/datariot:ganalytics';
+import { Session } from 'meteor/session';
 
 import './user.html';
 
@@ -12,6 +13,9 @@ Template.user.helpers({
   },
   toLoginPath() {
     return FlowRouter.path('dashboard');
+  },
+  showUserInfo() {
+    return Session.get('plusBox');
   }
 });
 

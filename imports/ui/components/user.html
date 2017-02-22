@@ -1,18 +1,20 @@
 <template name="user">
-  {{#if currentUser}}
-    <span id="header-rightbottom">
-      <span class="logoffOrLogin">
-        <span id="toLogout">{{user}}</span>
-        <div class="dropdown-content">
-          <a href="#" id="logoutButton">logout</a>
-        </div>
+  {{#if showUserInfo}}
+    {{#if currentUser}}
+      <span id="header-rightbottom">
+        <span class="logoffOrLogin">
+          <span id="toLogout">{{user}}</span>
+          <div class="dropdown-content">
+            <a href="#" id="logoutButton">logout</a>
+          </div>
+        </span>
       </span>
-    </span>
-  {{else}}
-    <span id="header-rightbottom">
-      <span class="logoffOrLogin">
-        <a id="toLogin" href="{{toLoginPath}}">login</a>
+    {{else}}
+      <span id="header-rightbottom">
+        <span class="logoffOrLogin">
+          <a id="toLogin" href="{{toLoginPath}}">login</a>
+        </span>
       </span>
-    </span>
+    {{/if}}
   {{/if}}
 </template>

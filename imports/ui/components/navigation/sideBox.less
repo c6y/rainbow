@@ -1,4 +1,46 @@
+@media only screen
+and (max-device-width: @breakpoint) {
+  #sideBox {
+    order: 2;
+    min-width: @cell;
+    #quicks, .shoplink li {
+      a, span, .social {
+        padding: @cell-margin;
+        text-align: left;
+      }
+    }
+    .social, .fineprint li {
+      padding-left: @cell-margin;
+    }
+  }
+}
+
+@media only screen
+and (min-device-width: @breakpoint) {
+  .sideHide {
+    margin-left: -@cell - @cell-margin;
+    transition: 0.05s;
+  }
+  .sideShow {
+    transition: 0.05s;
+  }
+  #sideBox {
+    order: 0;
+    min-width: @cell + @cell-margin;
+    max-width: @cell + @cell-margin;
+    #quicks, .shoplink {
+      a, span {
+        padding: @cell-margin;
+      }
+    }
+    .social, .fineprint li {
+      padding-left: @cell-margin;
+    }
+  }
+}
+
 #sideBox {
+  box-sizing: border-box;
   padding: @cell-margin;
   font-family: @font-big;
   font-size: 2rem;
@@ -8,10 +50,12 @@
     margin: 0;
     display: block;
   }
+  // .shoplink li a::after {
+  //   content: '↗';
+  // }
   #quicks li, .shoplink li {
     list-style: none;
     width: 100%;
-    // text-transform: uppercase;
     .toggleEditorLinks {
       cursor: pointer;
     }
@@ -23,7 +67,6 @@
     }
     a, span {
       display: block;
-      padding: @cell-margin 2 * @cell-margin;
       text-decoration: none;
     }
     a, .toggleEditorLinks {
@@ -42,7 +85,6 @@
     color: @color-5;
     font-style: italic;
     li {
-      padding-left: 2*@cell-margin;
       list-style: none;
     }
     a {
@@ -54,7 +96,6 @@
     }
   }
   .social{
-    padding-left: 2*@cell-margin;
     padding-top: 4*@cell-margin;
     display: block;
     font-family: socicon;
@@ -83,21 +124,4 @@
     background-image: linear-gradient(to right, @color-5, @color-0);
   }
 
-}
-
-@media only screen
-and (max-device-width: @breakpoint) {
-  #sideBox {
-    box-sizing: border-box;
-    width: 100%;
-  }
-}
-
-@media only screen
-and (min-device-width: @breakpoint) {
-  #sideBox {
-    box-sizing: border-box;
-    width: @cell;
-    float: left;
-  }
 }

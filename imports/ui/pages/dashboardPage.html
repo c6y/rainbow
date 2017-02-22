@@ -8,7 +8,7 @@
     </div>
     <div id="appbody">
       {{> sideBox}}
-      <span id="mainBox">
+      <div id="mainBox">
         {{#if currentUser}}
           {{> dashboard}}
         {{else}}
@@ -36,7 +36,7 @@
             </div>
           {{/if}}
         {{/if}}
-      </span>
+      </div>
     </div>
   </div>
 </template>

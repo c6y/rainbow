@@ -12,7 +12,7 @@
     </div>
     <div id="appbody">
       {{> sideBox}}
-      <span id="mainBox">
+      <div id="mainBox">
         {{#if Template.subscriptionsReady}}
           {{#if totalPixCount}}
             {{> pixPool}}
@@ -20,7 +20,7 @@
             {{> pixNone}}
           {{/if}}
         {{/if}}
-      </span>
+      </div>
     </div>
   </div>
 </template>

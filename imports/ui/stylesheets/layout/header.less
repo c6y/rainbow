@@ -2,22 +2,23 @@
 and (max-device-width: @breakpoint) {
   #appheader {
     padding: @cell-margin;
+    height: 0.5*@cell + 2*@cell-margin;
   }
   #appheader-left {
     min-width: 50%;
   }
   #appheader-right {
-    min-width: 50%;
+    min-width: 30%;
     #navPagingBox {
       right: @cell-margin;
     }
   }
 }
-
 @media only screen
 and (min-device-width: @breakpoint) {
   #appheader {
     padding: 2 * @cell-margin;
+    height: 0.5*@cell + 2*@cell-margin;
   }
   #appheader-left {
     min-width: @cell;
@@ -29,12 +30,12 @@ and (min-device-width: @breakpoint) {
     }
   }
 }
-// shared properties
+
+// Shared properties
 #appheader {
   z-index: 9;
   width: 0 auto;
   // height: 0.5 * @cell - 2 * @cell-margin;
-  height: 0.5*@cell + 2*@cell-margin;
   box-sizing: border-box;
   background-color: @color-headerback;
   color: @color-headertext;

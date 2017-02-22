@@ -9,7 +9,7 @@
     <div id="appbody">
       {{> sideBox}}
       {{#if currentUser.profile.isEditor}}
-        <span id="mainBox">
+        <div id="mainBox">
           {{> pixInput}}
           {{#if showInsertErrors}}
             <div class="failedInsertsClass">
@@ -33,7 +33,7 @@
           {{#if Template.subscriptionsReady}}
             {{> pixList}}
           {{/if}}
-        </span>
+        </div>
       {{/if}}
     </div>
   </div>

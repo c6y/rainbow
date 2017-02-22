@@ -1,34 +1,47 @@
 @media only screen
 and (max-device-width: @breakpoint) {
   #sideBox {
-    width: 100%;
-    padding: @cell-margin;
-    #quicks {
-      a, span {
+    order: 2;
+    min-width: @cell;
+    #quicks, .shoplink li {
+      a, span, .social {
         padding: @cell-margin;
-        text-align: center;
+        text-align: left;
       }
+    }
+    .social, .fineprint li {
+      padding-left: @cell-margin;
     }
   }
 }
 
 @media only screen
 and (min-device-width: @breakpoint) {
+  .sideHide {
+    margin-left: -@cell - @cell-margin;
+    transition: 0.05s;
+  }
+  .sideShow {
+    transition: 0.05s;
+  }
   #sideBox {
-    width: @cell + @cell-margin;
-    float: left;
-    padding: @cell-margin 0 @cell-margin @cell-margin;
-    #quicks {
+    order: 0;
+    min-width: @cell + @cell-margin;
+    max-width: @cell + @cell-margin;
+    #quicks, .shoplink {
       a, span {
-        padding: @cell-margin 2*@cell-margin;
+        padding: @cell-margin;
       }
+    }
+    .social, .fineprint li {
+      padding-left: @cell-margin;
     }
   }
 }
 
 #sideBox {
   box-sizing: border-box;
-  // background-color: lightgreen;
+  padding: @cell-margin;
   font-family: @font-big;
   font-size: 2rem;
   line-height: 1.6rem;
@@ -37,10 +50,12 @@ and (min-device-width: @breakpoint) {
     margin: 0;
     display: block;
   }
+  // .shoplink li a::after {
+  //   content: '↗';
+  // }
   #quicks li, .shoplink li {
     list-style: none;
     width: 100%;
-    // text-transform: uppercase;
     .toggleEditorLinks {
       cursor: pointer;
     }
@@ -70,7 +85,6 @@ and (min-device-width: @breakpoint) {
     color: @color-5;
     font-style: italic;
     li {
-      padding-left: 2*@cell-margin;
       list-style: none;
     }
     a {
@@ -82,7 +96,6 @@ and (min-device-width: @breakpoint) {
     }
   }
   .social{
-    padding-left: 2*@cell-margin;
     padding-top: 4*@cell-margin;
     display: block;
     font-family: socicon;

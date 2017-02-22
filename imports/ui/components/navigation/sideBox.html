@@ -1,6 +1,6 @@
 <template name="sideBox" >
-  {{#if isVisible}}
-    <div id="sideBox">
+  <!-- {{#if isVisible}} -->
+    <div id="sideBox" class="{{showSideBoxCSS}}">
       {{#if isAdminOrEditor}}
         {{> editorLinks}}
         <hr>
@@ -22,5 +22,5 @@
         <li><a href="mailto:someone@example.com?Subject=Hello%20eBoy!" target="_blank">eboy@eboy.com</a></li>
       </ul>
     </div>
-  {{/if}}
+  <!-- {{/if}} -->
 </template>

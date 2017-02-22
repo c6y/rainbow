@@ -43,5 +43,12 @@ Template.sideBox.helpers({
   },
   copyright() {
     return Meteor.settings.public.ownership.copyright;
+  },
+  showSideBoxCSS() {
+    const isVisible = Session.get('plusBox');
+    if (isVisible) {
+      return 'sideShow';
+    }
+    return 'sideHide';
   }
 });

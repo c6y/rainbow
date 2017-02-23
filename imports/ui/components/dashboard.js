@@ -1,8 +1,6 @@
 // Meteor stuff
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-import { FlowRouter } from 'meteor/kadira:flow-router';
-import { DocHead } from 'meteor/kadira:dochead';
 import { GAnalytics } from 'meteor/datariot:ganalytics';
 
 import './dashboard.html';
@@ -11,8 +9,6 @@ import './dashboard.html';
 Template.dashboard.onCreated(function() {
   const self = this;
   self.autorun(function() {
-    const title = FlowRouter.getRouteName();
-    DocHead.setTitle(title);
     self.subscribe('allUsers');
   });
 });

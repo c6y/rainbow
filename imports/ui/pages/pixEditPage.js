@@ -29,13 +29,24 @@ import './pixEditPage.html';
 Template.pixEditPage.onCreated(function() {
   const self = this;
   self.autorun(function() {
-    const title = FlowRouter.getRouteName();
+    const route = FlowRouter.getRouteName();
+    const title = FlowRouter.getParam('slug');
     const thisPage = FlowRouter.getParam('page');
     const thisSlug = FlowRouter.getParam('slug');
-    const searchQuery = FlowRouter.getQueryParam('q');
-
-    DocHead.setTitle(title + '/' + thisPage);
-    self.subscribe('pix.paged.public', thisSlug, thisPage, searchQuery);
+    const query = FlowRouter.getQueryParam('q');
+    let queryString = '';
+    if (query) {
+      queryString = ':' + query;
+    }
+    DocHead.setTitle(route +
+      '/' +
+      title +
+      '/' +
+      thisPage +
+      queryString +
+      ' · eboy.io'
+    );
+    self.subscribe('pix.paged.public', thisSlug, thisPage, query);
     self.subscribe('colors.public');
   });
 });

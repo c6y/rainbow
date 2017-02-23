@@ -23,7 +23,7 @@ Template.quicksPage.onCreated(function() {
   const self = this;
   self.autorun(function() {
     const title = FlowRouter.getRouteName();
-    DocHead.setTitle(title);
+    DocHead.setTitle(title + ' · eboy.io');
     self.subscribe('quicks.public');
   });
 });

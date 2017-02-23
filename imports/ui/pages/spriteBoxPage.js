@@ -22,10 +22,9 @@ Template.spriteBoxPage.onCreated(function() {
   this.metaShow = new ReactiveVar(false);
   const self = this;
   self.autorun(function() {
-    const title = FlowRouter.getRouteName();
+    const route = FlowRouter.getRouteName();
     const thisId = FlowRouter.getParam('_id');
-
-    DocHead.setTitle(title);
+    DocHead.setTitle(route + '/' + thisId + ' · eboy.io');
 
     self.subscribe('pix.single.public', thisId);
     self.subscribe('colors.public');

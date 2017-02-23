@@ -9,8 +9,8 @@ import './notFoundPage.html';
 Template.notFound.onCreated(function() {
   const self = this;
   self.autorun(function() {
-    const title = FlowRouter.getRouteName();
-    DocHead.setTitle(title);
+    // const title = FlowRouter.getRouteName();
+    DocHead.setTitle('404 · eboy.io');
   });
 });
 

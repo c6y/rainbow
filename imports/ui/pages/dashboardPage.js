@@ -2,6 +2,8 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
+import { DocHead } from 'meteor/kadira:dochead';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 // Components
 import '../components/register.html';
@@ -17,6 +19,11 @@ import './dashboardPage.html';
 
 Template.dashboardPage.onCreated(function() {
   this.showRegister = new ReactiveVar(false);
+  const self = this;
+  self.autorun(function() {
+    const route = FlowRouter.getRouteName();
+    DocHead.setTitle(route + ' · eboy.io');
+  });
 });
 
 Template.dashboardPage.helpers({

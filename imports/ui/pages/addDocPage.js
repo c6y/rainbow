@@ -29,7 +29,7 @@ Template.addDocPage.onCreated(function() {
   const self = this;
   self.autorun(function() {
     const title = FlowRouter.getRouteName();
-    DocHead.setTitle(title);
+    DocHead.setTitle(title + ' · eboy.io');
 
     if (Session.get('latestUploadAt')) {
       const lastUpload = Session.get('latestUploadAt');

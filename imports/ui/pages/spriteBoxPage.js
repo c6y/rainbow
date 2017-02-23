@@ -3,8 +3,11 @@ import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { ReactiveVar } from 'meteor/reactive-var';
-import { DocHead } from 'meteor/kadira:dochead';
+// import { DocHead } from 'meteor/kadira:dochead';
 import { Session } from 'meteor/session';
+
+// Functions
+import { setDocHead } from '../../functions/client/setDocHead.js';
 
 // Collections
 import { EboyPix } from '../../api/eboypix/eboypix.js';
@@ -22,10 +25,9 @@ Template.spriteBoxPage.onCreated(function() {
   this.metaShow = new ReactiveVar(false);
   const self = this;
   self.autorun(function() {
-    const route = FlowRouter.getRouteName();
-    const thisId = FlowRouter.getParam('_id');
-    DocHead.setTitle(route + '/' + thisId + ' · eboy.io');
+    setDocHead();
 
+    const thisId = FlowRouter.getParam('_id');
     self.subscribe('pix.single.public', thisId);
     self.subscribe('colors.public');
   });

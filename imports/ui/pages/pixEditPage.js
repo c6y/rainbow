@@ -2,8 +2,10 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-import { DocHead } from 'meteor/kadira:dochead';
 import { Counts } from 'meteor/tmeasday:publish-counts';
+
+// Functions
+import { setDocHead } from '../../functions/client/setDocHead.js';
 
 // Components
 import '../components/navigation/pixCount.html';
@@ -29,23 +31,11 @@ import './pixEditPage.html';
 Template.pixEditPage.onCreated(function() {
   const self = this;
   self.autorun(function() {
-    const route = FlowRouter.getRouteName();
-    const title = FlowRouter.getParam('slug');
+    setDocHead();
+
     const thisPage = FlowRouter.getParam('page');
     const thisSlug = FlowRouter.getParam('slug');
     const query = FlowRouter.getQueryParam('q');
-    let queryString = '';
-    if (query) {
-      queryString = ':' + query;
-    }
-    DocHead.setTitle(route +
-      '/' +
-      title +
-      '/' +
-      thisPage +
-      queryString +
-      ' · eboy.io'
-    );
     self.subscribe('pix.paged.public', thisSlug, thisPage, query);
     self.subscribe('colors.public');
   });

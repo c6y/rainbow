@@ -1,5 +1,7 @@
 #quicksInputBox {
   width: 100%;
+  flex-direction: column;
+  align-items: top;
   form {
     margin: @cell-margin;
     background-color: @color-10;
@@ -29,7 +31,7 @@
       font-family: inherit;
       font-size: @font-meta-size;
       padding: @cell-margin;
-      -webkit-flex: 0.5;
+      flex: 0.5;
       margin: 0;
     }
     ::-webkit-input-placeholder {

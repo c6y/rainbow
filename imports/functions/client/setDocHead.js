@@ -15,14 +15,15 @@ export function setDocHead() {
   const site = Meteor.settings.public.ownership.title;
 
   if (query) {
-    query += ': ';
+    query += ':';
   } else {
     query = '';
   }
 
-  DocHead.setTitle(query + slug + '/' + page + ' · ' + site);
-
   DocHead.removeDocHeadAddedTags();
+
+  const twttrCard = { "twitter:card": "@summary" };
+  DocHead.addMeta(twttrCard);
 
   const twttrSite = { "twitter:site": "@eBoyArts" };
   DocHead.addMeta(twttrSite);
@@ -35,6 +36,7 @@ export function setDocHead() {
     const description = "eBoy database results for " + query + slug;
     DocHead.addMeta({ description: description });
     DocHead.addMeta({ "twitter:description": description });
+    DocHead.setTitle(query + slug + '/' + page + ' · ' + site);
   }
 
   // Set description: image id if on single spriteBox view
@@ -42,5 +44,6 @@ export function setDocHead() {
     const description = "eBoy database document: " + id;
     DocHead.addMeta({ description: description });
     DocHead.addMeta({ "twitter:description": description });
+    DocHead.setTitle(id + ' · ' + site);
   }
 }

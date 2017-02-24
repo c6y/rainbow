@@ -22,20 +22,12 @@ export function setDocHead() {
 
   DocHead.removeDocHeadAddedTags();
 
-  const twttrCard = { "twitter:card": "@summary" };
-  DocHead.addMeta(twttrCard);
-
-  const twttrSite = { "twitter:site": "@eBoyArts" };
-  DocHead.addMeta(twttrSite);
-
-  const twttrCreator = { "twitter:creator": "@eBoyArts" };
-  DocHead.addMeta(twttrCreator);
-
   // Set description: summary if on search results page
   if (route === 'pool' | route === 'edit') {
     const description = "eBoy database results for " + query + slug;
     DocHead.addMeta({ description: description });
     DocHead.addMeta({ "twitter:description": description });
+    DocHead.addMeta({ property: 'og:description', content: description });
     DocHead.setTitle(query + slug + '/' + page + ' · ' + site);
   }
 
@@ -44,6 +36,7 @@ export function setDocHead() {
     const description = "eBoy database document: " + id;
     DocHead.addMeta({ description: description });
     DocHead.addMeta({ "twitter:description": description });
+    DocHead.addMeta({ property: 'og:description', content: description });
     DocHead.setTitle(id + ' · ' + site);
   }
 }

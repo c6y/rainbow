@@ -42,9 +42,10 @@ and (min-device-width: @breakpoint) {
 #sideBox {
   box-sizing: border-box;
   padding: @cell-margin;
-  font-family: @font-big;
-  font-size: 2rem;
-  line-height: 1.6rem;
+  font-family: @font-sidebig;
+  font-size: @font-sidebig-size;
+  font-weight: @font-sidebig-weight;
+  line-height: @font-sidebig-lineheight;
   ul {
     padding: 0;
     margin: 0;
@@ -79,9 +80,11 @@ and (min-device-width: @breakpoint) {
     }
   }
   .fineprint {
+    font-family: @font-sidesmall;
+    font-size: @font-sidesmall-size;
+    font-weight: @font-sidesmall-weight;
+    line-height: @font-sidesmall-lineheight;
     padding-top: 2*@cell-margin;
-    font-size: 1rem;
-    line-height: 1.2rem;
     color: @color-5;
     font-style: italic;
     li {

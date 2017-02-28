@@ -17,7 +17,7 @@ Template.logo.helpers({
     }
   },
   logotext() {
-    return Meteor.settings.public.ownership.logotext;
+    return Meteor.settings.public.ownership.creator.name;
   },
   isActive() {
     const oldPlusBoxShow = Session.get('plusBox');

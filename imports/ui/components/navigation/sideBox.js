@@ -42,7 +42,7 @@ Template.sideBox.helpers({
     return new Date().getFullYear();
   },
   copyright() {
-    return Meteor.settings.public.ownership.copyright;
+    return Meteor.settings.public.ownership.creator.name;
   },
   showSideBoxCSS() {
     const isVisible = Session.get('plusBox');

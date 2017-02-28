@@ -45,7 +45,7 @@ Template.spriteBoxPage.helpers({
     return Template.instance().metaShow.get();
   },
   copyright() {
-    return Meteor.settings.public.ownership.copyright;
+    return Meteor.settings.public.ownership.creator.name;
   },
   madeDateShort() {
     const date = this.madeDate;

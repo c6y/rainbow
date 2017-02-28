@@ -51,7 +51,7 @@ PicSchema.Pic = new SimpleSchema({
   },
   'copyright': {
     type: String,
-    defaultValue: Meteor.settings.public.ownership.copyright
+    defaultValue: Meteor.settings.public.ownership.creator.name
   },
   'license': {
     type: String,

@@ -13,12 +13,6 @@
       "cell": 16,
       "cellMargin": 0.5
     },
-    "ownership": {
-      "copyright": "eBoy",
-      "logotext": "EBOY",
-      "title": "eboy.io",
-      "defaultLicense": "CC BY-NC-ND 4.0"
-    },
     "userSetup": {
       "allowNewUsers" : true,
       "allowSelfRegister": false,
@@ -30,6 +24,52 @@
       "pixPerPage" : 24,
       "slugHome": "everything",
       "extrasOnLanding": true
+    },
+    "ownership": {
+      "sitename": "eboy.io",
+      "defaultLicense": "CC BY-NC-ND 4.0",
+      "creator": {
+        "@type": "Organization",
+        "name": "eBoy",
+        "email": "eboy@eboy.com",
+        "address": [
+          {
+            "@type": "PostalAddress",
+            "addressLocality": "Los Angeles",
+            "addressRegion": "CA",
+            "addressCountry": "US"
+          },
+          {
+            "@type": "PostalAddress",
+            "addressLocality": "Berlin",
+            "addressCountry": "DE"
+          }
+        ],
+        "description": "eBoy is a pixel art group that creates re-usable pixel objects and takes them to build complex and extensible artwork",
+        "members": [
+          {
+            "@type": "Person",
+            "name": "Kai Vermehr"
+          },
+          {
+            "@type": "Person",
+            "name": "Steffen Sauerteig"
+          },
+          {
+            "@type": "Person",
+            "name": "Svend Smital"
+          }
+        ],
+        "url": "https://eboy.io",
+        "sameAs": [
+          "http://shop.eboy.com/",
+          "https://twitter.com/eboyarts",
+          "https://ello.co/eboy",
+          "https://www.instagram.com/eboyarts/",
+          "https://www.facebook.com/eboypixels",
+          "https://www.patreon.com/eboyarts"
+        ]
+      }
     }
   }
 }

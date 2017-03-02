@@ -1,11 +1,11 @@
-  // Meteor stuff
+// Meteor stuff
 import { sitemaps } from 'meteor/gadicohen:sitemaps';
 
 // Collections
 import { Quicks } from '../imports/api/quicks/quicks.js';
 
 // Functions
-import { getLatestQuickDate } from '../imports/functions/server/getLatestQuickDate.js';
+import { getDateOfLast } from '../imports/functions/server/getDateOfLast.js';
 
 // Retuns array of pages from Quicks collection
 const quicksLinks = function() {
@@ -14,7 +14,7 @@ const quicksLinks = function() {
   if (quicksLabels) {
     Object.keys(quicksLabels).forEach(function(key) {
       const slug = quicksLabels[key].slug.toString();
-      const lastmod = getLatestQuickDate(slug);
+      const lastmod = getDateOfLast(slug);
       const quicksPage = {
         page: 'pool/' + quicksLabels[key].label + '/1',
         changefreq: 'weekly',

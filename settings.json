@@ -3,6 +3,7 @@
     "app": {
       "name": "rainbow",
       "version": "0.0.0",
+      "rootURL": "https://eboy.io/",
       "githubURL": "https://github.com/c6y/rainbow"
     },
     "ga": {

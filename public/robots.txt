@@ -4,3 +4,4 @@ Disallow: /addDoc/
 Disallow: /colors/
 Disallow: /quicks/
 Disallow: /dashboard/
+Sitemap: https://eboy.io/sitemap.xml

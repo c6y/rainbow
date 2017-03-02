@@ -1,4 +1,5 @@
 // Meteor stuff
+import { Meteor } from 'meteor/meteor';
 import { sitemaps } from 'meteor/gadicohen:sitemaps';
 
 // Collections
@@ -26,7 +27,7 @@ const quicksLinks = function() {
     return quicksPagesAll;
   }
 };
-
+sitemaps.config('rootUrl', Meteor.settings.public.app.rootURL);
 sitemaps.add('/sitemap.xml', function() {
   return quicksLinks();
 });

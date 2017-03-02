@@ -35,6 +35,9 @@ QuicksSchema.Links = new SimpleSchema({
   },
   rank: {
     type: Number,
-    unique: false
+    decimal: true,
+    unique: false,
+    min: 0,
+    max: 1
   }
 });

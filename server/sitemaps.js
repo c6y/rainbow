@@ -3,29 +3,17 @@ import { sitemaps } from 'meteor/gadicohen:sitemaps';
 
 // Collections
 import { Quicks } from '../imports/api/quicks/quicks.js';
-import { EboyPix } from '../imports/api/eboypix/eboypix.js';
 
-// const quicksCount = Quicks.find().count();
-const quicksLabels = Quicks.find().fetch();
+// Functions
+import { getLatestQuickDate } from '../imports/functions/server/getLatestQuickDate.js';
 
-function getLatestQuickDate(slug) {
-  console.log('in function slug: ' + slug);
-  const latestQuick = EboyPix.findOne(
-    { tags: slug },
-    { sort: { createdAt: -1, limit: 1 } }
-  );
-  if (latestQuick) {
-    console.log(slug + ': ' + latestQuick.createdAt);
-    return latestQuick.createdAt;
-  }
-}
-
+// Retuns array of pages from Quicks collection
 const quicksLinks = function() {
+  const quicksLabels = Quicks.find().fetch();
   let quicksPagesAll = [];
   if (quicksLabels) {
     Object.keys(quicksLabels).forEach(function(key) {
       const slug = quicksLabels[key].slug.toString();
-      console.log('the slug: ' + slug);
       const lastmod = getLatestQuickDate(slug);
       const quicksPage = {
         page: 'pool/' + quicksLabels[key].label + '/1',

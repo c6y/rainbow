@@ -59,44 +59,48 @@ Template.picSprite.helpers({
     // Get dimensions from settings file
     const rem = Meteor.settings.public.dimensions.rem;
     const cell = Meteor.settings.public.dimensions.cell;
-    const cellMargin = Meteor.settings.public.dimensions.cellMargin;
+    // const cellMargin = Meteor.settings.public.dimensions.cellMargin;
 
     const thumbDim = rem * cell;
     // console.log('thumbDim: ' + thumbDim);
 
+    // This image's original dimensions
+    const oWidth = this.dimensions.width;
+    const oHeight = this.dimensions.height;
 
-
-    // Calculate areas of image, thumbnail box and difference
-    const areaImg = this.dimensions.width * this.dimensions.height;
-    // console.log('areaImg: ' + areaImg);
-    const areaThumbBox = thumbDim * thumbDim;
-    const areaDif = areaThumbBox - areaImg;
-    // console.log('areaDif: ' + areaDif);
-
-    // Define the two different border options
-    const borderDefault = rem * cellMargin;
-    // console.log('borderDefault: ' + borderDefault);
-    const borderOverlap = rem * cellMargin * -8;
-    // console.log('borderOverlap: ' + borderOverlap);
-
-    // Calculate threshold that triggers overlap border
-    const areaDifThreshold = rem * cell * rem * cell / 4;
-    // console.log('areaDifThreshold: ' + areaDifThreshold);
-
-    // images with similar area as thumbnail are allowed to overlap
-    const border = areaDif < areaDifThreshold ? borderOverlap : borderDefault;
-    // console.log('border: ' + border);
-
-    const deviceRatio = window.devicePixelRatio;
-    const oWidth = this.dimensions.width / deviceRatio;
-    const oHeight = this.dimensions.height / deviceRatio;
-
-    // const wWidth = thumbDim - 2 * border;
-    // const wHeight = thumbDim - 2 * border;
+    // Dimensions of thumbnail box
     const wWidth = thumbDim;
     const wHeight = thumbDim;
 
-
+    // // Calculate areas of image, thumbnail box and difference
+    // const areaImg = this.dimensions.width * this.dimensions.height;
+    // // console.log('areaImg: ' + areaImg);
+    // const areaThumbBox = thumbDim * thumbDim;
+    // const areaDif = areaThumbBox - areaImg;
+    // console.log('areaDif: ' + areaDif);
+    //
+    // // Define the two different border options
+    // const borderDefault = rem * cellMargin;
+    // // console.log('borderDefault: ' + borderDefault);
+    // const borderOverlap = rem * cellMargin * -8;
+    // // console.log('borderOverlap: ' + borderOverlap);
+    //
+    // // Calculate threshold that triggers overlap border
+    // const areaDifThreshold = rem * cell * rem * cell / 4;
+    // // console.log('areaDifThreshold: ' + areaDifThreshold);
+    //
+    // // images with similar area as thumbnail are allowed to overlap
+    // const border = areaDif < areaDifThreshold ? borderOverlap : borderDefault;
+    // // console.log('border: ' + border);
+    //
+    // const deviceRatio = window.devicePixelRatio;
+    // const oWidth = this.dimensions.width / deviceRatio;
+    // const oHeight = this.dimensions.height / deviceRatio;
+    //
+    // // const wWidth = thumbDim - 2 * border;
+    // // const wHeight = thumbDim - 2 * border;
+    // const wWidth = thumbDim;
+    // const wHeight = thumbDim;
 
     const fileType = getFileType(this.name);
     // console.log('fileType: ' + fileType);
@@ -106,7 +110,7 @@ Template.picSprite.helpers({
       scaledDims = scaleSoft(oWidth, oHeight, wWidth, wHeight);
       // scaledDims = scaleByIntToFit(oWidth, oHeight, wWidth, wHeight);
     } else {
-      scaledDims = scaleByIntToFit(oWidth, oHeight, wWidth, wHeight);
+      scaledDims = scaleByIntToFit(oWidth, oHeight, wWidth, wHeight, this.name);
     }
 
     return {

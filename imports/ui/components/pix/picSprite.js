@@ -8,7 +8,9 @@ import { Colors } from '../../../api/colors/colors.js';
 import './picSprite.html';
 
 // Import functions
+import { getFileType } from '../../../functions/both/getFileType.js';
 import { scaleByIntToFit } from '../../../functions/client/scaleByIntToFit.js';
+import { scaleSoft } from '../../../functions/client/scaleSoft.js';
 
 // Template helpers
 Template.picSprite.helpers({
@@ -54,22 +56,28 @@ Template.picSprite.helpers({
     };
   },
   scaledDims() {
-    // console.log('this.name: ' + this.name);
+    // Get dimensions from settings file
     const rem = Meteor.settings.public.dimensions.rem;
     const cell = Meteor.settings.public.dimensions.cell;
     const cellMargin = Meteor.settings.public.dimensions.cellMargin;
 
     const thumbDim = rem * cell;
+    // console.log('thumbDim: ' + thumbDim);
+
+
 
     // Calculate areas of image, thumbnail box and difference
     const areaImg = this.dimensions.width * this.dimensions.height;
+    // console.log('areaImg: ' + areaImg);
     const areaThumbBox = thumbDim * thumbDim;
     const areaDif = areaThumbBox - areaImg;
     // console.log('areaDif: ' + areaDif);
 
     // Define the two different border options
     const borderDefault = rem * cellMargin;
+    // console.log('borderDefault: ' + borderDefault);
     const borderOverlap = rem * cellMargin * -8;
+    // console.log('borderOverlap: ' + borderOverlap);
 
     // Calculate threshold that triggers overlap border
     const areaDifThreshold = rem * cell * rem * cell / 4;
@@ -83,10 +91,24 @@ Template.picSprite.helpers({
     const oWidth = this.dimensions.width / deviceRatio;
     const oHeight = this.dimensions.height / deviceRatio;
 
-    const wWidth = thumbDim - 2 * border;
-    const wHeight = thumbDim - 2 * border;
+    // const wWidth = thumbDim - 2 * border;
+    // const wHeight = thumbDim - 2 * border;
+    const wWidth = thumbDim;
+    const wHeight = thumbDim;
 
-    const scaledDims = scaleByIntToFit(oWidth, oHeight, wWidth, wHeight);
+
+
+    const fileType = getFileType(this.name);
+    // console.log('fileType: ' + fileType);
+
+    let scaledDims;
+    if (fileType === 'jpg') {
+      scaledDims = scaleSoft(oWidth, oHeight, wWidth, wHeight);
+      // scaledDims = scaleByIntToFit(oWidth, oHeight, wWidth, wHeight);
+    } else {
+      scaledDims = scaleByIntToFit(oWidth, oHeight, wWidth, wHeight);
+    }
+
     return {
       width: scaledDims.width,
       height: scaledDims.height

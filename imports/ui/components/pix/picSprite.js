@@ -8,7 +8,9 @@ import { Colors } from '../../../api/colors/colors.js';
 import './picSprite.html';
 
 // Import functions
+import { getFileType } from '../../../functions/both/getFileType.js';
 import { scaleByIntToFit } from '../../../functions/client/scaleByIntToFit.js';
+import { scaleSoft } from '../../../functions/client/scaleSoft.js';
 
 // Template helpers
 Template.picSprite.helpers({
@@ -54,43 +56,45 @@ Template.picSprite.helpers({
     };
   },
   scaledDims() {
-    // console.log('this.name: ' + this.name);
+    // Get dimensions from settings file
     const rem = Meteor.settings.public.dimensions.rem;
     const cell = Meteor.settings.public.dimensions.cell;
-    const cellMargin = Meteor.settings.public.dimensions.cellMargin;
 
     const thumbDim = rem * cell;
+    // console.log('thumbDim: ' + thumbDim);
 
-    // Calculate areas of image, thumbnail box and difference
-    const areaImg = this.dimensions.width * this.dimensions.height;
-    const areaThumbBox = thumbDim * thumbDim;
-    const areaDif = areaThumbBox - areaImg;
-    // console.log('areaDif: ' + areaDif);
+    // This image's original dimensions
+    const oWidth = this.dimensions.width;
+    const oHeight = this.dimensions.height;
 
-    // Define the two different border options
-    const borderDefault = rem * cellMargin;
-    const borderOverlap = rem * cellMargin * -8;
+    // Dimensions of thumbnail box
+    let boxW = thumbDim;
+    let boxH = thumbDim;
 
-    // Calculate threshold that triggers overlap border
-    const areaDifThreshold = rem * cell * rem * cell / 4;
-    // console.log('areaDifThreshold: ' + areaDifThreshold);
+    const fileType = getFileType(this.name);
+    // console.log('fileType: ' + fileType);
 
-    // images with similar area as thumbnail are allowed to overlap
-    const border = areaDif < areaDifThreshold ? borderOverlap : borderDefault;
-    // console.log('border: ' + border);
-
-    const deviceRatio = window.devicePixelRatio;
-    const oWidth = this.dimensions.width / deviceRatio;
-    const oHeight = this.dimensions.height / deviceRatio;
-
-    const wWidth = thumbDim - 2 * border;
-    const wHeight = thumbDim - 2 * border;
-
-    const scaledDims = scaleByIntToFit(oWidth, oHeight, wWidth, wHeight);
+    let scaledDims;
+    if (fileType === 'jpg') {
+      scaledDims = scaleSoft(oWidth, oHeight, boxW, boxH);
+      // scaledDims = scaleByIntToFit(oWidth, oHeight, boxW, boxH);
+    } else {
+      // Set padding to 1 rem
+      const padding = Meteor.settings.public.dimensions.rem;
+      boxW -= padding;
+      boxH -= padding;
+      scaledDims = scaleByIntToFit(oWidth, oHeight, boxW, boxH, this.name);
+    }
     return {
       width: scaledDims.width,
       height: scaledDims.height
     };
+  },
+  renderJPGcss() {
+    const fileType = getFileType(this.name);
+    if (fileType === 'jpg') {
+      return 'image-rendering:auto';
+    }
   }
 });
 

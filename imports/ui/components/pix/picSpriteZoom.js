@@ -41,9 +41,8 @@ Template.picSpriteZoom.helpers({
     };
   },
   scaledDims() {
-    const deviceRatio = window.devicePixelRatio;
-    const oWidth = this.dimensions.width / deviceRatio;
-    const oHeight = this.dimensions.height / deviceRatio;
+    const oWidth = this.dimensions.width;
+    const oHeight = this.dimensions.height;
 
     const wWidth = window.innerWidth;
     const wHeight = window.innerHeight;

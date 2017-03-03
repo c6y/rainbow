@@ -10,8 +10,8 @@ import { Colors } from '../colors/colors.js';
 import { getProjectName } from '../../functions/server/getProjectName.js';
 import { getPathDate } from '../../functions/server/getPathDate.js';
 import { getPicName } from '../../functions/server/getPicName.js';
-import { getFileType } from '../../functions/server/getFileType.js';
 import { isAdminOrEditor, isAdmin } from '../../functions/server/isUser.js';
+import { getFileType } from '../../functions/both/getFileType.js';
 
 Meteor.methods({
   'eboypix.insert'(url, imageWidth, imageHeight) {

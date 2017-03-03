@@ -1,11 +1,9 @@
-// Meteor
-import { Meteor } from 'meteor/meteor';
-
 // Import functions
-import { scalePaddingFactor } from './scalePaddingFactor.js';
+import { improveAreaFactor } from './improveAreaFactor.js';
 
 /**
   * returns the scaled image dimensions that preserve pixel integrity
+  * takes into account the device pixel ratio
   * @param {number} oWidth The original image width.
   * @param {number} oHeight The original image width.
   * @param {number} maxWidth The original image width.
@@ -15,12 +13,7 @@ import { scalePaddingFactor } from './scalePaddingFactor.js';
   * @return {number} width the value the image is scaled by
   */
 export function scaleByIntToFit(oWidth, oHeight, maxWidth, maxHeight, name) {
-  // Set padding to 1 rem
-  const padding = Meteor.settings.public.dimensions.rem;
-  const wBox = maxWidth - padding;
-  const hBox = maxHeight - padding;
-
-  // Factor in if content is seen on high resolution devices
+  // Calculate if seen on high resolution devices
   // If so, content can be scaled down
   // This way we have more options scaling it up later
   const deviceRatio = window.devicePixelRatio;
@@ -29,25 +22,22 @@ export function scaleByIntToFit(oWidth, oHeight, maxWidth, maxHeight, name) {
 
   // Calculate the factors, both for width and height
   // round to lower integer, this cannot be lower than 0
-  const wFactor = Math.floor(wBox / wImg);
-  const hFactor = Math.floor(hBox / hImg);
+  const wFactor = Math.floor(maxWidth / wImg);
+  const hFactor = Math.floor(maxHeight / hImg);
 
   // take the smaller value of the factors above
   // but factor should not be lower than 1
   // (a pixel cannot be smaller than a pixel)
-  const minFactor = Math.max(Math.min(wFactor, hFactor), 1);
-  // console.log('minFactor: ' + minFactor);
+  let factor = Math.max(Math.min(wFactor, hFactor), 1);
 
-  const wTarget = wImg * minFactor;
-  const hTarget = hImg * minFactor;
+  factor = improveAreaFactor(factor, wImg, hImg, maxWidth, maxHeight, name);
 
-  const factor = scalePaddingFactor(wTarget, hTarget, wBox, hBox, name, minFactor);
-
-
+  const wTarget = wImg * factor;
+  const hTarget = hImg * factor;
 
   return {
-    width: wTarget * factor,
-    height: hTarget * factor,
-    factor: minFactor * factor
+    width: wTarget,
+    height: hTarget,
+    factor: factor
   };
 }

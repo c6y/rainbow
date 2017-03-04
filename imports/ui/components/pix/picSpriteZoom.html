@@ -1,5 +1,9 @@
 <template name="picSpriteZoom">
   <figure id="picSpriteBox" style="background: {{colorHSL.value}}">
-    <img src="{{url}}" width="{{scaledDims.width}}" height="{{scaledDims.height}}" alt="" />
+    {{#if isJPG}}
+      <img class="jpgSprite" src="{{url}}" width="{{scaledDims.width}}" height="{{scaledDims.height}}" />
+    {{else}}
+      <img class="pngSprite" src="{{url}}" width="{{scaledDims.width}}" height="{{scaledDims.height}}" />
+    {{/if}}
   </figure>
 </template>

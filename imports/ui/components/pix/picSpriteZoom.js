@@ -1,3 +1,5 @@
+// Meteor stuff
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 
 import { Colors } from '../../../api/colors/colors.js';
@@ -6,6 +8,8 @@ import './picSpriteZoom.html';
 
 // Import functions
 import { scaleByIntToFit } from '../../../functions/client/scaleByIntToFit.js';
+import { scaleSoft } from '../../../functions/client/scaleSoft.js';
+import { getFileType } from '../../../functions/both/getFileType.js';
 
 // Template helpers
 Template.picSpriteZoom.helpers({
@@ -47,13 +51,34 @@ Template.picSpriteZoom.helpers({
     const wWidth = window.innerWidth;
     const wHeight = window.innerHeight;
 
-    const boxWidth = wWidth - 128;
-    const boxHeight = wHeight - 128;
+    // add a little bit of padding
+    const rem = Meteor.settings.public.dimensions.rem;
+    let boxW = wWidth - rem * 2;
+    let boxH = wHeight - rem * 2;
 
-    const scaled = scaleByIntToFit(oWidth, oHeight, boxWidth, boxHeight);
+    const fileType = getFileType(this.name);
+    // console.log('fileType: ' + fileType);
+
+    let scaledDims;
+    if (fileType === 'jpg') {
+      scaledDims = scaleSoft(oWidth, oHeight, boxW, boxH);
+      // scaledDims = scaleByIntToFit(oWidth, oHeight, boxW, boxH);
+    } else {
+      // Set padding to 1 rem
+      const padding = Meteor.settings.public.dimensions.rem;
+      boxW -= padding;
+      boxH -= padding;
+      scaledDims = scaleByIntToFit(oWidth, oHeight, boxW, boxH, this.name);
+    }
     return {
-      width: scaled.width,
-      height: scaled.height
+      width: scaledDims.width,
+      height: scaledDims.height
     };
+  },
+  isJPG() {
+    const fileType = getFileType(this.name);
+    if (fileType === 'jpg') {
+      return true;
+    }
   }
 });

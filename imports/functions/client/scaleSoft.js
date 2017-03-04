@@ -1,39 +1,32 @@
 /**
-  * returns the scaled image dimensions that preserve pixel integrity
+  * returns the scaled image dimensions
   * @param {number} oWidth The original image width.
   * @param {number} oHeight The original image width.
   * @param {number} maxWidth The original image width.
   * @param {number} maxHeight The original image width.
   * @return {number} width A scaled width value
   * @return {number} height A scaled height value
-  * @return {number} width the value the image is scaled by
   */
 export function scaleSoft(oWidth, oHeight, maxWidth, maxHeight) {
   const wImg = oWidth;
   const hImg = oHeight;
   const wMax = maxWidth;
   const hMax = maxHeight;
-  //
-  // console.log('wImg: ' + wImg);
-  // console.log('wMax: ' + wMax);
 
   const wFactor = wMax / wImg;
   const hFactor = hMax / hImg;
 
-  // console.log('wFactor/hFactor: ' + wFactor + '/' + hFactor);
+  let factor = Math.min(wFactor, hFactor);
 
-  const minFactor = Math.min(wFactor, hFactor);
-  // console.log('minFactor: ' + minFactor);
+  // limit upscaling to 1x, be aware of devicePixelRatio
+  const deviceRatio = window.devicePixelRatio;
+  factor = Math.min(factor, 1 / deviceRatio);
 
-  // const wTarget = wImg;
-  // const hTarget = hImg;
-
-  const wTarget = wImg * minFactor;
-  const hTarget = hImg * minFactor;
+  const wTarget = wImg * factor;
+  const hTarget = hImg * factor;
 
   return {
     width: wTarget,
     height: hTarget
-    // factor: minFactor
   };
 }

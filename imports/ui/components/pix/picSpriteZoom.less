@@ -1,3 +1,8 @@
+#picSpriteBox {
+  background-color: green;
+  flex-grow: 1;
+}
+
 figure {
   height: 100%;
   margin: 0;
@@ -21,4 +26,5 @@ figure {
   image-rendering: -webkit-optimize-contrast;
   -ms-interpolation-mode: nearest-neighbor;
   image-rendering: pixelated;
+  object-fit: cover; // prevents the image to compress if window is too small
 }

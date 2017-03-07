@@ -6,10 +6,9 @@
   * @param {number} imgH The original image width.
   * @param {number} wBox The original image width.
   * @param {number} hBox The original image width.
-  * @param {string} name The original name of the file.
   * @return {int} factor the new factor
   */
-export function improveAreaFactor(factor, imgW, imgH, wBox, hBox, name) {
+export function improveAreaFactor(factor, imgW, imgH, wBox, hBox) {
   const scaledImage = imgW * imgH * factor * factor;
   const boxArea = wBox * hBox;
   const usedArea = Math.round(scaledImage / boxArea * 100) / 100;
@@ -25,8 +24,6 @@ export function improveAreaFactor(factor, imgW, imgH, wBox, hBox, name) {
   // Scale image by an additional factor
   // if larger areas of the canvas are not covered
   if (usedArea < threshold) {
-    // console.log(name + ': ' + threshold + ': ' + imageProportion);
-    // console.log(name + ': usedArea:' + usedArea + ', old factor:' + factor);
     return factor + 1;
   }
   return factor;

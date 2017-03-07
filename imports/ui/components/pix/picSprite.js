@@ -72,11 +72,13 @@ Template.picSprite.helpers({
     let boxW = thumbDim;
     let boxH = thumbDim;
 
-    const fileType = getFileType(this.name);
+    // const fileType = getFileType(this.name);
     // console.log('fileType: ' + fileType);
 
+    const antiAlias = this.antiAlias === true;
+
     let scaledDims;
-    if (fileType === 'jpg') {
+    if (antiAlias) {
       scaledDims = scaleSoft(oWidth, oHeight, boxW, boxH);
       // scaledDims = scaleByIntToFit(oWidth, oHeight, boxW, boxH);
     } else {
@@ -91,11 +93,9 @@ Template.picSprite.helpers({
       height: scaledDims.height
     };
   },
-  renderJPGcss() {
-    const fileType = getFileType(this.name);
-    if (fileType === 'jpg') {
-      return 'image-rendering:auto';
-    }
+  antiAliasCSS() {
+    const antiAlias = this.antiAlias;
+    return antiAlias === true ? 'image-rendering:auto' : false;
   }
 });
 

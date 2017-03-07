@@ -28,8 +28,10 @@ Meteor.methods({
       // Default jpgs to fullFrame
       const fileType = getFileType(url);
       let fullFrame = false;
+      let antiAlias = false;
       if (fileType === 'jpg') {
         fullFrame = true;
+        antiAlias = true;
       }
       // Get all available colors by name
       let colorNamesArray = [];
@@ -69,6 +71,7 @@ Meteor.methods({
         tags: [],
         projects: projectArray,
         fullFrame: fullFrame,
+        antiAlias: antiAlias,
         madeDate: picMadeDate,
         uploadedBy: {
           id: thisUserId,
@@ -151,6 +154,15 @@ Meteor.methods({
         { $set: { fullFrame: newState } }
       );
       console.log(taskId + ': fullFrame updated: "' + newState + '"');
+    }
+  },
+  'eboypix.updateAntiAlias'(taskId, newState) {
+    if (isAdminOrEditor()) {
+      EboyPix.update(
+        taskId,
+        { $set: { antiAlias: newState } }
+      );
+      console.log(taskId + ': antiAlias updated: "' + newState + '"');
     }
   },
   'eboypix.updateAccess'(taskId, newState) {

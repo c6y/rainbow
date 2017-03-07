@@ -39,16 +39,16 @@
     .tag:last-of-type:after {
       content: '';
     }
-    .editFullFrame, .stepAccess {
+    .editFullFrame, .editAntiAlias, .stepAccess {
       cursor: pointer;
       user-select: none;
     }
-    .fullYes {
+    .fullYes, .antiAliasYes {
       background-color: @color-3;
       color: @color-15;
       transition: background-color 0.2s linear;
     }
-    .fullNo {
+    .fullNo, .antiAliasNo {
       color: @color-3;
       background-color: inherit;
       transition: background-color 0.2s linear;
@@ -58,11 +58,17 @@
     .fullYes::after,
     .fullYes::before,
     .fullNo::after,
-    .fullNo::before {
+    .fullNo::before,
+    .antiAliasYes::after,
+    .antiAliasYes::before,
+    .antiAliasNo::after,
+    .antiAliasNo::before {
       content: '\00a0';
     }
     .fullYes:hover,
-    .fullNo:hover {
+    .fullNo:hover,
+    .antiAliasYes:hover,
+    .antiAliasNo:hover {
       background-color: @color-0;
       color: @color-7;
       // background-color: @color-7;

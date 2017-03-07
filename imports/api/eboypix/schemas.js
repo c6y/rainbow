@@ -61,6 +61,11 @@ PicSchema.Pic = new SimpleSchema({
     type: Boolean,
     optional: true
   },
+  'antiAlias': {
+    type: Boolean,
+    optional: true,
+    defaultValue: false
+  },
   'access': {
     type: Number,
     defaultValue: 3,

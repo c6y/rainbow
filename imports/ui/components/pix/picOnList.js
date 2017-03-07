@@ -22,6 +22,8 @@ import '../edit/editMadeDate.js';
 import '../edit/editMadeDate.html';
 import '../edit/editFullFrame.js';
 import '../edit/editFullFrame.html';
+import '../edit/editAntiAlias.js';
+import '../edit/editAntiAlias.html';
 import '../edit/luckyBackColor.js';
 import '../edit/luckyBackColor.html';
 import '../edit/editAccess.js';

@@ -56,11 +56,13 @@ Template.picSpriteZoom.helpers({
     let boxW = wWidth - rem * 2;
     let boxH = wHeight - rem * 2;
 
-    const fileType = getFileType(this.name);
+    // const fileType = getFileType(this.name);
     // console.log('fileType: ' + fileType);
 
+    const antiAlias = this.antiAlias === true;
+
     let scaledDims;
-    if (fileType === 'jpg') {
+    if (antiAlias) {
       scaledDims = scaleSoft(oWidth, oHeight, boxW, boxH);
       // scaledDims = scaleByIntToFit(oWidth, oHeight, boxW, boxH);
     } else {
@@ -80,5 +82,9 @@ Template.picSpriteZoom.helpers({
     if (fileType === 'jpg') {
       return true;
     }
+  },
+  antiAliasCSS() {
+    const antiAlias = this.antiAlias;
+    return antiAlias === true ? 'image-rendering:auto' : false;
   }
 });

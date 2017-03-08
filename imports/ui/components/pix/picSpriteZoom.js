@@ -1,7 +1,10 @@
 // Meteor stuff
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
+import { FlowRouter } from 'meteor/kadira:flow-router';
+import { Session } from 'meteor/session';
 
+// Collections
 import { Colors } from '../../../api/colors/colors.js';
 
 import './picSpriteZoom.html';
@@ -86,5 +89,33 @@ Template.picSpriteZoom.helpers({
   antiAliasCSS() {
     const antiAlias = this.antiAlias;
     return antiAlias === true ? 'image-rendering:auto' : false;
+  }
+});
+
+Template.picSpriteZoom.events({
+  // Go back to the originating search page
+  'click img'() {
+    let lastRoute = Session.get('lastRoute');
+    let lastSlug = Session.get('lastSlug');
+    let lastPage = Session.get('lastPage');
+    let lastQuery = Session.get('lastQuery');
+
+    if (lastRoute === undefined) {
+      lastRoute = 'pool';
+    }
+    lastRoute = lastRoute === undefined ? 'pool' : lastRoute;
+    lastSlug = lastSlug === undefined ? 'everything' : lastSlug;
+    lastPage = lastPage === undefined ? 1 : lastPage;
+
+    FlowRouter.go(
+      lastRoute,
+      {
+        slug: lastSlug,
+        page: lastPage
+      },
+      {
+        q: lastQuery
+      }
+    );
   }
 });

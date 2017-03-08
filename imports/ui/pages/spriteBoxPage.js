@@ -3,8 +3,6 @@ import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { ReactiveVar } from 'meteor/reactive-var';
-// import { DocHead } from 'meteor/kadira:dochead';
-import { Session } from 'meteor/session';
 
 // Functions
 import { setDocHead } from '../../functions/client/setDocHead.js';
@@ -63,30 +61,5 @@ Template.spriteBoxPage.events({
     const oldShowingMeta = Template.instance().metaShow.get();
     const newShowingMeta = oldShowingMeta === false;
     Template.instance().metaShow.set(newShowingMeta);
-  },
-  // Go back to the originating search page
-  'click .spriteBox'() {
-    let lastRoute = Session.get('lastRoute');
-    let lastSlug = Session.get('lastSlug');
-    let lastPage = Session.get('lastPage');
-    let lastQuery = Session.get('lastQuery');
-
-    if (lastRoute === undefined) {
-      lastRoute = 'pool';
-    }
-    lastRoute = lastRoute === undefined ? 'pool' : lastRoute;
-    lastSlug = lastSlug === undefined ? 'everything' : lastSlug;
-    lastPage = lastPage === undefined ? 1 : lastPage;
-
-    FlowRouter.go(
-      lastRoute,
-      {
-        slug: lastSlug,
-        page: lastPage
-      },
-      {
-        q: lastQuery
-      }
-    );
   }
 });

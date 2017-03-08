@@ -1,0 +1,41 @@
+#quicksInputBox, #colorInputBox {
+  width: 100%;
+  // flex-direction: column;
+  // align-items: top;
+  form {
+    margin: @cell-margin;
+    background-color: @color-10;
+    padding: 0;
+    display: flex;
+    padding: 0.5 * @cell-margin;
+    font-family: @font-meta;
+    font-size: @font-meta-size;
+    color: @color-10;
+    select {
+      font-family: inherit;
+      font-size: inherit;
+      color: white;
+      -webkit-appearance: none;
+      background-color: @color-10;
+      padding: 0.5em;
+      margin: 0;
+      border: 0.5 * @cell-margin solid @color-10;
+      overflow: hidden;
+      border-radius: 0;
+      option {
+        font-family: inherit;
+      }
+    }
+    input {
+      border: 0.5 * @cell-margin solid @color-10;
+      font-family: inherit;
+      font-size: @font-meta-size;
+      padding: 0.5 * @cell-margin;
+      flex: 0.5;
+      margin: 0;
+    }
+    ::-webkit-input-placeholder {
+      color: @color-10;
+    }
+  }
+}

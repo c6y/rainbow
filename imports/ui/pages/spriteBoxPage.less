@@ -1,23 +1,6 @@
 @import '../components/pix/picSpriteZoom.less';
 @import '../components/pix/picMeta.less';
 
-.spriteBox {
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  top: 0;
-  bottom: 20px;
-  left: 20px;
-  right: 0;
-  justify-content: center; /* add to align horizontal */
-  align-items: center; /* add to align vertical */
-  font-size: @font-meta-size;
-  cursor: pointer;
-  user-select: none;
-  display: flex;
-  justify-content: flex-start;
-}
-
 .picMetaBox {
   margin: 0;
   padding: 0;
@@ -27,7 +10,6 @@
   z-index: 15;
   width: 100%;
 }
-
 .copyright {
   cursor: pointer;
   position: fixed;
@@ -52,6 +34,5 @@
   &:active {
     color: @color-5;
     background-color: @color-0;
-    // opacity: 1;
   }
 }

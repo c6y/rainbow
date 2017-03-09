@@ -18,10 +18,10 @@ import { getFileType } from '../../../functions/both/getFileType.js';
 // Template rendered/destroyed
 // style hack fills hidden part of window with background color
 Template.picSpriteZoom.rendered = function() {
-  $('html').addClass('htmlClass');
+  $('body').addClass('spriteBoxBody');
 };
 Template.picSpriteZoom.destroyed = function() {
-  $('html').removeClass('htmlClass');
+  $('body').removeClass('spriteBoxBody');
 };
 
 // Template helpers

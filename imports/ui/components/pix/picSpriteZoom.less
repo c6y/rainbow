@@ -1,77 +1,23 @@
 .spriteBox {
-  // text-align: center;
-  // display: inline;
-  // display: inline-flex;
-  // min-height: 100vH;
-  // min-width: 100vH;
-  // display: flex;
-  // overflow: scroll;
-  // justify-content: center;
-  // align-items: center;
-  // background-size: cover;
-
-  // position: relative;
-  // position: static;
-
-  // margin: auto;
-  // width: 50%;
-
   text-align: center;
-
-  // height: 100vH;
-  // top: 0;
-  // bottom: 0;
-  // left: 0;
-  // right: 0;
-  // width: 100vH;
-}
-
-// #picSpriteBox {
-//   background-color: green;
-//   // flex-grow: 1;
-// }
-
-.spriteBox figure {
-  background: magenta;
-  line-height: 100vH;
-
-  display: inline-block;
-
-  // overflow: auto;
-  // height: 100vH;
-  // display: flex;
-  // overflow: scroll;
-  // justify-content: center;
-
-  // max-width: 100vH;
-  // position: absolute;
-  // position: fixed;
-
-  // max-height: 100vH;
-  // height: 100%;
-  margin: 0;
-  padding: 0;
-  // top: 0;
-  // bottom: 20px;
-  // left: 20px;
-  // right: 0;
-  // justify-content: center; /* add to align horizontally */
-  // align-items: center; /* add to align vertical */
-  .jpgSprite {
-    box-shadow: @boxshadow-1;
-    border: 0.5rem #f7f6f2 solid;
-    image-rendering:auto;
+  figure {
+    line-height: 100vH;
+    margin: 0;
+    padding: 0;
+    .jpgSprite {
+      box-shadow: @boxshadow-1;
+      border: 0.5rem #f7f6f2 solid;
+      image-rendering:auto;
+    }
+    img {
+      cursor: pointer;
+      vertical-align: middle;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: -o-crisp-edges;
+      image-rendering: -webkit-optimize-contrast;
+      -ms-interpolation-mode: nearest-neighbor;
+      image-rendering: pixelated;
+      object-fit: cover; // prevents the image to compress if window is too small
+    }
   }
-}
-
-.spriteBox img, #picSpriteBox img {
-  vertical-align: middle;
-
-  image-rendering: -moz-crisp-edges;
-  image-rendering: -o-crisp-edges;
-  image-rendering: -webkit-optimize-contrast;
-  -ms-interpolation-mode: nearest-neighbor;
-  image-rendering: pixelated;
-  object-fit: cover; // prevents the image to compress if window is too small
-  // overflow: auto;
 }

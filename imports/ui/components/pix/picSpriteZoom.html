@@ -1,4 +1,10 @@
 <template name="picSpriteZoom">
+  <!-- style hack fills hidden part of window with background color-->
+  <style type="text/css">
+    .htmlClass {
+      background-color: {{colorHSL.value}};
+    }
+  </style>
   <figure id="picSpriteBox" style="background: {{colorHSL.value}}">
     {{#if isJPG}}
       <img class="jpgSprite" src="{{url}}" width="{{scaledDims.width}}" height="{{scaledDims.height}}"  style="{{antiAliasCSS}}"/>

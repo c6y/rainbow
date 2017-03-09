@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Session } from 'meteor/session';
+import { $ } from 'meteor/jquery';
 
 // Collections
 import { Colors } from '../../../api/colors/colors.js';
@@ -13,6 +14,15 @@ import './picSpriteZoom.html';
 import { scaleByIntToFit } from '../../../functions/client/scaleByIntToFit.js';
 import { scaleSoft } from '../../../functions/client/scaleSoft.js';
 import { getFileType } from '../../../functions/both/getFileType.js';
+
+// Template rendered/destroyed
+// style hack fills hidden part of window with background color
+Template.picSpriteZoom.rendered = function() {
+  $('html').addClass('htmlClass');
+};
+Template.picSpriteZoom.destroyed = function() {
+  $('html').removeClass('htmlClass');
+};
 
 // Template helpers
 Template.picSpriteZoom.helpers({

@@ -6,20 +6,22 @@
     {{/if}}
     {{> quickLinks}}
     <hr>
-      <ul class="shoplink">
-        <li><a href="http://shop.eboy.com/" target="_blank">SHOP</a></li>
-      </ul>
-    <span class="social">
-      <a class="socicon-ello" href="https://ello.co/eboy" target="_blank"></a>
-      <a class="socicon-twitter" href="https://twitter.com/eboyarts" target="_blank"></a>
-      <a class="socicon-instagram" href="https://www.instagram.com/eboyarts/" target="_blank"></a>
-      <a class="socicon-facebook" href="https://www.facebook.com/eBoy-56718692455/" target="_blank"></a>
-      <a class="socicon-patreon" href="https://www.patreon.com/eboyarts" target="_blank"></a>
-    </span>
-    <ul class="fineprint">
-      <li>&copy;{{copyright}} {{thisYear}}</li>
-      <li><a href="mailto:someone@example.com?Subject=Hello%20eBoy!" target="_blank">eboy@eboy.com</a></li>
-      <li><a href="/humans.txt" target="_blank">&#47;humans.txt</a></li>
+    <ul class="shoplink">
+      <li><a href="http://shop.eboy.com/" target="_blank">SHOP</a></li>
     </ul>
+    {{#if Template.subscriptionsReady}}
+      <span class="social">
+        <a class="socicon-ello" href="https://ello.co/eboy" target="_blank"></a>
+        <a class="socicon-twitter" href="https://twitter.com/eboyarts" target="_blank"></a>
+        <a class="socicon-instagram" href="https://www.instagram.com/eboyarts/" target="_blank"></a>
+        <a class="socicon-facebook" href="https://www.facebook.com/eBoy-56718692455/" target="_blank"></a>
+        <a class="socicon-patreon" href="https://www.patreon.com/eboyarts" target="_blank"></a>
+      </span>
+      <ul class="fineprint">
+        <li>&copy;{{copyright}} {{thisYear}}</li>
+        <li><a href="mailto:someone@example.com?Subject=Hello%20eBoy!" target="_blank">eboy@eboy.com</a></li>
+        <li><a href="/humans.txt" target="_blank">&#47;humans.txt</a></li>
+      </ul>
+    {{/if}}
   </div>
 </template>

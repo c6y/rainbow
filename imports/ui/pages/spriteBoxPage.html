@@ -2,14 +2,12 @@
   {{#if Template.subscriptionsReady}}
     {{#with spriteDoc}}
     <div class="copyright">
-      &copy;{{copyright}} {{madeDateShort}}
+      &copy;{{copyright}}
     </div>
     <div class="spriteBox">
       {{> picSpriteZoom}}
       {{#if isVisible}}
-        <div class="picMetaBox">
-          {{> picMeta}}
-        </div>
+        <div class="picMetaBox">{{> picMeta}}</div>
       {{/if}}
     </div>
     {{/with}}

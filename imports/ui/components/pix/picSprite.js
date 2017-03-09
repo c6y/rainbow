@@ -9,7 +9,6 @@ import { Colors } from '../../../api/colors/colors.js';
 import './picSprite.html';
 
 // Import functions
-import { getFileType } from '../../../functions/both/getFileType.js';
 import { scaleByIntToFit } from '../../../functions/client/scaleByIntToFit.js';
 import { scaleSoft } from '../../../functions/client/scaleSoft.js';
 

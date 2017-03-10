@@ -2,6 +2,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { Session } from 'meteor/session';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 // Components
 import './editorLinks.html';
@@ -17,6 +18,8 @@ Template.sideBox.onCreated(function() {
     // set plusBox visibility at start
     const showPlusBox = Meteor.settings.public.navigation.extrasOnLanding;
     Session.set('plusBox', showPlusBox);
+    Session.set('infoBox', false);
+    Session.set('adminBox', false);
   }
   const self = this;
   self.autorun(function() {
@@ -24,6 +27,7 @@ Template.sideBox.onCreated(function() {
   });
 });
 
+// Template helpers
 Template.sideBox.helpers({
   isAdminOrEditor() {
     if (Meteor.user()) {
@@ -50,5 +54,48 @@ Template.sideBox.helpers({
       return 'sideShow';
     }
     return 'sideHide';
+  },
+  showInfoBox() {
+    return Session.get('infoBox');
+  },
+  showSettingsBox() {
+    return Session.get('adminBox');
+  },
+  toEditorPath() {
+    const thisRouteName = FlowRouter.getRouteName();
+    let thisPage = 1;
+    let thisSlug = 'everything';
+    let thisQuery = null;
+    if (thisRouteName === 'edit') {
+      return FlowRouter.path(
+        'pool',
+        { slug: thisSlug, page: thisPage },
+        { q: thisQuery }
+      );
+    }
+    if (thisRouteName === 'pool') {
+      thisSlug = FlowRouter.getParam('slug');
+      thisPage = FlowRouter.getParam('page');
+      thisQuery = FlowRouter.getQueryParam('q');
+    }
+    return FlowRouter.path(
+      'edit',
+      { slug: thisSlug, page: thisPage },
+      { q: thisQuery }
+    );
+  }
+});
+
+// Template events
+Template.sideBox.events({
+  'click #infobox'() {
+    const newstate = Session.get('infoBox') === false;
+    Session.set('infoBox', newstate);
+    Session.set('adminBox', false);
+  },
+  'click #settingsbox'() {
+    const newstate = Session.get('adminBox') === false;
+    Session.set('adminBox', newstate);
+    Session.set('infoBox', false);
   }
 });

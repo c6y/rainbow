@@ -1,27 +1,44 @@
 <template name="sideBox" >
   <div id="sideBox" class="{{showSideBoxCSS}}">
-    {{#if isAdminOrEditor}}
-      {{> editorLinks}}
-      <hr>
-    {{/if}}
     {{> quickLinks}}
     <hr>
-    <ul class="shoplink">
-      <li><a href="http://shop.eboy.com/" target="_blank">SHOP</a></li>
+    <ul class="navicons">
+      <li id="infobox">
+        <i class="material-icons" id="info">info</i>
+      </li>
+      <li>
+        <a href="http://shop.eboy.com/" target="_blank">
+          <i class="material-icons" id="shopping">shopping_cart</i>
+        </a>
+      </li>
+      {{#if isAdminOrEditor}}
+        <li>
+          <a href="{{toEditorPath}}">
+            <i class="material-icons" id="edit">edit</i>
+          </a>
+        </li>
+      {{/if}}
+      <li id="settingsbox">
+        <a href="/dashboard">
+          <i class="material-icons" id="settings">settings</i>
+        </a>
+      </li>
     </ul>
-    {{#if Template.subscriptionsReady}}
-      <span class="social">
-        <a class="socicon-ello" href="https://ello.co/eboy" target="_blank"></a>
-        <a class="socicon-twitter" href="https://twitter.com/eboyarts" target="_blank"></a>
-        <a class="socicon-instagram" href="https://www.instagram.com/eboyarts/" target="_blank"></a>
-        <a class="socicon-facebook" href="https://www.facebook.com/eBoy-56718692455/" target="_blank"></a>
-        <a class="socicon-patreon" href="https://www.patreon.com/eboyarts" target="_blank"></a>
-      </span>
+    {{#if showInfoBox}}
       <ul class="fineprint">
-        <li>&copy;{{copyright}} {{thisYear}}</li>
         <li><a href="mailto:someone@example.com?Subject=Hello%20eBoy!" target="_blank">eboy@eboy.com</a></li>
-        <li><a href="/humans.txt" target="_blank">&#47;humans.txt</a></li>
+        <li><a href="/humans.txt" target="_blank">about: &#47;humans.txt</a></li>
+        <li>&copy;{{copyright}} {{thisYear}}</li>
       </ul>
+    {{/if}}
+    {{#if isAdminOrEditor}}
+      {{#if showSettingsBox}}
+        <ul class="fineprint">
+          <li><a href="/addDoc">add</a></li>
+          <li><a href="/colors">colors</a></li>
+          <li><a href="/quicks">quicks</a></li>
+        </ul>
+      {{/if}}
     {{/if}}
   </div>
 </template>

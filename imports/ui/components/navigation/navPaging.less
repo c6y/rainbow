@@ -13,32 +13,28 @@ and (min-device-width: @breakpoint) {
 }
 
 #navPagingBox {
-  font-family: @font-big;
-  font-weight: @font-big-weight-2;
   line-height: @font-big-lineheight;
+  font-family: 'Material Icons';
   padding: 0;
   margin: 0;
   white-space: nowrap;
   user-select: none;
   cursor: default;
-  .nextPage {
-    margin-left: @cell-margin;
-  }
   span {
     display: inline-block;
     float:right;
     a {
-      // padding: 0;
       float:inherit;
-      padding: 0 0.1em;
     }
+  }
+  .active a, .inactive a{
+    background-color: @color-19-desat;
   }
   .active {
     a {
       opacity: 1;
       cursor: pointer;
       color: @color-5;
-      background-color: @color-headerback;
       text-decoration: none;
       &:hover {
         transition: background-color 0.3s linear;
@@ -52,16 +48,7 @@ and (min-device-width: @breakpoint) {
       }
     }
   }
-  .inactive{
-    // opacity: 0.2;
-    // transition: opacity 0.2s linear;
-    a {
-      // color: @color-5-fifty;
-      color: @color-headerlink;
-      background-color: @color-headerback;
-      box-shadow: none;
-      // transition: background-color 0.2s linear;
-      // transition: background-color 0.3s linear, color 0.3s linear;
-    }
+  .inactive a {
+    color: @color-headerlink;
   }
 }

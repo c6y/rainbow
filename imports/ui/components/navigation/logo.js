@@ -22,16 +22,9 @@ Template.logo.helpers({
   isActive() {
     const oldPlusBoxShow = Session.get('plusBox');
     if (oldPlusBoxShow) {
-      return 'active';
+      return true;
     }
-    return 'inactive';
-  },
-  isActiveChar() {
-    const oldPlusBoxShow = Session.get('plusBox');
-    if (oldPlusBoxShow) {
-      return '×';
-    }
-    return '+';
+    return false;
   }
 });
 

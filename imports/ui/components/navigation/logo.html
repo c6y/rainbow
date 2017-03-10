@@ -1,7 +1,11 @@
 <template name="logo">
   <span id="navlogo">
     <span class="togglePlusBox" >
-      <a class="{{isActive}}" href="">{{isActiveChar}}</a>
+      {{#if isActive}}
+        <a class="active" href="">&#xe5ce;</a>
+      {{else}}
+        <a class="inactive" href="">&#xe5cf;</a>
+      {{/if}}
     </span>
     {{#if toHomePath}}
       <a href="{{toHomePath}}">{{logotext}}</a>

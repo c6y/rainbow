@@ -88,14 +88,17 @@ Template.sideBox.helpers({
 
 // Template events
 Template.sideBox.events({
-  'click #infobox'() {
+  'click #info'() {
     const newstate = Session.get('infoBox') === false;
     Session.set('infoBox', newstate);
     Session.set('adminBox', false);
   },
-  'click #settingsbox'() {
+  'click #settings'() {
     const newstate = Session.get('adminBox') === false;
     Session.set('adminBox', newstate);
     Session.set('infoBox', false);
   }
+  // 'click'() {
+  //   console.log('FOO');
+  // }
 });

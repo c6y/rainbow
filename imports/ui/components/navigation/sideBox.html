@@ -11,6 +11,11 @@
           <i class="material-icons" id="shopping">shopping_cart</i>
         </a>
       </li>
+      <li id="settingsbox">
+        <a href="/dashboard">
+          <i class="material-icons" id="settings">settings</i>
+        </a>
+      </li>
       {{#if isAdminOrEditor}}
         <li>
           <a href="{{toEditorPath}}">
@@ -18,11 +23,6 @@
           </a>
         </li>
       {{/if}}
-      <li id="settingsbox">
-        <a href="/dashboard">
-          <i class="material-icons" id="settings">settings</i>
-        </a>
-      </li>
     </ul>
     {{#if showInfoBox}}
       <ul class="fineprint">

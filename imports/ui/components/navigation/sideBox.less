@@ -48,6 +48,10 @@ and (min-device-width: @breakpoint) {
     margin: 0;
     display: block;
   }
+  #quicks {
+    margin-top: @cell-margin;
+    margin-bottom: @cell-margin;
+  }
   #quicks li, .shoplink li {
     list-style: none;
     width: 100%;
@@ -119,7 +123,7 @@ and (min-device-width: @breakpoint) {
   hr {
     border: 0;
     padding: 0;
-    margin: @cell-margin 0 2 * @cell-margin 0;
+    margin: 2 * @cell-margin 0 2 * @cell-margin 0;
     height: 1px;
     background-image: linear-gradient(to right, @color-5-fifty, @color-0);
   }

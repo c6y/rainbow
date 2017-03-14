@@ -98,7 +98,4 @@ Template.sideBox.events({
     Session.set('adminBox', newstate);
     Session.set('infoBox', false);
   }
-  // 'click'() {
-  //   console.log('FOO');
-  // }
 });

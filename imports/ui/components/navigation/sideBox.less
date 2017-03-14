@@ -79,9 +79,11 @@ and (min-device-width: @breakpoint) {
   }
   .navicons {
     color: @color-5-ninety;
-    // background-color: lightgrey;
     padding: @cell-margin;
     user-select: none;
+    .active {
+      color: @color-1;
+    }
     .material-icons {
       font-size: 1.5rem;
     }
@@ -104,11 +106,8 @@ and (min-device-width: @breakpoint) {
     font-weight: @font-sidesmall-weight;
     line-height: @font-sidesmall-lineheight;
     padding: @cell-margin;
-    // margin-top: @cell-margin;
     background-color: @color-2;
-
     color: @color-5;
-    // font-style: italic;
     li {
       list-style: none;
     }

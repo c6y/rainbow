@@ -4,17 +4,10 @@
     <hr>
     <ul class="navicons">
       <li>
-        <i class="material-icons" id="info">info</i>
+        <i class="material-icons {{#if showInfoBox}}active{{/if}}" id="info">info</i>
       </li>
       <li>
-        <a href="http://shop.eboy.com/" target="_blank">
-          <i class="material-icons" id="shopping">shopping_cart</i>
-        </a>
-      </li>
-      <li>
-        <a href="/dashboard">
-          <i class="material-icons" id="settings">settings</i>
-        </a>
+        <i class="material-icons {{#if showSettingsBox}}active{{/if}}" id="settings">settings</i>
       </li>
       {{#if isAdminOrEditor}}
         <li>
@@ -23,6 +16,11 @@
           </a>
         </li>
       {{/if}}
+      <li>
+        <a href="http://shop.eboy.com/" target="_blank">
+          <i class="material-icons" id="shopping">shopping_cart</i>
+        </a>
+      </li>
     </ul>
     {{#if showInfoBox}}
       <ul class="fineprint">
@@ -31,14 +29,15 @@
         <li>&copy;{{copyright}} {{thisYear}}</li>
       </ul>
     {{/if}}
-    {{#if isAdminOrEditor}}
       {{#if showSettingsBox}}
         <ul class="fineprint">
-          <li><a href="/addDoc">add</a></li>
-          <li><a href="/colors">colors</a></li>
-          <li><a href="/quicks">quicks</a></li>
+          {{#if isAdminOrEditor}}
+            <li><a href="/addDoc">add pic</a></li>
+            <li><a href="/colors">colors</a></li>
+            <li><a href="/quicks">quicks</a></li>
+          {{/if}}
+          <li><a href="/dashboard">dashboard</a></li>
         </ul>
       {{/if}}
-    {{/if}}
   </div>
 </template>

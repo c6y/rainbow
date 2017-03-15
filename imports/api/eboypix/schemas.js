@@ -71,5 +71,9 @@ PicSchema.Pic = new SimpleSchema({
     defaultValue: 3,
     min: 0,
     max: 3
+  },
+  'link': {
+    type: String,
+    optional: true
   }
 });

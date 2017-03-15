@@ -173,5 +173,14 @@ Meteor.methods({
       );
       console.log(taskId + ': access updated: "' + newState + '"');
     }
+  },
+  'eboypix.updateLink'(taskId, newLink) {
+    if (isAdminOrEditor()) {
+      EboyPix.update(
+        taskId,
+        { $set: { link: newLink } }
+      );
+      console.log(taskId + ': link updated: "' + newLink + '"');
+    }
   }
 });

@@ -15,6 +15,10 @@ import './picMeta.js';
 import './picMeta.html';
 
 Template.pic.helpers({
+  hasLink() {
+    const hasLink = this.link;
+    return hasLink ? hasLink : false;
+  },
   colorHSL() {
     // Get the color by name
     const color = Colors.findOne(

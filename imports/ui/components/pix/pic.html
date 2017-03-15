@@ -1,5 +1,12 @@
 <template name="pic">
   <span class="picbox" style="background: {{colorHSL.value}}">
+    {{#if hasLink}}
+      <div class="linkButton">
+        <a href="{{this.link}}" target="_blank">
+          <i class="material-icons" id="shopping">link</i>
+        </a>
+      </div>
+    {{/if}}
     {{> picSprite}}
   </span>
 </template>

@@ -22,13 +22,16 @@
       <li><span class="property">dimensions:</span> {{dimensions.width}} &times; {{dimensions.height}}</li>
       <li><span class="property">copyright:</span> {{copyright}}</li>
       <li><span class="property">license:</span> {{license}}</li>
+      {{#if link}}
+        <li><span class="property">link:</span> {{link}}</li>
+      {{/if}}
       {{#if isAdminOrEditor}}
         <li><span class="property">_id: </span>{{_id}}</li>
         <li><span class="property">backgroundColor:</span> {{backgroundColor}}</li>
         <li><span class="property">colorHSL(calc):</span> {{colorHSL.info}}</li>
         <li><span class="property">createdAt:</span> {{createdAtShort}}</li>
         {{#if uploadedByName}}
-          <li><span class="property">uploadedBy.username:</span>{{uploadedByName}}</li>
+          <li><span class="property">uploadedBy.username:</span> {{uploadedByName}}</li>
         {{/if}}
         {{#if fullFrame}}
           <li><span class="property">fullFrame:</span> {{fullFrame}}</li>

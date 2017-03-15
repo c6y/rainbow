@@ -14,4 +14,35 @@
     color: @color-2;
     background-color: @color-5;
   }
+  .linkButton {
+    position: absolute;
+    background-color: @color-5;
+    // background-color: red;
+    // transform: rotate(-15deg);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 2rem;
+    line-height: 1.8rem;
+    text-align: center;
+    margin-left: -0.5 * @cell-margin;
+    margin-top: @cell-margin;
+    color: white;
+    transform: rotate(-45deg);
+    a {
+      color: white;
+      &:hover {
+        color: @color-5;
+        box-shadow: @boxshadow-1-hover;
+        transition: color 1s;
+      }
+    }
+    i {
+      vertical-align: middle;
+    }
+    user-select: none;
+    cursor: pointer;
+    &:hover {
+      background-color: @color-1;
+    }
+  }
 }

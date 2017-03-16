@@ -17,32 +17,30 @@
   .linkButton {
     position: absolute;
     background-color: @color-5;
-    // background-color: red;
-    // transform: rotate(-15deg);
+    transform: rotate(-45deg);
     width: 2rem;
     height: 2rem;
     border-radius: 2rem;
     line-height: 1.8rem;
     text-align: center;
     margin-left: -0.5 * @cell-margin;
-    margin-top: @cell-margin;
+    margin-top: 2 * @cell-margin;
     color: white;
-    transform: rotate(-45deg);
+    &:hover {
+      background-color: @color-2;
+      padding: @cell-margin;
+      box-shadow: @boxshadow-1-hover;
+      color: @color-5;
+      transform: translate(-@cell-margin, -@cell-margin) rotate(45deg);
+      transition: padding 0.2s, transform 0.2s, box-shadow 0.2s, color 0.2s;
+    }
     a {
-      color: white;
-      &:hover {
-        color: @color-5;
-        box-shadow: @boxshadow-1-hover;
-        transition: color 1s;
-      }
+      color: inherit;
     }
     i {
       vertical-align: middle;
     }
     user-select: none;
     cursor: pointer;
-    &:hover {
-      background-color: @color-1;
-    }
   }
 }

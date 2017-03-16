@@ -40,6 +40,12 @@ and (min-device-width: @breakpoint) {
   font-size: @font-sidebig-size;
   font-weight: @font-sidebig-weight;
   line-height: @font-sidebig-lineheight;
+  overflow: hidden;
+  .sideBoxMain {
+    z-index: 100;
+    position:relative;
+    background-color: @color-0;
+  }
   .navicons, .fineprint li {
     padding-left: @cell-margin;
   }
@@ -81,7 +87,7 @@ and (min-device-width: @breakpoint) {
     color: @color-5-ninety;
     padding: @cell-margin;
     user-select: none;
-    .active {
+    .iconActive {
       color: @color-1;
     }
     .material-icons {
@@ -100,13 +106,19 @@ and (min-device-width: @breakpoint) {
       }
     }
   }
+  .showInfoOff, .showSettingsOff {
+    display: none;
+  }
   .fineprint {
+    width: @cell - @cell-margin;
+    box-sizing: border-box;
+    // transition: margin-top 0.3s;
     font-family: @font-sidesmall;
     font-size: @font-sidesmall-size;
     font-weight: @font-sidesmall-weight;
     line-height: @font-sidesmall-lineheight;
     padding: @cell-margin;
-    background-color: @color-2;
+    background-color: @color-9;
     color: @color-5;
     li {
       list-style: none;

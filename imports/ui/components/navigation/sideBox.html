@@ -1,43 +1,43 @@
 <template name="sideBox" >
   <div id="sideBox" class="{{showSideBoxCSS}}">
-    {{> quickLinks}}
-    <hr>
-    <ul class="navicons">
-      <li>
-        <i class="material-icons {{#if showInfoBox}}active{{/if}}" id="info">info</i>
-      </li>
-      <li>
-        <i class="material-icons {{#if showSettingsBox}}active{{/if}}" id="settings">settings</i>
-      </li>
-      {{#if isAdminOrEditor}}
+    <div class="sideBoxMain">
+      {{> quickLinks}}
+      <hr>
+      <ul class="navicons">
         <li>
-          <a href="{{toEditorPath}}">
-            <i class="material-icons" id="edit">edit</i>
+          {{!-- <i class="material-icons {{#if showInfoBox}}active{{/if}}" id="info">info</i> --}}
+          <i class="material-icons {{infoIconActive}}" id="info">info</i>
+        </li>
+        <li>
+          {{!-- <i class="material-icons {{#if showSettingsBox}}active{{/if}}" id="settings">settings</i> --}}
+          <i class="material-icons {{settingsIconActive}}" id="settings">settings</i>
+        </li>
+        {{#if isAdminOrEditor}}
+          <li>
+            <a href="{{toEditorPath}}">
+              <i class="material-icons" id="edit">edit</i>
+            </a>
+          </li>
+        {{/if}}
+        <li>
+          <a href="http://shop.eboy.com/" target="_blank">
+            <i class="material-icons" id="shopping">shopping_cart</i>
           </a>
         </li>
-      {{/if}}
-      <li>
-        <a href="http://shop.eboy.com/" target="_blank">
-          <i class="material-icons" id="shopping">shopping_cart</i>
-        </a>
-      </li>
-    </ul>
-    {{#if showInfoBox}}
-      <ul class="fineprint">
-        <li><a href="mailto:someone@example.com?Subject=Hello%20eBoy!" target="_blank">eboy@eboy.com</a></li>
-        <li><a href="/humans.txt" target="_blank">about: &#47;humans.txt</a></li>
-        <li>&copy;{{copyright}} {{thisYear}}</li>
       </ul>
-    {{/if}}
-      {{#if showSettingsBox}}
-        <ul class="fineprint">
-          {{#if isAdminOrEditor}}
-            <li><a href="/addDoc">add pic</a></li>
-            <li><a href="/colors">colors</a></li>
-            <li><a href="/quicks">quicks</a></li>
-          {{/if}}
-          <li><a href="/dashboard">dashboard</a></li>
-        </ul>
+    </div>
+    <ul class="fineprint {{showInfo}}">
+      <li><a href="mailto:someone@example.com?Subject=Hello%20eBoy!" target="_blank">eboy@eboy.com</a></li>
+      <li><a href="/humans.txt" target="_blank">about: &#47;humans.txt</a></li>
+      <li>&copy;{{copyright}} {{thisYear}}</li>
+    </ul>
+    <ul class="fineprint {{showSettings}}">
+      {{#if isAdminOrEditor}}
+        <li><a href="/addDoc">add pic</a></li>
+        <li><a href="/colors">colors</a></li>
+        <li><a href="/quicks">quicks</a></li>
       {{/if}}
+      <li><a href="/dashboard">dashboard</a></li>
+    </ul>
   </div>
 </template>

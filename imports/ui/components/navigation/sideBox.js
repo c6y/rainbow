@@ -19,7 +19,7 @@ Template.sideBox.onCreated(function() {
     const showPlusBox = Meteor.settings.public.navigation.extrasOnLanding;
     Session.set('plusBox', showPlusBox);
     Session.set('infoBox', false);
-    Session.set('adminBox', false);
+    Session.set('settingsBox', false);
   }
   const self = this;
   self.autorun(function() {
@@ -55,11 +55,17 @@ Template.sideBox.helpers({
     }
     return 'sideHide';
   },
-  showInfoBox() {
-    return Session.get('infoBox');
+  infoIconActive() {
+    return Session.get('infoBox') ? 'iconActive' : false;
   },
-  showSettingsBox() {
-    return Session.get('adminBox');
+  settingsIconActive() {
+    return Session.get('settingsBox') ? 'iconActive' : false;
+  },
+  showInfo() {
+    return Session.get('infoBox') === false ? 'showInfoOff' : false;
+  },
+  showSettings() {
+    return Session.get('settingsBox') === false ? 'showSettingsOff' : false;
   },
   toEditorPath() {
     const thisRouteName = FlowRouter.getRouteName();
@@ -91,11 +97,11 @@ Template.sideBox.events({
   'click #info'() {
     const newstate = Session.get('infoBox') === false;
     Session.set('infoBox', newstate);
-    Session.set('adminBox', false);
+    Session.set('settingsBox', false);
   },
   'click #settings'() {
-    const newstate = Session.get('adminBox') === false;
-    Session.set('adminBox', newstate);
+    const newstate = Session.get('settingsBox') === false;
+    Session.set('settingsBox', newstate);
     Session.set('infoBox', false);
   }
 });

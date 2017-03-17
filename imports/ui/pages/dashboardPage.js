@@ -6,12 +6,12 @@ import { DocHead } from 'meteor/kadira:dochead';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
 // Components
-import '../components/register.html';
-import '../components/register.js';
-import '../components/login.html';
-import '../components/login.js';
-import '../components/dashboard.html';
-import '../components/dashboard.js';
+import '../components/dashboard/register.html';
+import '../components/dashboard/register.js';
+import '../components/dashboard/login.html';
+import '../components/dashboard/login.js';
+import '../components/dashboard/dashboard.html';
+import '../components/dashboard/dashboard.js';
 import '../components/navigation/sideBox.js';
 import '../components/navigation/sideBox.html';
 

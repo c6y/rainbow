@@ -68,24 +68,25 @@ Template.sideBox.helpers({
     return Session.get('settingsBox') === false ? 'showSettingsOff' : false;
   },
   toEditorPath() {
-    const thisRouteName = FlowRouter.getRouteName();
-    let thisPage = 1;
-    let thisSlug = 'everything';
-    let thisQuery = null;
-    if (thisRouteName === 'edit') {
-      return FlowRouter.path(
-        'pool',
-        { slug: thisSlug, page: thisPage },
-        { q: thisQuery }
-      );
-    }
-    if (thisRouteName === 'pool') {
-      thisSlug = FlowRouter.getParam('slug');
-      thisPage = FlowRouter.getParam('page');
-      thisQuery = FlowRouter.getQueryParam('q');
-    }
+    // define and set toRoute to 'edit' if not on 'edit'
+    // else set toRoute to 'pool'
+    let toRoute = FlowRouter.getRouteName();
+    toRoute = toRoute === 'edit' ? 'pool' : 'edit';
+
+    // define and set thisSlug to 'everything' if not defined
+    let thisSlug = FlowRouter.getParam('slug');
+    thisSlug = thisSlug === undefined ? 'everything' : thisSlug;
+
+    // define and set thisPage to 1 if not defined
+    let thisPage = FlowRouter.getParam('page');
+    thisPage = thisPage ? thisPage : 1;
+
+    // define and set thisQuery to null if not defined
+    let thisQuery = FlowRouter.getQueryParam('q');
+    thisQuery = thisQuery === '' ? null : thisQuery;
+
     return FlowRouter.path(
-      'edit',
+      toRoute,
       { slug: thisSlug, page: thisPage },
       { q: thisQuery }
     );

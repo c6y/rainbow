@@ -2,13 +2,15 @@
 
 @import '../components/dashboard/login.less';
 @import '../components/dashboard/register.less';
+@import '../components/dashboard/accessinfo.less';
 @import '../components/dashboard/dashboard.less';
 @import '../components/navigation/sideBox.less';
 
-.registerBox, .loginBox {
+.registerBox, .loginBox, .accessBox {
   display: block;
-  margin: @cell-margin;
+  padding: @cell-margin;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .logOutHeader {

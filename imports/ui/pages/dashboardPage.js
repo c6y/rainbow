@@ -10,6 +10,8 @@ import '../components/dashboard/register.html';
 import '../components/dashboard/register.js';
 import '../components/dashboard/login.html';
 import '../components/dashboard/login.js';
+import '../components/dashboard/accessinfo.html';
+import '../components/dashboard/accessinfo.js';
 import '../components/dashboard/dashboard.html';
 import '../components/dashboard/dashboard.js';
 import '../components/navigation/sideBox.js';

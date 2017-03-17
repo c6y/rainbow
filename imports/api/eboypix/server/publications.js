@@ -61,7 +61,7 @@ Meteor.publish('pix.single.public', function picPublic(id) {
   return EboyPix.find(selector);
 });
 
-// publish total count of search query in EboyPix as separate collection
+// publish total count of search query in EboyPix
 Meteor.publish('pix.counts.public', function(slug, query) {
   // Check is user is logged in
   const userId = this.userId;
@@ -69,6 +69,17 @@ Meteor.publish('pix.counts.public', function(slug, query) {
   Counts.publish(
     this,
     'totalDocsCount',
+    EboyPix.find(selector),
+    { noReady: true }
+  );
+});
+
+// publish total count of EboyPix with access level 1
+Meteor.publish('pix.accesscounts.public', function() {
+  const selector = { access: 1 };
+  Counts.publish(
+    this,
+    'accessOneCount',
     EboyPix.find(selector),
     { noReady: true }
   );

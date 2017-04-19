@@ -1,9 +1,15 @@
 {
+  "galaxy.meteor.com": {
+    "env": {
+      "MONGO_URL": "...",
+      "MONGO_OPLOG_URL": "..."
+    }
+  },
   "public": {
     "app": {
       "name": "rainbow",
       "version": "0.0.0",
-      "rootURL": "https://eboy.io/",
+      "rootURL": "https://eboy.com/",
       "githubURL": "https://github.com/c6y/rainbow"
     },
     "ga": {
@@ -27,7 +33,7 @@
       "extrasOnLanding": true
     },
     "ownership": {
-      "sitename": "eboy.io",
+      "sitename": "db.eboy.com",
       "defaultLicense": "CC BY-NC-ND 4.0",
       "creator": {
         "@type": "Organization",
@@ -61,7 +67,7 @@
             "name": "Svend Smital"
           }
         ],
-        "url": "https://eboy.io",
+        "url": "https://db.eboy.com",
         "sameAs": [
           "http://shop.eboy.com/",
           "https://twitter.com/eboyarts",

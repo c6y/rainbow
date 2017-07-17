@@ -1,0 +1,18 @@
+<template name="renderPage">
+  {{#if Template.subscriptionsReady}}
+    {{#with spriteDoc}}
+      {{!-- <div id="renderDocContainer"> --}}
+        {{!-- <div id="canvasBox"> --}}
+          {{>canvas}}
+        {{!-- </div> --}}
+      {{!-- </div> --}}
+      {{!-- {{ url }} --}}
+    {{/with}}
+  {{/if}}
+</template>
+
+<template name="canvas">
+	{{!-- <div id="theCanvas"> --}}
+		<canvas id="myCanvas"></canvas>
+	{{!-- </div> --}}
+</template>

@@ -85,7 +85,8 @@ Template.picSprite.helpers({
       const padding = Meteor.settings.public.dimensions.rem;
       boxW -= padding;
       boxH -= padding;
-      scaledDims = scaleByIntToFit(oWidth, oHeight, boxW, boxH, this.name);
+      scaledDims = scaleByIntToFit(oWidth, oHeight, boxW, boxH);
+      // scaledDims = scaleByIntToFit(oWidth, oHeight, boxW, boxH, this.name);
     }
     return {
       width: scaledDims.width,

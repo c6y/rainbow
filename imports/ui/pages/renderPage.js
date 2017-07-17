@@ -1,5 +1,6 @@
 let canvas;
 let context;
+let maxCanvasSize = 512;
 
 // Meteor stuff
 import { Meteor } from 'meteor/meteor';
@@ -9,9 +10,11 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 // Functions
 import { setDocHead } from '../../functions/client/setDocHead.js';
+import { scaleByIntToFit } from '../../functions/client/scaleByIntToFit.js';
 
 // Collections
 import { EboyPix } from '../../api/eboypix/eboypix.js';
+import { Colors } from '../../api/colors/colors.js';
 
 import './renderPage.html';
 
@@ -37,52 +40,80 @@ Template.renderPage.onCreated(function() {
 Template.canvas.onRendered(function() {
   const self = this;
   self.autorun(function() {
+    // get the Image
     const thisId = FlowRouter.getParam('_id');
     const thisDocument = EboyPix.findOne(thisId);
 
-    // const originalWidth = thisDocument.dimensions.width;
-    // const originalHeight = thisDocument.dimensions.height;
+    // get backgroundColor of Image
+    const color = Colors.findOne(
+      { name: thisDocument.backgroundColor }
+    );
+    // set up hsl color string
+    let hslColor;
+    if (color) {
+      hslColor = String(
+        'hsl(' +
+        color.hue + ', ' +
+        color.saturation + '%, ' +
+        color.luminosity + '%)'
+      );
+    } else {
+      hslColor = 'hsl(0, 50%, 50%)';
+    }
 
-    // let myImage = new Image();
-    // myImage.src = thisDocument.url();
+    // set dimensions of image
+    const originalWidth = thisDocument.dimensions.width;
+    const originalHeight = thisDocument.dimensions.height;
 
-    canvas = document.getElementById('myCanvas');
-    context = canvas.getContext('2d');
-
-    context.fillStyle = "#FF0000";
-    context.fillRect(
-      0,
-      0,
-      120,
-      60
+    // calculate optimal scaling of Image
+    const scaledDims = scaleByIntToFit(
+      originalWidth,
+      originalHeight,
+      maxCanvasSize,
+      maxCanvasSize,
+      1 // as this is for donwloads factor is set to 1 manually
     );
 
-    // myImage.onload = function() {
-    //   canvas = document.getElementById('myCanvas');
-    //   context = canvas.getContext('2d');
-    //
-    //   // canvas.style.width = "200px";
-    //   // canvas.style.height = "100px";
-    //
-    //   canvas.setAttribute('width', 50);
-    //   canvas.setAttribute('height', 40);
-    //
-    //   // context.fillStyle = "#FF0000";
-    //   // context.fillRect(
-    //   //   0,
-    //   //   0,
-    //   //   30,
-    //   //   30
-    //   // );
-    //
-    //   // context.drawImage(
-    //   //   myImage,
-    //   //   10,
-    //   //   10,
-    //   //   30,
-    //   //   20
-    //   // );
-    // };
+    // console.log('originalHeight: ' + originalHeight);
+    // console.log('scaledDims.height: ' + scaledDims.height);
+    // console.log('window.devicePixelRatio: ' + window.devicePixelRatio);
+
+    // calculate border
+    const paddingW = (maxCanvasSize - scaledDims.width) / 2;
+    const paddingH = (maxCanvasSize - scaledDims.height) / 2;
+
+    // set up Canvas
+    let myImage = new Image();
+    myImage.src = thisDocument.url;
+    myImage.onload = function() {
+      canvas = document.getElementById('myCanvas');
+      context = canvas.getContext('2d');
+
+      canvas.setAttribute('width', maxCanvasSize);
+      canvas.setAttribute('height', maxCanvasSize);
+      canvas.style.width = maxCanvasSize / 2 + 'px';
+      canvas.style.height = maxCanvasSize / 2 + 'px';
+
+      context.fillStyle = hslColor;
+      context.fillRect(
+        0,
+        0,
+        maxCanvasSize,
+        maxCanvasSize
+      );
+
+      context.mozImageSmoothingEnabled = false;
+      context.msImageSmoothingEnabled = false;
+      context.imageSmoothingEnabled = false;
+
+      context.drawImage(
+        myImage,
+        paddingW,
+        paddingH,
+        scaledDims.width,
+        scaledDims.height
+      );
+    };
   });
 });
 
@@ -95,20 +126,6 @@ Template.renderPage.helpers({
     return pixDoc;
     // return thisId;
   }
-  // isVisible() {
-  //   return Template.instance().metaShow.get();
-  // },
-  // copyright() {
-  //   return Meteor.settings.public.ownership.creator.name;
-  // },
-  // madeDateShort() {
-  //   const date = this.madeDate;
-  //   if (date === undefined) {
-  //     return '';
-  //   }
-  //   const shortDate = date.toISOString().substring(0, 4);
-  //   return shortDate;
-  // }
 });
 
 Template.renderPage.events({

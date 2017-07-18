@@ -20,6 +20,10 @@ DeviceSchema.Devices = new SimpleSchema({
     type: Number,
     min: 0
   },
+  year: {
+    type: Number,
+    min: 0
+  },
   createdAt: {
     type: Date
   }

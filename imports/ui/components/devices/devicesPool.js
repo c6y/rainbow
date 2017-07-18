@@ -11,14 +11,6 @@ import './device.js';
 // Template helpers
 Template.devicesPool.helpers({
   devices() {
-    return Devices.find({}, { sort: { make: 1, name: -1 } });
-    // return Devices.find({});
-  },
-  countDevices() {
-    return Devices.find({}).count();
-  },
-  foo() {
-    return 'HEY THIS WORKS';
+    return Devices.find({}, { sort: { make: 1, year: -1, name: 1 } });
   }
-
 });

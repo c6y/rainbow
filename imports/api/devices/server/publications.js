@@ -7,7 +7,7 @@ import { Devices } from '../devices.js';
 // Schemas
 import { DeviceSchema } from '../schemas.js';
 
-Devices.attachSchema(DeviceSchema.devices);
+Devices.attachSchema(DeviceSchema.Devices);
 
 Meteor.publish('devices.public', function devicesPublic() {
   const selector = {}; // find all

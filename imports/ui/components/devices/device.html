@@ -1,0 +1,15 @@
+<template name="device">
+  <span class="deviceBox">
+    <span class="deviceInfos">
+      <span class="deviceMainInfo">
+        {{#if isAdminOrEditor}}
+          <span class="deviceDelete">×</span>
+        {{/if}}
+        <div class="deviceName"> {{name}}</div>
+        <div class="deviceMake"> {{make}}</div>
+        <div class="deviceWidth"> {{width}}</div>
+        <div class="deviceHeight"> {{height}}</div>
+      </span>
+    </span>
+  </span>
+</template>

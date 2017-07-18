@@ -10,7 +10,7 @@ DeviceSchema.Devices = new SimpleSchema({
   },
   make: {
     type: String,
-    unique: true
+    unique: false
   },
   width: {
     type: Number,

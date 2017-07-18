@@ -6,7 +6,8 @@ let maxCanvasSize = 512;
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-import { ReactiveVar } from 'meteor/reactive-var';
+// import { ReactiveVar } from 'meteor/reactive-var';
+// import { Tracker } from 'meteor/tracker';
 
 // Functions
 import { setDocHead } from '../../functions/client/setDocHead.js';
@@ -71,7 +72,7 @@ Template.canvas.onRendered(function() {
       originalHeight,
       maxCanvasSize,
       maxCanvasSize,
-      1 // as this is for donwloads factor is set to 1 manually
+      1 // as this is for donwloads, factor is set to 1 manually
     );
 
     // console.log('originalHeight: ' + originalHeight);

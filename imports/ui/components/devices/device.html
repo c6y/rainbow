@@ -5,11 +5,14 @@
         {{#if isAdminOrEditor}}
           <span class="deviceDelete">×</span>
         {{/if}}
-        <div class="deviceName"> {{name}}</div>
-        <div class="deviceMake"> {{make}}</div>
-        <div class="deviceWidth"> {{width}}</div>
-        <div class="deviceHeight"> {{height}}</div>
+        <span class="deviceName"> {{name}}</span>
       </span>
+      <div class="deviceMeta">
+        <!-- <div class="deviceMake"> {{make}}</div>
+        <div class="deviceWidth"> {{width}}</div>
+        <div class="deviceHeight"> {{height}}</div> -->
+        {{make}}, {{width}} × {{height}}
+      </div>
     </span>
   </span>
 </template>

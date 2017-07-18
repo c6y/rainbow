@@ -11,8 +11,8 @@ import './device.js';
 // Template helpers
 Template.devicesPool.helpers({
   devices() {
-    // return Devices.find({}, { sort: { _id: 1 } });
-    return Devices.find({});
+    return Devices.find({}, { sort: { make: 1, name: -1 } });
+    // return Devices.find({});
   },
   countDevices() {
     return Devices.find({}).count();

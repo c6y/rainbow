@@ -1,18 +1,23 @@
 <template name="renderPage">
   {{#if Template.subscriptionsReady}}
     {{#with spriteDoc}}
-      {{!-- <div id="renderDocContainer"> --}}
-        {{!-- <div id="canvasBox"> --}}
+      <div id="renderDocContainer">
+        <div id="canvasBox">
           {{>canvas}}
-        {{!-- </div> --}}
-      {{!-- </div> --}}
-      {{!-- {{ url }} --}}
+        </div>
+      </div>
     {{/with}}
   {{/if}}
+  <select name="selectDevice" id="selectDevice">
+    {{#each devices}}
+      <option value="{{_id}}">{{name}}</option>
+    {{/each}}
+  </select>
+  {{deviceName}}
 </template>
 
 <template name="canvas">
-	{{!-- <div id="theCanvas"> --}}
-		<canvas id="myCanvas"></canvas>
-	{{!-- </div> --}}
+  <div id="theCanvas">
+  <canvas id="myCanvas"></canvas>
+  </div>
 </template>

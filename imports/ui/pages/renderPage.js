@@ -29,11 +29,13 @@ let deviceDep = new Tracker.Dependency();
 
 // Template onCreated
 Template.renderPage.onCreated(function() {
+  this.device = new ReactiveVar();
   this.deviceId = new ReactiveVar();
+  // this.maxCanvasSize = new ReactiveVar();
+
   const self = this;
   self.autorun(function() {
     setDocHead();
-
     const thisId = FlowRouter.getParam('_id');
     self.subscribe('pix.single.public', thisId);
     self.subscribe('colors.public');
@@ -42,8 +44,12 @@ Template.renderPage.onCreated(function() {
 });
 
 Template.canvas.onRendered(function() {
+  // console.log('this.device.name: ' + this.device.name);
   const self = this;
   self.autorun(function() {
+    deviceDep.depend();
+    console.log('maxCanvasSize: ' + maxCanvasSize);
+
     // get the Image
     const thisId = FlowRouter.getParam('_id');
     const thisDocument = EboyPix.findOne(thisId);
@@ -128,45 +134,37 @@ Template.renderPage.helpers({
     const thisId = FlowRouter.getParam('_id');
     const pixDoc = EboyPix.findOne(thisId);
     return pixDoc;
-    // return thisId;
   },
   devices() {
     return Devices.find({});
-
-    // return Devices.find({}).map(function(doc) {
-    //   return doc.name;
-    // });
   },
-  deviceName() {
+  device() {
     deviceDep.depend();
-    return this.deviceId;
-    // const id = this.deviceId;
-    // const selectedDevice = Devices.findOne({ id });
-    // return selectedDevice.name;
-    // // return this.deviceId;
+    if (this.device) {
+      return this.device.width;
+    }
+
+    // if (this.deviceId) {
+    //   console.log('this.deviceId: ' + this.deviceId);
+    //   const selectedDevice = Devices.findOne(this.deviceId);
+    //   return selectedDevice;
+    // }
   }
 });
 
 Template.renderPage.events({
   'change #selectDevice'(event) {
     event.preventDefault();
-    this.deviceId = event.target.value;
-
+    const deviceId = event.target.value;
+    const selectedDevice = Devices.findOne(deviceId);
+    this.device = selectedDevice;
+    maxCanvasSize = selectedDevice.width;
+    // console.log('this.device.name: ' + this.device.name);
     deviceDep.changed();
-
-    // console.log('event.target.value: ' + event.target.value);
-    console.log('this.deviceId: ' + this.deviceId);
-    // const target = event.target;
-    // const device = target.device.value;
-    // console.log('device: ' + device);
-
-    // console.log('YES');
-    // this.device =
   }
-  // Toggle metadata
-  // 'click .copyright'() {
-  //   const oldShowingMeta = Template.instance().metaShow.get();
-  //   const newShowingMeta = oldShowingMeta === false;
-  //   Template.instance().metaShow.set(newShowingMeta);
+  // 'change #selectDevice'(event) {
+  //   event.preventDefault();
+  //   this.deviceId = event.target.value;
+  //   deviceDep.changed();
   // }
 });

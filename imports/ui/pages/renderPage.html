@@ -1,4 +1,11 @@
 <template name="renderPage">
+  <select name="selectDevice" id="selectDevice">
+    <option selected disabled>Choose one</option>
+    {{#each devices}}
+      <option value="{{_id}}">{{name}}</option>
+    {{/each}}
+  </select>
+  {{device}}
   {{#if Template.subscriptionsReady}}
     {{#with spriteDoc}}
       <div id="renderDocContainer">
@@ -8,12 +15,6 @@
       </div>
     {{/with}}
   {{/if}}
-  <select name="selectDevice" id="selectDevice">
-    {{#each devices}}
-      <option value="{{_id}}">{{name}}</option>
-    {{/each}}
-  </select>
-  {{deviceName}}
 </template>
 
 <template name="canvas">

@@ -18,20 +18,14 @@ import './renderPage.html';
 
 let canvas;
 let context;
-let maxCanvasSize = 512;
+let maxCanvasW = 512;
+let maxCanvasH = 512;
 let deviceDep = new Tracker.Dependency();
-
-// Components used
-// import '../components/pix/picSpriteZoom.js';
-// import '../components/pix/picSpriteZoom.html';
-// import '../components/pix/picMeta.js';
-// import '../components/pix/picMeta.html';
 
 // Template onCreated
 Template.renderPage.onCreated(function() {
   this.device = new ReactiveVar();
   this.deviceId = new ReactiveVar();
-  // this.maxCanvasSize = new ReactiveVar();
 
   const self = this;
   self.autorun(function() {
@@ -48,7 +42,7 @@ Template.canvas.onRendered(function() {
   const self = this;
   self.autorun(function() {
     deviceDep.depend();
-    console.log('maxCanvasSize: ' + maxCanvasSize);
+    console.log(maxCanvasW + ' x ' + maxCanvasH);
 
     // get the Image
     const thisId = FlowRouter.getParam('_id');
@@ -79,18 +73,14 @@ Template.canvas.onRendered(function() {
     const scaledDims = scaleByIntToFit(
       originalWidth,
       originalHeight,
-      maxCanvasSize,
-      maxCanvasSize,
+      maxCanvasW,
+      maxCanvasH,
       1 // as this is for donwloads, factor is set to 1 manually
     );
 
-    // console.log('originalHeight: ' + originalHeight);
-    // console.log('scaledDims.height: ' + scaledDims.height);
-    // console.log('window.devicePixelRatio: ' + window.devicePixelRatio);
-
     // calculate border
-    const paddingW = (maxCanvasSize - scaledDims.width) / 2;
-    const paddingH = (maxCanvasSize - scaledDims.height) / 2;
+    const paddingW = (maxCanvasW - scaledDims.width) / 2;
+    const paddingH = (maxCanvasH - scaledDims.height) / 2;
 
     // set up Canvas
     let myImage = new Image();
@@ -99,17 +89,17 @@ Template.canvas.onRendered(function() {
       canvas = document.getElementById('myCanvas');
       context = canvas.getContext('2d');
 
-      canvas.setAttribute('width', maxCanvasSize);
-      canvas.setAttribute('height', maxCanvasSize);
-      canvas.style.width = maxCanvasSize / 2 + 'px';
-      canvas.style.height = maxCanvasSize / 2 + 'px';
+      canvas.setAttribute('width', maxCanvasW);
+      canvas.setAttribute('height', maxCanvasH);
+      canvas.style.width = maxCanvasW / 2 + 'px';
+      canvas.style.height = maxCanvasH / 2 + 'px';
 
       context.fillStyle = hslColor;
       context.fillRect(
         0,
         0,
-        maxCanvasSize,
-        maxCanvasSize
+        maxCanvasW,
+        maxCanvasH
       );
 
       context.mozImageSmoothingEnabled = false;
@@ -138,17 +128,11 @@ Template.renderPage.helpers({
   devices() {
     return Devices.find({});
   },
-  device() {
+  deviceDims() {
     deviceDep.depend();
     if (this.device) {
-      return this.device.width;
+      return this.device.width + ' × ' + this.device.height;
     }
-
-    // if (this.deviceId) {
-    //   console.log('this.deviceId: ' + this.deviceId);
-    //   const selectedDevice = Devices.findOne(this.deviceId);
-    //   return selectedDevice;
-    // }
   }
 });
 
@@ -158,13 +142,8 @@ Template.renderPage.events({
     const deviceId = event.target.value;
     const selectedDevice = Devices.findOne(deviceId);
     this.device = selectedDevice;
-    maxCanvasSize = selectedDevice.width;
-    // console.log('this.device.name: ' + this.device.name);
+    maxCanvasW = selectedDevice.width;
+    maxCanvasH = selectedDevice.height;
     deviceDep.changed();
   }
-  // 'change #selectDevice'(event) {
-  //   event.preventDefault();
-  //   this.deviceId = event.target.value;
-  //   deviceDep.changed();
-  // }
 });

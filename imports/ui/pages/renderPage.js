@@ -2,7 +2,8 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-import { ReactiveVar } from 'meteor/reactive-var';
+// import { ReactiveVar } from 'meteor/reactive-var';
+import { Session } from 'meteor/session';
 import { Tracker } from 'meteor/tracker';
 
 // Functions
@@ -24,9 +25,6 @@ let deviceDep = new Tracker.Dependency();
 
 // Template onCreated
 Template.renderPage.onCreated(function() {
-  this.device = new ReactiveVar();
-  this.deviceId = new ReactiveVar();
-
   const self = this;
   self.autorun(function() {
     setDocHead();
@@ -38,11 +36,9 @@ Template.renderPage.onCreated(function() {
 });
 
 Template.canvas.onRendered(function() {
-  // console.log('this.device.name: ' + this.device.name);
   const self = this;
   self.autorun(function() {
     deviceDep.depend();
-    console.log(maxCanvasW + ' x ' + maxCanvasH);
 
     // get the Image
     const thisId = FlowRouter.getParam('_id');
@@ -84,6 +80,7 @@ Template.canvas.onRendered(function() {
 
     // set up Canvas
     let myImage = new Image();
+    // myImage.setAttribute('crossOrigin', 'anonymous'); // sec edit!
     myImage.src = thisDocument.url;
     myImage.onload = function() {
       canvas = document.getElementById('myCanvas');
@@ -113,6 +110,10 @@ Template.canvas.onRendered(function() {
         scaledDims.width,
         scaledDims.height
       );
+      // generate png from canvas
+      // const download = document.getElementById('genImg');
+      // const dataURL = canvas.toDataURL('image/png');
+      // download.href = dataURL;
     };
   });
 });
@@ -125,13 +126,32 @@ Template.renderPage.helpers({
     const pixDoc = EboyPix.findOne(thisId);
     return pixDoc;
   },
+  spriteName() {
+    const originalFileName = this.name;
+    // remove file extension
+    const truncName = originalFileName.replace(/\.[^/.]+$/, '');
+
+    let deviceDimensions;
+    if (Session.get('device')) {
+      const dims = Session.get('device');
+      deviceDimensions = dims.width + 'x' + dims.height;
+    }
+
+    const nameAndDims = truncName + '-' + deviceDimensions;
+
+    // convert to lowercase and replace whitespace with '-'
+    const cleanName = nameAndDims.toLowerCase().replace(/ /gi, '-');
+    const newFileName = cleanName + '-eboydb.png';
+    return newFileName;
+  },
   devices() {
     return Devices.find({});
   },
   deviceDims() {
     deviceDep.depend();
-    if (this.device) {
-      return this.device.width + ' × ' + this.device.height;
+    if (Session.get('device')) {
+      const device = Session.get('device');
+      return device.width + ' × ' + device.height;
     }
   }
 });
@@ -141,7 +161,7 @@ Template.renderPage.events({
     event.preventDefault();
     const deviceId = event.target.value;
     const selectedDevice = Devices.findOne(deviceId);
-    this.device = selectedDevice;
+    Session.set('device', selectedDevice);
     maxCanvasW = selectedDevice.width;
     maxCanvasH = selectedDevice.height;
     deviceDep.changed();

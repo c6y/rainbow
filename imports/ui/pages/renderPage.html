@@ -5,9 +5,12 @@
       <option value="{{_id}}">{{name}}</option>
     {{/each}}
   </select>
-  {{deviceDims}}
+  <!-- {{deviceDims}} -->
+
   {{#if Template.subscriptionsReady}}
     {{#with spriteDoc}}
+      {{spriteName}}
+      <!-- <a id="genImg" href="" download="Canvas.png">Download</a> -->
       <div id="renderDocContainer">
         <div id="canvasBox">
           {{>canvas}}

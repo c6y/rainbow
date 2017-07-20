@@ -80,7 +80,11 @@ Template.canvas.onRendered(function() {
 
     // set up Canvas
     let myImage = new Image();
-    // myImage.setAttribute('crossOrigin', 'anonymous'); // sec edit!
+
+    // to allow downloading the canvas set crossOrigin
+    // change CORS policy on Amazon S3: <AllowedHeader>*</AllowedHeader>
+    myImage.setAttribute('crossOrigin', 'anonymous');
+
     myImage.src = thisDocument.url;
     myImage.onload = function() {
       canvas = document.getElementById('myCanvas');
@@ -111,9 +115,9 @@ Template.canvas.onRendered(function() {
         scaledDims.height
       );
       // generate png from canvas
-      // const download = document.getElementById('genImg');
-      // const dataURL = canvas.toDataURL('image/png');
-      // download.href = dataURL;
+      const download = document.getElementById('genImg');
+      const dataURL = canvas.toDataURL('image/png');
+      download.href = dataURL;
     };
   });
 });

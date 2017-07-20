@@ -1,5 +1,5 @@
 // Meteor stuff
-import { Meteor } from 'meteor/meteor';
+// import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 // import { ReactiveVar } from 'meteor/reactive-var';
@@ -37,6 +37,10 @@ Template.renderPage.onCreated(function() {
   });
 });
 
+Template.canvas.onCreated(function() {
+  Session.set('addFactor', 0);
+});
+
 Template.canvas.onRendered(function() {
   const self = this;
   self.autorun(function() {
@@ -67,6 +71,9 @@ Template.canvas.onRendered(function() {
     const originalWidth = thisDocument.dimensions.width;
     const originalHeight = thisDocument.dimensions.height;
 
+    // scale image
+    const scaling = Session.get('addFactor');
+
     // calculate optimal scaling of Image
     const scaledDims = scaleByIntToFit(
       originalWidth,
@@ -76,9 +83,19 @@ Template.canvas.onRendered(function() {
       1 // as this is for donwloads, factor is set to 1 manually
     );
 
+    const fitFactor = scaledDims.width / originalWidth;
+    Session.set('fitFactor', fitFactor);
+    // console.log('fitFactor: ' + fitFactor);
+
+    const newFactor = Math.max(1, fitFactor + Session.get('addFactor'));
+    // console.log('newFactor: ' + newFactor);
+
+    const newWidth = scaledDims.width / fitFactor * newFactor;
+    const newHeight = scaledDims.height / fitFactor * newFactor;
+
     // calculate border
-    const paddingW = (maxCanvasW - scaledDims.width) / 2;
-    const paddingH = (maxCanvasH - scaledDims.height) / 2;
+    const paddingW = (maxCanvasW - newWidth) / 2;
+    const paddingH = (maxCanvasH - newHeight) / 2;
 
     // set up Canvas
     let myImage = new Image();
@@ -113,8 +130,8 @@ Template.canvas.onRendered(function() {
         myImage,
         paddingW,
         paddingH,
-        scaledDims.width,
-        scaledDims.height
+        newWidth,
+        newHeight
       );
       // generate png from canvas
       const download = document.getElementById('genImg');
@@ -182,6 +199,9 @@ Template.renderPage.helpers({
     if (Session.get('device')) {
       return true;
     }
+  },
+  scale() {
+    return Session.get('addFactor');
   }
 });
 
@@ -203,5 +223,19 @@ Template.renderPage.events({
     const element = document.getElementById('selectDevice');
     element.selectedIndex = 0;
     makeDep.changed();
+  },
+  'click #scaleDown'(event) {
+    event.preventDefault();
+    const currentScaling = Session.get('addFactor');
+    const newScaling = Math.max(-10, currentScaling - 1);
+    const newScalingRounded = Math.round(newScaling * 100) / 100;
+    Session.set('addFactor', newScalingRounded);
+  },
+  'click #scaleUp'(event) {
+    event.preventDefault();
+    const currentScaling = Session.get('addFactor');
+    const newScaling = Math.min(currentScaling + 1, 100);
+    const newScalingRounded = Math.round(newScaling * 100) / 100;
+    Session.set('addFactor', newScalingRounded);
   }
 });

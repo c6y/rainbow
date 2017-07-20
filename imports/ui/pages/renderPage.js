@@ -135,7 +135,9 @@ Template.renderPage.helpers({
     // remove file extension
     const truncName = originalFileName.replace(/\.[^/.]+$/, '');
 
-    let deviceDimensions;
+    // read dimensions from default
+    let deviceDimensions = maxCanvasW + 'x' + maxCanvasH;
+    // use device dimensions if selected
     if (Session.get('device')) {
       const dims = Session.get('device');
       deviceDimensions = dims.width + 'x' + dims.height;
@@ -149,14 +151,19 @@ Template.renderPage.helpers({
     return newFileName;
   },
   devices() {
-    return Devices.find({});
+    // return Devices.find({}, { sort: { make: 1, year: -1, name: 1 } });
+    return Devices.find({}, { sort: { make: 1, name: 1 } });
   },
   deviceDims() {
     deviceDep.depend();
+    // read dimensions from default
+    let deviceDimensions = maxCanvasW + 'x' + maxCanvasH;
+    // use device dimensions if selected
     if (Session.get('device')) {
       const device = Session.get('device');
-      return device.width + ' × ' + device.height;
+      deviceDimensions = device.width + ' × ' + device.height;
     }
+    return deviceDimensions;
   }
 });
 

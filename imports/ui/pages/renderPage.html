@@ -1,4 +1,12 @@
 <template name="renderPage">
+
+  <select name="selectMake" id="selectMake">
+    <option selected disabled>Choose make</option>
+    {{#each makers}}
+      <option value="{{this}}">{{this}}</option>
+    {{/each}}
+  </select>
+
   <select name="selectDevice" id="selectDevice">
     <option selected disabled>Choose device</option>
     {{#each devices}}
@@ -6,17 +14,22 @@
     {{/each}}
   </select>
 
-  {{#if Template.subscriptionsReady}}
-    {{#with spriteDoc}}
-      {{deviceDims}}
-      <a id="genImg" href="" download="{{spriteName}}">Download</a>
-      <div id="renderDocContainer">
-        <div id="canvasBox">
-          {{>canvas}}
+  {{#if deviceSelected}}
+    {{#if Template.subscriptionsReady}}
+      {{#with spriteDoc}}
+        <div>
+          {{deviceDims}}
+          <a id="genImg" href="" download="{{spriteName}}">Download</a>
         </div>
-      </div>
-    {{/with}}
+        <div id="renderDocContainer">
+          <div id="canvasBox">
+            {{>canvas}}
+          </div>
+        </div>
+      {{/with}}
+    {{/if}}
   {{/if}}
+
 </template>
 
 <template name="canvas">

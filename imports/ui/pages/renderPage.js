@@ -5,6 +5,7 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 // import { ReactiveVar } from 'meteor/reactive-var';
 import { Session } from 'meteor/session';
 import { Tracker } from 'meteor/tracker';
+import { _ } from 'meteor/underscore';
 
 // Functions
 import { setDocHead } from '../../functions/client/setDocHead.js';
@@ -22,6 +23,7 @@ let context;
 let maxCanvasW = 512;
 let maxCanvasH = 512;
 let deviceDep = new Tracker.Dependency();
+let makeDep = new Tracker.Dependency();
 
 // Template onCreated
 Template.renderPage.onCreated(function() {
@@ -143,6 +145,7 @@ Template.renderPage.helpers({
       deviceDimensions = dims.width + 'x' + dims.height;
     }
 
+    // add dimensions to file name
     const nameAndDims = truncName + '-' + deviceDimensions;
 
     // convert to lowercase and replace whitespace with '-'
@@ -150,9 +153,18 @@ Template.renderPage.helpers({
     const newFileName = cleanName + '-eboydb.png';
     return newFileName;
   },
+  makers() {
+    const distinctEntries = _.uniq(Devices.find({}, {
+      sort: { make: 1 }, fields: { make: true }
+    }).fetch().map(function(x) {
+      return x.make;
+    }), true);
+    return distinctEntries;
+  },
   devices() {
-    // return Devices.find({}, { sort: { make: 1, year: -1, name: 1 } });
-    return Devices.find({}, { sort: { make: 1, name: 1 } });
+    makeDep.depend();
+    const makeSelected = Session.get('make');
+    return Devices.find({ make: makeSelected }, { sort: { make: 1, name: 1 } });
   },
   deviceDims() {
     deviceDep.depend();
@@ -164,6 +176,12 @@ Template.renderPage.helpers({
       deviceDimensions = device.width + ' × ' + device.height;
     }
     return deviceDimensions;
+  },
+  deviceSelected() {
+    makeDep.depend();
+    if (Session.get('device')) {
+      return true;
+    }
   }
 });
 
@@ -176,5 +194,14 @@ Template.renderPage.events({
     maxCanvasW = selectedDevice.width;
     maxCanvasH = selectedDevice.height;
     deviceDep.changed();
+  },
+  'change #selectMake'(event) {
+    event.preventDefault();
+    const make = event.target.value;
+    Session.set('make', make);
+    Session.set('device', false);
+    const element = document.getElementById('selectDevice');
+    element.selectedIndex = 0;
+    makeDep.changed();
   }
 });

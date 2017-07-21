@@ -9,10 +9,9 @@
     <div id="appbody">
       {{> sideBox}}
       <div id="mainBox">
-        {{> devicesInput}}
-        <!-- {{#if isAdminOrEditor}}
+        {{#if currentUser.profile.isEditor}}
           {{> devicesInput}}
-        {{/if}} -->
+        {{/if}}
         {{> devicesPool}}
       </div>
     </div>

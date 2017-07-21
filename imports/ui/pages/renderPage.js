@@ -71,9 +71,6 @@ Template.canvas.onRendered(function() {
     const originalWidth = thisDocument.dimensions.width;
     const originalHeight = thisDocument.dimensions.height;
 
-    // scale image
-    const scaling = Session.get('addFactor');
-
     // calculate optimal scaling of Image
     const scaledDims = scaleByIntToFit(
       originalWidth,
@@ -83,15 +80,15 @@ Template.canvas.onRendered(function() {
       1 // as this is for donwloads, factor is set to 1 manually
     );
 
-    const fitFactor = scaledDims.width / originalWidth;
-    Session.set('fitFactor', fitFactor);
-    // console.log('fitFactor: ' + fitFactor);
+    // get the factor calculated automatically
+    const autoFactor = scaledDims.factor;
+    // the user might want to modify the factor for a better result
+    const userFactor = Math.max(1, autoFactor + Session.get('addFactor'));
+    Session.set('userFactor', userFactor);
 
-    const newFactor = Math.max(1, fitFactor + Session.get('addFactor'));
-    // console.log('newFactor: ' + newFactor);
-
-    const newWidth = scaledDims.width / fitFactor * newFactor;
-    const newHeight = scaledDims.height / fitFactor * newFactor;
+    // based on the userFactor calculate new image dimensions
+    const newWidth = scaledDims.width / autoFactor * userFactor;
+    const newHeight = scaledDims.height / autoFactor * userFactor;
 
     // calculate border
     const paddingW = (maxCanvasW - newWidth) / 2;
@@ -201,7 +198,8 @@ Template.renderPage.helpers({
     }
   },
   scale() {
-    return Session.get('addFactor');
+    // return Session.get('addFactor');
+    return Session.get('userFactor');
   }
 });
 
@@ -226,16 +224,20 @@ Template.renderPage.events({
   },
   'click #scaleDown'(event) {
     event.preventDefault();
-    const currentScaling = Session.get('addFactor');
-    const newScaling = Math.max(-10, currentScaling - 1);
-    const newScalingRounded = Math.round(newScaling * 100) / 100;
-    Session.set('addFactor', newScalingRounded);
+    const addFactor = Session.get('addFactor');
+    // calculate new addFactor
+    // don't allow values lower than -10
+    const newAddFactor = Math.max(-10, addFactor - 1);
+    const newAddFactorRounded = Math.round(newAddFactor * 100) / 100;
+    Session.set('addFactor', newAddFactorRounded);
   },
   'click #scaleUp'(event) {
     event.preventDefault();
-    const currentScaling = Session.get('addFactor');
-    const newScaling = Math.min(currentScaling + 1, 100);
-    const newScalingRounded = Math.round(newScaling * 100) / 100;
-    Session.set('addFactor', newScalingRounded);
+    const addFactor = Session.get('addFactor');
+    // calculate new addFactor
+    // don't allow values higher than +100
+    const newAddFactor = Math.min(addFactor + 1, 100);
+    const newAddFactorRounded = Math.round(newAddFactor * 100) / 100;
+    Session.set('addFactor', newAddFactorRounded);
   }
 });

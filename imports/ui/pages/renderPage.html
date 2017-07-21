@@ -22,7 +22,7 @@
         {{#if Template.subscriptionsReady}}
           {{#with spriteDoc}}
             <div id="renderDownload">
-              {{deviceDims}}
+              {{deviceDims}} ({{ratio.n}}/{{ratio.d}}):
               <a id="genImg" href="" download="{{spriteName}}">Download</a>
             </div>
             <div id="renderDocContainer">

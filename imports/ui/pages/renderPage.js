@@ -10,6 +10,7 @@ import { _ } from 'meteor/underscore';
 // Functions
 import { setDocHead } from '../../functions/client/setDocHead.js';
 import { scaleByIntToFit } from '../../functions/client/scaleByIntToFit.js';
+import { reduceFraction } from '../../functions/client/reduceFraction.js';
 
 // Collections
 import { EboyPix } from '../../api/eboypix/eboypix.js';
@@ -200,6 +201,15 @@ Template.renderPage.helpers({
   scale() {
     // return Session.get('addFactor');
     return Session.get('userFactor');
+  },
+  ratio() {
+    const w = Session.get('device').width;
+    const h = Session.get('device').height;
+    const ratio = reduceFraction(w, h);
+    return {
+      n: ratio.numerator,
+      d: ratio.denominator
+    };
   }
 });
 

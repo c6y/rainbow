@@ -1,0 +1,44 @@
+<template name="renderPage">
+  {{#if currentUser.profile.isEditor}}
+    <div class="renderBox">
+      <div id="renderSettings">
+        <select name="selectMake" id="selectMake">
+          <option selected disabled>Choose make</option>
+          {{#each makers}}
+            <option value="{{this}}">{{this}}</option>
+          {{/each}}
+        </select>
+        <select name="selectDevice" id="selectDevice">
+          <option selected disabled>Choose device</option>
+          {{#each devices}}
+            <option value="{{_id}}">{{name}}</option>
+          {{/each}}
+        </select>
+        {{#if deviceSelected}}
+          <a id="scaleDown">[ - </a>|<a id="scaleUp"> + ]</a> @{{scale}}x
+        {{/if}}
+      </div>
+      {{#if deviceSelected}}
+        {{#if Template.subscriptionsReady}}
+          {{#with spriteDoc}}
+            <div id="renderDownload">
+              {{deviceDims}} ({{ratio.n}}/{{ratio.d}}):
+              <a id="genImg" href="" download="{{spriteName}}">Download</a>
+            </div>
+            <div id="renderDocContainer">
+              <div id="canvasBox">
+                {{>canvas}}
+              </div>
+            </div>
+          {{/with}}
+        {{/if}}
+      {{/if}}
+    </div>
+  {{/if}}
+</template>
+
+<template name="canvas">
+  <div id="theCanvas">
+  <canvas id="myCanvas"></canvas>
+  </div>
+</template>

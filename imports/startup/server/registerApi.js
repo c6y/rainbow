@@ -16,3 +16,7 @@ import '/imports/api/users/methods.js';
 // Quicks collection
 import '/imports/api/quicks/server/publications.js';
 import '/imports/api/quicks/methods.js';
+
+// Devices collection
+import '/imports/api/devices/server/publications.js';
+import '/imports/api/devices/methods.js';

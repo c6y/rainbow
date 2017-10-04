@@ -1,0 +1,19 @@
+<template name="devicesPage">
+  <div class="container">
+    {{> searchBox}}
+    <div id="appheader">
+      <div id="appheader-left">
+        {{> logo}}
+      </div>
+    </div>
+    <div id="appbody">
+      {{> sideBox}}
+      <div id="mainBox">
+        {{#if currentUser.profile.isEditor}}
+          {{> devicesInput}}
+        {{/if}}
+        {{> devicesPool}}
+      </div>
+    </div>
+  </div>
+</template>

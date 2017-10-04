@@ -7,28 +7,32 @@ import { DocHead } from 'meteor/kadira:dochead';
 // Components
 // import '../components/colors/countColors.html';
 // import '../components/colors/countColors.js';
-import '../components/quicks/quicksInput.html';
-import '../components/quicks/quicksInput.js';
-import '../components/quicks/quicksPool.html';
-import '../components/quicks/quicksPool.js';
+// import '../components/quicks/quicksInput.html';
+// import '../components/quicks/quicksInput.js';
+// import '../components/quicks/quicksPool.html';
+// import '../components/quicks/quicksPool.js';
+import '../components/devices/devicesInput.html';
+import '../components/devices/devicesInput.js';
+import '../components/devices/devicesPool.html';
+import '../components/devices/devicesPool.js';
 import '../components/navigation/logo.js';
 import '../components/navigation/logo.html';
 import '../components/navigation/sideBox.js';
 import '../components/navigation/sideBox.html';
 
-import './quicksPage.html';
+import './devicesPage.html';
 
 // Template onCreated
-Template.quicksPage.onCreated(function() {
+Template.devicesPage.onCreated(function() {
   const self = this;
   self.autorun(function() {
     const title = FlowRouter.getRouteName();
     DocHead.setTitle(title + ' · eboy.io');
-    self.subscribe('quicks.public');
+    self.subscribe('devices.public');
   });
 });
 
-Template.quicksPage.helpers({
+Template.devicesPage.helpers({
   isAdminOrEditor() {
     if (Meteor.user()) {
       const isAdmin = Meteor.user().profile.isAdmin;

@@ -16,6 +16,8 @@ import '../../ui/pages/addDocPage.js';
 import '../../ui/pages/pixEditPage.js';
 import '../../ui/pages/dashboardPage.js';
 import '../../ui/pages/notFoundPage.js';
+import '../../ui/pages/renderPage.js';
+import '../../ui/pages/devicesPage.js';
 
 const slugHome = Meteor.settings.public.navigation.slugHome;
 
@@ -112,6 +114,26 @@ FlowRouter.route('/quicks', {
     GAnalytics.pageview();
     BlazeLayout.render('applayout', {
       main: 'quicksPage'
+    });
+  }
+});
+
+FlowRouter.route('/devices', {
+  name: 'devices',
+  action() {
+    GAnalytics.pageview();
+    BlazeLayout.render('applayout', {
+      main: 'devicesPage'
+    });
+  }
+});
+
+FlowRouter.route('/render/:_id', {
+  name: 'render',
+  action() {
+    GAnalytics.pageview();
+    BlazeLayout.render('applayout', {
+      main: 'renderPage'
     });
   }
 });

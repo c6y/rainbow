@@ -17,8 +17,10 @@ Template.pixInput.events({
     const target = event.target;
     // get as string
     const imgBatchURLs = target.batchchurls.value;
-    // Remove line breaks
-    const imgBatchURLsClean = imgBatchURLs.replace(/[\r\n]/g, ',');
+    // Replace all occurences of http with https
+    const imgBatchURLsHTTPS = imgBatchURLs.replace(/http:\/\//g, 'https://');
+    // Replace all line breaks with commata
+    const imgBatchURLsClean = imgBatchURLsHTTPS.replace(/[\r\n]/g, ',');
 
     // Create an array and populate with urls
     let urls = [];

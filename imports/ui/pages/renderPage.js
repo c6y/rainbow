@@ -102,7 +102,14 @@ Template.canvas.onRendered(function() {
     // change CORS policy on Amazon S3: <AllowedHeader>*</AllowedHeader>
     myImage.setAttribute('crossOrigin', 'anonymous');
 
-    myImage.src = thisDocument.url;
+    const imageURL = thisDocument.url;
+
+    /* add date to image URL, to fix Safari and Crome caching issue
+    (the image would be cached without the Access-Control-Allow-Origin header
+    if image was being loaded via img tag or or CSS) */
+    const imageUrlAndDate = imageURL + '?t=' + new Date().getTime();
+
+    myImage.src = imageUrlAndDate;
     myImage.onload = function() {
       canvas = document.getElementById('myCanvas');
       context = canvas.getContext('2d');

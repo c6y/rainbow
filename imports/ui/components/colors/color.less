@@ -1,10 +1,12 @@
 .colorSwatch {
   display: block;
   height: 100%;
+
   .colorInfos {
     .colorMainInfo {
       display: flex;
     }
+
     .deleteColor {
       display: inline-block;
       background: @color-2;
@@ -16,15 +18,18 @@
       z-index: 10;
       cursor: pointer;
     }
+
     .deleteColor:hover {
       color: @color-2;
       background-color: @color-5;
     }
+
     .colorName {
       display: inline-block;
       background-color: @color-2;
       padding: 0.5 * @cell-margin @cell-margin;
     }
+
     .colorMeta {
       padding: 0.5 * @cell-margin @cell-margin;
       font-family: @font-meta;
@@ -32,9 +37,11 @@
       line-height: @font-meta-lineheight;
       display: block;
       color: @color-1;
+
       .colorTags {
         padding: 0;
       }
+
       .hslValue {
         display: block;
         padding: 0;

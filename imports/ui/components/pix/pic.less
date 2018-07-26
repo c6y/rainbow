@@ -10,10 +10,12 @@
     z-index: 10;
     cursor: pointer;
   }
+
   .deletePic:hover {
     color: @color-2;
     background-color: @color-5;
   }
+
   .linkButton {
     position: absolute;
     background-color: @color-5;
@@ -26,6 +28,7 @@
     margin-left: -0.5 * @cell-margin;
     margin-top: 2 * @cell-margin;
     color: white;
+
     &:hover {
       background-color: @color-2;
       padding: @cell-margin;
@@ -34,12 +37,15 @@
       transform: translate(-@cell-margin, -@cell-margin) rotate(45deg);
       transition: padding 0.2s, transform 0.2s, box-shadow 0.2s, color 0.2s;
     }
+
     a {
       color: inherit;
     }
+
     i {
       vertical-align: middle;
     }
+
     user-select: none;
     cursor: pointer;
   }

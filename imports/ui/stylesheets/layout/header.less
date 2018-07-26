@@ -1,30 +1,37 @@
 @media only screen
-and (max-device-width: @breakpoint) {
+  and (max-device-width: @breakpoint) {
   #appheader {
     padding: @cell-margin;
     height: 0.5*@cell + 2*@cell-margin;
   }
+
   #appheader-left {
     min-width: 50%;
   }
+
   #appheader-right {
     min-width: 30%;
+
     #navPagingBox {
       right: @cell-margin;
     }
   }
 }
+
 @media only screen
-and (min-device-width: @breakpoint) {
+  and (min-device-width: @breakpoint) {
   #appheader {
     padding: 2 * @cell-margin;
     height: 0.5*@cell + 2*@cell-margin;
   }
+
   #appheader-left {
     min-width: @cell;
   }
+
   #appheader-right {
     min-width: @cell;
+
     #navPagingBox {
       width: @cell;
     }
@@ -42,11 +49,13 @@ and (min-device-width: @breakpoint) {
   display: flex;
   justify-content: space-between;
   position: relative;
+
   #appheader-left {
     // background-color: red;
     position: relative;
     padding: 0;
     margin: 0;
+
     #header-leftbottom {
       display: block;
       left: 0;
@@ -54,6 +63,7 @@ and (min-device-width: @breakpoint) {
       position: absolute;
     }
   }
+
   #appheader-right {
     padding: 0;
     margin: 0;
@@ -62,6 +72,7 @@ and (min-device-width: @breakpoint) {
     // position: absolute;
     top: 0;
     right: 0;
+
     #header-rightbottom {
       text-align: right;
       display: block;
@@ -69,10 +80,12 @@ and (min-device-width: @breakpoint) {
       bottom: 0;
       right: 0;
       white-space: nowrap;
+
       .searchSlug {
         text-transform: capitalize;
       }
     }
+
     #navPagingBox {
       // background-color: green;
       position: fixed;

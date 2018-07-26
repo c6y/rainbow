@@ -1,12 +1,12 @@
 @media only screen
-and (max-device-width: @breakpoint) {
+  and (max-device-width: @breakpoint) {
   #navlogo {
     font-size: @font-big-size-m;
   }
 }
 
 @media only screen
-and (min-device-width: @breakpoint) {
+  and (min-device-width: @breakpoint) {
   #navlogo {
     font-size: @font-big-size;
   }
@@ -23,44 +23,56 @@ and (min-device-width: @breakpoint) {
   padding: 0;
   margin: 0;
   color: @color-headerlink;
-  span, a {
+
+  span,
+  a {
     float: left;
-    padding: 0.0em 0.12em 0.0em 0.12em;
+    padding: 0 0.12em 0 0.12em;
   }
+
   a {
     text-decoration: none;
     color: @color-5;
+
     &:hover {
       background-color: @color-5;
       color: @color-headerback;
       transition: background-color 0.3s linear;
     }
+
     &:active {
       color: @color-5-fifty;
       background-color: @color-headerback;
       transition: background-color 0s linear;
     }
   }
+
   .togglePlusBox {
     font-family: 'Material Icons';
     padding: 0;
     margin: 0;
     background-color: @color-19-desat;
+
     a {
       padding: 0;
       margin: 0;
     }
+
     .inactive {
       color: @color-5;
     }
+
     .active {
       color: @color-5;
     }
-    .active, .inactive {
+
+    .active,
+    .inactive {
       &:hover {
         background-color: @color-5;
         color: @color-headerback;
       }
+
       &:active {
         color: @color-5-fifty;
         background-color: @color-headerback;

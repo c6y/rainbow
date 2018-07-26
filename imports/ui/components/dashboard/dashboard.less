@@ -1,6 +1,7 @@
 .dashboardBox {
   margin: @cell-margin;
   width: 100%;
+
   h4 {
     font-family: @font-regular;
     font-weight: @font-regular-weight;
@@ -10,7 +11,10 @@
     padding: 0;
   }
 }
-.usersList ul, .userInfo ul, .registerForm {
+
+.usersList ul,
+.userInfo ul,
+.registerForm {
   font-family: @font-meta;
   font-weight: @font-meta-weight;
   font-size: @font-meta-size;
@@ -18,27 +22,35 @@
   padding: 0 0 0 4 * @cell-margin;
   margin: 0;
 }
-.usersList ul, .userInfo ul {
+
+.usersList ul,
+.userInfo ul {
   li {
     list-style: none;
   }
 }
+
 .removeUser {
   color: @color-5;
   background-color: @color-4;
   padding: 0 0.5rem;
   cursor: pointer;
 }
-.isUser, .isEditor, .isAdmin {
+
+.isUser,
+.isEditor,
+.isAdmin {
   cursor: pointer;
   user-select: none;
   background-color: @color-4;
   padding: 0 0.5rem;
 }
+
 .isOff {
   text-decoration: line-through;
   color: @color-5;
 }
+
 .adminNote {
   font-size: @font-meta-size;
   color: @color-3;

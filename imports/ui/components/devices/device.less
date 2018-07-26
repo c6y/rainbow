@@ -1,10 +1,12 @@
 .deviceBox {
   display: block;
   height: 100%;
+
   .deviceInfos {
     .deviceMainInfo {
       display: flex;
     }
+
     .deviceDelete {
       display: inline-block;
       background-color: @color-4;
@@ -15,11 +17,13 @@
       padding-left: @cell-margin;
       z-index: 10;
       cursor: pointer;
+
       &:hover {
         color: @color-2;
         background-color: @color-5;
       }
     }
+
     .deviceName {
       display: inline-block;
       background-color: @color-4;
@@ -30,6 +34,7 @@
       text-decoration: none;
       color: inherit;
     }
+
     .deviceMeta {
       color: @color-3;
       padding: 0.5 * @cell-margin @cell-margin;

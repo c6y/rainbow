@@ -2,18 +2,20 @@
 @import './picPinned.less';
 
 @media only screen
-and (max-device-width: @breakpoint) {
+  and (max-device-width: @breakpoint) {
   #pixPoolBox {
     width: 100%;
     box-sizing: border-box;
+
     .pixPoolItem {
       width: 100%;
       max-height: 2*@cell;
     }
   }
 }
+
 @media only screen
-and (min-device-width: @breakpoint) {
+  and (min-device-width: @breakpoint) {
   #pixPoolBox {
     .pixPoolItem {
       width: @cell;
@@ -27,6 +29,7 @@ and (min-device-width: @breakpoint) {
   display: flex;
   flex-wrap: wrap;
   padding: 0.5 * @cell-margin;
+
   .pixPoolItem {
     // border-radius: 2px;
     margin: 0.5 * @cell-margin;

@@ -1,10 +1,14 @@
 @media only screen
-and (max-device-width: @breakpoint) {
+  and (max-device-width: @breakpoint) {
   #sideBox {
     order: 2;
     min-width: @cell;
-    #quicks, .shoplink li {
-      a, span, .social {
+
+    .shoplink li,
+    #quicks {
+      a,
+      span,
+      .social {
         padding: @cell-margin;
         text-align: left;
       }
@@ -13,20 +17,25 @@ and (max-device-width: @breakpoint) {
 }
 
 @media only screen
-and (min-device-width: @breakpoint) {
+  and (min-device-width: @breakpoint) {
   .sideHide {
     margin-left: -@cell - @cell-margin;
     transition: 0.05s;
   }
+
   .sideShow {
     transition: 0.05s;
   }
+
   #sideBox {
     order: 0;
     min-width: @cell + @cell-margin;
     max-width: @cell + @cell-margin;
-    #quicks, .shoplink {
-      a, span {
+
+    .shoplink,
+    #quicks {
+      a,
+      span {
         padding: @cell-margin;
       }
     }
@@ -41,78 +50,101 @@ and (min-device-width: @breakpoint) {
   font-weight: @font-sidebig-weight;
   line-height: @font-sidebig-lineheight;
   overflow: hidden;
+
   .sideBoxMain {
     z-index: 40;
-    position:relative;
+    position: relative;
     background-color: @color-0;
   }
-  .navicons, .fineprint li {
+
+  .navicons,
+  .fineprint li {
     padding-left: @cell-margin;
   }
+
   ul {
     padding: 0;
     margin: 0;
     display: block;
   }
+
   #quicks {
     margin-top: @cell-margin;
     margin-bottom: @cell-margin;
   }
-  #quicks li, .shoplink li {
+
+  .shoplink li,
+  #quicks li {
     list-style: none;
     width: 100%;
+
     .toggleEditorLinks {
       cursor: pointer;
     }
+
     span {
       background-color: @color-9;
       color: @color-1;
       user-select: none;
       cursor: default;
     }
-    a, span {
+
+    a,
+    span {
       display: block;
       text-decoration: none;
     }
-    a, .toggleEditorLinks {
+
+    a,
+    .toggleEditorLinks {
       color: @color-5;
       background-color: @color-0;
     }
-    a:hover, .toggleEditorLinks:hover {
+
+    a:hover,
+    .toggleEditorLinks:hover {
       background-color: #f5f5f5;
       color: @color-5;
     }
   }
+
   .navicons {
     color: @color-5-ninety;
     padding: @cell-margin;
     user-select: none;
+
     .iconActive {
       color: @color-1;
     }
+
     .material-icons {
       font-size: 1.5rem;
     }
+
     li {
       display: inline-block;
       list-style: none;
+
       &:hover {
         color: @color-1;
         cursor: pointer;
       }
+
       a {
         text-decoration: none;
         color: inherit;
       }
     }
   }
-  .showInfoOff, .showSettingsOff {
+
+  .showInfoOff,
+  .showSettingsOff {
     display: none;
   }
+
   .fineprint {
     width: @cell - @cell-margin;
     box-sizing: border-box;
-    // transition: margin-top 0.3s;
     font-family: @font-sidesmall;
     font-size: @font-sidesmall-size;
     font-weight: @font-sidesmall-weight;
@@ -120,17 +152,21 @@ and (min-device-width: @breakpoint) {
     padding: @cell-margin;
     background-color: @color-9;
     color: @color-5;
+
     li {
       list-style: none;
     }
+
     a {
       text-decoration: none;
       color: inherit;
+
       &:hover {
         color: @color-1;
       }
     }
   }
+
   hr {
     border: 0;
     padding: 0;

@@ -1,10 +1,12 @@
 .quickBox {
   display: block;
   height: 100%;
+
   .quickInfos {
     .quickMainInfo {
       display: flex;
     }
+
     .quickDelete {
       display: inline-block;
       background-color: @color-4;
@@ -15,11 +17,13 @@
       padding-left: @cell-margin;
       z-index: 10;
       cursor: pointer;
+
       &:hover {
         color: @color-2;
         background-color: @color-5;
       }
     }
+
     .quickName {
       display: inline-block;
       background-color: @color-4;
@@ -30,6 +34,7 @@
       text-decoration: none;
       color: inherit;
     }
+
     .quickMeta {
       color: @color-3;
       padding: 0.5 * @cell-margin @cell-margin;

@@ -1,22 +1,25 @@
 .spriteBox {
   text-align: center;
+
   figure {
-    line-height: 100vH;
+    line-height: 100vh;
     margin: 0;
     padding: 0;
+
     .jpgSprite {
       box-shadow: @boxshadow-1;
       border: 0.5rem #f7f6f2 solid;
-      image-rendering:auto;
+      image-rendering: auto;
     }
+
     img {
       cursor: pointer;
       vertical-align: middle;
       image-rendering: -moz-crisp-edges;
       image-rendering: -o-crisp-edges;
       image-rendering: -webkit-optimize-contrast;
-      -ms-interpolation-mode: nearest-neighbor;
       image-rendering: pixelated;
+      -ms-interpolation-mode: nearest-neighbor;
       object-fit: cover; // prevents the image to compress if window is too small
     }
   }

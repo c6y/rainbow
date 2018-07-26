@@ -10,6 +10,7 @@
   z-index: 15;
   width: 100%;
 }
+
 .copyright {
   cursor: pointer;
   position: fixed;
@@ -21,28 +22,30 @@
   user-select: none;
   font-family: @font-big;
   padding: 0.5em 0.5em 0.5em 0.4em;
-  color: @color-headerlink;
   transform: rotate(15deg);
   animation: myrotate 0.5s 1;
   animation-timing-function: ease;
+
   @keyframes myrotate {
     from {
       transform: rotate(0deg);
     }
+
     to {
       transform: rotate(15deg);
     }
   }
 
-
   color: @color-5;
   background-color: @color-0;
   // opacity: 0.9;
+
   &:hover {
     // opacity: 1;
     color: @color-0;
     background-color: @color-5;
   }
+
   &:active {
     color: @color-5;
     background-color: @color-0;

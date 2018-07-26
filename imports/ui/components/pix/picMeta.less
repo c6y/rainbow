@@ -8,25 +8,29 @@
   font-weight: @font-meta-weight;
   font-size: @font-meta-size;
   line-height: @font-meta-lineheight;
+
   ul {
     padding: 0;
     margin: 0;
   }
+
   li {
     list-style: none;
     display: inline-block;
     background-color: @color-headerlink;
-    display: inline-block;
     padding: 0 0.25em;
     margin: 0;
   }
+
   .property {
     color: @color-6;
   }
-  .tag:after {
+
+  .tag::after {
     content: ',';
   }
-  .tag:last-of-type:after {
+
+  .tag:last-of-type::after {
     content: '';
   }
 }

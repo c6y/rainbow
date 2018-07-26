@@ -1,13 +1,14 @@
 @media only screen
-and (max-device-width: @breakpoint) {
+  and (max-device-width: @breakpoint) {
   #searchBox {
     input {
       width: 100%;
     }
   }
 }
+
 @media only screen
-and (min-device-width: @breakpoint) {
+  and (min-device-width: @breakpoint) {
   #searchBox {
     input {
       width: @cell - 2*@cell-margin;
@@ -19,14 +20,16 @@ and (min-device-width: @breakpoint) {
   box-sizing: border-box;
   height: 3rem;
   background-color: @color-5;
+
   form {
-    padding: 0;
     display: flex;
     justify-content: flex-end;
     padding: 0.5 * @cell-margin;
     font-family: @font-meta;
     font-size: @font-meta-size;
-    #pixCount, #pageCount {
+
+    #pixCount,
+    #pageCount {
       display: flex;
       justify-content: center;
       flex-direction: column;
@@ -38,6 +41,7 @@ and (min-device-width: @breakpoint) {
       font-size: 1.2rem;
       background-color: rgba(220, 255, 220, 0.2);
     }
+
     select {
       font-family: inherit;
       font-size: inherit;
@@ -49,10 +53,12 @@ and (min-device-width: @breakpoint) {
       border: 0.5*@cell-margin solid @color-5;
       overflow: hidden;
       border-radius: 0;
+
       option {
         font-family: inherit;
       }
     }
+
     input {
       border: 0.5 * @cell-margin solid @color-5;
       font-family: inherit;
@@ -62,10 +68,12 @@ and (min-device-width: @breakpoint) {
       text-align: right;
       background-color: white;
     }
+
     ::-webkit-input-placeholder {
       color: @color-5;
       text-align: right;
     }
+
     button {
       border-color: @color-5;
     }
@@ -76,6 +84,7 @@ and (min-device-width: @breakpoint) {
   margin-top: -3rem;
   transition: 0.05s;
 }
+
 .searchShow {
   position: relative;
   transition: 0.05s;

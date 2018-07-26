@@ -1,8 +1,9 @@
 /**
- * returns the file type from the URL
- * @param {string} url The url.
- * @return {string} The decoded project name.
+ * returns the file type from a string, usually a URL or a file name
+ * @param {string} string The string.
+ * @return {string} The file extension.
  */
-export function getFileType(url) {
-  return url.substr(url.lastIndexOf('.') + 1);
+export function getFileType(string) {
+  // return string.substr(string.lastIndexOf('.') + 1);
+  return string.split('.').pop();
 }

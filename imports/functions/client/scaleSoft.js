@@ -1,26 +1,32 @@
+// Import functions
+import { improveAreaFactor } from './improveAreaFactor.js';
+
 /**
-  * returns the scaled image dimensions
+  * returns scaled image dimensions that fit into a bounding box
+  * takes into account the device pixel ratio
   * @param {number} oWidth The original image width.
-  * @param {number} oHeight The original image width.
-  * @param {number} maxWidth The original image width.
-  * @param {number} maxHeight The original image width.
+  * @param {number} oHeight The original image height.
+  * @param {number} maxWidth The bounding box width.
+  * @param {number} maxHeight The bounding box height.
   * @return {number} width A scaled width value
   * @return {number} height A scaled height value
   */
 export function scaleSoft(oWidth, oHeight, maxWidth, maxHeight) {
-  const wImg = oWidth;
-  const hImg = oHeight;
-  const wMax = maxWidth;
-  const hMax = maxHeight;
+  // calculate the ratio based on the device's pixel ratio
+  const ratio = window.devicePixelRatio;
 
-  const wFactor = wMax / wImg;
-  const hFactor = hMax / hImg;
+  // based on the ratio (resolution), calculate the raw dimensions (floats)
+  const wImg = oWidth / ratio;
+  const hImg = oHeight / ratio;
 
+  // Calculate the factors, both for width and height
+  const wFactor = maxWidth / wImg;
+  const hFactor = maxHeight / hImg;
+
+  // take the smaller value of the factors above
   let factor = Math.min(wFactor, hFactor);
 
-  // limit upscaling to 1x, be aware of devicePixelRatio
-  const deviceRatio = window.devicePixelRatio;
-  factor = Math.min(factor, 1 / deviceRatio);
+  factor = improveAreaFactor(factor, wImg, hImg, maxWidth, maxHeight);
 
   const wTarget = wImg * factor;
   const hTarget = hImg * factor;

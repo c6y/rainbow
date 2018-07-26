@@ -2,12 +2,13 @@
 import { improveAreaFactor } from './improveAreaFactor.js';
 
 /**
-  * returns the scaled image dimensions that preserve pixel integrity
+  * returns the scaled image dimensions that fit into a bounding box
+  * preserves the pixel integrity by scaling by integers only
   * takes into account the device pixel ratio
   * @param {number} oWidth The original image width.
-  * @param {number} oHeight The original image width.
-  * @param {number} maxWidth The original image width.
-  * @param {number} maxHeight The original image width.
+  * @param {number} oHeight The original image height.
+  * @param {number} maxWidth The bounding box width.
+  * @param {number} maxHeight The bounding box height.
   * @param {number} myRatio Pixel ratio.
   * @return {number} width A scaled width value
   * @return {number} height A scaled height value

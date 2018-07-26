@@ -10,7 +10,9 @@ import './picSprite.html';
 
 // Import functions
 import { scaleByIntToFit } from '../../../functions/client/scaleByIntToFit.js';
+import { scaleSoftDown } from '../../../functions/client/scaleSoftDown.js';
 import { scaleSoft } from '../../../functions/client/scaleSoft.js';
+import { getFileType } from '../../../functions/both/getFileType.js';
 
 // Template helpers
 Template.picSprite.helpers({
@@ -71,23 +73,36 @@ Template.picSprite.helpers({
     let boxW = thumbDim;
     let boxH = thumbDim;
 
-    // const fileType = getFileType(this.name);
-    // console.log('fileType: ' + fileType);
+    const fileType = getFileType(this.name);
+    const antiAlias = this.antiAlias;
+    const fullFrame = this.fullFrame;
 
-    const antiAlias = this.antiAlias === true;
+    const padding = Meteor.settings.public.dimensions.rem;
 
     let scaledDims;
-    if (antiAlias) {
+
+    // Scale differently, depending on file type
+    // SVGs will scale up and down softly
+    // documents where 'antiAlias' is true will scale down softly
+    // all other documents will be scaled by integer
+    if (fileType === 'svg') {
+      // Add padding if not fullFrame
+      if (!fullFrame) {
+        // Set padding to 1 rem
+        boxW -= padding;
+        boxH -= padding;
+      }
       scaledDims = scaleSoft(oWidth, oHeight, boxW, boxH);
+    } else if (antiAlias) {
+      scaledDims = scaleSoftDown(oWidth, oHeight, boxW, boxH);
       // scaledDims = scaleByIntToFit(oWidth, oHeight, boxW, boxH);
     } else {
       // Set padding to 1 rem
-      const padding = Meteor.settings.public.dimensions.rem;
       boxW -= padding;
       boxH -= padding;
       scaledDims = scaleByIntToFit(oWidth, oHeight, boxW, boxH);
-      // scaledDims = scaleByIntToFit(oWidth, oHeight, boxW, boxH, this.name);
     }
+
     return {
       width: scaledDims.width,
       height: scaledDims.height

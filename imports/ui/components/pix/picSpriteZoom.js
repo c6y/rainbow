@@ -12,9 +12,9 @@ import './picSpriteZoom.html';
 
 // Import functions
 import { scaleByIntToFit } from '../../../functions/client/scaleByIntToFit.js';
+import { scaleSoftDown } from '../../../functions/client/scaleSoftDown.js';
 import { scaleSoft } from '../../../functions/client/scaleSoft.js';
 import { getFileType } from '../../../functions/both/getFileType.js';
-
 // Template rendered/destroyed
 // style hack fills hidden part of window with background color
 Template.picSpriteZoom.rendered = function() {
@@ -69,23 +69,22 @@ Template.picSpriteZoom.helpers({
     let boxW = wWidth - rem * 2;
     let boxH = wHeight - rem * 2;
 
-    // const fileType = getFileType(this.name);
-    // console.log('fileType: ' + fileType);
-
-    const antiAlias = this.antiAlias === true;
-
+    const fileType = getFileType(this.name);
+    const antiAlias = this.antiAlias;
     let scaledDims;
-    if (antiAlias) {
+
+    // Scale differently, depending on file type
+    // SVGs will scale up and down softly
+    // documents where 'antiAlias' is true will scale down softly
+    // all other documents will be scaled by integer
+    if (fileType === 'svg') {
       scaledDims = scaleSoft(oWidth, oHeight, boxW, boxH);
-      // scaledDims = scaleByIntToFit(oWidth, oHeight, boxW, boxH);
+    } else if (antiAlias) {
+      scaledDims = scaleSoftDown(oWidth, oHeight, boxW, boxH);
     } else {
-      // Set padding to 1 rem
-      const padding = Meteor.settings.public.dimensions.rem;
-      boxW -= padding;
-      boxH -= padding;
       scaledDims = scaleByIntToFit(oWidth, oHeight, boxW, boxH);
-      // scaledDims = scaleByIntToFit(oWidth, oHeight, boxW, boxH, this.name);
     }
+
     return {
       width: scaledDims.width,
       height: scaledDims.height

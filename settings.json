@@ -30,7 +30,7 @@
     "navigation": {
       "pixPerPage" : 24,
       "slugHome": "everything",
-      "extrasOnLanding": true
+      "extrasOnLanding": false
     },
     "ownership": {
       "sitename": "db.eboy.com",

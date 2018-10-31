@@ -1,7 +1,11 @@
-@media only screen
+@media only screen //mobile
   and (max-device-width: @breakpoint) {
+  .sideHide {
+    display: none;
+  }
+
   #sideBox {
-    order: 2;
+    // order: 1;
     min-width: @cell;
 
     .shoplink li,
@@ -16,7 +20,7 @@
   }
 }
 
-@media only screen
+@media only screen // desktop
   and (min-device-width: @breakpoint) {
   .sideHide {
     margin-left: -@cell - @cell-margin;

@@ -24,6 +24,8 @@ import '../components/navigation/sideBox.js';
 import '../components/navigation/sideBox.html';
 import '../components/navigation/searchBox.js';
 import '../components/navigation/searchBox.html';
+import '../components/navigation/jumpToTop.js';
+import '../components/navigation/jumpToTop.html';
 // import '../components/dashboard/user.js';
 // import '../components/dashboard/user.html';
 

@@ -1,0 +1,17 @@
+#jumpToTop {
+  color: @color-19;
+  background-color: @color-footerback;
+  width: 100%;
+  text-align: center;
+  font-size: 3rem;
+  line-height: 4rem;
+  padding-top: 0.5 * @cell-margin;
+  padding-bottom: 0.5 * @cell-margin;
+}
+
+@media only screen //mobile
+  and (min-device-width: @breakpoint) {
+  #jumpToTop {
+    display: none;
+  }
+}

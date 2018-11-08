@@ -3,6 +3,18 @@
     <div class="sideBoxMain">
       {{> quickLinks}}
       <hr>
+      <ul id="quicks">
+        <li class="toptextlink">
+          <a href="https://shop.eboy.com/" target="_blank" class="mdi-shop"> shop</a>
+        </li>
+        <li class="toptextlink">
+          <a href="https://twitter.com/eboyarts/" target="_blank" class="mdi-twitter"> twitter</a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/eboyarts/" target="_blank" class="mdi-instagram"> instagram</a>
+        </li>
+      </ul>
+      <hr>
       <ul class="navicons">
         <li>
           {{!-- <i class="material-icons {{#if showInfoBox}}active{{/if}}" id="info">info</i> --}}
@@ -19,11 +31,6 @@
             </a>
           </li>
         {{/if}}
-        <li>
-          <a href="http://shop.eboy.com/" target="_blank">
-            <i class="material-icons" id="shopping">shopping_cart</i>
-          </a>
-        </li>
       </ul>
     </div>
     <ul class="fineprint {{showInfo}}">

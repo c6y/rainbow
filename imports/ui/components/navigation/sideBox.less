@@ -7,9 +7,13 @@
   #sideBox {
     // order: 1;
     min-width: @cell;
+    padding: @cell-margin 0;
+
 
     .shoplink li,
     #quicks {
+      padding: @cell-margin;
+
       a,
       span,
       .social {
@@ -35,9 +39,12 @@
     order: 0;
     min-width: @cell + @cell-margin;
     max-width: @cell + @cell-margin;
+    padding: @cell-margin;
 
     .shoplink,
     #quicks {
+      padding: @cell-margin 0 @cell-margin @cell-margin;
+
       a,
       span {
         padding: @cell-margin;
@@ -48,7 +55,6 @@
 
 #sideBox {
   box-sizing: border-box;
-  padding: @cell-margin;
   font-family: @font-sidebig;
   font-size: @font-sidebig-size;
   font-weight: @font-sidebig-weight;
@@ -73,8 +79,9 @@
   }
 
   #quicks {
-    margin-top: @cell-margin;
-    margin-bottom: @cell-margin;
+    // margin-top: @cell-margin;
+    // margin-bottom: @cell-margin;
+    // padding: @cell-margin;
   }
 
   .shoplink li,
@@ -114,7 +121,7 @@
 
   .navicons {
     color: @color-5-ninety;
-    padding: @cell-margin;
+    padding: @cell-margin @cell-margin @cell-margin @cell-margin * 2;
     user-select: none;
 
     .iconActive {
@@ -172,10 +179,8 @@
   }
 
   hr {
-    border: 0;
-    padding: 0;
-    margin: 2 * @cell-margin 0 2 * @cell-margin 0;
-    height: 1px;
-    background-image: linear-gradient(to right, @color-5-fifty, @color-0);
+    border: none;
+    border-top: 1px dashed @color-5;
+    margin: @cell-margin;
   }
 }

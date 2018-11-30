@@ -8,19 +8,6 @@
     // order: 1;
     min-width: @cell;
     padding: @cell-margin 0;
-
-
-    .shoplink li,
-    #quicks {
-      padding: @cell-margin;
-
-      a,
-      span,
-      .social {
-        padding: @cell-margin;
-        text-align: left;
-      }
-    }
   }
 }
 
@@ -40,16 +27,6 @@
     min-width: @cell + @cell-margin;
     max-width: @cell + @cell-margin;
     padding: @cell-margin;
-
-    .shoplink,
-    #quicks {
-      padding: @cell-margin 0 @cell-margin @cell-margin;
-
-      a,
-      span {
-        padding: @cell-margin;
-      }
-    }
   }
 }
 
@@ -79,9 +56,13 @@
   }
 
   #quicks {
-    // margin-top: @cell-margin;
-    // margin-bottom: @cell-margin;
-    // padding: @cell-margin;
+    padding: @cell-margin;
+
+    a,
+    span,
+    .social {
+      padding: @cell-margin 0 @cell-margin @cell-margin;
+    }
   }
 
   .shoplink li,

@@ -1,6 +1,6 @@
 <template name="logo">
   <span id="navlogo">
-    <span class="togglePlusBox" >
+    <span id="togglePlusBox" >
       {{#if isActive}}
         <a class="active material-icons" href="">unfold_less</a>
       {{else}}
@@ -8,9 +8,9 @@
       {{/if}}
     </span>
     {{#if toHomePath}}
-      <a href="{{toHomePath}}">{{logotext}}</a>
+      <a id="logotype" href="{{toHomePath}}">{{logotext}}</a>
     {{else}}
-      <span>{{logotext}}</span>
+      <span id="logotype">{{logotext}}</span>
     {{/if}}
   </span>
 </template>

@@ -29,7 +29,7 @@ Template.logo.helpers({
 });
 
 Template.logo.events({
-  'click .togglePlusBox'() {
+  'click #togglePlusBox'() {
     const oldPlusBoxShow = Session.get('plusBox');
     const newPlusBoxShow = oldPlusBoxShow === false;
     Session.set('plusBox', newPlusBoxShow);

@@ -1,14 +1,26 @@
+// mobile
 @media only screen
   and (max-device-width: @breakpoint) {
-  #navlogo {
-    font-size: @font-big-size-m;
+  #appheader {
+    font-size: @font-controls-size-m;
+
+    #logotype {
+      font-size: @font-logo-size-m;
+      line-height: @font-logo-lineheight-m;
+    }
   }
 }
 
+// desktop
 @media only screen
   and (min-device-width: @breakpoint) {
-  #navlogo {
-    font-size: @font-logo-size;
+  #appheader {
+    font-size: @font-controls-size;
+
+    #logotype {
+      font-size: @font-logo-size;
+      line-height: @font-logo-lineheight;
+    }
   }
 }
 
@@ -17,7 +29,6 @@
   font-family: @font-logo;
   font-style: @font-logo-style;
   font-weight: @font-logo-weight;
-  line-height: @font-logo-lineheight;
   letter-spacing: @font-logo-spacing;
   text-transform: uppercase;
   user-select: none;
@@ -36,12 +47,6 @@
     text-decoration: none;
     color: @color-5;
 
-    // &:hover {
-    //   background-color: @color-5;
-    //   color: @color-headerback;
-    //   transition: background-color 0.3s linear;
-    // }
-
     &:active {
       color: @color-5-fifty;
       background-color: @color-headerback;
@@ -49,11 +54,15 @@
     }
   }
 
-  .togglePlusBox {
+  #togglePlusBox {
     font-family: 'Material Icons';
     padding: 0;
     margin: 0;
     background-color: @color-19-desat;
+
+    #logotype {
+      font-style: @font-logo-style;
+    }
 
     a {
       padding: 0;

@@ -11,3 +11,9 @@ Rainbow is a rewrite of eboydb. Image files are not stored in the database anymo
 - Pinned Post: add "pinned" to projects and post will be featured on home (one post only)
 - Game Frame: adding "gfsub" to projects will publish to GF subscription
 - Editor: click on the backColor label and get a new random color
+
+## Installing the app
+– Install Meteor release 1.7.0.3
+`$ curl "https://install.meteor.com/?release=1.7.0.3" | sh`
+— Clone repository
+- 

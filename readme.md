@@ -12,8 +12,20 @@ Rainbow is a rewrite of eboydb. Image files are not stored in the database anymo
 - Game Frame: adding "gfsub" to projects will publish to GF subscription
 - Editor: click on the backColor label and get a new random color
 
-## Installing the app
-– Install Meteor release 1.7.0.3
+## Installing the app on your machine
+
+Install Meteor (the current app is running on release 1.7.0.3)
+
 `$ curl "https://install.meteor.com/?release=1.7.0.3" | sh`
-— Clone repository
-- 
+
+Then clone this repository to a directory on your machine:
+
+`$ git clone https://github.com/c6y/rainbow.git`
+
+From within the new app directory, pull in all the node modules required:
+
+`meteor npm i`
+
+Start Meteor, and don't forget to include the settings:
+
+`$ meteor --settings settings.json`

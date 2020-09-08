@@ -14,9 +14,9 @@ Rainbow is a rewrite of eboydb. Image files are not stored in the database anymo
 
 ## Installing the app on your machine
 
-Install Meteor (the current app is running on release 1.7.0.3)
+Install Meteor (the current app is running on release 1.11)
 
-`$ curl "https://install.meteor.com/?release=1.7.0.3" | sh`
+`$ curl "https://install.meteor.com/?release=1.11" | sh`
 
 Then clone this repository to a directory on your machine:
 

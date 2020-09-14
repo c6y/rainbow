@@ -52,6 +52,14 @@ Template.spriteBoxPage.helpers({
     }
     const shortDate = date.toISOString().substring(0, 4);
     return shortDate;
+  },
+  isAdminOrEditor() {
+    if (Meteor.user()) {
+      const isAdmin = Meteor.user().profile.isAdmin;
+      const isEditor = Meteor.user().profile.isEditor;
+      return isAdmin || isEditor;
+    }
+    return false;
   }
 });
 

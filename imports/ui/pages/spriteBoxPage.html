@@ -1,6 +1,11 @@
 <template name="spriteBoxPage">
   {{#if Template.subscriptionsReady}}
     {{#with spriteDoc}}
+    {{#if isAdminOrEditor}}
+      <div class="render">
+        <a class="material-icons" href="/render/{{_id}}">camera</a>
+      </div>
+    {{/if}}
     <div class="copyright">
       &copy;{{copyright}}
     </div>

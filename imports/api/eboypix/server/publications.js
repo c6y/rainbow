@@ -86,10 +86,25 @@ Meteor.publish('pix.accesscounts.public', function() {
   );
 });
 
+// Publish all urls and tags as JSON
+Meteor.publish('pix.urls.public', function pixUrlsPublic() {
+  const selector = { access: 0 }; // find all pix that are public
+  const options = {
+    fields: {
+      url: 1,
+      tags: 1,
+    },
+  };
+  return EboyPix.find(selector, options);
+// Set server route for simple:rest package
+//
+}, {
+  url: 'json',
+});
+
 // Publish all project urls for subscriptions
 Meteor.publish('pix.urls.public', function pixUrlsPublic(project) {
-  const selector = { projects: project }; // find all pix
-  // const selector = { projects: 'gfsub' }; // find all pix
+  const selector = { projects: project }; // find all pix from a project
   const options = {
     fields: {
       url: 1,

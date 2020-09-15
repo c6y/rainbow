@@ -60,7 +60,7 @@ Template.spriteBoxPage.helpers({
       return isAdmin || isEditor;
     }
     return false;
-  }
+  },
 });
 
 Template.spriteBoxPage.events({
@@ -69,5 +69,5 @@ Template.spriteBoxPage.events({
     const oldShowingMeta = Template.instance().metaShow.get();
     const newShowingMeta = oldShowingMeta === false;
     Template.instance().metaShow.set(newShowingMeta);
-  }
+  },
 });

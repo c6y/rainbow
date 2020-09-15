@@ -1,12 +1,18 @@
 {
   "extends": "eslint-config-google",
   "rules": {
-    "object-curly-spacing": [2, "always"]
+    "object-curly-spacing": [2, "always"],
+    "no-invalid-this": 0
   },
   "globals": {
     "Image": false,
   },
     "env": {
       "browser": true,
-  }
+      "es6": true,
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+    }
 }

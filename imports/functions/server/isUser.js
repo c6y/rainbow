@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 
 /**
- * checks if user is Admin or Editor
+ * checks if user is access Admin or Editor
  * @return {boolean} true or false
  */
 export function isAdminOrEditor() {
@@ -15,13 +15,27 @@ export function isAdminOrEditor() {
 }
 
 /**
- * checks if user is Admin
+ * checks if user access is Admin
  * @return {boolean} true or false
  */
 export function isAdmin() {
   const isAdmin = Meteor.user().profile.isAdmin;
   // if user is not an Admin
   if (!isAdmin) {
+    throw new Meteor.Error('not-authorized');
+  }
+  return true;
+}
+
+/**
+ * checks if user access is User
+ * @return {boolean} true or false
+ */
+export function isUser() {
+  const isUser = Meteor.user().profile.isUser;
+
+  // if user acces is not Limited throw an error
+  if (!isUser) {
     throw new Meteor.Error('not-authorized');
   }
   return true;

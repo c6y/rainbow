@@ -1,20 +1,20 @@
 <template name="spriteBoxPage">
   {{#if Template.subscriptionsReady}}
     {{#with spriteDoc}}
-    {{#if isAdminOrEditor}}
-      <div class="render">
-        <a class="material-icons" href="/render/{{_id}}">camera</a>
-      </div>
-    {{/if}}
-    <div class="copyright">
-      &copy;{{copyright}}
-    </div>
-    <div class="spriteBox">
-      {{> picSpriteZoom}}
-      {{#if isVisible}}
-        <div class="picMetaBox">{{> picMeta}}</div>
+      {{#if currentUser.profile.isUser}}
+        <div class="render">
+          <a class="material-icons" href="/render/{{_id}}">camera</a>
+        </div>
       {{/if}}
-    </div>
+      <div class="copyright">
+        &copy;{{copyright}}
+      </div>
+      <div class="spriteBox">
+        {{> picSpriteZoom}}
+        {{#if isVisible}}
+          <div class="picMetaBox">{{> picMeta}}</div>
+        {{/if}}
+      </div>
     {{/with}}
   {{/if}}
 </template>

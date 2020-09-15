@@ -12,5 +12,5 @@ import './color.js';
 Template.colorsPool.helpers({
   colors() {
     return Colors.find({}, { sort: { hue: -1 } });
-  }
+  },
 });

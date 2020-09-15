@@ -11,12 +11,12 @@ Template.color.helpers({
       return isAdmin || isEditor;
     }
     return false;
-  }
+  },
 });
 
 // Template events
 Template.color.events({
   'click .deleteColor'() {
     Meteor.call('color.delete', this._id);
-  }
+  },
 });

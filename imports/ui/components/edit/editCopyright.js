@@ -8,7 +8,7 @@ Template.editCopyright.helpers({
     // Set initial width of input field based on length of string
     const lengthStr = Math.max(this.copyright.length, 2);
     return lengthStr;
-  }
+  },
 });
 
 Template.editCopyright.events({
@@ -32,5 +32,5 @@ Template.editCopyright.events({
     } else if (event.keyCode === 27) { // escape restorescopyright
       event.target.blur();
     }
-  }
+  },
 });

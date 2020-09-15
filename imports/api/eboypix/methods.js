@@ -34,18 +34,18 @@ Meteor.methods({
         antiAlias = true;
       }
       // Get all available colors by name
-      let colorNamesArray = [];
+      const colorNamesArray = [];
       const colorlist = Colors.find(
-        {},
-        { name: 1, _id: 0 },
-        { sort: { createdAt: -1 } }
+          {},
+          { name: 1, _id: 0 },
+          { sort: { createdAt: -1 } },
       );
       colorlist.forEach(function(u) {
         colorNamesArray.push(u.name);
       });
       // Get random index of color array
       const randomColorIndex = Math.floor(
-        Random.fraction() * colorNamesArray.length
+          Random.fraction() * colorNamesArray.length,
       );
       // Get random color name with random index
       const colorName = colorNamesArray[randomColorIndex];
@@ -75,8 +75,8 @@ Meteor.methods({
         madeDate: picMadeDate,
         uploadedBy: {
           id: thisUserId,
-          username: thisUserName
-        }
+          username: thisUserName,
+        },
       });
       console.log(url + ': inserted to EboyPix');
     }
@@ -96,8 +96,8 @@ Meteor.methods({
   'eboypix.updateLicense'(taskId, newLicense) {
     if (isAdminOrEditor()) {
       EboyPix.update(
-        taskId,
-        { $set: { license: newLicense } }
+          taskId,
+          { $set: { license: newLicense } },
       );
       console.log(taskId + ': license updated: "' + newLicense + '"');
     }
@@ -105,8 +105,8 @@ Meteor.methods({
   'eboypix.updateCopyright'(taskId, newCopyright) {
     if (isAdminOrEditor()) {
       EboyPix.update(
-        taskId,
-        { $set: { copyright: newCopyright } }
+          taskId,
+          { $set: { copyright: newCopyright } },
       );
       console.log(taskId + ': copyright updated: "' + newCopyright + '"');
     }
@@ -114,8 +114,8 @@ Meteor.methods({
   'eboypix.updateBackColor'(taskId, newBackColor) {
     if (isAdminOrEditor()) {
       EboyPix.update(
-        taskId,
-        { $set: { backgroundColor: newBackColor } }
+          taskId,
+          { $set: { backgroundColor: newBackColor } },
       );
       console.log(taskId + ': backColor updated: "' + newBackColor + '"');
     }
@@ -123,8 +123,8 @@ Meteor.methods({
   'eboypix.updateTags'(taskId, newTagsArray) {
     if (isAdminOrEditor()) {
       EboyPix.update(
-        taskId,
-        { $set: { tags: newTagsArray } }
+          taskId,
+          { $set: { tags: newTagsArray } },
       );
       console.log(taskId + ': tags updated: "' + newTagsArray + '"');
     }
@@ -132,8 +132,8 @@ Meteor.methods({
   'eboypix.updateProjects'(taskId, newProjects) {
     if (isAdminOrEditor()) {
       EboyPix.update(
-        taskId,
-        { $set: { projects: newProjects } }
+          taskId,
+          { $set: { projects: newProjects } },
       );
       console.log(taskId + ': projects updated: "' + newProjects + '"');
     }
@@ -141,8 +141,8 @@ Meteor.methods({
   'eboypix.updateMadeDate'(taskId, newDate) {
     if (isAdminOrEditor()) {
       EboyPix.update(
-        taskId,
-        { $set: { madeDate: newDate } }
+          taskId,
+          { $set: { madeDate: newDate } },
       );
       console.log(taskId + ': madeDate updated: "' + newDate + '"');
     }
@@ -150,8 +150,8 @@ Meteor.methods({
   'eboypix.updateFullFrame'(taskId, newState) {
     if (isAdminOrEditor()) {
       EboyPix.update(
-        taskId,
-        { $set: { fullFrame: newState } }
+          taskId,
+          { $set: { fullFrame: newState } },
       );
       console.log(taskId + ': fullFrame updated: "' + newState + '"');
     }
@@ -159,8 +159,8 @@ Meteor.methods({
   'eboypix.updateAntiAlias'(taskId, newState) {
     if (isAdminOrEditor()) {
       EboyPix.update(
-        taskId,
-        { $set: { antiAlias: newState } }
+          taskId,
+          { $set: { antiAlias: newState } },
       );
       console.log(taskId + ': antiAlias updated: "' + newState + '"');
     }
@@ -168,8 +168,8 @@ Meteor.methods({
   'eboypix.updateAccess'(taskId, newState) {
     if (isAdminOrEditor()) {
       EboyPix.update(
-        taskId,
-        { $set: { access: newState } }
+          taskId,
+          { $set: { access: newState } },
       );
       console.log(taskId + ': access updated: "' + newState + '"');
     }
@@ -177,10 +177,10 @@ Meteor.methods({
   'eboypix.updateLink'(taskId, newLink) {
     if (isAdminOrEditor()) {
       EboyPix.update(
-        taskId,
-        { $set: { link: newLink } }
+          taskId,
+          { $set: { link: newLink } },
       );
       console.log(taskId + ': link updated: "' + newLink + '"');
     }
-  }
+  },
 });

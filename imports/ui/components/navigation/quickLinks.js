@@ -36,5 +36,5 @@ Template.quickLinks.helpers({
     const isHere = isSameSlug & isSameQuery;
 
     return isHere;
-  }
+  },
 });

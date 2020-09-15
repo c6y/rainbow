@@ -37,7 +37,7 @@ export function setDocHead() {
       'keywords': slug,
       'creator': Meteor.settings.public.ownership.creator,
       'genre': 'Digital Art',
-      'url': 'https://eboy.io' + FlowRouter.current().path
+      'url': 'https://eboy.io' + FlowRouter.current().path,
     };
     DocHead.addLdJsonScript(richSnippet);
   }
@@ -57,7 +57,7 @@ export function setDocHead() {
       'keywords': slug,
       'creator': Meteor.settings.public.ownership.creator,
       'genre': 'Digital Art',
-      'url': 'https://eboy.io' + FlowRouter.current().path
+      'url': 'https://eboy.io' + FlowRouter.current().path,
     };
     DocHead.addLdJsonScript(richSnippet);
   }

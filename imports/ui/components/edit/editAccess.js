@@ -9,7 +9,7 @@ Template.editAccess.helpers({
   // Return CSS and readable label
   // depending on access level
   access() {
-    let state = this.access;
+    const state = this.access;
     let label = '3:editor:black';
     let css = 'access0';
 
@@ -31,9 +31,9 @@ Template.editAccess.helpers({
     }
     return {
       label: label,
-      css: css
+      css: css,
     };
-  }
+  },
 });
 
 Template.editAccess.events({
@@ -46,5 +46,5 @@ Template.editAccess.events({
     const newState = oldState + 1;
     const remainder = newState % 4;
     Meteor.call('eboypix.updateAccess', this._id, remainder);
-  }
+  },
 });

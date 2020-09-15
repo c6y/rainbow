@@ -29,19 +29,19 @@ Template.picSpriteZoom.helpers({
   colorHSL() {
     // Get the color by name
     const color = Colors.findOne(
-      { name: this.backgroundColor }
+        { name: this.backgroundColor },
     );
     // If it's in the color database return hsl values as css hsl string
     if (color) {
       const hslColor = String(
-        'hsl(' +
-        color.hue + ', ' +
-        color.saturation + '%, ' +
-        color.luminosity + '%)'
+          'hsl(' +
+          color.hue + ', ' +
+          color.saturation + '%, ' +
+          color.luminosity + '%)',
       );
       return {
         info: hslColor,
-        value: hslColor
+        value: hslColor,
       };
     }
     // If color does not exist return diagonal stripes warning pattern
@@ -54,7 +54,7 @@ Template.picSpriteZoom.helpers({
       ')';
     return {
       info: 'Warning! Assign a color!',
-      value: emptyColor
+      value: emptyColor,
     };
   },
   scaledDims() {
@@ -87,7 +87,7 @@ Template.picSpriteZoom.helpers({
 
     return {
       width: scaledDims.width,
-      height: scaledDims.height
+      height: scaledDims.height,
     };
   },
   isJPG() {
@@ -99,7 +99,7 @@ Template.picSpriteZoom.helpers({
   antiAliasCSS() {
     const antiAlias = this.antiAlias;
     return antiAlias === true ? 'image-rendering:auto' : false;
-  }
+  },
 });
 
 Template.picSpriteZoom.events({
@@ -108,7 +108,7 @@ Template.picSpriteZoom.events({
     let lastRoute = Session.get('lastRoute');
     let lastSlug = Session.get('lastSlug');
     let lastPage = Session.get('lastPage');
-    let lastQuery = Session.get('lastQuery');
+    const lastQuery = Session.get('lastQuery');
 
     if (lastRoute === undefined) {
       lastRoute = 'pool';
@@ -118,14 +118,14 @@ Template.picSpriteZoom.events({
     lastPage = lastPage === undefined ? 1 : lastPage;
 
     FlowRouter.go(
-      lastRoute,
-      {
-        slug: lastSlug,
-        page: lastPage
-      },
-      {
-        q: lastQuery
-      }
+        lastRoute,
+        {
+          slug: lastSlug,
+          page: lastPage,
+        },
+        {
+          q: lastQuery,
+        },
     );
-  }
+  },
 });

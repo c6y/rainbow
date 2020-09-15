@@ -37,24 +37,24 @@ export function urlToSelector(slug, query, userId) {
       selector = {
         $and: [
           { name: slugRegExp },
-          userAccess
-        ]
+          userAccess,
+        ],
       };
     } else if (query === 'tag') {
       // console.log('search Tag');
       selector = {
         $and: [
           { tags: slugRegExp },
-          userAccess
-        ]
+          userAccess,
+        ],
       };
     } else if (query === 'project') {
       // console.log('search Project');
       selector = {
         $and: [
           { projects: slugRegExp },
-          userAccess
-        ]
+          userAccess,
+        ],
       };
     } else {
       // console.log('search ANYWHERE');
@@ -63,10 +63,10 @@ export function urlToSelector(slug, query, userId) {
           { $or: [
             { tags: slugRegExp },
             { projects: slugRegExp },
-            { name: slugRegExp }
+            { name: slugRegExp },
           ] },
-          userAccess
-        ]
+          userAccess,
+        ],
       };
     }
   }

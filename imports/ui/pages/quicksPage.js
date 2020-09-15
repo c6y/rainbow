@@ -36,5 +36,5 @@ Template.quicksPage.helpers({
       return isAdmin || isEditor;
     }
     return false;
-  }
+  },
 });

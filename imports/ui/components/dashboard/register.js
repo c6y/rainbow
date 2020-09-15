@@ -20,5 +20,5 @@ Template.register.events({
     target.registerUsername.value = '';
     target.registerEmail.value = '';
     target.registerPassword.value = '';
-  }
+  },
 });

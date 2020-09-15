@@ -6,26 +6,26 @@ export const DeviceSchema = {};
 DeviceSchema.Devices = new SimpleSchema({
   name: {
     type: String,
-    unique: true
+    unique: true,
   },
   make: {
     type: String,
-    unique: false
+    unique: false,
   },
   width: {
     type: Number,
-    min: 0
+    min: 0,
   },
   height: {
     type: Number,
-    min: 0
+    min: 0,
   },
   year: {
     type: Number,
     min: 0,
-    optional: true
+    optional: true,
   },
   createdAt: {
-    type: Date
-  }
+    type: Date,
+  },
 });

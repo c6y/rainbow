@@ -66,5 +66,5 @@ Template.addDocPage.helpers({
       return isAdmin || isEditor;
     }
     return false;
-  }
+  },
 });

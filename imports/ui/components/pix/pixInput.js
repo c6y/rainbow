@@ -24,7 +24,7 @@ Template.pixInput.events({
 
     // Create an array and populate with urls
     let urls = [];
-    urls = imgBatchURLsClean.split(",");
+    urls = imgBatchURLsClean.split(',');
 
     // Only keep elements that start with 'http'
     urls = urls.filter(function(element) {
@@ -36,23 +36,23 @@ Template.pixInput.events({
 
     (function nextImage(urls) {
       if (urls.length) {
-        let img = new Image();
+        const img = new Image();
         img.onload = function() {
           Meteor.call(
-            'eboypix.insert',
-            img.src,
-            img.width,
-            img.height,
-            function(err, result) {
-              if (err) {
+              'eboypix.insert',
+              img.src,
+              img.width,
+              img.height,
+              function(err, result) {
+                if (err) {
                 // Populate insertErrors Session array variable
-                const session = Session.get('insertErrors');
-                session.push(img.src);
-                Session.set('insertErrors', session);
-              } else {
-                console.log('client: insert successfull: ' + img.src);
-              }
-            }
+                  const session = Session.get('insertErrors');
+                  session.push(img.src);
+                  Session.set('insertErrors', session);
+                } else {
+                  console.log('client: insert successfull: ' + img.src);
+                }
+              },
           );
           // setTimeout(function() {
           nextImage(urls);
@@ -62,5 +62,5 @@ Template.pixInput.events({
       }
     })(urls.slice());
     target.batchchurls.value = '';
-  }
+  },
 });

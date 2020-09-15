@@ -29,19 +29,19 @@ Template.picSprite.helpers({
   colorHSL() {
     // Get the color by name
     const color = Colors.findOne(
-      { name: this.backgroundColor }
+        { name: this.backgroundColor },
     );
     // If it's in the color database return hsl values as css hsl string
     if (color) {
       const hslColor = String(
-        'hsl(' +
-        color.hue + ', ' +
-        color.saturation + '%, ' +
-        color.luminosity + '%)'
+          'hsl(' +
+          color.hue + ', ' +
+          color.saturation + '%, ' +
+          color.luminosity + '%)',
       );
       return {
         info: hslColor,
-        value: hslColor
+        value: hslColor,
       };
     }
     // If color does not exist return diagonal stripes warning pattern
@@ -54,7 +54,7 @@ Template.picSprite.helpers({
       ')';
     return {
       info: 'Warning! Assign a color!',
-      value: emptyColor
+      value: emptyColor,
     };
   },
   scaledDims() {
@@ -105,13 +105,13 @@ Template.picSprite.helpers({
 
     return {
       width: scaledDims.width,
-      height: scaledDims.height
+      height: scaledDims.height,
     };
   },
   antiAliasCSS() {
     const antiAlias = this.antiAlias;
     return antiAlias === true ? 'image-rendering:auto' : false;
-  }
+  },
 });
 
 Template.picSprite.events({
@@ -126,5 +126,5 @@ Template.picSprite.events({
     Session.set('lastSlug', thisSlug);
     Session.set('lastPage', thisPage);
     Session.set('lastQuery', thisQuery);
-  }
+  },
 });

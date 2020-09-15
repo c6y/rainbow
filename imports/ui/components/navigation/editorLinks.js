@@ -25,9 +25,9 @@ Template.editorLinks.helpers({
         thisQuery = { q: FlowRouter.getQueryParam('q') };
       }
       return FlowRouter.path(
-        'pool',
-        { slug: thisSlug, page: thisPage },
-        thisQuery
+          'pool',
+          { slug: thisSlug, page: thisPage },
+          thisQuery,
       );
     }
   },
@@ -55,9 +55,9 @@ Template.editorLinks.helpers({
         thisQuery = FlowRouter.getQueryParam('q');
       }
       return FlowRouter.path(
-        'edit',
-        { slug: thisSlug, page: thisPage },
-        { q: thisQuery }
+          'edit',
+          { slug: thisSlug, page: thisPage },
+          { q: thisQuery },
       );
     }
   },
@@ -79,7 +79,7 @@ Template.editorLinks.helpers({
   showEditorLinks() {
     const showEditorLinks = Session.get('editorLinks');
     return showEditorLinks;
-  }
+  },
 });
 
 Template.editorLinks.events({
@@ -87,5 +87,5 @@ Template.editorLinks.events({
     const oldEditorLinksShow = Session.get('editorLinks');
     const newEditorLinksShow = oldEditorLinksShow === false;
     Session.set('editorLinks', newEditorLinksShow);
-  }
+  },
 });

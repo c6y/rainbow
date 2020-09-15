@@ -40,5 +40,5 @@ Template.devicesPage.helpers({
       return isAdmin || isEditor;
     }
     return false;
-  }
+  },
 });

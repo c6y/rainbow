@@ -6,35 +6,35 @@ export const ColorSchema = {};
 ColorSchema.HSLAColors = new SimpleSchema({
   name: {
     type: String,
-    unique: true
+    unique: true,
   },
   createdAt: {
-    type: Date
+    type: Date,
   },
   hue: {
     type: Number,
     min: 0,
-    max: 360
+    max: 360,
   },
   saturation: {
     type: Number,
     min: 0,
-    max: 100
+    max: 100,
   },
   luminosity: {
     type: Number,
     min: 0,
-    max: 100
+    max: 100,
   },
   alpha: {
     type: Number,
     decimal: true,
     defaultValue: 1,
     min: 0,
-    max: 1
+    max: 1,
   },
   tags: {
     type: [String],
-    optional: true
-  }
+    optional: true,
+  },
 });

@@ -20,7 +20,7 @@ import './pixPool.html';
 Template.pixPool.helpers({
   pix() {
     // Show all posts ...
-    let selector = {};
+    const selector = {};
 
     // Sort by newest on top
     let options = { sort: { createdAt: -1 } };
@@ -34,10 +34,10 @@ Template.pixPool.helpers({
     if (isHome()) {
       options = {
         limit: pixPerPage,
-        sort: { createdAt: -1 }
+        sort: { createdAt: -1 },
       };
     }
 
     return EboyPix.find(selector, options);
-  }
+  },
 });

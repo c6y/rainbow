@@ -46,6 +46,6 @@ export function scaleByIntToFit(oWidth, oHeight, maxWidth, maxHeight, myRatio) {
   return {
     width: wTarget,
     height: hTarget,
-    factor: factor
+    factor: factor,
   };
 }

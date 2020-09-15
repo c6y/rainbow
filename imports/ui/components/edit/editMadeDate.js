@@ -13,14 +13,14 @@ Template.editMadeDate.helpers({
     }
     const shortDate = date.toISOString().substring(0, 10);
     return shortDate;
-  }
+  },
 });
 
 Template.editMadeDate.events({
   // Restore madeDate input to original value
   // if user leaves input and does not press return
   'blur .editMadeDate'(event, target) {
-    let date = this.madeDate;
+    const date = this.madeDate;
     if (date === undefined) {
       event.target.value = '';
     } else {
@@ -37,5 +37,5 @@ Template.editMadeDate.events({
     } else if (event.keyCode === 27) { // escape restores madeDate
       event.target.blur();
     }
-  }
+  },
 });

@@ -12,5 +12,5 @@ import './picOnList.js';
 Template.pixList.helpers({
   pix() {
     return EboyPix.find({}, { sort: { createdAt: -1 } });
-  }
+  },
 });

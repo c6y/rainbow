@@ -17,12 +17,12 @@ Template.quick.helpers({
       return isAdmin || isEditor;
     }
     return false;
-  }
+  },
 });
 
 // Template events
 Template.quick.events({
   'click .quickDelete'() {
     Meteor.call('quick.delete', this._id);
-  }
+  },
 });

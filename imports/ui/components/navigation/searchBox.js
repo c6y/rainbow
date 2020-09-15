@@ -62,7 +62,7 @@ Template.searchBox.helpers({
       { value: 'default', label: 'anywhere', selected: selectDefault },
       { value: 'tag', label: 'tag', selected: selectTag },
       { value: 'project', label: 'project', selected: selectProject },
-      { value: 'name', label: 'name', selected: selectName }
+      { value: 'name', label: 'name', selected: selectName },
     ];
   },
   searchPlaceholder() {
@@ -101,7 +101,7 @@ Template.searchBox.helpers({
     if (isPool | isEdit) {
       return true;
     }
-  }
+  },
 });
 
 Template.searchBox.events({
@@ -152,5 +152,5 @@ Template.searchBox.events({
   'blur input'(event, target) {
     // if user leaves input and does not press return
     event.target.value = '';
-  }
+  },
 });

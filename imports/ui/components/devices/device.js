@@ -11,12 +11,12 @@ Template.device.helpers({
       return isAdmin || isEditor;
     }
     return false;
-  }
+  },
 });
 
 // Template events
 Template.device.events({
   'click .deviceDelete'() {
     Meteor.call('device.delete', this._id);
-  }
+  },
 });

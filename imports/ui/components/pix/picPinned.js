@@ -45,20 +45,20 @@ Template.picPinned.helpers({
     // Do this only when pinnedPic object exists
     if (pinnedPic) {
       const color = Colors.findOne(
-        { name: pinnedPic.backgroundColor }
+          { name: pinnedPic.backgroundColor },
       );
       // If it's in the color database return hsl values as css hsl string
       if (color) {
         const hslColor = String(
-          'hsl(' +
-          color.hue + ', ' +
-          color.saturation + '%, ' +
-          color.luminosity + '%)'
+            'hsl(' +
+            color.hue + ', ' +
+            color.saturation + '%, ' +
+            color.luminosity + '%)',
         );
         return hslColor;
       }
     }
-  }
+  },
 });
 
 Template.picPinned.events({
@@ -73,5 +73,5 @@ Template.picPinned.events({
     Session.set('lastSlug', thisSlug);
     Session.set('lastPage', thisPage);
     Session.set('lastQuery', thisQuery);
-  }
+  },
 });

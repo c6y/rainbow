@@ -25,27 +25,27 @@ const slugHome = Meteor.settings.public.navigation.slugHome;
 FlowRouter.route('/', {
   triggersEnter: [function(context, redirect) {
     redirect('/pool/' + slugHome + '/1');
-  }]
+  }],
 });
 
 FlowRouter.route('/pool/', {
   triggersEnter: [function(context, redirect) {
     redirect('/pool/' + slugHome + '/1');
-  }]
+  }],
 });
 
 FlowRouter.route('/pool/:slug/', {
   triggersEnter: [function(context, redirect) {
     redirect('/pool/' + slugHome + '/1');
-  }]
+  }],
 });
 
 FlowRouter.notFound = {
   action() {
     BlazeLayout.render('applayout', {
-      main: 'notFound'
+      main: 'notFound',
     });
-  }
+  },
 };
 
 FlowRouter.route('/pool/:slug/:page', {
@@ -53,9 +53,9 @@ FlowRouter.route('/pool/:slug/:page', {
   action() {
     GAnalytics.pageview();
     BlazeLayout.render('applayout', {
-      main: 'pixPoolPage'
+      main: 'pixPoolPage',
     });
-  }
+  },
 });
 
 FlowRouter.route('/edit/:slug/:page', {
@@ -63,9 +63,9 @@ FlowRouter.route('/edit/:slug/:page', {
   action() {
     GAnalytics.pageview();
     BlazeLayout.render('applayout', {
-      main: 'pixEditPage'
+      main: 'pixEditPage',
     });
-  }
+  },
 });
 
 FlowRouter.route('/colors', {
@@ -73,9 +73,9 @@ FlowRouter.route('/colors', {
   action() {
     GAnalytics.pageview();
     BlazeLayout.render('applayout', {
-      main: 'colorsPage'
+      main: 'colorsPage',
     });
-  }
+  },
 });
 
 FlowRouter.route('/spritebox/:_id', {
@@ -83,9 +83,9 @@ FlowRouter.route('/spritebox/:_id', {
   action() {
     GAnalytics.pageview();
     BlazeLayout.render('applayout', {
-      main: 'spriteBoxPage'
+      main: 'spriteBoxPage',
     });
-  }
+  },
 });
 
 FlowRouter.route('/addDoc', {
@@ -93,9 +93,9 @@ FlowRouter.route('/addDoc', {
   action() {
     GAnalytics.pageview();
     BlazeLayout.render('applayout', {
-      main: 'addDocPage'
+      main: 'addDocPage',
     });
-  }
+  },
 });
 
 FlowRouter.route('/dashboard', {
@@ -103,9 +103,9 @@ FlowRouter.route('/dashboard', {
   action() {
     GAnalytics.pageview();
     BlazeLayout.render('applayout', {
-      main: 'dashboardPage'
+      main: 'dashboardPage',
     });
-  }
+  },
 });
 
 FlowRouter.route('/quicks', {
@@ -113,9 +113,9 @@ FlowRouter.route('/quicks', {
   action() {
     GAnalytics.pageview();
     BlazeLayout.render('applayout', {
-      main: 'quicksPage'
+      main: 'quicksPage',
     });
-  }
+  },
 });
 
 FlowRouter.route('/devices', {
@@ -123,9 +123,9 @@ FlowRouter.route('/devices', {
   action() {
     GAnalytics.pageview();
     BlazeLayout.render('applayout', {
-      main: 'devicesPage'
+      main: 'devicesPage',
     });
-  }
+  },
 });
 
 FlowRouter.route('/render/:_id', {
@@ -133,7 +133,7 @@ FlowRouter.route('/render/:_id', {
   action() {
     GAnalytics.pageview();
     BlazeLayout.render('applayout', {
-      main: 'renderPage'
+      main: 'renderPage',
     });
-  }
+  },
 });

@@ -18,5 +18,5 @@ Template.quicksInput.events({
     target.label.value = '';
     target.slug.value = '';
     target.rank.value = '';
-  }
+  },
 });

@@ -8,21 +8,21 @@ QuicksSchema.Links = new SimpleSchema({
     type: String,
     unique: true,
     autoValue: function() {
-      if (this.isSet && typeof this.value === "string") {
+      if (this.isSet && typeof this.value === 'string') {
         return this.value.toLowerCase();
       }
-    }
+    },
   },
   slug: {
     type: String,
-    unique: false
+    unique: false,
   },
   query: {
     type: String,
     unique: false,
     // only allow 'tag', 'project' and 'name', else return default
     autoValue: function() {
-      if (this.isSet && typeof this.value === "string") {
+      if (this.isSet && typeof this.value === 'string') {
         console.log('this.value: ' + this.value);
         const isTag = this.value === 'tag';
         const isProject = this.value === 'project';
@@ -31,13 +31,13 @@ QuicksSchema.Links = new SimpleSchema({
           return 'default';
         }
       }
-    }
+    },
   },
   rank: {
     type: Number,
     decimal: true,
     unique: false,
     min: 0,
-    max: 1
-  }
+    max: 1,
+  },
 });

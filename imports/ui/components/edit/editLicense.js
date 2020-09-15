@@ -9,7 +9,7 @@ Template.editLicense.helpers({
     // Set initial width of input field based on length of string
     const lengthStr = Math.max(this.license.length, 2);
     return lengthStr;
-  }
+  },
 });
 
 Template.editLicense.events({
@@ -33,5 +33,5 @@ Template.editLicense.events({
     } else if (event.keyCode === 27) { // escape restores license
       event.target.blur();
     }
-  }
+  },
 });

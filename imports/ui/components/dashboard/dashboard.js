@@ -39,7 +39,7 @@ Template.dashboard.helpers({
       const shortDate = userDate.toISOString().substring(0, 10);
       return shortDate;
     }
-  }
+  },
 });
 
 Template.dashboard.events({
@@ -52,7 +52,10 @@ Template.dashboard.events({
   'click .removeUser'(event) {
     event.preventDefault();
     if (Meteor.user().profile.isAdmin) {
-      if (confirm('Delete user: ' + this.username + ', ' + this.emails[0].address)) {
+      if (confirm('Delete user: ' +
+        this.username +
+        ', ' +
+        this.emails[0].address)) {
         console.log('removing user: ' + this.username);
         Meteor.call('users.delete', this._id);
       }
@@ -84,5 +87,5 @@ Template.dashboard.events({
     if (confirm('set Admin for ' + userName + ' to ' + thisNewState + '?')) {
       Meteor.call('toggleIsAdmin', thisId);
     }
-  }
+  },
 });

@@ -42,5 +42,5 @@ import '../edit/editLink.html';
 Template.picOnList.events({
   'click .deletePic'() {
     Meteor.call('eboypix.delete', this._id);
-  }
+  },
 });

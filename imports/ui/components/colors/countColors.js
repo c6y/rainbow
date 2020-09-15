@@ -7,5 +7,5 @@ import './countColors.html';
 Template.countColors.helpers({
   colorCounter() {
     return Colors.find({}).count();
-  }
+  },
 });

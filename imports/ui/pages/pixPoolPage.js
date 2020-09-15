@@ -58,5 +58,5 @@ Template.pixPoolPage.helpers({
       return isAdmin || isEditor;
     }
     return false;
-  }
+  },
 });

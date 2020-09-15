@@ -13,5 +13,5 @@ Template.editAntiAlias.events({
     // Set to opposing value
     const newState = oldStateFixed === false;
     Meteor.call('eboypix.updateAntiAlias', this._id, newState);
-  }
+  },
 });

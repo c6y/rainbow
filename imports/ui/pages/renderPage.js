@@ -23,8 +23,8 @@ let canvas;
 let context;
 let maxCanvasW = 512;
 let maxCanvasH = 512;
-let deviceDep = new Tracker.Dependency();
-let makeDep = new Tracker.Dependency();
+const deviceDep = new Tracker.Dependency();
+const makeDep = new Tracker.Dependency();
 
 // Template onCreated
 Template.renderPage.onCreated(function() {
@@ -53,16 +53,16 @@ Template.canvas.onRendered(function() {
 
     // get backgroundColor of Image
     const color = Colors.findOne(
-      { name: thisDocument.backgroundColor }
+        { name: thisDocument.backgroundColor },
     );
     // set up hsl color string
     let hslColor;
     if (color) {
       hslColor = String(
-        'hsl(' +
+          'hsl(' +
         color.hue + ', ' +
         color.saturation + '%, ' +
-        color.luminosity + '%)'
+        color.luminosity + '%)',
       );
     } else {
       hslColor = 'hsl(0, 50%, 50%)';
@@ -74,11 +74,11 @@ Template.canvas.onRendered(function() {
 
     // calculate optimal scaling of Image
     const scaledDims = scaleByIntToFit(
-      originalWidth,
-      originalHeight,
-      maxCanvasW,
-      maxCanvasH,
-      1 // as this is for donwloads, factor is set to 1 manually
+        originalWidth,
+        originalHeight,
+        maxCanvasW,
+        maxCanvasH,
+        1, // as this is for donwloads, factor is set to 1 manually
     );
 
     // get the factor calculated automatically
@@ -96,7 +96,7 @@ Template.canvas.onRendered(function() {
     const paddingH = (maxCanvasH - newHeight) / 2;
 
     // set up Canvas
-    let myImage = new Image();
+    const myImage = new Image();
 
     // to allow downloading the canvas set crossOrigin
     // change CORS policy on Amazon S3: <AllowedHeader>*</AllowedHeader>
@@ -121,10 +121,10 @@ Template.canvas.onRendered(function() {
 
       context.fillStyle = hslColor;
       context.fillRect(
-        0,
-        0,
-        maxCanvasW,
-        maxCanvasH
+          0,
+          0,
+          maxCanvasW,
+          maxCanvasH,
       );
 
       context.mozImageSmoothingEnabled = false;
@@ -132,11 +132,11 @@ Template.canvas.onRendered(function() {
       context.imageSmoothingEnabled = false;
 
       context.drawImage(
-        myImage,
-        paddingW,
-        paddingH,
-        newWidth,
-        newHeight
+          myImage,
+          paddingW,
+          paddingH,
+          newWidth,
+          newHeight,
       );
       // generate png from canvas
       const download = document.getElementById('genImg');
@@ -177,7 +177,7 @@ Template.renderPage.helpers({
   },
   makers() {
     const distinctEntries = _.uniq(Devices.find({}, {
-      sort: { make: 1 }, fields: { make: true }
+      sort: { make: 1 }, fields: { make: true },
     }).fetch().map(function(x) {
       return x.make;
     }), true);
@@ -215,9 +215,9 @@ Template.renderPage.helpers({
     const ratio = reduceFraction(w, h);
     return {
       n: ratio.numerator,
-      d: ratio.denominator
+      d: ratio.denominator,
     };
-  }
+  },
 });
 
 Template.renderPage.events({
@@ -256,5 +256,5 @@ Template.renderPage.events({
     const newAddFactor = Math.min(addFactor + 1, 100);
     const newAddFactorRounded = Math.round(newAddFactor * 100) / 100;
     Session.set('addFactor', newAddFactorRounded);
-  }
+  },
 });

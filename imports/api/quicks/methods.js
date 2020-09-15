@@ -14,7 +14,7 @@ Meteor.methods({
         label: label,
         slug: slug,
         query: query,
-        rank: rank
+        rank: rank,
       });
       console.log(label + ': inserted to Quicks');
     }
@@ -30,5 +30,5 @@ Meteor.methods({
       Quicks.remove(id);
       console.log(id + ': removed from Quicks');
     }
-  }
+  },
 });

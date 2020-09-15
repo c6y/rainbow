@@ -63,7 +63,7 @@ Template.navPaging.helpers({
       return '-';
     }
     return '+';
-  }
+  },
 });
 
 Template.navPaging.events({
@@ -75,7 +75,7 @@ Template.navPaging.events({
   },
   'click .prevPage'() {
     const thisPageString = FlowRouter.getParam('page');
-    let thisPage = parseInt(thisPageString, 10);
+    const thisPage = parseInt(thisPageString, 10);
     // return previous page, if lower than 1 return 1
     const previousPage = Math.max(1, thisPage - 1);
     FlowRouter.setParams({ page: previousPage });
@@ -84,5 +84,5 @@ Template.navPaging.events({
     const oldPlusBoxShow = Session.get('plusBox');
     const newPlusBoxShow = oldPlusBoxShow === false;
     Session.set('plusBox', newPlusBoxShow);
-  }
+  },
 });

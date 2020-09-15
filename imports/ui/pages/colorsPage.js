@@ -37,5 +37,5 @@ Template.colorsPage.helpers({
       return isAdmin || isEditor;
     }
     return false;
-  }
+  },
 });

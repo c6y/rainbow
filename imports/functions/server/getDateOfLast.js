@@ -13,8 +13,8 @@ import { urlToSelector } from './urlToSelector.js';
 export function getDateOfLast(slug, query) {
   const selector = urlToSelector(slug, query);
   const latestSlug = EboyPix.findOne(
-    selector,
-    { sort: { createdAt: -1, limit: 1 } }
+      selector,
+      { sort: { createdAt: -1, limit: 1 } },
   );
   if (latestSlug) {
     return latestSlug.createdAt;

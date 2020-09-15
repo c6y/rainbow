@@ -33,5 +33,5 @@ Template.editLink.events({
     } else if (event.keyCode === 27) { // escape restores shopLink
       event.target.blur();
     }
-  }
+  },
 });

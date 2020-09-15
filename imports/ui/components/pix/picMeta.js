@@ -43,19 +43,19 @@ Template.picMeta.helpers({
   colorHSL() {
     // Get the color by name
     const color = Colors.findOne(
-      { name: this.backgroundColor }
+        { name: this.backgroundColor },
     );
     // If it's in the color database return hsl values as css hsl string
     if (color) {
       const hslColor = String(
-        'hsl(' +
-        color.hue + ', ' +
-        color.saturation + '%, ' +
-        color.luminosity + '%)'
+          'hsl(' +
+          color.hue + ', ' +
+          color.saturation + '%, ' +
+          color.luminosity + '%)',
       );
       return {
         info: hslColor,
-        value: hslColor
+        value: hslColor,
       };
     }
     // If color does not exist return diagonal stripes warning pattern
@@ -68,7 +68,7 @@ Template.picMeta.helpers({
       ')';
     return {
       info: 'Warning! Assign a color!',
-      value: emptyColor
+      value: emptyColor,
     };
   },
   isAdminOrEditor() {
@@ -78,5 +78,5 @@ Template.picMeta.helpers({
       return isAdmin || isEditor;
     }
     return false;
-  }
+  },
 });

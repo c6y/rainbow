@@ -8,9 +8,9 @@
 export function getProjectName(url) {
   // Only do this if URL has 'projects' directory
   if (url.includes('/projects/')) {
-    const slash = "/";
+    const slash = '/';
     const re = new RegExp(slash, 'gi');
-    let results = [];
+    const results = [];
     // Populate Array with all indexes of '/'
     while (re.exec(url)) {
       results.push(re.lastIndex);

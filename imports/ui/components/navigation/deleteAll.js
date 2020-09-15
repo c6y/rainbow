@@ -10,5 +10,5 @@ Template.deleteAll.events({
   },
   'click .deleteAllColors'() {
     Meteor.call('colors.deleteAll');
-  }
+  },
 });

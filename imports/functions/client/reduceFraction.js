@@ -12,6 +12,6 @@ export function reduceFraction(numerator, denominator) {
   gcd = gcd(numerator, denominator);
   return {
     numerator: numerator / gcd,
-    denominator: denominator / gcd
+    denominator: denominator / gcd,
   };
 }

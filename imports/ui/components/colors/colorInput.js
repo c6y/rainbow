@@ -20,5 +20,5 @@ Template.colorInput.events({
     target.luminosity.value = '';
     target.saturation.value = '';
     target.tag.value = '';
-  }
+  },
 });

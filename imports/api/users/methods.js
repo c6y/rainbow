@@ -19,14 +19,14 @@ Meteor.methods({
       const defaultRoles = {
         isAdmin: Meteor.settings.public.userSetup.defaultIsAdmin,
         isEditor: Meteor.settings.public.userSetup.defaultIsEditor,
-        isUser: Meteor.settings.public.userSetup.defaultIsUser
+        isUser: Meteor.settings.public.userSetup.defaultIsUser,
       };
       if (allowNewUsers) {
         Accounts.createUser({
           username: newUsername,
           email: newEmail,
           password: newPassword,
-          profile: defaultRoles
+          profile: defaultRoles,
         });
       }
       console.log(newUsername + ', ' + newEmail + ': new User');
@@ -40,8 +40,8 @@ Meteor.methods({
       const oldState = oldUser.profile.isUser;
       const newState = oldState === false;
       Meteor.users.update(
-        thisId,
-        { $set: { 'profile.isUser': newState } }
+          thisId,
+          { $set: { 'profile.isUser': newState } },
       );
       console.log(oldUser.username + ': isUser: ' + newState);
     }
@@ -52,8 +52,8 @@ Meteor.methods({
       const oldState = oldUser.profile.isEditor;
       const newState = oldState === false;
       Meteor.users.update(
-        thisId,
-        { $set: { 'profile.isEditor': newState } }
+          thisId,
+          { $set: { 'profile.isEditor': newState } },
       );
       console.log(oldUser.username + ': isEditor: ' + newState);
     }
@@ -64,10 +64,10 @@ Meteor.methods({
       const oldState = oldUser.profile.isAdmin;
       const newState = oldState === false;
       Meteor.users.update(
-        thisId,
-        { $set: { 'profile.isAdmin': newState } }
+          thisId,
+          { $set: { 'profile.isAdmin': newState } },
       );
       console.log(oldUser.username + ': isAdmin: ' + newState);
     }
-  }
+  },
 });

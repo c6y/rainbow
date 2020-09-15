@@ -25,7 +25,7 @@ Template.logo.helpers({
       return true;
     }
     return false;
-  }
+  },
 });
 
 Template.logo.events({
@@ -33,5 +33,5 @@ Template.logo.events({
     const oldPlusBoxShow = Session.get('plusBox');
     const newPlusBoxShow = oldPlusBoxShow === false;
     Session.set('plusBox', newPlusBoxShow);
-  }
+  },
 });

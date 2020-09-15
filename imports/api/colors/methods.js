@@ -21,7 +21,7 @@ Meteor.methods({
         saturation: s,
         luminosity: l,
         alpha: a,
-        tags: tagsArray
+        tags: tagsArray,
       });
       console.log(colorName + ': inserted to Colors');
     }
@@ -37,5 +37,5 @@ Meteor.methods({
       Colors.remove(id);
       console.log(id + ': removed from Colors');
     }
-  }
+  },
 });

@@ -14,5 +14,5 @@ Template.luckyBackColor.events({
     const randomIndex = Math.floor(Math.random() * arrayColors.length);
     const randomColorName = arrayColors[randomIndex].name;
     Meteor.call('eboypix.updateBackColor', this._id, randomColorName);
-  }
+  },
 });

@@ -26,15 +26,16 @@ Meteor.publish('pix.pinned.public', function pixPinnedPublic() {
 
 // Publish all documents later than given date
 // this is used to show all newly added images
-Meteor.publish('pix.afterDate.public', function pixAfterDatePublic(date, userId) {
-  const selector = {
-    'uploadedBy.id': userId,
-    'createdAt': {
-      $gt: date
-    }
-  };
-  return EboyPix.find(selector);
-});
+Meteor.publish('pix.afterDate.public',
+    function pixAfterDatePublic(date, userId) {
+      const selector = {
+        'uploadedBy.id': userId,
+        'createdAt': {
+          $gt: date,
+        },
+      };
+      return EboyPix.find(selector);
+    });
 
 // Publish paged documents
 Meteor.publish('pix.paged.public', function pixPagedPublic(slug, page, query) {
@@ -44,12 +45,12 @@ Meteor.publish('pix.paged.public', function pixPagedPublic(slug, page, query) {
   const selector = urlToSelector(slug, query, userId);
   const pixPage = Meteor.settings.public.navigation.pixPerPage;
   // Convert page string to integer
-  let pageInt = parseInt(page, 10);
+  const pageInt = parseInt(page, 10);
   const skipCount = (pageInt - 1) * pixPage;
   const options = {
     limit: pixPage,
     skip: skipCount,
-    sort: { createdAt: -1 }
+    sort: { createdAt: -1 },
   };
   // return EboyPix.find({tags: 'test'}, options);
   return EboyPix.find(selector, options);
@@ -67,10 +68,10 @@ Meteor.publish('pix.counts.public', function(slug, query) {
   const userId = this.userId;
   const selector = urlToSelector(slug, query, userId);
   Counts.publish(
-    this,
-    'totalDocsCount',
-    EboyPix.find(selector),
-    { noReady: true }
+      this,
+      'totalDocsCount',
+      EboyPix.find(selector),
+      { noReady: true },
   );
 });
 
@@ -78,10 +79,10 @@ Meteor.publish('pix.counts.public', function(slug, query) {
 Meteor.publish('pix.accesscounts.public', function() {
   const selector = { access: 1 };
   Counts.publish(
-    this,
-    'accessOneCount',
-    EboyPix.find(selector),
-    { noReady: true }
+      this,
+      'accessOneCount',
+      EboyPix.find(selector),
+      { noReady: true },
   );
 });
 
@@ -92,12 +93,12 @@ Meteor.publish('pix.urls.public', function pixUrlsPublic(project) {
   const options = {
     fields: {
       url: 1,
-      backgroundColor: 1
-    }
+      backgroundColor: 1,
+    },
   };
   return EboyPix.find(selector, options);
 // Set server route for simple:rest package
 //
 }, {
-  url: "api/projects/:0"
+  url: 'api/projects/:0',
 });

@@ -53,5 +53,5 @@ Template.pixEditPage.helpers({
       return isAdmin || isEditor;
     }
     return false;
-  }
+  },
 });

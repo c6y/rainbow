@@ -9,7 +9,7 @@ Template.editTags.helpers({
     const tagsString = String(this.tags);
     const tagsStringSpaced = tagsString.replace(/,/g, ', ');
     return tagsStringSpaced;
-  }
+  },
 });
 
 Template.editTags.events({
@@ -52,5 +52,5 @@ Template.editTags.events({
     } else if (event.keyCode === 27) { // escape restores tags
       event.target.blur();
     }
-  }
+  },
 });

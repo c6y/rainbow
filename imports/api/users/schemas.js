@@ -5,47 +5,47 @@ export const UserSchema = {};
 
 UserSchema.UserProfile = new SimpleSchema({
   isAdmin: {
-    type: Boolean
+    type: Boolean,
   },
   isEditor: {
-    type: Boolean
+    type: Boolean,
   },
   isUser: {
-    type: Boolean
-  }
+    type: Boolean,
+  },
 });
 
 UserSchema.User = new SimpleSchema({
   'username': {
-    type: String
+    type: String,
   },
   'emails': {
-    type: Array
+    type: Array,
   },
   'emails.$': {
-    type: Object
+    type: Object,
   },
   'emails.$.address': {
     type: String,
-    regEx: SimpleSchema.RegEx.Email
+    regEx: SimpleSchema.RegEx.Email,
   },
   'emails.$.verified': {
-    type: Boolean
+    type: Boolean,
   },
   'createdAt': {
-    type: Date
+    type: Date,
   },
   'profile': {
-    type: UserSchema.UserProfile
+    type: UserSchema.UserProfile,
   },
   'services': {
     type: Object,
     optional: true,
-    blackbox: true
+    blackbox: true,
   },
   // avoid an 'Exception in setInterval callback' from Meteor
   'heartbeat': {
     type: Date,
-    optional: true
-  }
+    optional: true,
+  },
 });

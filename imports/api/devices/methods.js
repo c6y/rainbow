@@ -18,7 +18,7 @@ Meteor.methods({
       width: width,
       height: height,
       year: year,
-      createdAt: new Date()
+      createdAt: new Date(),
     });
     console.log(name + ': inserted to Devices');
     // }
@@ -34,5 +34,5 @@ Meteor.methods({
       Devices.remove(id);
       console.log(id + ': removed from Devices');
     }
-  }
+  },
 });

@@ -11,7 +11,7 @@ import { getDateOfLast } from '../imports/functions/server/getDateOfLast.js';
 // Retuns array of pages from Quicks collection
 const quicksLinks = function() {
   const quicksLabels = Quicks.find().fetch();
-  let quicksPagesAll = [];
+  const quicksPagesAll = [];
   if (quicksLabels) {
     Object.keys(quicksLabels).forEach(function(key) {
       const slug = quicksLabels[key].slug.toString();
@@ -20,7 +20,7 @@ const quicksLinks = function() {
         page: 'pool/' + quicksLabels[key].label + '/1',
         changefreq: 'weekly',
         priority: quicksLabels[key].rank,
-        lastmod: lastmod
+        lastmod: lastmod,
       };
       quicksPagesAll.push(quicksPage);
     });

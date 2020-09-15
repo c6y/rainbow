@@ -86,11 +86,11 @@ Template.sideBox.helpers({
     thisQuery = thisQuery === '' ? null : thisQuery;
 
     return FlowRouter.path(
-      toRoute,
-      { slug: thisSlug, page: thisPage },
-      { q: thisQuery }
+        toRoute,
+        { slug: thisSlug, page: thisPage },
+        { q: thisQuery },
     );
-  }
+  },
 });
 
 // Template events
@@ -104,5 +104,5 @@ Template.sideBox.events({
     const newstate = Session.get('settingsBox') === false;
     Session.set('settingsBox', newstate);
     Session.set('infoBox', false);
-  }
+  },
 });

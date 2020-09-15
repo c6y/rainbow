@@ -9,7 +9,7 @@ Template.editBackColor.helpers({
     // Set initial width of input field based on length of string
     const lengthStr = Math.max(this.backgroundColor.length, 2);
     return lengthStr;
-  }
+  },
 });
 
 Template.editBackColor.events({
@@ -33,5 +33,5 @@ Template.editBackColor.events({
     } else if (event.keyCode === 27) { // escape restores backgroundColor
       event.target.blur();
     }
-  }
+  },
 });

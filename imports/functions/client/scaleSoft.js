@@ -33,6 +33,6 @@ export function scaleSoft(oWidth, oHeight, maxWidth, maxHeight) {
 
   return {
     width: wTarget,
-    height: hTarget
+    height: hTarget,
   };
 }

@@ -12,7 +12,7 @@ Template.editProjects.helpers({
     }
     const projectsStringSpaced = projectsString.replace(/,/g, ', ');
     return projectsStringSpaced;
-  }
+  },
 });
 
 Template.editProjects.events({
@@ -70,5 +70,5 @@ Template.editProjects.events({
     } else if (event.keyCode === 27) { // escape restores projects
       event.target.blur();
     }
-  }
+  },
 });

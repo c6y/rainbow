@@ -14,5 +14,5 @@ Template.accessinfo.onCreated(function() {
 Template.accessinfo.helpers({
   accessPlusCounter() {
     return Counts.get('accessOneCount');
-  }
+  },
 });

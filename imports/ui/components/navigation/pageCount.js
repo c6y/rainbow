@@ -17,5 +17,5 @@ Template.pageCount.helpers({
     const docsCount = Counts.get('totalDocsCount');
     const docsPerPage = Meteor.settings.public.navigation.pixPerPage;
     return Math.max(Math.ceil(docsCount / docsPerPage), 1);
-  }
+  },
 });

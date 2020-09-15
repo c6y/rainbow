@@ -13,5 +13,5 @@ Template.editFullFrame.events({
     // Set to opposing value
     const newState = oldStateFixed === false;
     Meteor.call('eboypix.updateFullFrame', this._id, newState);
-  }
+  },
 });

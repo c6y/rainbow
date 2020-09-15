@@ -28,5 +28,5 @@ Template.devicesInput.events({
     target.width.value = '';
     target.height.value = '';
     target.year.value = '';
-  }
+  },
 });

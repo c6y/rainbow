@@ -16,7 +16,7 @@ Template.user.helpers({
   },
   showUserInfo() {
     return Session.get('plusBox');
-  }
+  },
 });
 
 Template.user.events({
@@ -25,5 +25,5 @@ Template.user.events({
     const userEmail = Meteor.user().emails[0].address;
     GAnalytics.event('users', 'logout', userEmail);
     Meteor.logout();
-  }
+  },
 });

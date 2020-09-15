@@ -12,5 +12,5 @@ Template.login.events({
     const userPassword = event.target.loginPassword.value;
     GAnalytics.event('users', 'login', userEmail);
     Meteor.loginWithPassword(userEmail, userPassword);
-  }
+  },
 });

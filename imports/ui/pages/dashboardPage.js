@@ -43,7 +43,7 @@ Template.dashboardPage.helpers({
       return isAdmin || isEditor;
     }
     return false;
-  }
+  },
 });
 
 Template.dashboardPage.events({
@@ -51,5 +51,5 @@ Template.dashboardPage.events({
     const oldState = Template.instance().showRegister.get();
     const newState = oldState === false;
     Template.instance().showRegister.set(newState);
-  }
+  },
 });

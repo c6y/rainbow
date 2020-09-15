@@ -7,73 +7,73 @@ export const UploadedBy = {};
 
 UploadedBy.UserInfo = new SimpleSchema({
   id: {
-    type: String
+    type: String,
   },
   username: {
-    type: String
-  }
+    type: String,
+  },
 });
 
 PicSchema.Pic = new SimpleSchema({
   'url': {
     type: SimpleSchema.RegEx.Url,
-    unique: true
+    unique: true,
   },
   'name': {
-    type: String
+    type: String,
   },
   'createdAt': {
-    type: Date
+    type: Date,
   },
   'uploadedBy': {
-    type: UploadedBy.UserInfo
+    type: UploadedBy.UserInfo,
   },
   'madeDate': {
     type: Date,
-    optional: true
+    optional: true,
   },
   'dimensions.width': {
-    type: Number
+    type: Number,
   },
   'dimensions.height': {
-    type: Number
+    type: Number,
   },
   'tags': {
     type: [String],
-    optional: true
+    optional: true,
   },
   'projects': {
     type: [String],
-    optional: true
+    optional: true,
   },
   'backgroundColor': {
-    type: String
+    type: String,
   },
   'copyright': {
     type: String,
-    defaultValue: Meteor.settings.public.ownership.creator.name
+    defaultValue: Meteor.settings.public.ownership.creator.name,
   },
   'license': {
     type: String,
-    defaultValue: Meteor.settings.public.ownership.defaultLicense
+    defaultValue: Meteor.settings.public.ownership.defaultLicense,
   },
   'fullFrame': {
     type: Boolean,
-    optional: true
+    optional: true,
   },
   'antiAlias': {
     type: Boolean,
     optional: true,
-    defaultValue: false
+    defaultValue: false,
   },
   'access': {
     type: Number,
     defaultValue: 3,
     min: 0,
-    max: 3
+    max: 3,
   },
   'link': {
     type: String,
-    optional: true
-  }
+    optional: true,
+  },
 });

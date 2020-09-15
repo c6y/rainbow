@@ -99,7 +99,7 @@ Meteor.publish('pix.urls.public', function pixUrlsPublic() {
 // Set server route for simple:rest package
 //
 }, {
-  url: 'json',
+  url: 'eboypix.json',
 });
 
 // Publish all project urls for subscriptions

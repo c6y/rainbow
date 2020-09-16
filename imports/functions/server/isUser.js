@@ -20,7 +20,7 @@ export function isAdminOrEditor() {
  */
 export function isAdmin() {
   const isAdmin = Meteor.user().profile.isAdmin;
-  // if user is not an Admin
+  // if user is not an Admin throw an error
   if (!isAdmin) {
     throw new Meteor.Error('not-authorized');
   }
@@ -34,7 +34,7 @@ export function isAdmin() {
 export function isUser() {
   const isUser = Meteor.user().profile.isUser;
 
-  // if user acces is not Limited throw an error
+  // if user acces is not isUser throw an error
   if (!isUser) {
     throw new Meteor.Error('not-authorized');
   }

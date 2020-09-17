@@ -58,6 +58,7 @@ Template.canvas.onRendered(function() {
         { name: thisDocument.backgroundColor },
     );
 
+    // if a color has been selected bu the user, update value of color
     const selectedColorId = Session.get('colorId');
     if (selectedColorId) {
       color = Colors.findOne(
@@ -234,6 +235,12 @@ Template.renderPage.helpers({
     });
     return myColors;
   },
+  isSelected() {
+    const colorSelected = getBackgroundColor();
+    if (colorSelected.name === this.name) {
+      return 'selected';
+    }
+  },
 });
 
 Template.renderPage.events({
@@ -282,3 +289,27 @@ Template.renderPage.events({
     Session.set('addFactor', newAddFactorRounded);
   },
 });
+
+/**
+ * Gets the currently active background color.
+ * @return {Object} The full color object.
+ */
+function getBackgroundColor() {
+  // get the Image document
+  const thisId = FlowRouter.getParam('_id');
+  const thisDocument = EboyPix.findOne(thisId);
+
+  // get the backgroundColor of Image
+  let color = Colors.findOne(
+      { name: thisDocument.backgroundColor },
+  );
+
+  // update value of color, if a color has been selected by the user
+  const selectedColorId = Session.get('colorId');
+  if (selectedColorId) {
+    color = Colors.findOne(
+        { _id: selectedColorId },
+    );
+  };
+  return color;
+}

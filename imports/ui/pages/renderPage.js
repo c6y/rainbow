@@ -63,10 +63,7 @@ Template.canvas.onRendered(function() {
       color = Colors.findOne(
           { _id: selectedColorId },
       );
-      // console.log(selectedColorId);
-      // console.log(color._id);
     }
-
 
     // set up hsl color string
     let hslColor;

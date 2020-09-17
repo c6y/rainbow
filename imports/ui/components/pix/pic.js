@@ -6,6 +6,9 @@ import { Template } from 'meteor/templating';
 // Collections
 import { Colors } from '../../../api/colors/colors.js';
 
+// Functions
+import { hslColorString } from '../../../functions/client/hslColorString.js';
+
 import './pic.html';
 
 // Components used
@@ -26,12 +29,7 @@ Template.pic.helpers({
     );
     // If it's in the color database return hsl values as css hsl string
     if (color) {
-      const hslColor = String(
-          'hsl(' +
-          color.hue + ', ' +
-          color.saturation + '%, ' +
-          color.luminosity + '%)',
-      );
+      const hslColor = hslColorString(color);
       return {
         info: hslColor,
         value: hslColor,

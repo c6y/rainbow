@@ -14,6 +14,12 @@
             <option value="{{_id}}">{{name}}</option>
           {{/each}}
         </select>
+        <select name="selectColor" id="selectColor">
+          <option selected disabled>Choose Color</option>
+          {{#each colors}}
+            <option value="{{_id}}">{{name}}</option>
+          {{/each}}
+        </select>
         {{#if deviceSelected}}
           <a id="scaleDown">[ - </a>|<a id="scaleUp"> + ]</a> @{{scale}}x
         {{/if}}

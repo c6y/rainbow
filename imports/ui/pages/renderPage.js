@@ -23,8 +23,10 @@ let canvas;
 let context;
 let maxCanvasW = 512;
 let maxCanvasH = 512;
+
 const deviceDep = new Tracker.Dependency();
 const makeDep = new Tracker.Dependency();
+// const colorDep = new Tracker.Dependency();
 
 // Template onCreated
 Template.renderPage.onCreated(function() {
@@ -52,17 +54,28 @@ Template.canvas.onRendered(function() {
     const thisDocument = EboyPix.findOne(thisId);
 
     // get backgroundColor of Image
-    const color = Colors.findOne(
+    let color = Colors.findOne(
         { name: thisDocument.backgroundColor },
     );
+
+    const selectedColorId = Session.get('colorId');
+    if (selectedColorId) {
+      color = Colors.findOne(
+          { _id: selectedColorId },
+      );
+      // console.log(selectedColorId);
+      // console.log(color._id);
+    }
+
+
     // set up hsl color string
     let hslColor;
     if (color) {
       hslColor = String(
           'hsl(' +
-        color.hue + ', ' +
-        color.saturation + '%, ' +
-        color.luminosity + '%)',
+          color.hue + ', ' +
+          color.saturation + '%, ' +
+          color.luminosity + '%)',
       );
     } else {
       hslColor = 'hsl(0, 50%, 50%)';
@@ -218,6 +231,12 @@ Template.renderPage.helpers({
       d: ratio.denominator,
     };
   },
+  colors() {
+    const myColors = Colors.find({}, {
+      sort: { name: 1 },
+    });
+    return myColors;
+  },
 });
 
 Template.renderPage.events({
@@ -238,6 +257,14 @@ Template.renderPage.events({
     const element = document.getElementById('selectDevice');
     element.selectedIndex = 0;
     makeDep.changed();
+  },
+  'change #selectColor'(event) {
+    event.preventDefault();
+    const colorId = event.target.value;
+    Session.set('colorId', colorId);
+    // const element = document.getElementById('colorId');
+    // element.selectedIndex = 0;
+    // colorDep.changed();
   },
   'click #scaleDown'(event) {
     event.preventDefault();

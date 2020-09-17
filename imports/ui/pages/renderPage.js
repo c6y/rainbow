@@ -46,38 +46,17 @@ Template.canvas.onCreated(function() {
 
 Template.canvas.onRendered(function() {
   const self = this;
+
   self.autorun(function() {
     deviceDep.depend();
 
-    // get the Image
+    // get the Image document
     const thisId = FlowRouter.getParam('_id');
     const thisDocument = EboyPix.findOne(thisId);
 
-    // get backgroundColor of Image
-    let color = Colors.findOne(
-        { name: thisDocument.backgroundColor },
-    );
-
-    // if a color has been selected bu the user, update value of color
-    const selectedColorId = Session.get('colorId');
-    if (selectedColorId) {
-      color = Colors.findOne(
-          { _id: selectedColorId },
-      );
-    }
-
     // set up hsl color string
-    let hslColor;
-    if (color) {
-      hslColor = String(
-          'hsl(' +
-          color.hue + ', ' +
-          color.saturation + '%, ' +
-          color.luminosity + '%)',
-      );
-    } else {
-      hslColor = 'hsl(0, 50%, 50%)';
-    }
+    const color = getBackgroundColor();
+    const hslColor = hslColorString(color);
 
     // set dimensions of image
     const originalWidth = thisDocument.dimensions.width;
@@ -312,4 +291,24 @@ function getBackgroundColor() {
     );
   };
   return color;
+}
+
+/**
+ * Return a HSL string of a color.
+ * @param {Object} color The color object.
+ * @return {string} The HSL color string.
+ */
+function hslColorString(color) {
+  let hslString;
+  if (color) {
+    hslString = String(
+        'hsl(' +
+        color.hue + ', ' +
+        color.saturation + '%, ' +
+        color.luminosity + '%)',
+    );
+  } else {
+    hslString = 'hsl(0, 50%, 50%)';
+  };
+  return hslString;
 }

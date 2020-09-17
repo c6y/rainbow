@@ -11,6 +11,7 @@ import { _ } from 'meteor/underscore';
 import { setDocHead } from '../../functions/client/setDocHead.js';
 import { scaleByIntToFit } from '../../functions/client/scaleByIntToFit.js';
 import { reduceFraction } from '../../functions/client/reduceFraction.js';
+import { hslColorString } from '../../functions/client/hslColorString.js';
 
 // Collections
 import { EboyPix } from '../../api/eboypix/eboypix.js';
@@ -291,24 +292,4 @@ function getBackgroundColor() {
     );
   };
   return color;
-}
-
-/**
- * Return a HSL string of a color.
- * @param {Object} color The color object.
- * @return {string} The HSL color string.
- */
-function hslColorString(color) {
-  let hslString;
-  if (color) {
-    hslString = String(
-        'hsl(' +
-        color.hue + ', ' +
-        color.saturation + '%, ' +
-        color.luminosity + '%)',
-    );
-  } else {
-    hslString = 'hsl(0, 50%, 50%)';
-  };
-  return hslString;
 }

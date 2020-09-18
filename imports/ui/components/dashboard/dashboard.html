@@ -19,18 +19,18 @@
     </div>
     {{#if currentUser.profile.isAdmin}}
       <div class="usersList">
-        <h4>Registered Users ({{usersCount}})</h4>
+        <h4>Registered Users ({{registeredUsersCount}})</h4>
         <ul>
-          {{#each users}}
+          {{#each registeredUsers}}
             <li>
               <span class="removeUser">×</span>
               <span class="isAdmin">{{#if this.profile.isAdmin}}Admin{{else}}<span class="isOff">Admin</span>{{/if}}</span>
               <span class="isEditor">{{#if this.profile.isEditor}}Editor{{else}}<span class="isOff">Editor</span>{{/if}}</span>
               <span class="isUser">{{#if this.profile.isUser}}User{{else}}<span class="isOff">User</span>{{/if}}</span>
-              {{_id}},
+              {{this._id}},
               {{this.username}},
-              {{email}},
-              {{userCreatedAt}}
+              {{registeredUsersEmail}},
+              {{registeredUsersCreatedAtIso}}
             </li>
           {{/each}}
         </ul>

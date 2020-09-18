@@ -14,6 +14,10 @@ Template.dashboard.onCreated(function() {
 });
 
 Template.dashboard.helpers({
+  // Profile of user logged in
+  username() {
+    return Meteor.user().username;
+  },
   userEmail() {
     const userEmail = Meteor.user().emails[0];
     return userEmail.address;
@@ -21,21 +25,19 @@ Template.dashboard.helpers({
   userId() {
     return Meteor.userId();
   },
-  users() {
-    return Meteor.users.find({}, { sort: { profile: -1, createdAt: 1 } });
-  },
-  email() {
-    return this.emails[0].address;
-  },
-  username() {
-    return Meteor.user().username;
-  },
-  usersCount() {
+  // Profiles of registered users
+  registeredUsersCount() {
     return Meteor.users.find().count();
   },
-  userCreatedAt() {
-    if (Meteor.user().createdAt) {
-      const userDate = Meteor.user().createdAt;
+  registeredUsers() {
+    return Meteor.users.find({}, { sort: { profile: -1, createdAt: 1 } });
+  },
+  registeredUsersEmail() {
+    return this.emails[0].address;
+  },
+  registeredUsersCreatedAtIso() {
+    if (this.createdAt) {
+      const userDate = this.createdAt;
       const shortDate = userDate.toISOString().substring(0, 10);
       return shortDate;
     }

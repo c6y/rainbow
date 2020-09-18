@@ -87,8 +87,8 @@ Meteor.publish('pix.accesscounts.public', function() {
 });
 
 // Publish all urls and tags as JSON
-Meteor.publish('pix.urls.public', function pixUrlsPublic() {
-  const selector = { access: 0 }; // find all pix that are public
+Meteor.publish('pix.urls.public', function pixUrls() {
+  const selector = { access: { $in: [0, 1] } };
   const options = {
     fields: {
       url: 1,
@@ -102,8 +102,8 @@ Meteor.publish('pix.urls.public', function pixUrlsPublic() {
   url: 'eboypix.json',
 });
 
-// Publish all project urls for subscriptions
-Meteor.publish('pix.urls.public', function pixUrlsPublic(project) {
+// Publish all project urls and background colors for projects
+Meteor.publish('pix.urlsproject.public', function pixUrlsProject(project) {
   const selector = { projects: project }; // find all pix from a project
   const options = {
     fields: {

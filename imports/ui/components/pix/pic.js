@@ -18,6 +18,23 @@ import './picMeta.js';
 import './picMeta.html';
 
 Template.pic.helpers({
+  accessLevel() {
+    const style = 'access-' + this.access.toString();
+    let value = '0';
+    if (this.access == 0) {
+      value = 'P';
+    } else if (this.access == 1) {
+      value = 'LTD';
+    } else if (this.access == 2) {
+      value = 'Special';
+    } else {
+      value = 'E';
+    }
+    return {
+      value: value,
+      style: style,
+    };
+  },
   hasLink() {
     const hasLink = this.link;
     return hasLink ? hasLink : false;

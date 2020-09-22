@@ -9,3 +9,19 @@
 @import '../components/dashboard/user.less';
 
 @import '../stylesheets/layout.less';
+
+.loading {
+  margin: 2.5em;
+  color: @color-1;
+  font-family: @font-meta;
+  font-size: @font-meta-size;
+
+  animation: blinkingText 2s infinite;
+  @keyframes blinkingText {
+    0%    {color: @color-1-ten;}
+    10%   {color: @color-1-ten;}
+    50%   {color: @color-1;}
+    60%   {color: @color-1;}
+    100%  {color: @color-1-ten;}
+  }
+}

@@ -27,16 +27,20 @@ Template.pic.helpers({
     return false;
   },
   accessLevel() {
-    const style = 'access-' + this.access.toString();
-    let value = '0';
-    if (this.access == 0) {
-      value = 'P';
-    } else if (this.access == 1) {
-      value = 'LTD';
-    } else if (this.access == 2) {
-      value = 'Special';
-    } else {
-      value = 'E';
+    let value = 'Undefined';
+    let style = 'access-undefined';
+
+    if (this.access != undefined) {
+      style = 'access-' + this.access.toString();
+      if (this.access == 0) {
+        value = 'P';
+      } else if (this.access == 1) {
+        value = 'LTD';
+      } else if (this.access == 2) {
+        value = 'Special';
+      } else {
+        value = 'E';
+      }
     }
     return {
       value: value,

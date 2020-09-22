@@ -18,6 +18,14 @@ import './picMeta.js';
 import './picMeta.html';
 
 Template.pic.helpers({
+  isAdminOrEditor() {
+    if (Meteor.user()) {
+      const isAdmin = Meteor.user().profile.isAdmin;
+      const isEditor = Meteor.user().profile.isEditor;
+      return isAdmin || isEditor;
+    }
+    return false;
+  },
   accessLevel() {
     const style = 'access-' + this.access.toString();
     let value = '0';

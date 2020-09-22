@@ -7,7 +7,9 @@
         </div>
       </a>
     {{/if}}
-    <div class="{{accessLevel.style}}">{{accessLevel.value}}</div>
+    {{#if isAdminOrEditor}}
+      <div class="{{accessLevel.style}}">{{accessLevel.value}}</div>
+    {{/if}}
     {{> picSprite}}
   </span>
 </template>

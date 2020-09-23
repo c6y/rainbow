@@ -1,5 +1,5 @@
 <template name="cssBack">
-  <span class="cssBackSwatch">
+  <span class="cssBackSwatch" style="{{code}}">
     <span class="cssBackInfos">
       <span class="cssBackMainInfo">
         {{#if isAdminOrEditor}}
@@ -7,9 +7,6 @@
         {{/if}}
         <span class="cssBackName">{{name}}</span>
       </span>
-      {{#if isAdminOrEditor}}
-        <span class="cssBackCode">{{code}}</span>
-      {{/if}}
     </span>
   </span>
 </template>

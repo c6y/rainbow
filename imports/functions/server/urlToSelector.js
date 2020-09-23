@@ -29,45 +29,60 @@ export function urlToSelector(slug, query, userId) {
     }
   }
 
+  // This default selector searches for everything
+  // within the user's access level
   let selector = userAccess;
 
+  // All searches not for 'everything' modify the default selector
   if (slug !== 'everything') {
-    if (query === 'name') {
-      // console.log('search Name');
+    // If search slug is _notag_ find all documents that have not tags
+    if (slug === '_notag_') {
+      console.log('slug server: ' + slug);
       selector = {
         $and: [
-          { name: slugRegExp },
+          { tags: [] },
           userAccess,
         ],
       };
-    } else if (query === 'tag') {
-      // console.log('search Tag');
-      selector = {
-        $and: [
-          { tags: slugRegExp },
-          userAccess,
-        ],
-      };
-    } else if (query === 'project') {
-      // console.log('search Project');
-      selector = {
-        $and: [
-          { projects: slugRegExp },
-          userAccess,
-        ],
-      };
+    // For any other slug check the query
     } else {
-      // console.log('search ANYWHERE');
-      selector = {
-        $and: [
-          { $or: [
-            { tags: slugRegExp },
-            { projects: slugRegExp },
+      if (query === 'name') {
+        // console.log('search Name');
+        selector = {
+          $and: [
             { name: slugRegExp },
-          ] },
-          userAccess,
-        ],
-      };
+            userAccess,
+          ],
+        };
+      } else if (query === 'tag') {
+        // console.log('search Tag');
+        selector = {
+          $and: [
+            { tags: slugRegExp },
+            userAccess,
+          ],
+        };
+      } else if (query === 'project') {
+        // console.log('search Project');
+        selector = {
+          $and: [
+            { projects: slugRegExp },
+            userAccess,
+          ],
+        };
+      } else {
+        // console.log('search ANYWHERE');
+        selector = {
+          $and: [
+            { $or: [
+              { tags: slugRegExp },
+              { projects: slugRegExp },
+              { name: slugRegExp },
+            ] },
+            userAccess,
+          ],
+        };
+      }
     }
   }
   return selector;

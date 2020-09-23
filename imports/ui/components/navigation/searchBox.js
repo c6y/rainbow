@@ -19,6 +19,7 @@ Template.searchBox.onCreated(function() {
   // ... if so set the Session variable
   const query = FlowRouter.getQueryParam('q');
   if (query) {
+    console.log('query: ' + query);
     Session.set('searchBoxQuery', query);
   }
   // Set initial value of query to default if undefined
@@ -67,7 +68,6 @@ Template.searchBox.helpers({
   },
   searchPlaceholder() {
     const slug = FlowRouter.getParam('slug');
-    // return slug + ' (875)';
     return slug;
   },
   isAdminOrEditor() {

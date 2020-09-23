@@ -37,7 +37,6 @@ export function urlToSelector(slug, query, userId) {
   if (slug !== 'everything') {
     // If search slug is _notag_ find all documents that have not tags
     if (slug === '_notag_') {
-      console.log('slug server: ' + slug);
       selector = {
         $and: [
           { tags: [] },

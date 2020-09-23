@@ -1,0 +1,22 @@
+<template name="cssBackPage">
+  <div id="autocenterbox">
+    {{> searchBox}}
+    <div id="appheader">
+      <div id="appheader-left">
+        {{> logo}}
+      </div>
+      <!-- <div id="appheader-right"> -->
+        <!-- {{> countColors}} -->
+      <!-- </div> -->
+    </div>
+    <div id="appbody">
+      {{> sideBox}}
+      <div id="mainBox">
+        {{#if isAdminOrEditor}}
+          {{> cssBackInput}}
+        {{/if}}
+        {{> cssBacksPool}}
+      </div>
+    </div>
+  </div>
+</template>

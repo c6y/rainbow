@@ -1,0 +1,15 @@
+<template name="cssBack">
+  <span class="cssBackSwatch">
+    <span class="cssBackInfos">
+      <span class="cssBackMainInfo">
+        {{#if isAdminOrEditor}}
+          <span class="deleteCssBack">×</span>
+        {{/if}}
+        <span class="cssBackName">{{name}}</span>
+      </span>
+      {{#if isAdminOrEditor}}
+        <span class="cssBackCode">{{code}}</span>
+      {{/if}}
+    </span>
+  </span>
+</template>

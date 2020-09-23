@@ -1,0 +1,42 @@
+.cssBackSwatch {
+  display: block;
+  height: 100%;
+
+  .cssBackInfos {
+    .cssBackMainInfo {
+      display: flex;
+    }
+
+    .deleteCssBack {
+      display: inline-block;
+      background: @color-2;
+      color: @color-5;
+      padding-top: 0.5 * @cell-margin;
+      padding-right: 0;
+      padding-bottom: 0.5 * @cell-margin;
+      padding-left: @cell-margin;
+      z-index: 10;
+      cursor: pointer;
+    }
+
+    .deleteCssBack:hover {
+      color: @color-2;
+      background-color: @color-5;
+    }
+
+    .cssBackName {
+      display: inline-block;
+      background-color: @color-2;
+      padding: 0.5 * @cell-margin @cell-margin;
+    }
+
+    .cssBackCode {
+      padding: 0.5 * @cell-margin @cell-margin;
+      font-family: @font-meta;
+      font-size: @font-meta-size-small;
+      line-height: @font-meta-lineheight;
+      display: block;
+      color: @color-1;
+    }
+  }
+}

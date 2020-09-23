@@ -10,6 +10,7 @@ import '../../ui/layouts/applayout.js';
 // Pages
 import '../../ui/pages/pixPoolPage.js';
 import '../../ui/pages/colorsPage.js';
+import '../../ui/pages/cssBackPage.js';
 import '../../ui/pages/quicksPage.js';
 import '../../ui/pages/spriteBoxPage.js';
 import '../../ui/pages/addDocPage.js';
@@ -74,6 +75,16 @@ FlowRouter.route('/colors', {
     GAnalytics.pageview();
     BlazeLayout.render('applayout', {
       main: 'colorsPage',
+    });
+  },
+});
+
+FlowRouter.route('/cssback', {
+  name: 'cssback',
+  action() {
+    GAnalytics.pageview();
+    BlazeLayout.render('applayout', {
+      main: 'cssBackPage',
     });
   },
 });

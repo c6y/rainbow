@@ -45,8 +45,15 @@
         <div>
           // Set permissions to create user accounts in settings.json
         </div>
+      </div>
+    {{/if}}
+    {{#if currentUser.profile.isEditor}}
+      <div class="editorNote">
         <div>
-          // Show as cover image: add 'pinned' to 'projects'
+          // Documents that are <a href="/pool/pinned/1?q=project">'pinned' on home</a>
+        </div>
+        <div>
+          // Documents that have <a href="/pool/_notag_/1">no tags</a>
         </div>
       </div>
     {{/if}}

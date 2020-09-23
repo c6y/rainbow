@@ -12,6 +12,10 @@
   }
 }
 
+.usersList {
+  padding-bottom: @cell-margin;
+}
+
 .usersList ul,
 .userInfo ul,
 .registerForm {
@@ -51,9 +55,13 @@
   color: @color-5;
 }
 
-.adminNote {
+.adminNote,
+.editorNote {
   font-size: @font-meta-size;
   color: @color-3;
-  margin-top: @cell-margin;
-  padding: 2 * @cell-margin;
+  margin: 2 * @cell-margin;
+  a {
+    color: @color-5;
+    text-decoration: none;
+  }
 }

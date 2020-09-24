@@ -49,6 +49,10 @@ PicSchema.Pic = new SimpleSchema({
   'backgroundColor': {
     type: String,
   },
+  'backgroundPattern': {
+    type: String,
+    optional: true,
+  },
   'copyright': {
     type: String,
     defaultValue: Meteor.settings.public.ownership.creator.name,

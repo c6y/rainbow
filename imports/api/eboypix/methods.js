@@ -5,6 +5,7 @@ import { Random } from 'meteor/random';
 // Collections
 import { EboyPix } from './eboypix.js';
 import { Colors } from '../colors/colors.js';
+import { CssBacks } from '../cssbacks/cssbacks.js';
 
 // Functions
 import { getProjectName } from '../../functions/server/getProjectName.js';
@@ -50,6 +51,9 @@ Meteor.methods({
       // Get random color name with random index
       const colorName = colorNamesArray[randomColorIndex];
 
+      // Set initial pattern name to empty
+      const patternName = '';
+
       // Get user id
       const thisUserId = Meteor.user()._id;
       console.log('thisUserId: ' + thisUserId);
@@ -68,6 +72,7 @@ Meteor.methods({
         createdAt: new Date(),
         dimensions: { width: imageWidth, height: imageHeight },
         backgroundColor: colorName,
+        backgroundPattern: patternName,
         tags: [],
         projects: projectArray,
         fullFrame: fullFrame,
@@ -118,6 +123,15 @@ Meteor.methods({
           { $set: { backgroundColor: newBackColor } },
       );
       console.log(taskId + ': backColor updated: "' + newBackColor + '"');
+    }
+  },
+  'eboypix.updateBackPattern'(taskId, newBackPattern) {
+    if (isAdminOrEditor()) {
+      EboyPix.update(
+          taskId,
+          { $set: { backgroundPattern: newBackPattern } },
+      );
+      console.log(taskId + ': backPattern updated: "' + newBackPattern + '"');
     }
   },
   'eboypix.updateTags'(taskId, newTagsArray) {

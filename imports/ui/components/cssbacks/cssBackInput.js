@@ -9,7 +9,7 @@ Template.cssBackInput.events({
     event.preventDefault();
     const target = event.target;
     const name = target.name.value;
-    const code = target.code.value;
+    const code = target.code.value.trim();
     Meteor.call('cssbacks.insert', name, code);
     // Clear form
     target.name.value = '';

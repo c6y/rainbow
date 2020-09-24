@@ -33,12 +33,8 @@ Template.picSprite.helpers({
   },
   backStyle() {
     if (this.backgroundPattern) {
-      console.log('this.backgroundPattern: ' + this.backgroundPattern);
-
       const selector = { name: this.backgroundPattern };
       const cssBack = CssBacks.findOne(selector);
-
-      console.log('cssBack._id: ' + cssBack._id);
       return cssBack.code;
     } else {
       // Get the color by name

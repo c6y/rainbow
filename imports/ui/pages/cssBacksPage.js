@@ -18,10 +18,10 @@ import '../components/navigation/logo.html';
 import '../components/navigation/sideBox.js';
 import '../components/navigation/sideBox.html';
 
-import './cssBackPage.html';
+import './cssBacksPage.html';
 
 // Template onCreated
-Template.cssBackPage.onCreated(function() {
+Template.cssBacksPage.onCreated(function() {
   const self = this;
   self.autorun(function() {
     const title = FlowRouter.getRouteName();
@@ -31,7 +31,7 @@ Template.cssBackPage.onCreated(function() {
   });
 });
 
-Template.cssBackPage.helpers({
+Template.cssBacksPage.helpers({
   isAdminOrEditor() {
     if (Meteor.user()) {
       const isAdmin = Meteor.user().profile.isAdmin;

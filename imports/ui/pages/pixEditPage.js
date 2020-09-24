@@ -38,6 +38,7 @@ Template.pixEditPage.onCreated(function() {
     const query = FlowRouter.getQueryParam('q');
     self.subscribe('pix.paged.public', thisSlug, thisPage, query);
     self.subscribe('colors.public');
+    self.subscribe('cssbacks.public');
   });
 });
 

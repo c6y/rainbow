@@ -10,7 +10,7 @@ import '../../ui/layouts/applayout.js';
 // Pages
 import '../../ui/pages/pixPoolPage.js';
 import '../../ui/pages/colorsPage.js';
-import '../../ui/pages/cssBackPage.js';
+import '../../ui/pages/cssBacksPage.js';
 import '../../ui/pages/quicksPage.js';
 import '../../ui/pages/spriteBoxPage.js';
 import '../../ui/pages/addDocPage.js';
@@ -79,12 +79,12 @@ FlowRouter.route('/colors', {
   },
 });
 
-FlowRouter.route('/cssback', {
-  name: 'cssback',
+FlowRouter.route('/cssbacks', {
+  name: 'cssbacks',
   action() {
     GAnalytics.pageview();
     BlazeLayout.render('applayout', {
-      main: 'cssBackPage',
+      main: 'cssBacksPage',
     });
   },
 });

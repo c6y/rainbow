@@ -6,6 +6,7 @@ import { Session } from 'meteor/session';
 
 // Collections
 import { Colors } from '../../../api/colors/colors.js';
+import { CssBacks } from '../../../api/cssbacks/cssbacks.js';
 
 // Functions
 import { hslColorString } from '../../../functions/client/hslColorString.js';
@@ -30,31 +31,38 @@ Template.picSprite.helpers({
     // Returns true if we're not on spriteBox
     return routeName !== 'spriteBox';
   },
-  colorHSL() {
-    // Get the color by name
-    const color = Colors.findOne(
-        { name: this.backgroundColor },
-    );
-    // If it's in the color database return hsl values as css hsl string
-    if (color) {
-      const hslColor = hslColorString(color);
+  backStyle() {
+    if (this.backgroundPattern) {
+      console.log('this.backgroundPattern: ' + this.backgroundPattern);
+
+      const selector = { name: this.backgroundPattern };
+      const cssBack = CssBacks.findOne(selector);
+
+      console.log('cssBack._id: ' + cssBack._id);
+      return cssBack.code;
+    } else {
+      // Get the color by name
+      const color = Colors.findOne(
+          { name: this.backgroundColor },
+      );
+      // If it's in the color database return hsl values as css hsl string
+      if (color) {
+        const hslColor = hslColorString(color);
+        return 'background-color: ' + hslColor + ';';
+      }
+      // If color does not exist return diagonal stripes warning pattern
+      const emptyColor = 'repeating-linear-gradient(' +
+        '135deg,' +
+        'transparent,' +
+        'transparent 0.5rem,' +
+        '#ccc 0.5rem,' +
+        '#ccc 1rem' +
+        ')';
       return {
-        info: hslColor,
-        value: hslColor,
+        info: 'Warning! Assign a color!',
+        value: emptyColor,
       };
     }
-    // If color does not exist return diagonal stripes warning pattern
-    const emptyColor = 'repeating-linear-gradient(' +
-      '135deg,' +
-      'transparent,' +
-      'transparent 0.5rem,' +
-      '#ccc 0.5rem,' +
-      '#ccc 1rem' +
-      ')';
-    return {
-      info: 'Warning! Assign a color!',
-      value: emptyColor,
-    };
   },
   scaledDims() {
     // Get dimensions from settings file

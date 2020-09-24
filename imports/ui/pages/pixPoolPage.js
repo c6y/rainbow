@@ -43,6 +43,7 @@ Template.pixPoolPage.onCreated(function() {
     self.subscribe('pix.paged.public', thisSlug, thisPage, query);
     self.subscribe('colors.public');
     self.subscribe('quicks.public');
+    self.subscribe('cssbacks.public');
   });
 });
 

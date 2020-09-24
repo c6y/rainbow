@@ -5,7 +5,6 @@ import { Random } from 'meteor/random';
 // Collections
 import { EboyPix } from './eboypix.js';
 import { Colors } from '../colors/colors.js';
-import { CssBacks } from '../cssbacks/cssbacks.js';
 
 // Functions
 import { getProjectName } from '../../functions/server/getProjectName.js';

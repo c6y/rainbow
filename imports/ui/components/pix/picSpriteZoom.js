@@ -7,6 +7,7 @@ import { $ } from 'meteor/jquery';
 
 // Collections
 import { Colors } from '../../../api/colors/colors.js';
+import { CssBacks } from '../../../api/cssbacks/cssbacks.js';
 
 // Functions
 import { hslColorString } from '../../../functions/client/hslColorString.js';
@@ -18,6 +19,7 @@ import { scaleByIntToFit } from '../../../functions/client/scaleByIntToFit.js';
 import { scaleSoftDown } from '../../../functions/client/scaleSoftDown.js';
 import { scaleSoft } from '../../../functions/client/scaleSoft.js';
 import { getFileType } from '../../../functions/both/getFileType.js';
+
 // Template rendered/destroyed
 // style hack fills hidden part of window with background color
 Template.picSpriteZoom.rendered = function() {
@@ -30,24 +32,48 @@ Template.picSpriteZoom.destroyed = function() {
 // Template helpers
 Template.picSpriteZoom.helpers({
   colorHSL() {
-    // Get the color by name
-    const color = Colors.findOne(
-        { name: this.backgroundColor },
-    );
-    // If it's in the color database return hsl values as css hsl string
-    if (color) {
-      const hslColor = hslColorString(color);
-      return {
-        info: hslColor,
-        value: hslColor,
-      };
+    if (this.backgroundPattern) {
+      const selector = { name: this.backgroundPattern };
+      console.log('this document references to ' + this.backgroundPattern);
+
+      const cssBack = CssBacks.findOne(selector);
+
+      if (cssBack) {
+        console.log('cssBack.code: ' + cssBack.code);
+        console.log('pattern found!');
+        return {
+          value: cssBack.code,
+        };
+      } else {
+        console.log(
+            'missing background pattern: \'' +
+            this.backgroundPattern + '\' for ' + this.name,
+        );
+        // If background pattern does not exist return debug color
+        return {
+          value: 'background-color: ' + Meteor.settings.public.colors.debug,
+        };
+      }
     } else {
-      // If color does not exist return debug color
-      console.log('this.backgroundColor: ' + this.backgroundColor);
-      return {
-        info: 'Warning! Assign a color!',
-        value: Meteor.settings.public.colors.debug,
-      };
+      // Get the color by name
+      const color = Colors.findOne(
+          { name: this.backgroundColor },
+      );
+      // If it's in the color database return hsl values as css hsl string
+      if (color) {
+        const hslColor = hslColorString(color);
+        return {
+          info: hslColor,
+          value: 'background-color: ' + hslColor,
+        };
+      } else {
+        // If color does not exist return debug color
+        console.log('this.backgroundColor: ' + this.backgroundColor);
+        return {
+          info: 'Warning! Assign a color!',
+          value: 'background-color: ' + Meteor.settings.public.colors.debug,
+        };
+      }
     }
   },
   scaledDims() {

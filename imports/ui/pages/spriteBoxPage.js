@@ -28,6 +28,7 @@ Template.spriteBoxPage.onCreated(function() {
     const thisId = FlowRouter.getParam('_id');
     self.subscribe('pix.single.public', thisId);
     self.subscribe('colors.public');
+    self.subscribe('cssbacks.public');
   });
 });
 

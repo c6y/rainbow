@@ -35,29 +35,33 @@ Template.picSprite.helpers({
     if (this.backgroundPattern) {
       const selector = { name: this.backgroundPattern };
       const cssBack = CssBacks.findOne(selector);
-      return cssBack.code;
+      if (cssBack) {
+        return cssBack.code;
+      } else {
+        console.log(
+            'missing background pattern: \'' +
+            this.backgroundPattern + '\' for ' + this.name,
+        );
+        // If color does not exist return debug color
+        return 'background:' + Meteor.settings.public.colors.debug + ';';
+      }
     } else {
       // Get the color by name
       const color = Colors.findOne(
           { name: this.backgroundColor },
       );
-      // If it's in the color database return hsl values as css hsl string
+      // If color name is in color database return hsl values as css hsl string
       if (color) {
         const hslColor = hslColorString(color);
         return 'background-color: ' + hslColor + ';';
+      } else {
+        console.log(
+            'missing color: \'' +
+            this.backgroundColor + '\' for ' + this.name,
+        );
+        // If color does not exist return debug color
+        return 'background:' + Meteor.settings.public.colors.debug + ';';
       }
-      // If color does not exist return diagonal stripes warning pattern
-      const emptyColor = 'repeating-linear-gradient(' +
-        '135deg,' +
-        'transparent,' +
-        'transparent 0.5rem,' +
-        '#ccc 0.5rem,' +
-        '#ccc 1rem' +
-        ')';
-      return {
-        info: 'Warning! Assign a color!',
-        value: emptyColor,
-      };
     }
   },
   scaledDims() {

@@ -57,17 +57,10 @@ Template.picMeta.helpers({
         value: hslColor,
       };
     }
-    // If color does not exist return diagonal stripes warning pattern
-    const emptyColor = 'repeating-linear-gradient(' +
-      '135deg,' +
-      'transparent,' +
-      'transparent 0.5rem,' +
-      '#ccc 0.5rem,' +
-      '#ccc 1rem' +
-      ')';
+    // If color does not exist return debug color
     return {
       info: 'Warning! Assign a color!',
-      value: emptyColor,
+      value: Meteor.settings.public.colors.debug,
     };
   },
   isAdminOrEditor() {

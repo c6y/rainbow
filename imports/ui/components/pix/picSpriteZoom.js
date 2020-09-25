@@ -41,19 +41,14 @@ Template.picSpriteZoom.helpers({
         info: hslColor,
         value: hslColor,
       };
+    } else {
+      // If color does not exist return debug color
+      console.log('this.backgroundColor: ' + this.backgroundColor);
+      return {
+        info: 'Warning! Assign a color!',
+        value: Meteor.settings.public.colors.debug,
+      };
     }
-    // If color does not exist return diagonal stripes warning pattern
-    const emptyColor = 'repeating-linear-gradient(' +
-      '135deg,' +
-      'transparent,' +
-      'transparent 0.5rem,' +
-      '#ccc 0.5rem,' +
-      '#ccc 1rem' +
-      ')';
-    return {
-      info: 'Warning! Assign a color!',
-      value: emptyColor,
-    };
   },
   scaledDims() {
     const oWidth = this.dimensions.width;
@@ -64,8 +59,8 @@ Template.picSpriteZoom.helpers({
 
     // add a little bit of padding
     const rem = Meteor.settings.public.dimensions.rem;
-    let boxW = wWidth - rem * 2;
-    let boxH = wHeight - rem * 2;
+    const boxW = wWidth - rem * 2;
+    const boxH = wHeight - rem * 2;
 
     const fileType = getFileType(this.name);
     const antiAlias = this.antiAlias;

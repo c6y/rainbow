@@ -20,6 +20,9 @@
       "cell": 16,
       "cellMargin": 0.5
     },
+    "colors": {
+      "debug": "grey"
+    },
     "userSetup": {
       "allowNewUsers" : true,
       "allowSelfRegister": false,

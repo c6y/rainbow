@@ -14,4 +14,8 @@
   align-items: baseline;
   flex-direction: column;
   z-index: 20;
+
+  // fix for painting issues on Safari
+  // https://stackoverflow.com/a/27971913/1051251
+  transform: translateZ(0);
 }

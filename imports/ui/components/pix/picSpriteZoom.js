@@ -31,29 +31,22 @@ Template.picSpriteZoom.destroyed = function() {
 
 // Template helpers
 Template.picSpriteZoom.helpers({
-  colorHSL() {
+  background() {
+    //  Check if document references to a pattern ...
     if (this.backgroundPattern) {
       const selector = { name: this.backgroundPattern };
-      console.log('this document references to ' + this.backgroundPattern);
-
       const cssBack = CssBacks.findOne(selector);
-
       if (cssBack) {
-        console.log('cssBack.code: ' + cssBack.code);
-        console.log('pattern found!');
-        return {
-          value: cssBack.code,
-        };
+        return cssBack.code;
       } else {
         console.log(
             'missing background pattern: \'' +
             this.backgroundPattern + '\' for ' + this.name,
         );
-        // If background pattern does not exist return debug color
-        return {
-          value: 'background-color: ' + Meteor.settings.public.colors.debug,
-        };
+        // If pattern does not exist return debug color
+        return 'background-color: ' + Meteor.settings.public.colors.debug;
       }
+    // ... if there's no pattern get and set the color
     } else {
       // Get the color by name
       const color = Colors.findOne(
@@ -62,17 +55,14 @@ Template.picSpriteZoom.helpers({
       // If it's in the color database return hsl values as css hsl string
       if (color) {
         const hslColor = hslColorString(color);
-        return {
-          info: hslColor,
-          value: 'background-color: ' + hslColor,
-        };
+        return 'background-color: ' + hslColor;
       } else {
+        console.log(
+            'missing background color: \'' +
+            this.backgroundColor + '\' for ' + this.name,
+        );
         // If color does not exist return debug color
-        console.log('this.backgroundColor: ' + this.backgroundColor);
-        return {
-          info: 'Warning! Assign a color!',
-          value: 'background-color: ' + Meteor.settings.public.colors.debug,
-        };
+        return 'background-color: ' + Meteor.settings.public.colors.debug;
       }
     }
   },

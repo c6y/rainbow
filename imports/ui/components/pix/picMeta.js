@@ -45,6 +45,8 @@ Template.picMeta.helpers({
     }
   },
   colorHSL() {
+    // return this.backgroundColor;
+
     // Get the color by name
     const color = Colors.findOne(
         { name: this.backgroundColor },
@@ -52,16 +54,10 @@ Template.picMeta.helpers({
     // If it's in the color database return hsl values as css hsl string
     if (color) {
       const hslColor = hslColorString(color);
-      return {
-        info: hslColor,
-        value: hslColor,
-      };
+      return hslColor;
+    } else {
+      return 'n\/a';
     }
-    // If color does not exist return debug color
-    return {
-      info: 'Warning! Assign a color!',
-      value: Meteor.settings.public.colors.debug,
-    };
   },
   isAdminOrEditor() {
     if (Meteor.user()) {

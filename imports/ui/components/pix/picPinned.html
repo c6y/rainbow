@@ -1,7 +1,7 @@
 <template name="picPinned">
   {{#if thisIsHome}}
     {{#if pinnedPic}}
-      <a href="{{toSpriteBoxPath}}" id="pinned" style="background-image: url('{{pinnedPic.url}}');background-color: {{pinnedPicColor}}"></a>
+      <span href="{{toSpriteBoxPath}}" id="pinned" style="{{backPinned}}"></span>
     {{/if}}
   {{/if}}
 </template>

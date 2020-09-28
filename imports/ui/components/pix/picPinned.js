@@ -6,6 +6,7 @@ import { Session } from 'meteor/session';
 // Collections
 import { EboyPix } from '../../../api/eboypix/eboypix.js';
 import { Colors } from '../../../api/colors/colors.js';
+import { CssBacks } from '../../../api/cssbacks/cssbacks.js';
 
 // Functions
 import { isHome } from '../../../functions/client/isHome.js';
@@ -35,6 +36,11 @@ Template.picPinned.helpers({
       const params = { _id: thisId };
       return FlowRouter.path('spriteBox', params);
     }
+  },
+  backPinned() {
+    const pinnedBack = CssBacks.findOne({ name: 'pinned' });
+    console.log('pinnedBack.name: ' + pinnedBack.name);
+    return pinnedBack.code;
   },
   pinnedPic() {
     const pinnedPic = EboyPix.findOne({ projects: 'pinned' });

@@ -64,10 +64,20 @@ Template.cssBackInput.events({
 
     const backId = Session.get('backgroundId');
     if (backId) {
-      console.log('backId: ' + backId);
       Meteor.call('cssback.update', backId, name, cleanedCode);
     } else {
-      Meteor.call('cssbacks.insert', name, cleanedCode);
+      Meteor.call('cssbacks.insert',
+          name,
+          cleanedCode,
+          function(error, result) {
+            if (error) {
+              Session.set('backgroundName', name);
+              Session.set('backgroundCss', code);
+              alert('Error! Check name…');
+            } else {
+              console.log('success!');
+            }
+          });
     }
     // Clear form
     target.name.value = '';

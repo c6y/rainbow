@@ -7,18 +7,28 @@ import './cssBackInput.html';
 
 // Template onCreated
 Template.cssBackInput.onCreated(function() {
-  const defaultColor = Meteor.settings.public.colors.debug;
-  Session.set('backgroundCss', 'background-color: ' + defaultColor + ';');
-  Session.set('backgroundName', 'grey');
+  // const defaultColor = Meteor.settings.public.colors.debug;
+  // Session.set('backgroundCss', 'background-color: ' + defaultColor + ';');
+  Session.set('backgroundCss', '');
+  Session.set('backgroundName', '');
 });
 
 // Template helpers
 Template.cssBackInput.helpers({
   cssCode() {
-    return Session.get('backgroundCss');
+    const code = Session.get('backgroundCss');
+    if (code) {
+      return Session.get('backgroundCss');
+    }
   },
   cssName() {
     return Session.get('backgroundName');
+  },
+  showCssPreview() {
+    const code = Session.get('backgroundCss');
+    if (!code) {
+      return 'display:none';
+    }
   },
 });
 
@@ -39,8 +49,8 @@ Template.cssBackInput.events({
     if (event.target.value) {
       Session.set('backgroundCss', event.target.value);
     } else {
-      const defaultColor = Meteor.settings.public.colors.debug;
-      Session.set('backgroundCss', 'background-color: ' + defaultColor + ';');
+      // const defaultColor = Meteor.settings.public.colors.debug;
+      Session.set('backgroundCss', '');
     }
   }, 600),
 });

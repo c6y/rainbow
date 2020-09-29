@@ -2,13 +2,13 @@
   <div id="cssBackBox">
     <form class="new-cssBack">
       <div class="textareaBox">
-        <textarea id="csstxt" name="code" rows="2" cols="auto" placeholder="background css">{{cssCode}}</textarea>
+        <textarea id="csstxt" name="code" rows="3" cols="auto" placeholder="background css">{{cssCode}}</textarea>
       </div>
       <div class="nameSubmitBox">
         <input type="text" name="name" value="{{cssName}}" placeholder="name" maxlength="20" size="12"/>
         <button type="submit">Add</button>
       </div>
     </form>
-    <div id="preview-cssBack" style="{{cssCode}}"></div>
+    <div id="preview-cssBack" style="{{cssCode}}{{showCssPreview}}"></div>
   </div>
 </template>

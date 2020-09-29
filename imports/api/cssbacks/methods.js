@@ -32,4 +32,18 @@ Meteor.methods({
       console.log(id + ': removed from CssBacks');
     }
   },
+  'cssback.update'(taskId, name, code) {
+    if (isAdminOrEditor()) {
+      CssBacks.update(
+          taskId,
+          { $set:
+            {
+              name: name,
+              code: code,
+            },
+          },
+      );
+      console.log(taskId + ': backPattern updated: "' + code + '"');
+    }
+  },
 });

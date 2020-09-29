@@ -19,6 +19,7 @@ Template.cssBacksPool.helpers({
 Template.cssBacksPool.events({
   // Session is initialized in cssBackInput.js
   'click #cssBack'(event) {
+    Session.set('backgroundId', this._id);
     Session.set('backgroundCss', this.code);
     Session.set('backgroundName', this.name);
   },

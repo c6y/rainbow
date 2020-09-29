@@ -6,9 +6,14 @@
       </div>
       <div class="nameSubmitBox">
         <input type="text" name="name" value="{{cssName}}" placeholder="name" maxlength="20" size="12"/>
-        <button type="submit">Add</button>
+        {{#if idIsSet}}
+          <button>Reset</button>
+          <button id="copyPattern">Copy</button>
+        {{/if}}
+        <button type="submit">{{submit}}</button>
       </div>
     </form>
-    <div id="preview-cssBack" style="{{cssCode}}{{showCssPreview}}"></div>
+    <div id="preview-cssBack" style="{{cssCode}}{{showCssPreview}}">
+    </div>
   </div>
 </template>

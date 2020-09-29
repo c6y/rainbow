@@ -1,1 +1,25 @@
 @import '../../stylesheets/elements/inputbox.less';
+
+#preview-cssBack {
+  height: @cell;
+  padding: 0.5 * @cell-margin;
+  margin: @cell-margin;
+  box-shadow: @boxshadow-1;
+}
+
+.textareaBox {
+  width: 100%;
+  display: block;
+  // background-color: green;
+}
+
+.nameSubmitBox {
+  width: 100%;
+  display: block;
+  display: flex;
+  float: right;
+  text-align: right;
+  button:last-child {
+    margin-left: auto;
+  }
+}

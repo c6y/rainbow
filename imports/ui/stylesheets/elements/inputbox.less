@@ -30,23 +30,25 @@
       }
     }
 
-    input,
+    input[type="text"],
     textarea {
       border: 0.5 * @cell-margin solid @color-10;
       font-family: inherit;
       font-size: @font-meta-size;
       padding: 0.5 * @cell-margin;
       margin: 0;
+      outline: none;
     }
 
-    input {
+    input[type="text"] {
       flex: 0.5;
-      min-width: 0
+      min-width: 0;
     }
 
     textarea {
       flex: 1;
-      min-width: 0
+      min-width: 0;
+      // padding: 1em;
     }
 
     ::-webkit-input-placeholder {

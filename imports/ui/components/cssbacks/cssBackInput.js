@@ -9,12 +9,18 @@ import './cssBackInput.html';
 Template.cssBackInput.onCreated(function() {
   const defaultColor = Meteor.settings.public.colors.debug;
   Session.set('backgroundCss', 'background-color: ' + defaultColor + ';');
+  Session.set('backgroundName', 'grey');
+  // Session.set('backgroundCss', undefined);
+  // Session.set('backgroundName', undefined);
 });
 
 // Template helpers
 Template.cssBackInput.helpers({
-  cssPreview() {
+  cssCode() {
     return Session.get('backgroundCss');
+  },
+  cssName() {
+    return Session.get('backgroundName');
   },
 });
 

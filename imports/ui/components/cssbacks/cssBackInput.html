@@ -1,10 +1,10 @@
 <template name="cssBackInput">
   <div id="cssBackBox">
     <form class="new-cssBack">
-      <textarea name="code" rows="2" cols="auto" placeholder="background css"></textarea>
-      <input type="text" name="name" placeholder="name" maxlength="20" size="12"/>
+      <textarea id="csstxt" name="code" rows="2" cols="auto" placeholder="background css">{{cssCode}}</textarea>
+      <input type="text" name="name" value="{{cssName}}" placeholder="{{cssName}}" maxlength="20" size="12"/>
       <button type="submit">Add</button>
     </form>
-    <div id="preview-cssBack" style="{{cssPreview}}"></div>
+    <div id="preview-cssBack" style="{{cssCode}}"></div>
   </div>
 </template>

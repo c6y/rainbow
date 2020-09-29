@@ -14,3 +14,12 @@ Template.cssBacksPool.helpers({
     return CssBacks.find({}, { sort: { name: -1 } });
   },
 });
+
+// Template events
+Template.cssBacksPool.events({
+  // Session is initialized in cssBackInput.js
+  'click #cssBack'(event) {
+    Session.set('backgroundCss', this.code);
+    Session.set('backgroundName', this.name);
+  },
+});

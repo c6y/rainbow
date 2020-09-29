@@ -33,7 +33,6 @@ Template.cssBackInput.events({
   },
   'keyup textarea': _.throttle(function(event, target) {
     if (event.target.value) {
-      console.log('event.target.value: ' + event.target.value);
       Session.set('backgroundCss', event.target.value);
     } else {
       const defaultColor = Meteor.settings.public.colors.debug;

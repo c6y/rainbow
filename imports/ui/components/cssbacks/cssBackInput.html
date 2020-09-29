@@ -1,9 +1,13 @@
 <template name="cssBackInput">
   <div id="cssBackBox">
     <form class="new-cssBack">
-      <textarea id="csstxt" name="code" rows="2" cols="auto" placeholder="background css">{{cssCode}}</textarea>
-      <input type="text" name="name" value="{{cssName}}" placeholder="{{cssName}}" maxlength="20" size="12"/>
-      <button type="submit">Add</button>
+      <div class="textareaBox">
+        <textarea id="csstxt" name="code" rows="2" cols="auto" placeholder="background css">{{cssCode}}</textarea>
+      </div>
+      <div class="nameSubmitBox">
+        <input type="text" name="name" value="{{cssName}}" placeholder="name" maxlength="20" size="12"/>
+        <button type="submit">Add</button>
+      </div>
     </form>
     <div id="preview-cssBack" style="{{cssCode}}"></div>
   </div>

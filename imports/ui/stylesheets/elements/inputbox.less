@@ -12,6 +12,7 @@
     font-family: @font-meta;
     font-size: @font-meta-size;
     color: @color-10;
+    flex-wrap: wrap;
 
     select {
       font-family: inherit;
@@ -38,6 +39,7 @@
       padding: 0.5 * @cell-margin;
       margin: 0;
       outline: none;
+
     }
 
     input[type="text"] {
@@ -46,9 +48,10 @@
     }
 
     textarea {
-      flex: 1;
-      min-width: 0;
-      // padding: 1em;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      resize: vertical;
     }
 
     ::-webkit-input-placeholder {

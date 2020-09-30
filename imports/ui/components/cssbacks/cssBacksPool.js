@@ -11,7 +11,7 @@ import './cssBack.js';
 // Template helpers
 Template.cssBacksPool.helpers({
   cssBacks() {
-    return CssBacks.find({}, { sort: { name: -1 } });
+    return CssBacks.find({}, { sort: { name: 1 } });
   },
 });
 

@@ -35,16 +35,27 @@ export function urlToSelector(slug, query, userId) {
 
   // All searches not for 'everything' modify the default selector
   if (slug !== 'everything') {
-    // If search slug is _notag_ find all documents that have not tags
-    if (slug === '_notag_') {
-      selector = {
-        $and: [
-          { tags: [] },
-          userAccess,
-        ],
-      };
-    // For any other slug check the query
+    // Useful debugging searches
+    if (slug === '_debug') {
+      // Find all documents that have no tags
+      if (query === 'notag') {
+        selector = {
+          $and: [
+            { tags: [] },
+            userAccess,
+          ],
+        };
+      // Find all documents that have css background patterns
+      } else if (query === 'cssbacks') {
+        selector = {
+          $and: [
+            { backgroundPattern: { $exists: true } },
+            userAccess,
+          ],
+        };
+      }
     } else {
+    // For any other slug check the query
       if (query === 'name') {
         // console.log('search Name');
         selector = {

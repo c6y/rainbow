@@ -38,7 +38,7 @@ Template.picPinned.helpers({
     }
   },
   backPinned() {
-    const pinnedBack = CssBacks.findOne({ name: 'pinned' });
+    const pinnedBack = CssBacks.findOne({ name: '*pinned' });
     console.log('pinnedBack.name: ' + pinnedBack.name);
     return pinnedBack.code;
   },

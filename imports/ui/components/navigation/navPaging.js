@@ -31,10 +31,10 @@ const hasMorePages = function() {
 };
 
 Template.navPaging.helpers({
-  // thisPageNumber() {
-  //   const thisPageString = FlowRouter.getParam('page');
-  //   return parseInt(thisPageString, 10);//
-  // },
+  thisPageNumber() {
+    const thisPageString = FlowRouter.getParam('page');
+    return parseInt(thisPageString, 10);//
+  },
   previousPageClass() {
     const thisPageString = FlowRouter.getParam('page');
     const thisPage = parseInt(thisPageString, 10);

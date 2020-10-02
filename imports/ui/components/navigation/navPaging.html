@@ -1,16 +1,17 @@
 <template name="navPaging">
   <span id="navPagingBox">
-    <span class="{{nextPageClass}}">
-      <a class="nextPage" href="{{nextPage}}">
-        <i class="material-icons">chevron_right</i>
-      </a>
-    </span>
-    <span class="bigPageNum">{{thisPageNumber}}</span>
-    <!-- <span class="bigPageNum">IO</span> -->
-    <span class="{{previousPageClass}}">
-      <a class="prevPage" href="{{prevPage}}">
-        <i class="material-icons">chevron_left</i>
-      </a>
+    <span id="pagingBackBox">
+      <span class="{{nextPageClass}}">
+        <a class="nextPage" href="{{nextPage}}">
+          <i class="material-icons">chevron_right</i>
+        </a>
+      </span>
+      <span class="bigPageNum">{{thisPageNumber}}</span>
+      <span class="{{previousPageClass}}">
+        <a class="prevPage" href="{{prevPage}}">
+          <i class="material-icons">chevron_left</i>
+        </a>
+      </span>
     </span>
   </span>
 </template>

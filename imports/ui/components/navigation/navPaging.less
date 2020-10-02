@@ -24,10 +24,15 @@
   white-space: nowrap;
   user-select: none;
   cursor: default;
-  background-color: @color-19-desat;
+
+  #pagingBackBox {
+    background-color: @color-19-desat;
+  }
 
   .material-icons {
     font-size: inherit;
+    padding: 0;
+    margin: 0;
   }
 
   .bigPageNum {
@@ -35,8 +40,7 @@
     font-family: @font-logo;
     color: @color-headerlink;
     font-weight: @font-big-weight;
-    // background-color: @color-19-desat;
-    // background-color: cyan;
+    margin-left: -0.1em;
     z-index: 200;
   }
 
@@ -49,13 +53,6 @@
     }
   }
 
-  .active a,
-  .inactive a {
-    // background-color: @color-19-desat;
-    // background-color: cyan;
-
-  }
-
   .active {
     a {
       opacity: 1;
@@ -66,7 +63,6 @@
       &:active {
         transition: background-color 0s linear;
         color: @color-5-fifty;
-        background-color: @color-headerback;
       }
     }
   }

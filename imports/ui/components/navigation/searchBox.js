@@ -78,12 +78,13 @@ Template.searchBox.helpers({
     }
     return false;
   },
-  isUser() {
-    if (Meteor.user()) {
-      return 'true';
-    }
-    return 'none';
-  },
+  // Hide or show search field dropdown menu
+  // isUser() {
+  //   if (Meteor.user()) {
+  //     return 'true';
+  //   }
+  //   return 'false';
+  // },
   // isVisible() {
   //   const isVisible = Session.get('plusBox');
   //   return isVisible;

@@ -4,7 +4,7 @@
       <form class="searchFor">
         {{> pageCount}}
         {{> pixCount}}
-        <select name="query" style="display: {{isUser}}">
+        <select name="query">
           {{#each queryList}}
             <option value="{{this.value}}" {{this.selected}}>
               {{this.label}}

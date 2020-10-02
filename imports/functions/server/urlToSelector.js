@@ -10,8 +10,18 @@ import { Meteor } from 'meteor/meteor';
   * @return {object} selector — The Mongo selector
  */
 export function urlToSelector(slug, query, userId) {
-  const reg = RegExp(slug, 'i', 's');
-  const slugRegExp = { $regex: reg };
+  let searchSlug;
+
+  // If first char in slug is a '=', search for exact term.
+  // Otherwise do a grep search
+  const firstSlugChar = slug.charAt(0); // Get first slug character
+  if (firstSlugChar === '=') {
+    searchSlug = slug.substring(1); // set search slug without the initial '='
+  } else {
+    const reg = RegExp(slug, 'i', 's');
+    const slugRegExp = { $regex: reg };
+    searchSlug = slugRegExp; // set grep search slug
+  }
 
   // If user is not logged in,
   // limit search query to documents with access level 0
@@ -60,7 +70,7 @@ export function urlToSelector(slug, query, userId) {
         // console.log('search Name');
         selector = {
           $and: [
-            { name: slugRegExp },
+            { name: searchSlug },
             userAccess,
           ],
         };
@@ -68,7 +78,7 @@ export function urlToSelector(slug, query, userId) {
         // console.log('search Tag');
         selector = {
           $and: [
-            { tags: slugRegExp },
+            { tags: searchSlug },
             userAccess,
           ],
         };
@@ -76,7 +86,7 @@ export function urlToSelector(slug, query, userId) {
         // console.log('search Project');
         selector = {
           $and: [
-            { projects: slugRegExp },
+            { projects: searchSlug },
             userAccess,
           ],
         };
@@ -85,9 +95,9 @@ export function urlToSelector(slug, query, userId) {
         selector = {
           $and: [
             { $or: [
-              { tags: slugRegExp },
-              { projects: slugRegExp },
-              { name: slugRegExp },
+              { tags: searchSlug },
+              { projects: searchSlug },
+              { name: searchSlug },
             ] },
             userAccess,
           ],

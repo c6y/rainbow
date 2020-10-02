@@ -19,10 +19,10 @@ EboyPix.attachSchema(PicSchema.Pic);
 //   return EboyPix.find(selector);
 // });
 
-Meteor.publish('pix.pinned.public', function pixPinnedPublic() {
-  const selector = { projects: 'pinned' }; // pix that are pinned
-  return EboyPix.find(selector);
-});
+// Meteor.publish('pix.pinned.public', function pixPinnedPublic() {
+//   const selector = { projects: 'pinned' }; // pix that are pinned
+//   return EboyPix.find(selector);
+// });
 
 // Publish all documents later than given date
 // this is used to show all newly added images

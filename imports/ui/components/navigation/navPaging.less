@@ -12,18 +12,16 @@
   }
 }
 
-.inactive a {
-  color: @color-headerlink;
-}
-
 #navPagingBox {
   line-height: @font-big-lineheight;
   font-family: 'Material Icons';
   padding: 0;
   margin: 0;
   white-space: nowrap;
-  user-select: none;
   cursor: default;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
 
   #pagingBackBox {
     background-color: @color-19-desat;
@@ -40,6 +38,7 @@
     font-family: @font-logo;
     color: @color-headerlink;
     font-weight: @font-big-weight;
+    padding: 0 .35em;
     margin-left: -0.1em;
     z-index: 200;
   }
@@ -53,6 +52,15 @@
     }
   }
 
+  .active,
+  .inactive {
+    margin: 0 -0.2em;
+  }
+
+  .inactive a {
+    color: @color-headerlink;
+  }
+
   .active {
     a {
       opacity: 1;
@@ -61,9 +69,17 @@
       text-decoration: none;
 
       &:active {
-        transition: background-color 0s linear;
+        // transition: background-color 0s linear;
         color: @color-5-fifty;
       }
+      &:visited,
+      &:active,
+      &:focus,
+      &:hover {
+        background: none;
+      }
+
+      -webkit-tap-highlight-color: none;
     }
   }
 }

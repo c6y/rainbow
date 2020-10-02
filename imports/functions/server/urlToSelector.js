@@ -13,14 +13,21 @@ export function urlToSelector(slug, query, userId) {
   let searchSlug;
 
   // If first char in slug is a '=', search for exact term.
+  // If first char in slug is a '-', search for docs that don't contain term.
   // Otherwise do a grep search
   const firstSlugChar = slug.charAt(0); // Get first slug character
   if (firstSlugChar === '=') {
-    searchSlug = slug.substring(1); // set search slug without the initial '='
+    // remove initial '=' and search for exact slug
+    searchSlug = slug.substring(1);
+  } else if (firstSlugChar === '-') {
+    // remove initial '-' and search for all except search slug
+    const bareslug = RegExp(slug.substring(1), 'i', 's');
+    searchSlug = { $not: { $regex: bareslug } };
   } else {
+    // set grep search slug
     const reg = RegExp(slug, 'i', 's');
     const slugRegExp = { $regex: reg };
-    searchSlug = slugRegExp; // set grep search slug
+    searchSlug = slugRegExp;
   }
 
   // If user is not logged in,

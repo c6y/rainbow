@@ -12,22 +12,24 @@ import { Meteor } from 'meteor/meteor';
 export function urlToSelector(slug, query, userId) {
   let searchSlug;
 
-  // If first char in slug is a '=', search for exact term.
-  // If first char in slug is a '-', search for docs that don't contain term.
+  // If first char in slug is a '=', search for exact slug.
+  // If first char in slug is a '-', search for docs that do not contain slug.
   // Otherwise do a grep search
   const firstSlugChar = slug.charAt(0); // Get first slug character
   if (firstSlugChar === '=') {
-    // remove initial '=' and search for exact slug
+    // Has equal slug
     searchSlug = slug.substring(1);
   } else if (firstSlugChar === '-') {
-    // remove initial '-' and search for all except search slug
-    const bareslug = RegExp(slug.substring(1), 'i', 's');
-    searchSlug = { $not: { $regex: bareslug } };
-  } else {
-    // set grep search slug
-    const reg = RegExp(slug, 'i', 's');
-    const slugRegExp = { $regex: reg };
+    // Has NOT equal slug
+    const slugWithoutMinus = '^' + slug.substring(1) + '$';
+    const reg = new RegExp(slugWithoutMinus, 'i', 's');
+    const slugRegExp = { $not: reg };
     searchSlug = slugRegExp;
+  } else {
+    // Does contain slug
+    const reg = new RegExp(slug, 'i', 's');
+    const slugRegExp = { $regex: reg };
+    searchSlug = slugRegExp; // set grep search slug
   }
 
   // If user is not logged in,

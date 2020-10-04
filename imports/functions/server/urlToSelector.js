@@ -10,7 +10,11 @@ import { Meteor } from 'meteor/meteor';
  * @return {object} selector — The Mongo selector
  */
 export function urlToSelector(slug, query, userId) {
-  const querySelector = createQuerySelector(slug);
+  const queryObject = createQuerySelector(slug);
+  const querySelector = queryObject.selector;
+  const searchMode = queryObject.mode;
+
+  console.log('searchMode: ' + searchMode);
 
   // If user is not logged in,
   // limit search query to documents with access level 0
@@ -81,15 +85,28 @@ export function urlToSelector(slug, query, userId) {
         };
       } else {
         // console.log('search ANYWHERE');
-        selector = {
-          $and: [
-            { $or: [
-              { tags: querySelector },
-              { projects: querySelector },
-              { name: querySelector },
-            ] },
-            userAccess,
-          ],
+        if (searchMode !== 'not') {
+          selector = {
+            $and: [
+              { $or: [
+                { tags: querySelector },
+                { projects: querySelector },
+                { name: querySelector },
+              ] },
+              userAccess,
+            ],
+          };
+        } else {
+          selector = {
+            $and: [
+              { $and: [
+                { tags: querySelector },
+                { projects: querySelector },
+                { name: querySelector },
+              ] },
+              userAccess,
+            ],
+          };
         };
       }
     }
@@ -107,20 +124,33 @@ export function urlToSelector(slug, query, userId) {
  * @return {object} or {string} selector — The Mongo selector
  */
 function createQuerySelector(slug) {
+  let mode;
   const firstSlugChar = slug.charAt(0); // Get first slug character
   if (firstSlugChar === '~') {
+    mode = 'exact';
     querySelector = slug.substring(1);
-    return querySelector; // returns a plain string
+    return {
+      selector: querySelector, // returns a plain string
+      mode: mode,
+    };
   } else if (firstSlugChar === '-') {
+    mode = 'not';
     const slugWithoutMinus = '^' + slug.substring(1) + '$';
     const reg = new RegExp(slugWithoutMinus, 'i', 's');
     const slugRegExp = { $not: reg };
     querySelector = slugRegExp;
-    return querySelector; // returns an object
+    return {
+      selector: querySelector, // returns an object
+      mode: mode,
+    };
   } else {
+    mode = 'contain';
     const reg = new RegExp(slug, 'i', 's');
     const slugRegExp = { $regex: reg };
     querySelector = slugRegExp;
-    return querySelector; // returns an object
+    return {
+      selector: querySelector, // returns an object
+      mode: mode,
+    };
   }
 }

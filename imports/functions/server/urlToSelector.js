@@ -10,7 +10,7 @@ import { Meteor } from 'meteor/meteor';
  * @return {object} selector — The Mongo selector
  */
 export function urlToSelector(slug, query, userId) {
-  const searchSlug = createSearchSelector(slug);
+  const querySelector = createQuerySelector(slug);
 
   // If user is not logged in,
   // limit search query to documents with access level 0
@@ -59,7 +59,7 @@ export function urlToSelector(slug, query, userId) {
         // console.log('search Name');
         selector = {
           $and: [
-            { name: searchSlug },
+            { name: querySelector },
             userAccess,
           ],
         };
@@ -67,7 +67,7 @@ export function urlToSelector(slug, query, userId) {
         // console.log('search Tag');
         selector = {
           $and: [
-            { tags: searchSlug },
+            { tags: querySelector },
             userAccess,
           ],
         };
@@ -75,7 +75,7 @@ export function urlToSelector(slug, query, userId) {
         // console.log('search Project');
         selector = {
           $and: [
-            { projects: searchSlug },
+            { projects: querySelector },
             userAccess,
           ],
         };
@@ -84,9 +84,9 @@ export function urlToSelector(slug, query, userId) {
         selector = {
           $and: [
             { $or: [
-              { tags: searchSlug },
-              { projects: searchSlug },
-              { name: searchSlug },
+              { tags: querySelector },
+              { projects: querySelector },
+              { name: querySelector },
             ] },
             userAccess,
           ],
@@ -106,21 +106,21 @@ export function urlToSelector(slug, query, userId) {
  * @param {string} slug — The search slug/term
  * @return {object} or {string} selector — The Mongo selector
  */
-function createSearchSelector(slug) {
+function createQuerySelector(slug) {
   const firstSlugChar = slug.charAt(0); // Get first slug character
   if (firstSlugChar === '~') {
-    searchSlug = slug.substring(1);
-    return searchSlug; // returns a plain string
+    querySelector = slug.substring(1);
+    return querySelector; // returns a plain string
   } else if (firstSlugChar === '-') {
     const slugWithoutMinus = '^' + slug.substring(1) + '$';
     const reg = new RegExp(slugWithoutMinus, 'i', 's');
     const slugRegExp = { $not: reg };
-    searchSlug = slugRegExp;
-    return searchSlug; // returns an object
+    querySelector = slugRegExp;
+    return querySelector; // returns an object
   } else {
     const reg = new RegExp(slug, 'i', 's');
     const slugRegExp = { $regex: reg };
-    searchSlug = slugRegExp;
-    return searchSlug; // returns an object
+    querySelector = slugRegExp;
+    return querySelector; // returns an object
   }
 }

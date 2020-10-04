@@ -16,7 +16,7 @@ export function urlToSelector(slug, query, userId) {
   // If first char in slug is a '-', search for docs that do not contain slug.
   // Otherwise do a grep search
   const firstSlugChar = slug.charAt(0); // Get first slug character
-  if (firstSlugChar === '=') {
+  if (firstSlugChar === '~') {
     // Has equal slug
     searchSlug = slug.substring(1);
   } else if (firstSlugChar === '-') {

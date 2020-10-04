@@ -7,30 +7,10 @@ import { Meteor } from 'meteor/meteor';
  * @param {string} slug — The search slug/term
  * @param {string} query — The query for the search
  * @param {string} userId — gets user ID if user is logged in
-  * @return {object} selector — The Mongo selector
+ * @return {object} selector — The Mongo selector
  */
 export function urlToSelector(slug, query, userId) {
-  let searchSlug;
-
-  // If first char in slug is a '=', search for exact slug.
-  // If first char in slug is a '-', search for docs that do not contain slug.
-  // Otherwise do a grep search
-  const firstSlugChar = slug.charAt(0); // Get first slug character
-  if (firstSlugChar === '~') {
-    // Has equal slug
-    searchSlug = slug.substring(1);
-  } else if (firstSlugChar === '-') {
-    // Has NOT equal slug
-    const slugWithoutMinus = '^' + slug.substring(1) + '$';
-    const reg = new RegExp(slugWithoutMinus, 'i', 's');
-    const slugRegExp = { $not: reg };
-    searchSlug = slugRegExp;
-  } else {
-    // Does contain slug
-    const reg = new RegExp(slug, 'i', 's');
-    const slugRegExp = { $regex: reg };
-    searchSlug = slugRegExp; // set grep search slug
-  }
+  const searchSlug = createSearchSelector(slug);
 
   // If user is not logged in,
   // limit search query to documents with access level 0
@@ -115,4 +95,32 @@ export function urlToSelector(slug, query, userId) {
     }
   }
   return selector;
+}
+
+/**
+ * Converts the search slug to a query selector.
+ * Conversion depends on the slug's first control character.
+ * If first char in slug is a '=', search for exact slug.
+ * If first char in slug is a '-', search for docs that do not contain slug.
+ * Otherwise do a grep search.
+ * @param {string} slug — The search slug/term
+ * @return {object} or {string} selector — The Mongo selector
+ */
+function createSearchSelector(slug) {
+  const firstSlugChar = slug.charAt(0); // Get first slug character
+  if (firstSlugChar === '~') {
+    searchSlug = slug.substring(1);
+    return searchSlug; // returns a plain string
+  } else if (firstSlugChar === '-') {
+    const slugWithoutMinus = '^' + slug.substring(1) + '$';
+    const reg = new RegExp(slugWithoutMinus, 'i', 's');
+    const slugRegExp = { $not: reg };
+    searchSlug = slugRegExp;
+    return searchSlug; // returns an object
+  } else {
+    const reg = new RegExp(slug, 'i', 's');
+    const slugRegExp = { $regex: reg };
+    searchSlug = slugRegExp;
+    return searchSlug; // returns an object
+  }
 }

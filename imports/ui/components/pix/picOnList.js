@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
+import { Session } from 'meteor/session';
 
 import './picOnList.html';
 
@@ -31,18 +32,36 @@ import '../edit/editAccess.html';
 import '../edit/editLink.js';
 import '../edit/editLink.html';
 
-// Template.picOnList.helpers({
-//   uploadedByName() {
-//     if (this.uploadedBy) {
-//       // const uploadedBy = this.uploadedBy.username;
-//       const uploadedBy = this.uploadedBy.username;
-//       console.log('uploadedBy: ' + uploadedBy);
-//       return uploadedBy;
-//     }
-//   }
-// });
+
 Template.picOnList.events({
   'click .deletePic'() {
     Meteor.call('eboypix.delete', this._id);
   },
+  'click #toggleMore'() {
+    const showMore = Session.get(this._id);
+    if (!showMore) {
+      Session.set(this._id, true);
+    } else {
+      Session.set(this._id, false);
+    }
+  },
+});
+
+Template.picOnList.helpers({
+  toggleMore() {
+    const showMore = Session.get(this._id);
+    if (!showMore) {
+      return false;
+    } else {
+      return true;
+    }
+  },
+  // uploadedByName() {
+  //   if (this.uploadedBy) {
+  //     // const uploadedBy = this.uploadedBy.username;
+  //     const uploadedBy = this.uploadedBy.username;
+  //     console.log('uploadedBy: ' + uploadedBy);
+  //     return uploadedBy;
+  //   }
+  // },
 });

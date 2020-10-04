@@ -29,33 +29,36 @@
           <span class="editMeta">{{> editBackPattern}}</span>
         </li>
         <li>
-          <span class="property">license: </span>
-          <span class="editMeta">{{> editLicense}}</span>
-        </li>
-        <li>
-          <span class="property">copyright: </span>
-          <span class="editMeta">{{> editCopyright}}</span>
-        </li>
-        <li>
-          <span class="property">madeDate: </span>
-          <span class="editMeta">{{> editMadeDate}}</span>
-        </li>
-        <li>
-          <span class="property">fullFrame:</span>
-          <span class="editMeta">{{> editFullFrame}}</span>
-        </li>
-        <li>
-          <span class="property">antiAlias:</span>
-          <span class="editMeta">{{> editAntiAlias}}</span>
-        </li>
-        <li>
           <span class="property">access:</span>
           <span class="editMeta">{{> editAccess}}</span>
         </li>
-        <li>
-          <span class="property">link:</span>
-          <span class="editMeta">{{> editLink}}</span>
-        </li>
+        <li class="toggle" id="toggleMore"><span class="dots">...</span></li>
+        {{#if toggleMore}}
+          <li>
+            <span class="property">madeDate: </span>
+            <span class="editMeta">{{> editMadeDate}}</span>
+          </li>
+          <li>
+            <span class="property">fullFrame:</span>
+            <span class="editMeta">{{> editFullFrame}}</span>
+          </li>
+          <li>
+            <span class="property">antiAlias:</span>
+            <span class="editMeta">{{> editAntiAlias}}</span>
+          </li>
+          <li>
+            <span class="property">link:</span>
+            <span class="editMeta">{{> editLink}}</span>
+          </li>
+          <li>
+            <span class="property">copyright: </span>
+            <span class="editMeta">{{> editCopyright}}</span>
+          </li>
+          <li>
+            <span class="property">license: </span>
+            <span class="editMeta">{{> editLicense}}</span>
+          </li>
+        {{/if}}
       </ul>
     </div>
     {{/if}}

@@ -56,6 +56,28 @@
           // _debug Docs: <a href="/pool/_debug/1?q=cssbacks">cssbacks assigned</a>
         </div>
       </div>
+      <div class="editorNote">
+        <div class="noteTitle">
+          To search for an exact match, put '~' in front of a word:
+        </div>
+        <div>
+          // Vehicles:  <a href="/pool/~vehicle/1?q=tag">~vehicle</a> (in tags)
+        </div>
+        <div>
+          // Pixoramas:  <a href="/pool/~Pixorama/1?q=project">~Pixorama</a> (in projects)
+        </div>
+      </div>
+      <div class="editorNote">
+        <div class="noteTitle">
+          To exclude words from your search, put '-' in front of a word you want to leave out:
+        </div>
+        <div>
+          // Exclude buildings:  <a href="/pool/-buildings/1?q=tag">-buildings</a> (in tags)
+        </div>
+        <div>
+          // Exclude parts: <a href="/pool/-PT/1?q=name">-PT</a> (in name)
+        </div>
+      </div>
     {{/if}}
   </div>
 </template>

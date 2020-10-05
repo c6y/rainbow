@@ -10,12 +10,9 @@ import { Meteor } from 'meteor/meteor';
  * @return {object} selector — The Mongo selector
  */
 export function urlToSelector(slug, query, userId) {
-  console.log('query YEP: ' + query);
   const queryObject = createQuerySelector(slug, query);
   const querySelector = queryObject.selector;
   const searchMode = queryObject.mode;
-
-  console.log('searchMode: ' + searchMode);
 
   // If user is not logged in,
   // limit search query to documents with access level 0
@@ -141,7 +138,7 @@ function createQuerySelector(slug, query) {
     // This is useful as names are often a concatenation of multiple
     // strings and exact matches are unlikely.
     // Tags and Projects on the other side are short defined strings,
-    // and exact matches are more useful.
+    // and exact not-matches are more useful.
     mode = 'not';
     let slugWithoutMinus;
     if (!query || query === 'name') {

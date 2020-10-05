@@ -10,7 +10,8 @@ import { Meteor } from 'meteor/meteor';
  * @return {object} selector — The Mongo selector
  */
 export function urlToSelector(slug, query, userId) {
-  const queryObject = createQuerySelector(slug);
+  console.log('query YEP: ' + query);
+  const queryObject = createQuerySelector(slug, query);
   const querySelector = queryObject.selector;
   const searchMode = queryObject.mode;
 
@@ -121,9 +122,10 @@ export function urlToSelector(slug, query, userId) {
  * If first char in slug is a '-', search for docs that do not contain slug.
  * Otherwise do a grep search.
  * @param {string} slug — The search slug/term
+ * @param {string} query — The search query
  * @return {object} or {string} selector — The Mongo selector
  */
-function createQuerySelector(slug) {
+function createQuerySelector(slug, query) {
   let mode;
   const firstSlugChar = slug.charAt(0); // Get first slug character
   if (firstSlugChar === '~') {
@@ -134,8 +136,21 @@ function createQuerySelector(slug) {
       mode: mode,
     };
   } else if (firstSlugChar === '-') {
+    // This will do a regex search, if query is 'anywhere' or 'name',
+    // but it will do an exact not-match in 'tags' and 'projects'.
+    // This is useful as names are often a concatenation of multiple
+    // strings and exact matches are unlikely.
+    // Tags and Projects on the other side are short defined strings,
+    // and exact matches are more useful.
     mode = 'not';
-    const slugWithoutMinus = '^' + slug.substring(1) + '$';
+    let slugWithoutMinus;
+    if (!query || query === 'name') {
+      // Contains not match:
+      slugWithoutMinus = slug.substring(1);
+    } else {
+      // Exact not match:
+      slugWithoutMinus = '^' + slug.substring(1) + '$';
+    }
     const reg = new RegExp(slugWithoutMinus, 'i', 's');
     const slugRegExp = { $not: reg };
     querySelector = slugRegExp;

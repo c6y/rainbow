@@ -24,7 +24,7 @@ Template.dashboardPage.onCreated(function() {
   const self = this;
   self.autorun(function() {
     const route = FlowRouter.getRouteName();
-    DocHead.setTitle(route + ' · eboy.io');
+    DocHead.setTitle(route + ' · db.eboy.com');
   });
 });
 

@@ -10,7 +10,7 @@ Template.notFound.onCreated(function() {
   const self = this;
   self.autorun(function() {
     // const title = FlowRouter.getRouteName();
-    DocHead.setTitle('404 · eboy.io');
+    DocHead.setTitle('404 · db.eboy.com');
   });
 });
 

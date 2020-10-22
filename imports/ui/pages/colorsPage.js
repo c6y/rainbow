@@ -24,7 +24,7 @@ Template.colorsPage.onCreated(function() {
   self.autorun(function() {
     const title = FlowRouter.getRouteName();
 
-    DocHead.setTitle(title + ' · eboy.io');
+    DocHead.setTitle(title + ' · db.eboy.com');
     self.subscribe('colors.public');
   });
 });
